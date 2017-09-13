@@ -3901,6 +3901,15 @@ body .woocommerce form .form-row .button {
 }
 .woocommerce div.product form.cart .reset_variations {
   color: #eb4c3d;
+  float: right;
+  display: none !important;
+}
+.amount-options {
+  font-size: 0.7em;
+  margin: 10px 0;
+}
+.woocommerce-page.woocommerce-page .summary .single_variation_wrap .price {
+  display: none;
 }
 [data-dataname="frame_size"] {
   display: none;

@@ -56,17 +56,17 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	$classes[] = 'last';
 }
 
-$sidebar_layout = vp_metabox('layout_settings.hb_page_layout_sidebar'); 
+$sidebar_layout = vp_metabox('layout_settings.hb_page_layout_sidebar');
 $sidebar_name = vp_metabox('layout_settings.hb_choose_sidebar');
 
 if(isset($_REQUEST['layout']) && !empty($_REQUEST['layout'])) {
 	$sidebar_layout = $_REQUEST['layout'];
 } else {
-	if ( is_single() ) { 
+	if ( is_single() ) {
 		$sidebar_layout = hb_options('hb_woo_sp_layout_sidebar');
 		$sidebar_name = hb_options('hb_woo_sp_choose_sidebar');
 	}
-	else { 
+	else {
 		$sidebar_layout = hb_options('hb_woo_layout_sidebar');
 		$sidebar_name = hb_options('hb_woo_choose_sidebar');
 	}
@@ -77,7 +77,7 @@ if ( $woocommerce_loop['columns'] == 4 ){
 } else if ( $woocommerce_loop['columns'] == 3 ) {
 	$classes[] = 'col-4 hb-animate-element top-to-bottom';
 } else {
-	$classes[] = 'col-6 hb-animate-element top-to-bottom';	
+	$classes[] = 'col-6 hb-animate-element top-to-bottom';
 }
 ?>
 
@@ -102,7 +102,7 @@ if ( $woocommerce_loop['columns'] == 4 ){
 				$image_title 		= esc_attr( get_the_title( get_post_thumbnail_id() ) );
 				$image_link  		= wp_get_attachment_url( get_post_thumbnail_id() );
 				$shop_catalog		= wc_get_image_size( 'shop_catalog' );
-				
+
 				$image = hb_resize ( $image_object, '', $shop_catalog['width'], $shop_catalog['height']	, true);
 				echo '<div class="woo-category-wrap"><img src="' . $image["url"] . '" width="'.$image["width"].'" height="'.$image["height"].'"></div>';
 			} else {
@@ -126,11 +126,11 @@ if ( $woocommerce_loop['columns'] == 4 ){
 			$newness 		= 3; 	// Newness in days
 
 
-			
+
 			if ( $product->get_sale_price() ){
 				// Sale will be added through action hook
 			}
-			else if ( hb_is_out_of_stock() ) {	
+			else if ( hb_is_out_of_stock() ) {
 				echo '<span class="out-of-stock-badge">' . __( 'Sold out', 'hbthemes' ) . '</span>';
 			} else if ( ( time() - ( 60 * 60 * 24 * $newness ) ) < $postdatestamp ) { // If the product was published within the newness time frame display the new badge
 				echo '<span class="wc-new-badge">' . __( 'New', 'hbthemes' ) . '</span>';
@@ -214,7 +214,7 @@ if ( $woocommerce_loop['columns'] == 4 ){
 </div>
 </div>
 
-<?php 
+<?php
 if ( !isset ( $woocommerce_loop['columns'] ) ) {
 	$woocommerce_loop['columns'] = 2;
 }

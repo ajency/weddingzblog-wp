@@ -379,6 +379,24 @@ jQuery(document).ready(function() {
         });
   });
 
+  jQuery('#frame_size').val('small').change();
+
+  jQuery('body').on('change', '#size', function(event){
+  	if (jQuery(this).val() == "Small"){
+  		jQuery('#frame_size').val('small').change();
+  	} else if (jQuery(this).val() == "Medium"){
+  		jQuery('#frame_size').val('medium').change();
+  	}else if (jQuery(this).val() == "Large"){
+  		jQuery('#frame_size').val('large').change();
+  	}
+
+  });
+
+  // jQuery('body').on('change', '#nm-productmeta-box-1 input', function(event){
+  // 	var newAmount = jQuery('.amount-options').find('strong .amount').text()
+  // 	console.log(newAmount)
+  // });
+
 });
 
 

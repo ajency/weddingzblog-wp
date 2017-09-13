@@ -3888,8 +3888,7 @@ body .woocommerce form .form-row .button {
 #main-wrapper .cart .single_add_to_cart_button:hover {
   background-color: #de2817 !important;
 }
-[data-dataname="frame_size"] label,
-[data-dataname="frame_size"] br {
+[data-dataname="frame_size"] {
   display: none;
 }
 [data-dataname="frames"] {
@@ -4052,7 +4051,7 @@ body .woocommerce form .form-row .button {
   text-align: center;
 }
 #main-content .frame-sizes h3 {
-  color: #eb4c3d;
+  font-weight: 600;
 }
 #main-content .frame-sizes img {
   max-width: 700px;
@@ -4064,7 +4063,7 @@ body .woocommerce form .form-row .button {
   text-align: center;
 }
 #main-content .frame-types h3 {
-  color: #eb4c3d;
+  font-weight: 600;
 }
 #main-content .type-wrapper {
   display: -webkit-box;
@@ -4101,6 +4100,31 @@ body .woocommerce form .form-row .button {
   color: #b2702a;
   font-weight: 600;
 }
+#main-content .back-wrapper {
+  text-align: center;
+  padding: 40px 0;
+  margin: 60px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #f3f3f3;
+}
+#main-content .back-wrapper .back-text {
+  max-width: 230px;
+  padding: 0 20px;
+}
+#main-content .back-wrapper .back-text h6 {
+  font-weight: 600;
+}
+#main-content .back-wrapper img {
+  max-width: 220px;
+}
 .benefits {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4109,8 +4133,7 @@ body .woocommerce form .form-row .button {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  border-top: 1px solid #e1e1e1;
-  padding-top: 40px;
+  padding-top: 0;
   padding-bottom: 40px;
 }
 .benefits li {

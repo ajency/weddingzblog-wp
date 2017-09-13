@@ -80,6 +80,14 @@ if ( ! empty( $tabs ) ) : ?>
 				</p>
 			</div>
 		</div>
+
+		<div class="back-wrapper">
+			<div class="back-text">
+				<h6>But what about the back?</h6>
+				<p>Here's a sample view of the backside of a painting with a frame so you know what to expect. </p>
+			</div>
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/frame_back.jpg">
+		</div>
 	</div>
 
 	<ul class="benefits">

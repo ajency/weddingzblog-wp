@@ -1511,6 +1511,9 @@ body
   .cart{
     .single_add_to_cart_button{
       background-color: @brand-secondary !important;
+      &:hover{
+        background-color: darken(@brand-secondary, 10%) !important;
+      }
     }
   }
 }
@@ -1630,7 +1633,38 @@ body
       &:after{
         background-image: url(img/noframe.jpg);
         background-position: 0 0;
-        background-size: cover;
+        background-size: 85%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: white;
+      }
+    }
+
+    input{
+      &:checked{
+        &:after{
+          font-family: 'FontAwesome';
+          // content: "\f14a";
+          font-size: 1.2em;
+          color: @brand-secondary;
+          position: absolute;
+          top: -2px;
+          left: 76px;
+          z-index: 2;
+          // border: 2px solid @brand-secondary;
+        }
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          height: 76px;
+          width: 76px;
+          box-sizing: border-box;
+          // border: 2px solid @brand-secondary;
+          box-shadow: inset 0 0 0px 2px #b2702a;
+        }
       }
     }
   }

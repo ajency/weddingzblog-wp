@@ -188,7 +188,7 @@ body {
 }
 @media screen and (min-width: 1900px) {
   .ind-custom-menu #logo {
-    top: -6px;
+    top: -16px;
   }
 }
 .ind-custom-menu .col {
@@ -3885,6 +3885,9 @@ body .woocommerce form .form-row .button {
 #main-wrapper .cart .single_add_to_cart_button {
   background-color: #eb4c3d !important;
 }
+#main-wrapper .cart .single_add_to_cart_button:hover {
+  background-color: #de2817 !important;
+}
 [data-dataname="frame_size"] label,
 [data-dataname="frame_size"] br {
   display: none;
@@ -4011,7 +4014,36 @@ body .woocommerce form .form-row .button {
 [data-dataname="frames_large"] label:nth-child(6):after {
   background-image: url(img/noframe.jpg);
   background-position: 0 0;
-  background-size: cover;
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+}
+[data-dataname="frames_small"] label input:checked:after,
+[data-dataname="frames"] label input:checked:after,
+[data-dataname="frames_large"] label input:checked:after {
+  font-family: 'FontAwesome';
+  font-size: 1.2em;
+  color: #eb4c3d;
+  position: absolute;
+  top: -2px;
+  left: 76px;
+  z-index: 2;
+}
+[data-dataname="frames_small"] label input:checked:before,
+[data-dataname="frames"] label input:checked:before,
+[data-dataname="frames_large"] label input:checked:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 76px;
+  width: 76px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: inset 0 0 0px 2px #b2702a;
+          box-shadow: inset 0 0 0px 2px #b2702a;
 }
 #main-content .frame-sizes {
   border-top: 1px solid #e1e1e1;

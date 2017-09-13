@@ -463,7 +463,7 @@ body {
   }
   .ind-custom-menu .col ul li a,
   .ind-custom-menu .col ul li .active {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
   .ind-custom-menu .col ul li .sub-menu li a {
     font-size: 1.15em;
@@ -472,12 +472,10 @@ body {
     background-position: 13.5% -5px;
   }
   .ind-custom-menu.fixed #logo {
-    height: 118px !important;
     background-repeat: no-repeat;
-    background-image: url(img/logo-half.png);
+    background-image: url(img/vitalwalls-logo.jpg);
     display: block;
     background-position: center;
-    background-size: 100%;
     top: -1px;
     left: 5px;
   }
@@ -495,7 +493,7 @@ body {
   }
   .ind-custom-menu .col ul li a,
   .ind-custom-menu .col ul li .active {
-    font-size: 1em;
+    font-size: 1.2em;
   }
   .ind-custom-menu.fixed {
     background-position: 13.5% -5px;
@@ -3870,6 +3868,128 @@ body .woocommerce form .form-row .button {
 .coupon-code input[type="submit"]:hover {
   background-color: #NaNNaNNaN !important;
 }
+[data-dataname="frames"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+[data-dataname="frames"] label {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 80px;
+  width: 80px;
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+[data-dataname="frames"] label:after {
+  content: '';
+  background-image: url(img/frames_sprite.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 80px;
+  width: 80px;
+  background-position: -168px -8px;
+}
+[data-dataname="frames"] label:first-child,
+[data-dataname="frames"] label:nth-child(2) {
+  display: none;
+}
+[data-dataname="frames"] label:nth-child(3):after {
+  background-position: -262px -8px;
+}
+[data-dataname="frames"] label:nth-child(4):after {
+  background-position: -636px -8px;
+}
+[data-dataname="frames"] label:nth-child(6):after {
+  background-position: -262px -8px;
+}
+[data-dataname="frames"] label:nth-child(7):after {
+  background-position: -636px -8px;
+}
+[data-dataname="frames"] label:nth-child(9):after {
+  background-position: -262px -8px;
+}
+[data-dataname="frames"] label:nth-child(10):after {
+  background-position: -636px -8px;
+}
+[data-dataname="frames"] label:nth-child(12) {
+  color: black;
+  text-transform: capitalize;
+  width: 100px;
+}
+[data-dataname="frames"] label:nth-child(12):after {
+  background-position: -168px -200px;
+}
+[data-dataname="frames_small"],
+[data-dataname="frames"],
+[data-dataname="frames_large"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+[data-dataname="frames_small"] label,
+[data-dataname="frames"] label,
+[data-dataname="frames_large"] label {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 80px;
+  width: 80px;
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+[data-dataname="frames_small"] label:after,
+[data-dataname="frames"] label:after,
+[data-dataname="frames_large"] label:after {
+  content: '';
+  background-image: url(img/frames_sprite.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 80px;
+  width: 80px;
+  background-position: -168px -8px;
+}
+[data-dataname="frames_small"] label:first-child,
+[data-dataname="frames"] label:first-child,
+[data-dataname="frames_large"] label:first-child,
+[data-dataname="frames_small"] label:nth-child(2),
+[data-dataname="frames"] label:nth-child(2),
+[data-dataname="frames_large"] label:nth-child(2) {
+  display: none;
+}
+[data-dataname="frames_small"] label:nth-child(3):after,
+[data-dataname="frames"] label:nth-child(3):after,
+[data-dataname="frames_large"] label:nth-child(3):after {
+  background-position: -262px -8px;
+}
+[data-dataname="frames_small"] label:nth-child(4):after,
+[data-dataname="frames"] label:nth-child(4):after,
+[data-dataname="frames_large"] label:nth-child(4):after {
+  background-position: -636px -8px;
+}
+[data-dataname="frames_small"] label:nth-child(6),
+[data-dataname="frames"] label:nth-child(6),
+[data-dataname="frames_large"] label:nth-child(6) {
+  color: black;
+  text-transform: capitalize;
+  width: 100px;
+}
+[data-dataname="frames_small"] label:nth-child(6):after,
+[data-dataname="frames"] label:nth-child(6):after,
+[data-dataname="frames_large"] label:nth-child(6):after {
+  background-position: -168px -200px;
+}
 @media screen and (max-width: 600px) {
   .woocommerce .col-9 {
     min-height: auto;
@@ -4544,8 +4664,8 @@ body .woocommerce form .form-row .button {
 .woocommerce .hb-woo-wraper > .woocommerce-message.woocommerce-message,
 .woocommerce.woocommerce .woocommerce-message.woocommerce-message,
 .woocommerce .hb-woo-wraper .woocommerce-message.woocommerce-message {
-  border: 1px solid #eee;
-  background-color: #eb4c3d !important;
+  border: 1px solid transparent;
+  background-color: #d1b57c !important;
   color: #fff;
   font-family: gotham_bookregular;
 }
@@ -4559,7 +4679,7 @@ body .woocommerce form .form-row .button {
 .woocommerce .hb-woo-wraper > .woocommerce-message.woocommerce-message a,
 .woocommerce.woocommerce .woocommerce-message.woocommerce-message a,
 .woocommerce .hb-woo-wraper .woocommerce-message.woocommerce-message a {
-  color: #d1b57c;
+  color: white;
   text-decoration: underline;
   font-weight: 600 !important;
 }

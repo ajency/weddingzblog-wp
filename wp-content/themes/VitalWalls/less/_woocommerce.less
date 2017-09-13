@@ -1492,3 +1492,115 @@ body
   }
 }
 
+// Frames
+[data-dataname="frames"]{
+  display: flex;
+  flex-wrap: wrap;
+  label{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 80px;
+    width: 80px;
+    position: relative;
+    color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    &:after{
+      content: '';
+      background-image: url(img/frames_sprite.png);
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 80px;
+      width: 80px;
+      background-position: -168px -8px;
+    }
+    &:first-child, &:nth-child(2){
+      display: none;
+    }
+    &:nth-child(3){
+      &:after{
+        background-position: -262px -8px;
+      }
+    }
+    &:nth-child(4){
+      &:after{
+        background-position: -636px -8px;
+      }
+    }
+    &:nth-child(6){
+      &:after{
+        background-position: -262px -8px;
+      }
+    }
+    &:nth-child(7){
+      &:after{
+        background-position: -636px -8px;
+      }
+    }
+    &:nth-child(9){
+      &:after{
+        background-position: -262px -8px;
+      }
+    }
+    &:nth-child(10){
+      &:after{
+        background-position: -636px -8px;
+      }
+    }
+    &:nth-child(12){
+      color: black;
+      text-transform: capitalize;
+      width: 100px;
+      &:after{
+        background-position: -168px -200px;
+      }
+    }
+  }
+}
+
+[data-dataname="frames_small"], [data-dataname="frames"], [data-dataname="frames_large"]{
+  display: flex;
+  flex-wrap: wrap;
+  label{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 80px;
+    width: 80px;
+    position: relative;
+    color: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    &:after{
+      content: '';
+      background-image: url(img/frames_sprite.png);
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 80px;
+      width: 80px;
+      background-position: -168px -8px;
+    }
+    &:first-child, &:nth-child(2){
+      display: none;
+    }
+    &:nth-child(3){
+      &:after{
+        background-position: -262px -8px;
+      }
+    }
+    &:nth-child(4){
+      &:after{
+        background-position: -636px -8px;
+      }
+    }
+    &:nth-child(6){
+      color: black;
+      text-transform: capitalize;
+      width: 100px;
+      &:after{
+        background-position: -168px -200px;
+      }
+    }
+  }
+}

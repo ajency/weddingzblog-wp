@@ -10,21 +10,21 @@ jQuery(function(){
 	// Menu fixed code
 
 	jQuery(window).scroll(function(){
-	  var sticky = jQuery('.ind-custom-menu'),
-	      scroll = jQuery(window).scrollTop();
+	 //  var sticky = jQuery('.ind-custom-menu'),
+	 //      scroll = jQuery(window).scrollTop();
 
-	  if (scroll >= 150){
-	  	sticky.addClass('fixed');
-	  	jQuery('.header-sep').addClass('fixedAdd');
-	  	jQuery('#hb-page-title').addClass('fixedAdd');
-	  	// jQuery('#main-content').addClass('fixed-added');
-	  }
-	  else{
-		sticky.removeClass('fixed');
-		jQuery('.header-sep').removeClass('fixedAdd');
-		jQuery('#hb-page-title').removeClass('fixedAdd');
-		// jQuery('#main-content').removeClass('fixed-added');
-	  }
+	 //  if (scroll >= 150){
+	 //  	sticky.addClass('fixed');
+	 //  	jQuery('.header-sep').addClass('fixedAdd');
+	 //  	jQuery('#hb-page-title').addClass('fixedAdd');
+	 //  	// jQuery('#main-content').addClass('fixed-added');
+	 //  }
+	 //  else{
+		// sticky.removeClass('fixed');
+		// jQuery('.header-sep').removeClass('fixedAdd');
+		// jQuery('#hb-page-title').removeClass('fixedAdd');
+		// // jQuery('#main-content').removeClass('fixed-added');
+	 //  }
 
 	});
 
@@ -125,10 +125,10 @@ jQuery(function(){
 
 	// Menu height checking
 
-	if (jQuery(window).width() > 992) {
-	  	var menu_height = jQuery('.ind-custom-menu').outerHeight();
-		jQuery('.header-sep').css('margin-top',menu_height);
-	}
+	// if (jQuery(window).width() > 992) {
+	//   	var menu_height = jQuery('.ind-custom-menu').outerHeight();
+	// 	jQuery('.header-sep').css('margin-top',menu_height);
+	// }
 
 	// featured product scroll
 
@@ -381,6 +381,7 @@ jQuery(document).ready(function() {
 
   jQuery('#frame_size').val('small').change();
 
+  var frameLabel = "<span class='summary-label'>Artwork: </span>";
   jQuery('body').on('change', '#size', function(event){
   	if (jQuery(this).val() == "Small"){
   		jQuery('#frame_size').val('small').change();
@@ -389,6 +390,9 @@ jQuery(document).ready(function() {
   	}else if (jQuery(this).val() == "Large"){
   		jQuery('#frame_size').val('large').change();
   	}
+  	setTimeout(function(){
+  		jQuery('.single_variation_wrap .woocommerce-variation-price .price').prepend(frameLabel);
+  	}, 1000);
 
   });
 
@@ -396,6 +400,10 @@ jQuery(document).ready(function() {
   // 	var newAmount = jQuery('.amount-options').find('strong .amount').text()
   // 	console.log(newAmount)
   // });
+
+  setTimeout(function(){
+  	jQuery('.single_variation_wrap .woocommerce-variation-price .price').prepend(frameLabel);
+  }, 1000);
 
 });
 

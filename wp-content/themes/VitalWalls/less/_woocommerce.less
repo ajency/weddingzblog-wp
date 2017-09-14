@@ -533,7 +533,7 @@
         color: #fff;
         font-weight: 600 !important;;
         font-family: roboto!important;;
-        font-size: 1.4em!important;
+        font-size: 1.3em!important;
         border: 0;
         background-image: none;
         border-radius: 4px !important;;
@@ -572,11 +572,11 @@
     // display: none;
     font-family: 'gotham_mediumregular';
       color: @brand-primary !important;
-      font-size: 1.75em !important;
-      margin-bottom: 0.2em !important;
+      font-size: 1.4em !important;
+      margin-bottom: 0 !important;
     font-weight: 300;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5em;
+    // border-bottom: 1px solid #eee;
+    // padding-bottom: 0.5em;
   }
   .hb-separator{
     display: none
@@ -699,7 +699,7 @@
 }
 
 .hb-box-cont{
-  background: @brand-primary;
+  // background: @brand-primary;
     font-weight: 500;
     font-family: roboto;
   .hb-box-cont-header{
@@ -761,6 +761,9 @@
       font-family: arial ;
     }
   }
+}
+.simple-read-more{
+  border-bottom: none;
 }
 
 .wc_payment_methods{
@@ -1534,6 +1537,12 @@ body
     td{
       display: block;
     }
+
+    select{
+      width: auto;
+      background-color: transparent;
+      min-width: 0;
+    }
   }
 
   .cart{
@@ -1555,7 +1564,39 @@ body
   margin: 10px 0;
 }
 .woocommerce-page.woocommerce-page .summary .single_variation_wrap .price{
-  display: none;
+  // display: none;
+  width: 100%;
+  text-align: right;
+  line-height: 25px;
+  .summary-label{
+    color: #545454;
+    font-size: 0.7em;
+  }
+}
+.price-summary{
+  float: right;
+  text-align: right;
+  color: #545454;
+  font-family: 'gotham_mediumregular';
+  font-weight: normal;
+  .frame-price{
+    span{
+      font-size: 1.3em;
+      color: @brand-primary;
+    }
+  }
+  .total-price{
+    margin-top: 5px;
+    span{
+      color: @brand-primary;
+      font-size: 1.6em;
+      font-weight: 600;
+    }
+  }
+  .taxes-text{
+    font-size: 0.8em;
+    color: #999;
+  }
 }
 
 [data-dataname="frame_size"]{
@@ -1816,3 +1857,4 @@ body
     }
   }
 }
+

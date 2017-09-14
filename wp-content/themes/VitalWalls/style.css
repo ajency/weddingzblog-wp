@@ -3196,7 +3196,7 @@ a[data-readmore-toggle].more:before {
 }
 .hb-box-cont .cart-total-value .amount {
   font-weight: 800 !important;
-  color: #eb4c3d !important;
+  color: #b2702a !important;
 }
 .woocommerce h4 {
   font-weight: bold;
@@ -4387,6 +4387,12 @@ body .woocommerce form .form-row .button {
   font-family: 'gotham_lightregular';
   font-weight: 600;
 }
+.element-row .woocommerce .shop_table th.product-quantity,
+.hb-main-content .woocommerce .shop_table th.product-quantity,
+.element-row .woocommerce .shop_table td.product-quantity,
+.hb-main-content .woocommerce .shop_table td.product-quantity {
+  text-align: center;
+}
 .element-row .woocommerce .shop_table th a,
 .hb-main-content .woocommerce .shop_table th a,
 .element-row .woocommerce .shop_table td a,
@@ -4461,7 +4467,7 @@ body .woocommerce form .form-row .button {
 .hb-main-content .hb-woo-cart_totals .hb-box-cont-header {
   font-family: 'gotham_mediumregular';
   font-weight: 600;
-  color: #eb4c3d;
+  color: #b2702a;
   border-color: #000;
   margin: 0 20px;
   padding: 20px 0px 10px 0;
@@ -4479,7 +4485,7 @@ body .woocommerce form .form-row .button {
 .hb-main-content .hb-woo-cart_totals .hb-box-cont-body .hb-cart-totals li {
   border-color: #000;
   border-top-style: solid;
-  color: #eb4c3d;
+  color: #b2702a;
 }
 @media screen and (max-width: 1600px) {
   .element-row .calculated_shipping .hb-box-cont-body .hb-cart-totals li span.cart-total-title,
@@ -4494,7 +4500,7 @@ body .woocommerce form .form-row .button {
 .element-row .hb-woo-cart_totals .hb-box-cont-body .hb-cart-totals li span.cart-total-value,
 .hb-main-content .hb-woo-cart_totals .hb-box-cont-body .hb-cart-totals li span.cart-total-value {
   font-family: gotham_mediumregular;
-  color: #eb4c3d;
+  color: #b2702a;
 }
 @media screen and (max-width: 1600px) {
   .element-row .calculated_shipping .hb-box-cont-body .hb-cart-totals li span.cart-total-value,
@@ -5058,7 +5064,7 @@ body .woocommerce form .form-row .button {
 .woocommerce .hb-woo-wraper > .woocommerce-message.woocommerce-message a:hover,
 .woocommerce.woocommerce .woocommerce-message.woocommerce-message a:hover,
 .woocommerce .hb-woo-wraper .woocommerce-message.woocommerce-message a:hover {
-  color: #b2702a;
+  color: white;
 }
 .woocommerce.woocommerce .woocommerce-error,
 .woocommerce .hb-woo-wraper .woocommerce-error {

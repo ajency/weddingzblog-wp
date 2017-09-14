@@ -4268,6 +4268,16 @@ body .woocommerce form .form-row .button {
   font-weight: 600;
   margin-bottom: 10px;
 }
+.related.products {
+  border-top: 1px solid #e1e1e1;
+  padding-top: 40px;
+}
+.related.products .hb-heading {
+  color: #323436;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
 .related.products .hb-woo-product.col-4 {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 33.33%;
@@ -4287,6 +4297,12 @@ body .woocommerce form .form-row .button {
 }
 .related.products a.product_type_variable {
   display: none !important;
+}
+.related.products .hb-product-meta-wrapper .price {
+  color: #b2702a !important;
+}
+.single-product .entry-summary h3.hb-heading {
+  font-weight: 600;
 }
 @media screen and (max-width: 600px) {
   .woocommerce .col-9 {

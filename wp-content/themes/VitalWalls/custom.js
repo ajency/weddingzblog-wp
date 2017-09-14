@@ -26,6 +26,16 @@ jQuery(function(){
 		// // jQuery('#main-content').removeClass('fixed-added');
 	 //  }
 
+	   var sticky = jQuery('.single_add_to_cart_button'),
+	       scroll = jQuery(window).scrollTop();
+
+	   if (scroll >= 600){
+	   	sticky.addClass('fixed');
+	   }
+	   else{
+	 	sticky.removeClass('fixed');
+	   }
+
 	});
 
 	// var $navBar = jQuery('.ind-custom-menu');

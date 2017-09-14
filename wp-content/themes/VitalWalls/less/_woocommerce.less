@@ -1552,6 +1552,12 @@ body
       &:hover{
         background-color: darken(@brand-secondary, 10%) !important;
       }
+
+      &.fixed{
+        position: fixed;
+        bottom: 50px;
+        right: 70px;
+      }
     }
   }
 }
@@ -1766,7 +1772,11 @@ body
 }
 
 [itemprop="description"]{
-  display: none;
+  // display: none;
+  margin-bottom: 0;
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 1.05em;
 }
 
 // Custom info

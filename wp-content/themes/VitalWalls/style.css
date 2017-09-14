@@ -3910,6 +3910,11 @@ body .woocommerce form .form-row .button {
 #main-wrapper .cart .single_add_to_cart_button:hover {
   background-color: #de2817 !important;
 }
+#main-wrapper .cart .single_add_to_cart_button.fixed {
+  position: fixed;
+  bottom: 50px;
+  right: 70px;
+}
 .woocommerce div.product form.cart .reset_variations {
   color: #eb4c3d;
   float: right;
@@ -4127,7 +4132,10 @@ body .woocommerce form .form-row .button {
           box-shadow: inset 0 0 0px 2px #b2702a;
 }
 [itemprop="description"] {
-  display: none;
+  margin-bottom: 0;
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 1.05em;
 }
 #main-content .art-details {
   clear: both;

@@ -3457,6 +3457,7 @@ body .woocommerce form .form-row .button {
 }
 .woocommerce-tabs.woocommerce-tabs {
   padding: 2.5em 0 3em 0;
+  display: none;
 }
 .woocommerce-tabs.woocommerce-tabs .wc-tabs li {
   margin-bottom: 0.8em !important;
@@ -4099,6 +4100,41 @@ body .woocommerce form .form-row .button {
           box-sizing: border-box;
   -webkit-box-shadow: inset 0 0 0px 2px #b2702a;
           box-shadow: inset 0 0 0px 2px #b2702a;
+}
+[itemprop="description"] {
+  display: none;
+}
+#main-content .art-details {
+  clear: both;
+  border-top: 1px solid #e1e1e1;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#main-content .art-details h3 {
+  font-weight: 600;
+}
+#main-content .art-details ul {
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 300px;
+}
+#main-content .art-details ul li {
+  list-style-type: disc;
+  width: 50%;
+  padding: 5px 30px 5px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'gotham_bookregular';
+  font-weight: 500;
+  font-size: 1.05em;
 }
 #main-content .frame-sizes {
   border-top: 1px solid #e1e1e1;

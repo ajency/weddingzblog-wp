@@ -39,6 +39,25 @@ if ( ! empty( $tabs ) ) : ?>
 <?php endif; ?>
 
 <div class="art-info">
+	<div class="art-details">
+		<h3>
+			Artwork Details
+		</h3>
+		<ul>
+			<li>Finish: Colourfast Ink on Canvas</li>
+			<li>Wipeable &amp; dustable. Easy to maintain. Ready to Mount on Wall</li>
+			<li>Package Contents: 1 Digital Art Print on Premium Canvas</li>
+			<li>Premium Canvas Art Print. This Art Print is a Best Seller. </li>
+			<li>This Painting is a Exquisite Painting by the Famous Artist. </li>
+			<li>The canvas print is sure to add beauty and aesthetics to your space.</li>
+			<li>This Art print offers beautiful color accuracy on a high-quality canvas that is ready for framing. </li>
+			<li>Giclée (French for “to spray”) is a printing process where millions of ink droplets are sprayed onto the canvas surface creating natural color transitions. </li>
+			<li>Size: 30 cm X 38.1 cm Best Selling Art Print. High Quality Canvas with Long Lasting Ink. </li>
+			<li>In the Box: Gallery Wrapped on Pure Wooden Frame, Ready to Mount on Wall.</li>
+			<li>Best Selling, High Quality Canvas Art Print.
+		</ul>
+	</div>
+
 	<div class="frame-sizes">
 		<h3>
 			Frame Size Guide

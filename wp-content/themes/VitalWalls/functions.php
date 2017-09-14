@@ -243,3 +243,10 @@ function ajax_qty_cart() {
 
 add_action('wp_ajax_qty_cart', 'ajax_qty_cart');
 add_action('wp_ajax_nopriv_qty_cart', 'ajax_qty_cart');
+
+add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args', 20 );
+function jk_related_products_args( $args ) {
+	$args['posts_per_page'] = 3; // 3 related products
+	$args['columns'] = 3; // arranged in 3 columns
+	return $args;
+}

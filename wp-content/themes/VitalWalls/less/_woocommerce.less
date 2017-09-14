@@ -1564,9 +1564,22 @@ body
   font-size: 0.7em;
   margin: 10px 0;
 }
+
+.single_variation_wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+.single-product .single_variation .price{
+  float: none !important;
+}
+.woocommerce-variation-price{
+  text-align: right;
+}
 .woocommerce-page.woocommerce-page .summary .single_variation_wrap .price{
   // display: none;
-  width: 100%;
+  // width: 100%;
   text-align: right;
   line-height: 25px;
   .summary-label{
@@ -1575,7 +1588,7 @@ body
   }
 }
 .price-summary{
-  float: right;
+  // float: right;
   text-align: right;
   color: #545454;
   font-family: 'gotham_mediumregular';

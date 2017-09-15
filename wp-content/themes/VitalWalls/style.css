@@ -3915,9 +3915,11 @@ body .woocommerce form .form-row .button {
   bottom: 50px;
   right: 70px;
 }
-#main-wrapper div.product form.cart div.quantity {
-  float: none;
-  margin: 0 20px 10px 0;
+@media (max-width: 767px) {
+  #main-wrapper div.product form.cart div.quantity {
+    float: none;
+    margin: 0 20px 10px 0;
+  }
 }
 .woocommerce div.product form.cart .reset_variations {
   color: #eb4c3d;
@@ -3926,7 +3928,15 @@ body .woocommerce form .form-row .button {
 }
 .amount-options {
   font-size: 0.7em;
-  margin: 10px 0;
+  margin: 0 0;
+  color: #545454;
+}
+.amount-options span {
+  color: #b2702a;
+  font-size: 1.4em;
+}
+.amount-options .woocommerce-Price-currencySymbol {
+  font-size: 0.95em;
 }
 .single_variation_wrap {
   display: -webkit-box;
@@ -3956,6 +3966,11 @@ body .woocommerce form .form-row .button {
 .woocommerce-page.woocommerce-page .summary .single_variation_wrap .price .summary-label {
   color: #545454;
   font-size: 0.7em;
+}
+.price-main {
+  color: #b2702a;
+  font-size: 1.2em;
+  margin-bottom: 0;
 }
 .price-summary {
   text-align: right;

@@ -250,3 +250,22 @@ function jk_related_products_args( $args ) {
 	$args['columns'] = 3; // arranged in 3 columns
 	return $args;
 }
+
+
+// add_filter( 'woocommerce_get_price_html', 'custom_price_html', 100, 2 );
+// function custom_price_html( $price, $product ){
+//     return $price;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+

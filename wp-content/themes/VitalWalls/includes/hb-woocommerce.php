@@ -105,7 +105,6 @@
 		
 		<div id="main-content">
 			<div class="container">
-				<?php woocommerce_breadcrumb(); ?>
 				<div class="row <?php echo $sidebar_layout; ?> main-row">
 					<div id="page-<?php the_ID(); ?>" class="hb-woo-wrapper">
 

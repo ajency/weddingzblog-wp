@@ -13,21 +13,29 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+global $product;
 ?>
+
+
+
 <script type="text/template" id="tmpl-variation-template">
 	<div class="woocommerce-variation-description">
 		{{{ data.variation.variation_description }}}
 	</div>
 
+	<!-- <p class="price"><span class="woocommerce-Price-currencySymbol">₹</span><span class=""><?php echo $product->get_variation_sale_price( 'max', true ); ?></span></p> -->
+
 	<div class="woocommerce-variation-price">
 		{{{ data.variation.price_html }}}
 		<div class="price-summary">
-			<div class="frame-price">
+
+			<!-- <div class="frame-price">
 				Wooden Frame: <span class="woocommerce-Price-currencySymbol">₹</span><span class="">100.00</span>
 			</div>
 			<div class="total-price">
 				Total: <span class="woocommerce-Price-currencySymbol">₹</span><span class="">600.00</span>
-			</div>
+			</div> -->
+
 			<div class="taxes-text">
 				Additional Taxes at checkout
 			</div>

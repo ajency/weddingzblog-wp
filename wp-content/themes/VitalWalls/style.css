@@ -3916,6 +3916,7 @@ body .woocommerce form .form-row .button {
 }
 #main-wrapper .cart .single_add_to_cart_button {
   background-color: #eb4c3d !important;
+  z-index: 1;
 }
 #main-wrapper .cart .single_add_to_cart_button:hover {
   background-color: #de2817 !important;
@@ -3959,9 +3960,9 @@ body .woocommerce form .form-row .button {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 .single-product .single_variation .price {
   float: none !important;
@@ -4121,7 +4122,6 @@ body .woocommerce form .form-row .button {
 [data-dataname="frames"] label:nth-child(6),
 [data-dataname="frames_large"] label:nth-child(6) {
   text-transform: capitalize;
-  width: 100px;
 }
 [data-dataname="frames_small"] label:nth-child(6):after,
 [data-dataname="frames"] label:nth-child(6):after,
@@ -4158,6 +4158,13 @@ body .woocommerce form .form-row .button {
           box-sizing: border-box;
   -webkit-box-shadow: inset 0 0 0px 2px #b2702a;
           box-shadow: inset 0 0 0px 2px #b2702a;
+}
+@media (max-width: 767px) {
+  [data-dataname="frames_small"] label,
+  [data-dataname="frames"] label,
+  [data-dataname="frames_large"] label {
+    margin-right: 1px;
+  }
 }
 [itemprop="description"] {
   margin-bottom: 0;
@@ -4394,6 +4401,24 @@ body .woocommerce form .form-row .button {
 .success,
 .wpcf7-mail-sent-ok {
   background-color: #b2702a;
+}
+@media (max-width: 767px) {
+  .container .product_meta .posted_in,
+  .container .share-holder {
+    display: block !important;
+  }
+  .woocommerce-message {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .woocommerce-message .wc-forward {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
 }
 @media screen and (max-width: 600px) {
   .woocommerce .col-9 {

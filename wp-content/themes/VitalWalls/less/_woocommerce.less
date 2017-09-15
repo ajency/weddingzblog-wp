@@ -1549,6 +1549,7 @@ body
   .cart{
     .single_add_to_cart_button{
       background-color: @brand-secondary !important;
+      z-index: 1;
       &:hover{
         background-color: darken(@brand-secondary, 10%) !important;
       }
@@ -1591,7 +1592,8 @@ body
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-  align-items: flex-end;
+  // align-items: flex-end;
+  align-items: flex-start;
 }
 .single-product .single_variation .price{
   float: none !important;
@@ -1752,7 +1754,7 @@ body
     &:nth-child(6){
       // color: black;
       text-transform: capitalize;
-      width: 100px;
+      // width: 100px;
       &:after{
         background-image: url(img/noframe.jpg);
         background-position: 0 0;
@@ -1789,6 +1791,12 @@ body
           box-shadow: inset 0 0 0px 2px #b2702a;
         }
       }
+    }
+  }
+
+  @media(max-width: 767px){
+    label{
+      margin-right: 1px;
     }
   }
 }
@@ -2010,4 +2018,20 @@ body
 
 .success, .wpcf7-mail-sent-ok{
   background-color: @brand-primary;
+}
+
+@media(max-width: 767px){
+  .container{
+    .product_meta .posted_in, .share-holder{
+      display: block !important;
+    }
+  }
+
+  .woocommerce-message{
+    display: flex;
+    .wc-forward{
+      order: 2;
+      align-self: flex-end;
+    }
+  }
 }

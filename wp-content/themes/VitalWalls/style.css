@@ -4447,10 +4447,6 @@ body .woocommerce form .form-row .button {
   color: #eb4c3d;
   font-weight: 600;
 }
-.element-row .woocommerce .hb-update-cart,
-.hb-main-content .woocommerce .hb-update-cart {
-  display: none !important;
-}
 .element-row .woocommerce .simple-read-more,
 .hb-main-content .woocommerce .simple-read-more {
   margin-top: 2em;

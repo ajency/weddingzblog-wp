@@ -1560,9 +1560,11 @@ body
       }
     }
   }
-  div.product form.cart div.quantity{
-    float: none;
-    margin: 0 20px 10px 0;
+  @media(max-width: 767px){
+    div.product form.cart div.quantity{
+      float: none;
+      margin: 0 20px 10px 0;
+    }
   }
 }
 
@@ -1574,7 +1576,15 @@ body
 }
 .amount-options {
   font-size: 0.7em;
-  margin: 10px 0;
+  margin: 0 0;
+  color: #545454;
+  span{
+    color: @brand-primary;
+    font-size: 1.4em;
+  }
+  .woocommerce-Price-currencySymbol{
+    font-size: 0.95em;
+  }
 }
 
 .single_variation_wrap{
@@ -1598,6 +1608,12 @@ body
     color: #545454;
     font-size: 0.7em;
   }
+}
+
+.price-main{
+  color: @brand-primary;
+  font-size: 1.2em;
+  margin-bottom: 0;
 }
 .price-summary{
   // float: right;

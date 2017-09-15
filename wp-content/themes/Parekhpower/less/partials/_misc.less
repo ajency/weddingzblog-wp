@@ -1,0 +1,44 @@
+.text-center {
+	text-align: center;
+}
+
+
+.addr-col {
+	.feature-box {
+		.feature-box-content {
+			h4.bold {
+				display: table;
+				i {
+					display: table-cell;
+					vertical-align: top;
+					padding: 5px 15px 0 0;
+				}
+			}
+		}
+	}
+}
+
+.row-col-grid {
+	&:not(:last-child) {
+		border-bottom: 1px solid @grey;
+		margin-bottom: 0;
+	}
+	.wpb_column.vc_column_container {
+		position: relative;
+		&:not(:last-child) {
+			border-right: 1px solid @grey;
+			padding-right: 10px;
+			&:after {
+				content: "";
+			    position: absolute;
+			    bottom: -20px;
+			    right: -20px;
+			    height: 40px;
+			    width: 40px;
+			    background: #f9f9f9; /* change color */
+			    z-index: 1;
+			    transform: rotate(45deg);
+			}
+		}
+	}
+}

@@ -7,11 +7,15 @@ wp-content/blogs.dir/
 wp-content/cache/
 wp-content/upgrade/
 wp-content/uploads/
+wp-content/plugins/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
+wp-content/plugins/LayerSlider/static/admin/media/revisions.mp4
 wp-admin/
 wp-includes/
+wp-content/themes/HighendWP/
 
+/README.me
 /.htaccess
 /license.txt
 /readme.html

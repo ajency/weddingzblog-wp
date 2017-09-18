@@ -111,6 +111,25 @@
 .feature-col .feature-box-content h4 {
   font-size: 26px;
 }
+.product-grid > .wpb_wrapper {
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+.product-grid > .wpb_wrapper .row-col-grid {
+  flex-basis: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+.product-grid > .wpb_wrapper .row-col-grid .vc_col-sm-4,
+.product-grid > .wpb_wrapper .row-col-grid .vc_col-sm-3 {
+  width: 100%;
+}
+.product-grid > .wpb_wrapper .row-col-grid:last-child {
+  top: -100px;
+}
 .contact-form div.wpcf7 {
   box-shadow: 0 0 16px #cccccc;
   padding: 20px 15px;

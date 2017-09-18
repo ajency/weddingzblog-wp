@@ -3135,6 +3135,16 @@ a[data-readmore-toggle].more:before {
 .woocommerce-product-gallery__wrapper div.thumbnails.thumbnails .woocommerce-product-gallery__image:nth-child(-n+3) {
   display: block !important;
 }
+.woocommerce div.product div.images .flex-control-thumbs li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  max-height: 80px;
+}
 .rating-reviews h1 {
   text-align: center;
   font-size: 50px;

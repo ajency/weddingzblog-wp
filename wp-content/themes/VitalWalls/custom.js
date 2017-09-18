@@ -391,7 +391,7 @@ jQuery(document).ready(function() {
 
   jQuery('#frame_size').val('small').change();
 
-  var frameLabel = "<span class='summary-label'>Artwork: </span>";
+  var frameLabel = "<span class='summary-label'>Painting Price: </span>";
   jQuery('body').on('change', '#size', function(event){
   	if (jQuery(this).val() == "Small"){
   		jQuery('#frame_size').val('small').change();

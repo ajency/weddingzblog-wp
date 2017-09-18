@@ -49,31 +49,40 @@
   vertical-align: top;
   padding: 5px 15px 0 0;
 }
-.row-col-grid:not(:last-child) {
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 0;
+.product-grid > .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: visible;
 }
-.row-col-grid .wpb_column.vc_column_container {
-  position: relative;
+.product-grid > .wpb_wrapper .row-col-grid {
+  -ms-flex-preferred-size: 28%;
+      flex-basis: 28%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
 }
-.row-col-grid .wpb_column.vc_column_container:not(:last-child) {
-  border-right: 1px solid #cccccc;
-  padding-right: 10px;
+.product-grid > .wpb_wrapper .row-col-grid .vc_col-sm-4,
+.product-grid > .wpb_wrapper .row-col-grid .vc_col-sm-3 {
+  width: 100%;
 }
-.row-col-grid .wpb_column.vc_column_container:not(:last-child):after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  height: 40px;
-  width: 40px;
-  background: #f9f9f9;
-  /* change color */
-  z-index: 1;
-  transform: rotate(45deg);
+.product-grid > .wpb_wrapper .row-col-grid:last-child {
+  top: -100px;
 }
 div.wpcf7 {
-  box-shadow: 0 0 16px #cccccc;
+  -webkit-box-shadow: 0 0 16px #cccccc;
+          box-shadow: 0 0 16px #cccccc;
   padding: 20px 15px;
   background: #ffffff;
 }
@@ -120,7 +129,8 @@ div.wpcf7 form input[type="email"].wpcf7-not-valid,
 div.wpcf7 form textarea.wpcf7-not-valid {
   border: none !important;
   border-bottom: 1px solid #fb7c43 !important;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   margin-bottom: 5px;
 }
 div.wpcf7 form span.wpcf7-not-valid-tip {
@@ -130,7 +140,8 @@ div.wpcf7 form input[type="submit"] {
   margin: auto;
   display: block;
   background: #fb7c43;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 div.wpcf7 form input[type="submit"]:not(.no-three-d):not(.hb-third-dark):not(.hb-second-dark):active {
   top: 0 !important;

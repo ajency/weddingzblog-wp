@@ -4118,19 +4118,14 @@ body .woocommerce form .form-row .button {
 [data-dataname="frames_large"] label:nth-child(3):after {
   background-position: -262px -8px;
 }
-[data-dataname="frames_small"] label:nth-child(4):after,
-[data-dataname="frames"] label:nth-child(4):after,
-[data-dataname="frames_large"] label:nth-child(4):after {
-  background-position: -636px -8px;
-}
-[data-dataname="frames_small"] label:nth-child(6),
-[data-dataname="frames"] label:nth-child(6),
-[data-dataname="frames_large"] label:nth-child(6) {
+[data-dataname="frames_small"] label:nth-child(5),
+[data-dataname="frames"] label:nth-child(5),
+[data-dataname="frames_large"] label:nth-child(5) {
   text-transform: capitalize;
 }
-[data-dataname="frames_small"] label:nth-child(6):after,
-[data-dataname="frames"] label:nth-child(6):after,
-[data-dataname="frames_large"] label:nth-child(6):after {
+[data-dataname="frames_small"] label:nth-child(5):after,
+[data-dataname="frames"] label:nth-child(5):after,
+[data-dataname="frames_large"] label:nth-child(5):after {
   background-image: url(img/noframe.jpg);
   background-position: 0 0;
   background-size: 85%;

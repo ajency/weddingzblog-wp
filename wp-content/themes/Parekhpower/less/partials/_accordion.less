@@ -1,7 +1,7 @@
 /*accordion*/
 .wpb-js-composer {
 	.custom-accordion {
-		&.vc_tta.vc_tta-style-classic {
+		&.vc_tta-color-grey.vc_tta.vc_tta-style-classic {
 			.vc_tta-panel-heading {
 				border-width: 0;
 				&:hover {
@@ -21,11 +21,22 @@
 				}
 			}
 			.vc_tta-panel {
-				.vc_tta-panel-heading:hover {
+				.vc_tta-panel-heading {
 					background: transparent;
-				}	
+					&:hover {
+						background: transparent;
+					}		
+				}
+				.vc_active {
+					.vc_tta-panel-heading,
+					.vc_tta-panel-body {
+						background: transparent;
+					}
+				}
+				
 			}
 			.vc_tta-panel-body {
+				background: transparent;
 				border-width: 0;
 				padding: 14px 0;
 				margin-left: 60px;

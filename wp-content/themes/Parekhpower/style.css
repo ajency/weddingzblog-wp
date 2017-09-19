@@ -12,28 +12,36 @@
 /* =Theme customization starts here
 -------------------------------------------------------------- */
 /*accordion*/
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading {
   border-width: 0;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading:hover {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading:hover {
   background-color: transparent;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon {
   outline: 2px solid #fb7c43;
   border: 4px solid #ffffff;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon:before,
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon:after {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon:before,
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading i.vc_tta-controls-icon:after {
   border-color: #fb7c43;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-heading .vc_tta-title-text {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-heading .vc_tta-title-text {
   margin-left: 15px;
   color: #31485e;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading:hover {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading {
   background: transparent;
 }
-.wpb-js-composer .custom-accordion.vc_tta.vc_tta-style-classic .vc_tta-panel-body {
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading:hover {
+  background: transparent;
+}
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel .vc_active .vc_tta-panel-heading,
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel .vc_active .vc_tta-panel-body {
+  background: transparent;
+}
+.wpb-js-composer .custom-accordion.vc_tta-color-grey.vc_tta.vc_tta-style-classic .vc_tta-panel-body {
+  background: transparent;
   border-width: 0;
   padding: 14px 0;
   margin-left: 60px;

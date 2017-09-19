@@ -391,17 +391,17 @@ jQuery(document).ready(function() {
 
   jQuery('#frame_size').val('small').change();
 
-  var frameLabel = "<span class='summary-label'>Artwork: </span>";
+  var frameLabel = "<span class='summary-label'>Painting Price: </span>";
   jQuery('body').on('change', '#size', function(event){
   	if (jQuery(this).val() == "Small"){
   		jQuery('#frame_size').val('small').change();
-  		jQuery('#nm-productmeta-box-1 input[value="no frame"]').prop('checked', true);
+  		jQuery('.nm-productmeta-box input[value="no frame"]').prop('checked', true);
   	} else if (jQuery(this).val() == "Medium"){
   		jQuery('#frame_size').val('medium').change();
-  		jQuery('#nm-productmeta-box-1 input[value="no frame"]').prop('checked', true);
+  		jQuery('.nm-productmeta-box input[value="no frame"]').prop('checked', true);
   	}else if (jQuery(this).val() == "Large"){
   		jQuery('#frame_size').val('large').change();
-  		jQuery('#nm-productmeta-box-1 input[value="no frame"]').prop('checked', true);
+  		jQuery('.nm-productmeta-box input[value="no frame"]').prop('checked', true);
   	}else {
   		jQuery('#frame_size').val('').change();
   	}

@@ -119,3 +119,22 @@
 .mr-0 {
 	margin-right: 0;
 }
+
+
+// overlay on slider
+#slider-section {
+	.rev_slider {
+		.slotholder:after {
+			width: 100%;
+			height: 100%;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			pointer-events: none;
+			
+			/* black overlay with 50% transparency */
+			background: rgba(0, 0, 0, 0.3);
+		}
+	}
+}

@@ -2898,9 +2898,11 @@ a[data-readmore-toggle].more:before {
   font-family: gotham_lightregular;
   color: #000;
 }
-.left-sidebar .widget_product_search input[type=submit],
-.left-sidebar .ui-slider-range {
+.left-sidebar .widget_product_search input[type=submit] {
   background-color: #eb4c3d !important;
+}
+.left-sidebar .ui-slider-range {
+  background-color: #b2702a !important;
 }
 .left-sidebar .Callout-action {
   background: url(img/joinnow-img.png) no-repeat;
@@ -2926,6 +2928,11 @@ a[data-readmore-toggle].more:before {
 }
 .left-sidebar .sort-count {
   display: none;
+}
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle {
+  -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.45), 0 5px 8px rgba(0, 0, 0, 0.035), 0 1px 0 #ffffff inset !important;
+          box-shadow: 0 0px 4px rgba(0, 0, 0, 0.45), 0 5px 8px rgba(0, 0, 0, 0.035), 0 1px 0 #ffffff inset !important;
 }
 @media screen and (max-width: 768px) {
   #main-content .left-sidebar .hb-woo-wrapper .hb-sidebar {
@@ -3051,7 +3058,7 @@ a[data-readmore-toggle].more:before {
 .products .product-type-simple .product_type_variable {
   display: none;
 }
-.products .product-type-simple .woo-category-wrap {
+.products .type-product .woo-category-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3437,8 +3444,7 @@ body .woocommerce form .form-row .button {
 }
 .woocommerce-ordering .orderby {
   font-family: gotham_lightregular;
-  color: #b2702a;
-  border-color: #b2702a;
+  color: #464849;
   font-weight: 600;
 }
 @media screen and (min-width: 768px) {

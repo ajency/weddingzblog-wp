@@ -114,3 +114,44 @@
 		}
 	}
 }
+
+
+// send enquiry
+.send-enquiry {
+	label {
+		padding-left: 0;
+		color: transparent;
+	}
+	input[type="text"],
+	input[type="tel"],
+	input[type="email"],
+	textarea {
+		border: 0;
+		border-bottom: 1px solid @grey-light;
+		background: transparent;
+		padding: 12px 0px 10px !important;
+		color: @black;
+		&::-webkit-input-placeholder {
+			color: @black;
+		}
+		&.wpcf7-not-valid {
+			border: none !important;
+			// border-bottom: 1px solid #F00 !important;
+			border-bottom: 1px solid @primary !important;
+			box-shadow: none;
+			margin-bottom: 5px; 
+		}
+	}
+	span.wpcf7-not-valid-tip {
+		color: @primary;
+	}
+	input[type="submit"] {
+		// margin: auto;
+		// display: block;
+		background: @primary;
+		box-shadow: none;
+		&:not(.no-three-d):not(.hb-third-dark):not(.hb-second-dark):active {
+			top: 0 !important;
+		}
+	}
+}

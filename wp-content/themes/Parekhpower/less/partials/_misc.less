@@ -101,7 +101,7 @@ body {
 }
 
 
-// overlay on slider
+// banner img - overlay on slider
 #slider-section {
 	.rev_slider {
 		.slotholder:after {
@@ -119,9 +119,34 @@ body {
 	}
 }
 
+.sidebar-col {
+	border-left: 1px solid @grey-lighten;
+	@media (max-width: 767px) {
+		border: 0;
+	}
+}
+
+.d-flex {
+	display: flex;
+	@media (max-width: 767px) {
+		flex-wrap: wrap;
+	}
+}
 
 
-
-
+.w3eden {
+	.media {
+		.pull-left {
+			width: 40px;
+		}
+		.media-body {
+			& > strong {
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+}
 
 

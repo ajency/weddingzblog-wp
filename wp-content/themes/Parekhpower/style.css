@@ -123,6 +123,28 @@ body {
   /* black overlay with 50% transparency */
   background: rgba(0, 0, 0, 0.3);
 }
+.sidebar-col {
+  border-left: 1px solid #e8e8e8;
+}
+@media (max-width: 767px) {
+  .sidebar-col {
+    border: 0;
+  }
+}
+.d-flex {
+  display: flex;
+}
+@media (max-width: 767px) {
+  .d-flex {
+    flex-wrap: wrap;
+  }
+}
+.w3eden .media .pull-left {
+  width: 40px;
+}
+.w3eden .media .media-body > strong span {
+  display: none;
+}
 .contact-form div.wpcf7 {
   box-shadow: 0 0 16px #cccccc;
   padding: 20px 15px;

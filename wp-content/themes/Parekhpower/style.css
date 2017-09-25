@@ -150,7 +150,7 @@ body {
 .w3eden .media .media-body > strong span {
   display: none;
 }
-.contactTitle h4 {
+.vc_separator.contactTitle h4 {
   font-size: 1.5em;
   text-transform: uppercase;
 }
@@ -159,6 +159,11 @@ body {
   background: #fb7c43;
   box-shadow: none;
   min-width: 15%;
+}
+.formSubmit .contactSubmit:hover {
+  display: block;
+  background: #fb7c43;
+  box-shadow: none;
 }
 .contact-form div.wpcf7 {
   box-shadow: 0 0 16px #cccccc;

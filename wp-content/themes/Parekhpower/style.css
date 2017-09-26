@@ -149,6 +149,21 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+.vc_separator.contactTitle h4 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+.formSubmit .contactSubmit {
+  display: block;
+  background: #fb7c43;
+  box-shadow: none;
+  min-width: 15%;
+}
+.formSubmit .contactSubmit:hover {
+  display: block;
+  background: #fb7c43;
+  box-shadow: none;
+}
 .contact-form div.wpcf7 {
   box-shadow: 0 0 16px #cccccc;
   padding: 20px 15px;

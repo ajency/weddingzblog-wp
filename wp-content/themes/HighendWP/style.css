@@ -30,9 +30,9 @@ url('css/fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular') format
 url('css/fonts/sourcesanspro-bold-webfont.woff') format('woff'),
 url('css/fonts/sourcesanspro-bold-webfont.ttf') format('truetype'),
 url('css/fonts/sourcesanspro-bold-webfont.svg#source_sans_probold') format('svg');font-weight:normal;font-style:normal}@font-face{font-family:'Museo500Regular';src:url('css/fonts/Museo500-Regular-webfont.eot');src:url('css/fonts/Museo500-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-url('css/fonts/Museo500-Regular-webfont.woff') format('woff'),
-url('css/fonts/Museo500-Regular-webfont.ttf') format('truetype'),
-url('css/fonts/Museo500-Regular-webfont.svg#Museo300Regular') format('svg');font-weight:normal;font-style:normal}
+// url('css/fonts/Museo500-Regular-webfont.woff') format('woff'),
+// url('css/fonts/Museo500-Regular-webfont.ttf') format('truetype'),
+// url('css/fonts/Museo500-Regular-webfont.svg#Museo300Regular') format('svg');font-weight:normal;font-style:normal}
 @font-face {font-family:"source_sans_prosemibold";src:url("css/fonts/SourceSansPro-Semibold.eot?") format("eot"),url("css/fonts/SourceSansPro-Semibold.woff") format("woff"),url("css/fonts/SourceSansPro-Semibold.ttf") format("truetype"),url("css/fonts/SourceSansPro-Semibold.svg#SourceSansPro-Semibold") format("svg");font-weight:normal;font-style:normal;}
 
 

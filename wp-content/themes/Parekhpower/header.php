@@ -11,7 +11,7 @@
 	<head>
 	<?php global $theme_focus_color; ?>
 	<meta charset="<?php bloginfo('charset'); ?>">
-	<!-- <meta name="theme-color" content="<?php /* echo $theme_focus_color; */ ?>"> -->
+	<meta name="theme-color" content="<?php echo $theme_focus_color; ?>">
 	<meta name="google-site-verification" content="wV_rro6U5v9nhZtEcGD2SoUpw4Pv_KQOQK8WhJ0fM-k" />
 
 	<?php if ( hb_options('hb_responsive') ) { ?>

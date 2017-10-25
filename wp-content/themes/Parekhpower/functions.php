@@ -1,5 +1,9 @@
 <?php
 
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
+
 function highend_child_theme_enqueue_styles() {
 
     $parent_style = 'highend-parent-style';
@@ -12,5 +16,4 @@ function highend_child_theme_enqueue_styles() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'highend_child_theme_enqueue_styles' );
-
 ?>

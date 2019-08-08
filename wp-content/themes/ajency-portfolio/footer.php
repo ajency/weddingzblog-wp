@@ -3,7 +3,6 @@
         <div class="container p5">
             <div class="row">
                 <div class="col-xl-2 contact-us">
-
                 </div>
                 <div class="col-xl-8">
                     <div class="row no-gutters">
@@ -65,7 +64,7 @@
   </div>
 </div>
 
-<?php if (!is_page_template('archive.php') && !is_singular('post') ) { ?>
+<?php if (!is_page_template('archive.php') && !is_singular('post') && !is_page_template('template-blogs.php') && !is_page_template('template-fullwidth.php') ) { ?>
     <noscript id="deferred-styles">
         <link href="<?php echo get_template_directory_uri(); ?>/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo get_bloginfo('url');  ?>/wp-content/themes/ajency-portfolio/style.css" rel="stylesheet" type="text/css"/>
@@ -87,8 +86,9 @@
     </script>
 <?php } ?>
 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js">
-</script>
+<?php if (!is_page_template('template-fullwidth.php')) { ?>
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<?php } ?>
 <script type="text/javascript">
     window.lazySizesConfig = window.lazySizesConfig || {};
       lazySizesConfig.loadMode = 3;

@@ -159,7 +159,7 @@
         <div class="row ">
             <div class="col-6 col-xl-2 col-sm-3">
               <a href="<?php echo get_site_url(); ?>">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/ajency-logo.png" width="157px" class="float-right logo"/>
+              <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="float-right logo"/>
             </a>
             </div>
             <div class="  offset-sm-5 col-sm-4 offset-xl-8 col-xl-2 col-6">

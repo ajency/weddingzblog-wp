@@ -80,7 +80,7 @@
         <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Products</h1>
 
         <div class="items mb-5 ">
-          <div id="showdiv1" class="text-black text-link">
+          <div id="showdiv1" class="text-black text-link pf-1">
             <h1 class="ft6">Orange Barley Bowl</h1>
             <!-- <h5 class="font-weight-light">
             A Sequoia-backed omnichannel marketplace for health products.
@@ -100,7 +100,7 @@
         </div>
 
         <div class="items mb-5">
-          <div id="showdiv2" class="text-black text-link">
+          <div id="showdiv2" class="text-black text-link pf-2">
             <h1 class="ft6">Cracked Wheat & Chickpea Bowl (Chicken)</h1>
           </div>
           <div id="div2">
@@ -118,7 +118,7 @@
         </div>
 
         <div class="items mb-5">
-          <div id="showdiv3" class="text-black text-link">
+          <div id="showdiv3" class="text-black text-link pf-3">
             <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
           </div>
           <div id="div3">
@@ -135,7 +135,7 @@
           </div>
         </div>
         <div class="items mb-5">
-          <div id="showdiv4" class="text-black text-link">
+          <div id="showdiv4" class="text-black text-link pf-4">
             <h1 class="ft6">Quinoa & Nuts Bowl</h1>
           </div>
           <div id="div4">
@@ -153,7 +153,7 @@
         </div>
 
         <div class="items mb-5">
-          <div id="showdiv5" class="text-black text-link">
+          <div id="showdiv5" class="text-black text-link  pf-5">
             <h1 class="ft6">Thai Brown Rice Bowl (Paneer)</h1>
           </div>
           <div id="div5">
@@ -169,7 +169,7 @@
         </div>
 
         <div class="items mb-5">
-          <div id="showdiv6" class="text-black text-link">
+          <div id="showdiv6" class="text-black text-link pf-6">
             <h1 class="ft6">Thai Brown Rice Bowl (Chicken)</h1>
           </div>
           <div id="div6" class="cs-tab-content">
@@ -299,243 +299,49 @@
       <div class="mobile-slick ">
         <div>
           <div class="mb-3 p-4">
-            <h1 class="ft6">Healthkart.com</h1>
-            <h5 class="font-weight-light">
-              Sequoia backed omnichannel marketplace for health products.
-            </h5>
+            <h1 class="ft6">Orange Barley Bowl</h1>
           </div>
           <div>
-            <!-- Healthkart -->
+
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section project-healthkart">
-                  <div class="header-top">
-                    <picture>
-                      <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/healthkart/healthkart-h-desktop.png">
-                      <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/healthkart/healthkart-h-mobile.png">
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/healthkart/healthkart-h-desktop.png" class="img-responsive" alt="header">
-                    </picture>
-                  </div>
+                <div class="portfolio-section pf-1">
 
-                  <div class="container-fluid p-0">
-                    <div class="project-info">
-                      <div class="row">
-
-                        <div class="col-6 col-lg-4 info-col mb-3">
-                          <div class="info-box team-member">
-                            <h3 class="info-value">8</h3>
-                            <label class="info-label">Team Members</label>
-                          </div>
-                        </div>
-                        <div class="col-6 col-lg-4 info-col order-lg-2 mb-3">
-                          <div class="info-box prj-progress">
-                            <h3 class="info-value">Oct 2017</h3>
-                            <label class="info-label">and ongoing</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-4 info-col order-lg-1 mb-3">
-                          <div class="info-box lang-used">
-                            <h3 class="info-value">Java</h3>
-                            <label class="info-label">Spring MVC, Spring Boot, Hibernate</label>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <div class="project-insight">
-                      <div class="row rw-m">
-                        <div class="col-12 col-lg-3 order-lg-4 pl-2 pr-2 ins-col-lg">
-                          <div class="insight-info mt-3 xs-mt-0">
-                            <h4 class="insight-title mb-2">HealthKart (Delhi)</h4>
-                            <ul>
-                              <li>Tech leadership</li>
-                              <li>Project Management</li>
-                              <li>System Design</li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--green">
-                            <span>Online Marketplace</span>
-                          </div>
-                        </div>
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--green">
-                            <span>Catalogue Management</span>
-                          </div>
-                        </div>
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--green">
-                            <span>Order Fulfilment</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="line--dotted mt-3 mb-3"></div>
-
-                      <div class="row rw-m">
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--yellow">
-                            <span>Retail Point of Sale</span>
-                          </div>
-                        </div>
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--yellow">
-                            <span>Warehouse Management</span>
-                          </div>
-                        </div>
-                        <div class="col-4 col-lg-3 pl-2 pr-2 ins-col-sm">
-                          <div class="circle-badge bcolor--yellow">
-                            <span>Inventory Planing</span>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-3 pl-2 pr-2 ins-col-lg">
-                          <div class="insight-info mt-3">
-                            <h4 class="insight-title mb-2">Ajency.in (Goa)</h4>
-                            <ul>
-                              <li>Remote Team</li>
-                              <li>Module Ownership</li>
-                              <li>Day to Day Support</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-            <!-- End of Healthkart -->
+
           </div>
         </div>
 
         <div style="background:#FFFAF1">
           <div class="mb-3 p-4">
-            <h1 class="ft6">Commonfloor.com</h1>
-            <h5 class="font-weight-light">
-              Tiger Global and Google Capital backed Real estate platform.
-            </h5>
+            <h1 class="ft6">Cracked Wheat & Chickpea Bowl (Chicken)</h1>
           </div>
           <div>
 
-            <!-- Commonfloor -->
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section project-commonfloor">
+          <div class="prj-container">
+            <div class="col-12">
+              <div class="portfolio-section pf-2">
 
-                  <div class="header-top">
-                    <picture>
-                      <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-h-desktop.png">
-                      <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-h-mobile.png">
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-h-desktop.png" class="img-responsive ml-0" alt="header">
-                    </picture>
-                  </div>
-                  <div class="container-fluid p-0">
-
-                    <div class="project-info">
-                      <div class="row">
-                        <div class="col-6 col-lg-4 info-col mb-3">
-                          <div class="info-box team-member">
-                            <h3 class="info-value">5</h3>
-                            <label class="info-label">Team Members</label>
-                          </div>
-                        </div>
-                        <div class="col-6 col-lg-4 info-col order-lg-2 mb-3">
-                          <div class="info-box lang-used">
-                            <h3 class="info-value">5 months</h3>
-                            <label class="info-label">Project duration</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-4 info-col order-lg-1 mb-3">
-                          <div class="info-box prj-progress">
-                            <h3 class="info-value">PHP + React</h3>
-                            <label class="info-label">Adaptive & not just reponsive</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="project-insight">
-                      <div class="content-top">
-                        <picture>
-                          <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-banner-desktop.png">
-                          <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-banner-mobile.png">
-                          <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/commonfloor/commonfloor-banner-desktop.png" class="img-responsive" alt="header">
-                        </picture>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
               </div>
             </div>
-            <!-- End of Commonfloor -->
+          </div>
+
           </div>
         </div>
 
         <div style="background:#F5FAFF">
           <div class="mb-3 p-4">
-            <h1 class="ft6">Growthinvest.com</h1>
-            <h5 class="font-weight-light">
-              London based platform that helps startups raise early stage investment.
-            </h5>
+            <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
           </div>
           <div>
 
             <!-- Growthinvest -->
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section project-growthinvest">
-                  <div class="header-top">
-                    <picture>
-                      <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/growthinvest-h-desktop.png">
-                      <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/growthinvest-h-mobile.png">
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/growthinvest-h-desktop.png" class="img-responsive" alt="header">
-                    </picture>
-                  </div>
-                  <div class="container-fluid p-0">
-                    <div class="project-insight">
-                      <div class="content-top">
-                        <picture>
-                          <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/gi-desktop.png">
-                          <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/gi-mobile.png">
-                          <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/gi-desktop.png" class="img-responsive" alt="header">
-                        </picture>
-                      </div>
-                      <div class="line--dotted grey mt-3 mb-3 full-w"></div>
-                      <div class="content-bottom">
-                        <picture>
-                          <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/ajency-desktop.png">
-                          <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/ajency-mobile.png">
-                          <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/growthinvest/ajency-desktop.png" class="img-responsive" alt="header">
-                        </picture>
-                      </div>
-                    </div>
-                    <div class="project-info">
-                      <div class="row">
-                        <div class="col-6 col-lg-4 info-col mb-3">
-                          <div class="info-box team-member">
-                            <h3 class="info-value">5</h3>
-                            <label class="info-label">Team Members</label>
-                          </div>
-                        </div>
-                        <div class="col-6 col-lg-4 info-col order-lg-2 mb-3">
-                          <div class="info-box lang-used">
-                            <h3 class="info-value">5 Years</h3>
-                            <label class="info-label">Project duration and ongoing</label>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-4 info-col order-lg-1 mb-3">
-                          <div class="info-box prj-progress">
-                            <h3 class="info-value">Laravel + Wordpress</h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="portfolio-section pf-3">
+
                 </div>
               </div>
             </div>
@@ -546,38 +352,13 @@
         <div style="background:#fdf9f6">
           <div class="mb-3 p-4">
             <h1 class="ft6">Weddingz.in</h1>
-            <h5 class="font-weight-light">
-              Online marketplace for Wedding industry. Acquired by Softbank backed Oyo Rooms in 2018.
-            </h5>
           </div>
           <div>
 
             <!-- Weddingz -->
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section project-weddingz">
-
-                  <div class="header-top">
-                    <picture>
-                      <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-h-desktop.png">
-                      <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-h-mobile.png">
-                      <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-h-desktop.png" class="img-responsive ml-0" alt="header">
-                    </picture>
-                  </div>
-                  <div class="container-fluid p-0">
-                    <div class="prj-intro">
-                      <p>We designed, built and scaled the entire product, playing a key role in making it the <strong>#1 wedding platform</strong> in India, and its subsequent acquisition by Softbank-backed <strong>OyoRooms.</strong></p>
-                    </div>
-                    <div class="project-insight">
-                      <div class="content">
-                        <picture>
-                          <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-banner-desktop.png">
-                          <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-banner-mobile.png">
-                          <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/weddingz/weddingz-desktop.png" class="img-responsive" alt="content">
-                        </picture>
-                      </div>
-                    </div>
-                  </div>
+                <div class="portfolio-section pf-4">
 
                 </div>
               </div>

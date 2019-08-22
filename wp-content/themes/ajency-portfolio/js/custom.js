@@ -70,33 +70,39 @@ $('.aj-team-member').slick({
 //     }
 // });
 if ($(window).width() < 1198) {
-    $('.pf-healthkart').click(function() {
+    $('.pf-1').click(function() {
         $('.scroll-left').addClass('active');
         $('.mobile-slick').slick('slickGoTo', 0);
         $('body').css("overflow", "hidden");
         ourWorkUrl();
     });
-    $('.pf-commonfloor').click(function() {
+    $('.pf-2').click(function() {
         $('.scroll-left').addClass('active');
         $('.mobile-slick').slick('slickGoTo', 1);
         $('body').css("overflow", "hidden");
         ourWorkUrl();
     });
-    $('.pf-growthinvest').click(function() {
+    $('.pf-3').click(function() {
         $('.scroll-left').addClass('active');
         $('.mobile-slick').slick('slickGoTo', 2);
         $('body').css("overflow", "hidden");
         ourWorkUrl();
     });
-    $('.pf-weddingz').click(function() {
+    $('.pf-4').click(function() {
         $('.scroll-left').addClass('active');
         $('.mobile-slick').slick('slickGoTo', 3);
         $('body').css("overflow", "hidden");
         ourWorkUrl();
     });
-    $('.pf-mylan').click(function() {
+    $('.pf-5').click(function() {
         $('.scroll-left').addClass('active');
         $('.mobile-slick').slick('slickGoTo', 4);
+        $('body').css("overflow", "hidden");
+        ourWorkUrl();
+    });
+    $('.pf-6').click(function() {
+        $('.scroll-left').addClass('active');
+        $('.mobile-slick').slick('slickGoTo', 5);
         $('body').css("overflow", "hidden");
         ourWorkUrl();
     });

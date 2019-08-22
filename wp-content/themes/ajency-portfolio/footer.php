@@ -97,15 +97,8 @@
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/custom.min.js" type="text/javascript">
 </script>
-<!--<script type="text/javascript" src="http://filamentgroup.github.io/enlarge/src/enlarge.js"> </script>
-<script type="text/javascript" src="http://filamentgroup.github.io/enlarge/src/enlarge.init.js"> </script>
 
-<script type="text/javascript" src="http://filamentgroup.github.io/enlarge/docs/init.js"> </script>
--->
-<!--<script src="<?php echo get_template_directory_uri(); ?>/js/zoom.js" type="text/javascript">
-</script>-->
-<!-- wordpress footer functions -->
     <?php wp_footer(); ?>
-<!-- end of wordpress footer -->
+
     </body>
 </html>

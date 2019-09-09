@@ -1,0 +1,47 @@
+/*accordion*/
+.wpb-js-composer {
+	.custom-accordion {
+		&.vc_tta-color-grey.vc_tta.vc_tta-style-classic {
+			.vc_tta-panel-heading {
+				border-width: 0;
+				&:hover {
+					background-color: transparent;
+				}
+				i.vc_tta-controls-icon {
+					outline: 2px solid @primary;
+					border: 4px solid @white;
+					&:before,
+					&:after {
+						border-color: @primary;
+					}
+				}
+				.vc_tta-title-text {
+					margin-left: 15px;
+					color: @secondary;
+				}
+			}
+			.vc_tta-panel {
+				.vc_tta-panel-heading {
+					background: transparent;
+					&:hover {
+						background: transparent;
+					}		
+				}
+				.vc_active {
+					.vc_tta-panel-heading,
+					.vc_tta-panel-body {
+						background: transparent;
+					}
+				}
+				
+			}
+			.vc_tta-panel-body {
+				background: transparent;
+				border-width: 0;
+				padding: 14px 0;
+				margin-left: 60px;
+			}
+			
+		}
+	}
+}

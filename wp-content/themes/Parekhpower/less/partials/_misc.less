@@ -1,0 +1,322 @@
+.text-center {
+	text-align: center;
+}
+
+
+.address-section {
+	.addr-col {
+		.feature-box {
+			.feature-box-content {
+				h4.bold {
+					display: table;
+					i {
+						display: table-cell;
+						vertical-align: top;
+						padding: 5px 15px 0 0;
+					}
+				}
+			}
+		}
+	}
+	.feature-box-content {
+		h4.bold {
+			color: @white;
+		}
+	}
+}
+
+body {
+	font-size: 15px;
+	font-family: 'Open Sans';
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans';
+}
+
+
+
+
+// orange link
+.primary-link {
+	a {
+		text-decoration: underline !important;
+		color: @primary;
+		font-weight: 600;
+		font-size: 16px;
+		&:hover {
+			color: @primary;
+		}
+	}
+}
+
+.feature-col {
+	.feature-box-content {
+		h3 {
+			font-size: 32px;
+			font-weight: 600;
+			font-family: 'Open Sans';
+			@media (max-width:768px) {
+				font-size: 24px;
+				white-space: nowrap;
+			}
+			small {
+				font-size: 14px;
+			}
+		}
+		h4 {
+			font-size: 26px;
+		}
+	}
+}
+
+
+#about-us {
+	z-index: -1;
+}
+
+// filter-overlay
+// #slider-section,
+.hb-image-bg-wrap,
+#about-us,
+#contact-us {
+	//position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,.3);
+	}
+}
+
+#slider-section + #main-content {
+	overflow: visible;
+}
+
+.mr-0 {
+	margin-right: 0;
+}
+
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+
+// banner img - overlay on slider
+#slider-section {
+	.rev_slider {
+		.slotholder:after {
+			width: 100%;
+			height: 100%;
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			pointer-events: none;
+			
+			/* black overlay with 50% transparency */
+			background: rgba(0, 0, 0, 0.3);
+		}
+	}
+}
+
+.sidebar-col {
+	border-left: 1px solid @grey-lighten;
+	@media (max-width: 767px) {
+		border: 0;
+	}
+}
+
+.d-flex {
+	display: flex;
+	@media (max-width: 767px) {
+		flex-wrap: wrap;
+	}
+}
+
+
+.w3eden {
+	.media {
+		.pull-left {
+			width: 40px;
+		}
+		.media-body {
+			& > strong {
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+// #main-content {
+// 	.single-partner {
+// 		display: flex;
+// 		align-items: center;
+// 		.wpb_column.vc_column_container {
+// 			padding-left: 0;
+// 			padding-right: 0;
+// 			.vc_column-inner {
+// 				.wpb_content_element {
+// 					margin-bottom: 0 !important;
+// 				}
+// 			}
+// 		}
+// 		&:not(:last-child) {
+// 			border-bottom: 1px solid @grey;
+// 			padding-bottom: 15px;
+// 		}
+// 	}
+// }
+
+.product-row,
+.past-project-row {
+	.wpb_column.vc_column_container {
+		.vc_column-inner {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+// ---------------------------
+// CONTACT STYLES -----------
+// ---------------------------
+
+.vc_separator.contactTitle{
+	h4{
+		font-size: 1.5em;
+    	text-transform: uppercase;
+	}
+}
+
+.formSubmit .contactSubmit{
+	display: block;
+    background: #fb7c43;
+    box-shadow: none;
+    min-width: 15%;
+    &:hover{
+    	display: block;
+    	background: #fb7c43;
+    	box-shadow: none;
+    }
+}
+
+
+
+.slick-image-slide-wrap {
+	height: 100% !important;
+}
+
+/*five columns*/
+@media screen and (min-width: 768px) {
+    .five-columns.vc_row .vc_col-sm-2 {
+        float: left;
+        width: 18.8%;
+        padding: 0;
+        margin-right: 1.5%;
+        min-height: 0;
+    }
+
+    .five-columns.vc_row .vc_col-sm-2:nth-last-child(2) {
+        margin-right: 0;
+    }
+}
+
+// .feature-col.hide-icon .feature-box-content h4.bold {
+//     display: none;
+// }
+
+// .feature-col .feature-box-content h3,
+// .feature-col .feature-box-content h4,
+// .feature-col .feature-box-content {
+//     color: #fff;
+//     margin-bottom: 0;
+// }
+
+// .feature-col .feature-box-content h4 {
+//     margin-bottom: 5px !important;
+// }
+
+// homepage header - special menu
+@media (min-width: 767px) {
+	#hb-wrap #main-wrapper #header-inner.stuck #header-inner-bg {
+		background: @white !important;
+	}
+
+	#hb-wrap #main-wrapper #header-inner.stuck #main-nav>li>a {
+		color: @black !important;
+	}
+}
+
+
+// hb-icon options
+#to-top {
+	i:before {
+		content: "\f176";
+		font-family: FontAwesome;
+		font-style: normal;
+	}
+}
+
+#contact-button {
+	i.hb-moon-envelop:before {
+		content: "\f0e0";
+		font-family: FontAwesome;
+		font-style: normal;
+	}
+}
+
+// homepage icons
+i.hb-moon-arrow-right-5:after {
+	content: "\f178";
+	font-family: FontAwesome;
+	font-style: normal;
+}
+
+i.icon-star:before {
+	content: "\f005";
+	font-family: FontAwesome;
+	font-style: normal;
+}
+
+i.hb-moon-certificate:before {
+	content: "\f0a3";
+	font-family: FontAwesome;
+	font-style: normal;
+}
+
+i.icon-angle-right:before {
+	content: "\f054";
+	font-family: FontAwesome;
+	font-style: normal;
+	font-size: 10px;
+}
+
+// #about-us,
+// #contact-us {
+// 	position: relative;
+// 	&:after {
+// 		color: @white;
+// 		right: 15px;
+// 		bottom: 15px;
+// 		font-size: 10px;
+// 		position: absolute;
+// 	}
+// }
+
+// #about-us {
+// 	&:after {
+// 		content: "Source: http://infografika.animedia.cz";
+// 	}
+// }
+
+// #contact-us {
+// 	&:after {
+// 		content: "Source: www.sevenstar-yacht-transport.com";
+// 	}
+// }

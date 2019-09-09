@@ -1,0 +1,157 @@
+.contact-form {
+	div.wpcf7 {
+		box-shadow: 0 0 16px @grey;
+		padding: 20px 15px;
+		background: rgba(0,0,0,0.8);
+		@media (min-width: 768px) {
+			margin-top: -90px;
+		}
+		h3 {
+			font-size: 30px;
+			font-family: Open Sans;
+			font-weight: 600;
+			color: @white;
+		}
+		form {
+			border: 2px solid @grey-light;
+			padding: 30px;
+			p {
+				margin: 0 0 10px;
+			}
+			label {
+				padding-left: 0;
+				color: transparent;
+			}
+			input[type="text"],
+			input[type="tel"],
+			input[type="email"],
+			textarea {
+				border: 0;
+				border-bottom: 1px solid @grey-light;
+				background: transparent;
+				padding: 12px 0px 10px !important;
+				color: @white;
+				&::-webkit-input-placeholder {
+					color: @white;
+				}
+				&.wpcf7-not-valid {
+					border: none !important;
+					// border-bottom: 1px solid #F00 !important;
+					border-bottom: 1px solid @primary !important;
+					box-shadow: none;
+					margin-bottom: 5px; 
+				}
+			}
+			span.wpcf7-not-valid-tip {
+				color: @primary;
+			}
+			input[type="submit"] {
+				margin: auto;
+				display: block;
+				background: @primary;
+				box-shadow: none;
+				&:not(.no-three-d):not(.hb-third-dark):not(.hb-second-dark):active {
+					top: 0 !important;
+				}
+			}
+		}
+	}
+}
+
+// subscribe email id
+.subscribe-email {
+	position: relative;
+	label {
+		padding-left: 0;
+		color: transparent;
+	}
+	input[type="email"] {
+		border: 0;
+		border-bottom: 1px solid @grey;
+		background: transparent;
+		// padding: 12px 0px 10px!important;
+		padding: 18px 50px 16px 0 !important;
+		color: @white;
+		&::-webkit-input-placeholder {
+			color: @white;
+		}
+
+		// required field
+		&.wpcf7-not-valid {
+			border: none !important;
+			border-bottom: 1px solid @primary !important;
+			box-shadow: none;
+			margin-bottom: 5px; 
+		}
+		span.wpcf7-not-valid-tip {
+			color: @primary;
+		}
+	}
+	input[type="submit"] {
+		margin: auto;
+		display: block;
+		background: @primary;
+		box-shadow: none;
+		border-radius: 0;
+		z-index: 9;
+		font-family: FontAwesome;
+		&:not(.no-three-d):not(.hb-third-dark):not(.hb-second-dark):active {
+			top: 0 !important;
+		}
+		
+	}
+	p + p {
+		position: absolute;
+		top: 16px;
+		right: 0;
+	}
+	&.black-text {
+		input[type="email"] {
+			color: @black;
+			&::-webkit-input-placeholder {
+				color: @black;
+			}
+		}
+	}
+}
+
+
+// send enquiry
+.send-enquiry {
+	label {
+		padding-left: 0;
+		color: transparent;
+	}
+	input[type="text"],
+	input[type="tel"],
+	input[type="email"],
+	textarea {
+		border: 0;
+		border-bottom: 1px solid @grey-light;
+		background: transparent;
+		padding: 12px 0px 10px !important;
+		color: @black;
+		&::-webkit-input-placeholder {
+			color: @black;
+		}
+		&.wpcf7-not-valid {
+			border: none !important;
+			// border-bottom: 1px solid #F00 !important;
+			border-bottom: 1px solid @primary !important;
+			box-shadow: none;
+			margin-bottom: 5px; 
+		}
+	}
+	span.wpcf7-not-valid-tip {
+		color: @primary;
+	}
+	input[type="submit"] {
+		// margin: auto;
+		// display: block;
+		background: @primary;
+		box-shadow: none;
+		&:not(.no-three-d):not(.hb-third-dark):not(.hb-second-dark):active {
+			top: 0 !important;
+		}
+	}
+}

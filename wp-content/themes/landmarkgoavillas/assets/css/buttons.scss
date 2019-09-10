@@ -1,0 +1,249 @@
+/*------------------------------------------------------*/
+/*----------------------  BUTTONS ----------------------*/
+
+// a-btn-1 -- Default Button
+// a-btn-2 -- Default Transparent Button
+// a-btn-3 -- Dark Button
+// a-btn-4 -- Dark Transparent Button
+// a-btn-5 -- Light Button
+// a-btn-6 -- Light Transparent Button
+// a-btn-7 -- White Button
+// a-btn-8 -- White Transparent Button
+// a-btn-arrow - with arrow
+// a-btn-link - with arrow
+
+.a-btn-style [type="submit"],
+.a-btn {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+
+  &:not(.a-btn-link) {
+    padding: 19px 35px 20px;
+    border-width: 1px;
+    border-style: solid;
+    background-size: 200% 100%;
+    background-position: right bottom;
+
+    &:hover {
+      background-position: left bottom;
+    }
+  }
+}
+
+.a-btn {
+  &-arrow {
+    &:not(.a-btn-link) {
+      padding-left: 30px;
+      padding-right: 30px;
+
+      &:after {
+        margin-left: 8px;
+      }
+    }
+
+    &:after {
+      content: "\f10b";
+      font-size: 12px;
+      margin-left: 6px;
+      display: inline-block;
+      font-family: "Ionicons";
+      -webkit-transition: transform 350ms ease;
+      transition: transform 350ms ease;
+    }
+
+    &:hover {
+      &:after {
+        transform: translateX(8px);
+      }
+    }
+  }
+  }
+
+// a-btn-1 -- Default Button
+.a-btn-1-style [type="submit"],
+.a-btn-1 {
+  background-color: #004ae2;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, #004ae2));
+  background-image: linear-gradient(to right, transparent 50%, #004ae2 50%);
+  border-color: #004ae2;
+  color: #fff;
+
+  &:focus {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: #004ae2;
+    border-color: #004ae2;
+  }
+}
+
+// a-btn-2 -- Default Transparent Button
+.a-btn-2-style [type="submit"],
+.a-btn-2 {
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #004ae2), color-stop(50%, transparent));
+  background-image: linear-gradient(to right, #004ae2 50%, transparent 50%);
+  border-color: #004ae2;
+  color: #004ae2;
+
+  &:focus {
+    color: #004ae2;
+  }
+
+  &:hover {
+    background-color: #004ae2;
+    color: #fff;
+    border-color: #004ae2;
+  }
+}
+
+// a-btn-3 -- Dark Button
+.a-btn-3-style [type="submit"],
+.a-btn-3 {
+  background-color: #222;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, #222));
+  background-image: linear-gradient(to right, transparent 50%, #222 50%);
+  border-color: #222;
+  color: #fff;
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+  &:focus {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: #222;
+    border-color: #222;
+  }
+}
+
+// a-btn-4 -- Dark Transparent Button
+.a-btn-4-style [type="submit"],
+.a-btn-4 {
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #222), color-stop(50%, transparent));
+  background-image: linear-gradient(to right, #222 50%, transparent 50%);
+  border-color: #222;
+  color: #222;
+
+  &:focus {
+    color: #222;
+  }
+
+  &:hover {
+    background-color: #222;
+    color: #fff;
+    border-color: #222;
+  }
+}
+
+// a-btn-5 -- Light Button
+.a-btn-5-style [type="submit"],
+.a-btn-5 {
+  background-color: #eee;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #222), color-stop(50%, #eee));
+  background-image: linear-gradient(to right, #222 50%, #eee 50%);
+  border-color: #eee;
+  color: #222;
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+  &:focus {
+    color: #222;
+  }
+
+  &:hover {
+    background-color: #222;
+    color: #eee;
+    border-color: #222;
+  }
+}
+
+// a-btn-6 -- Light Transparent Button
+.a-btn-6-style [type="submit"],
+.a-btn-6 {
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #eee), color-stop(50%, transparent));
+  background-image: linear-gradient(to right, #eee 50%, transparent 50%);
+  border-color: #eee;
+  color: #eee;
+
+  &:focus {
+    color: #eee;
+  }
+
+  &:hover {
+    background-color: #eee;
+    color: #222;
+    border-color: #eee;
+  }
+}
+
+// a-btn-7 -- White Button
+.a-btn-7-style [type="submit"],
+.a-btn-7 {
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, #fff));
+  background-image: linear-gradient(to right, transparent 50%, #fff 50%);
+  border-color: #fff;
+  color: #222;
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+  &:focus {
+    color: #222;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+  }
+}
+
+// a-btn-8 -- White Transparent Button
+.a-btn-8-style [type="submit"],
+.a-btn-8 {
+  background-color: transparent;
+  border-color: rgba(#fff, 0.3);
+  color: #fff;
+
+  &:focus {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: #fff;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #fff), color-stop(50%, transparent));
+    background-image: linear-gradient(to right, #fff 50%, transparent 50%);
+    color: #222;
+    border-color: #fff;
+  }
+}
+
+.a-btn-link {
+  color: #004ae2;
+
+  &:hover {
+    color: #999;
+  }
+}
+
+
+.button-wrap {
+  margin: 0 -10px;
+  .a-btn {
+    margin: 0 10px;
+  }
+}

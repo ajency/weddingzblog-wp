@@ -456,16 +456,19 @@
 .aj-engineering {
     .aj-engineering-work {
         flex: 0 0 88%;
-        max-width: inherit;
+        //max-width: inherit;
         background-color: #fff;
 
         @media (max-width: 1570px){
             flex: 0 0 96%;
-            max-width: 96%;
+            //max-width: 96%;
         }
 
         .items {
             overflow: hidden;
+            h1{
+                font-size: 1.8rem;
+            }
             h5 {                                     
                 border: 0 !important;    
                 // white-space: nowrap;

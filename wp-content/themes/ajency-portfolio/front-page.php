@@ -75,6 +75,7 @@
 <section class="overflow-h aj-engineering">
   <div class="container p5">
     <div class="row justify-content-center">
+    <div class="col-md-2"></div>
       <div class="col-lg-10 our-work aj-engineering-work">
 
         <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Products</h1>
@@ -101,7 +102,7 @@
 
         <div class="items mb-5">
           <div id="showdiv2" class="text-black text-link pf-2">
-            <h1 class="ft6">Cracked Wheat & Chickpea Bowl (Chicken)</h1>
+            <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
           </div>
           <div id="div2">
             <span aria-hidden="true" class="close">&times; Close</span>
@@ -117,23 +118,6 @@
           </div>
         </div>
 
-        <div class="items mb-5">
-          <div id="showdiv3" class="text-black text-link pf-3">
-            <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
-          </div>
-          <div id="div3">
-            <span aria-hidden="true" class="close">&times; Close</span>
-
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/products/cracked-wheat-n-chickpea-bowl.jpg" alt="cracked-wheat-n-chickpea-bowl">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
         <div class="items mb-5">
           <div id="showdiv4" class="text-black text-link pf-4">
             <h1 class="ft6">Quinoa & Nuts Bowl</h1>
@@ -154,7 +138,7 @@
 
         <div class="items mb-5">
           <div id="showdiv5" class="text-black text-link  pf-5">
-            <h1 class="ft6">Thai Brown Rice Bowl (Paneer)</h1>
+            <h1 class="ft6">Thai Brown Rice Bowl</h1>
           </div>
           <div id="div5">
             <span aria-hidden="true" class="close">&times; Close</span>
@@ -167,23 +151,6 @@
 
           </div>
         </div>
-
-        <div class="items mb-5">
-          <div id="showdiv6" class="text-black text-link pf-6">
-            <h1 class="ft6">Thai Brown Rice Bowl (Chicken)</h1>
-          </div>
-          <div id="div6" class="cs-tab-content">
-            <span aria-hidden="true" class="close">&times; Close</span>
-
-            <div class="prj-container">
-              <div class="portfolio-section">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/products/thai-brown-rice-bowl-chicken.jpg" alt="thai-brown-rice-bowl-chicken">
-              </div>
-            </div>
-
-          </div>
-        </div>
-
 
 
         <div class="scroll-left d-block d-xl-none">
@@ -276,7 +243,6 @@
       </div>
     </div>
   </div>
-</section>
 </section>
 
 <!-- End of Our Work -->

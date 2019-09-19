@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
     <section class="footer-section">
         <div class="container p5">
             <div class="row">

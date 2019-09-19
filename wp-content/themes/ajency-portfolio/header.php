@@ -30,14 +30,27 @@
   <body>
 
   	<nav class="fixed-header position-fixed">
-      <div class="container mt5  p5">
-        <div class="row ">
-            <div class="col-6 col-xl-2 col-sm-3">
+      <div class="container mt-2  p5">
+        <div class="row align-items-center">
+            <div class="col-3 col-xl-2 col-sm-3">
               <a href="<?php echo get_site_url(); ?>">
               <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="float-right logo"/>
             </a>
             </div>
-            <div class="  offset-sm-5 col-sm-4 offset-xl-8 col-xl-2 col-6">
+            <div class="col-6">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Our Bowls <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">We're Hiring</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#footer">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <div class="offset-xl-2 col-xl-2 col-3">
               <a href="mailto:talktous@ajency.in" class="h4 menu float-left m-0">talktous@ajency.in </a>
             </div>
         </div>

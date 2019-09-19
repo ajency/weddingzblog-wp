@@ -75,8 +75,8 @@
 <section class="overflow-h aj-engineering">
   <div class="container p5">
     <div class="row justify-content-center">
-    <div class="col-md-2"></div>
-      <div class="col-lg-10 our-work aj-engineering-work">
+    <div class="col-lg-2"></div>
+      <div class="col-xl-10 our-work aj-engineering-work">
 
         <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Products</h1>
 

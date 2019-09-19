@@ -72,13 +72,13 @@
 
 <!-- Our Work -->
 
-<section class="overflow-h aj-engineering">
+<section id="our-bowl" class="overflow-h aj-engineering">
   <div class="container p5">
-    <div class="row justify-content-center">
+    <div class="row">
     <div class="col-lg-2"></div>
-      <div class="col-xl-10 our-work aj-engineering-work">
+      <div class="col-xl-8 our-work aj-engineering-work">
 
-        <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Products</h1>
+        <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Bowls</h1>
 
         <div class="items mb-5 ">
           <div id="showdiv1" class="text-black text-link pf-1">
@@ -92,7 +92,7 @@
             <span aria-hidden="true" class="close">&times; Close</span>
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section">
+                <div class="ajency-portfolio portfolio-1">
                   <img src="<?php echo get_template_directory_uri(); ?>/images/products/orange_barley_bowl.jpg" alt="orange-barley-bowl">
                 </div>
               </div>
@@ -109,7 +109,7 @@
 
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section">
+                <div class="portfolio-section portfolio-2">
                   <img src="<?php echo get_template_directory_uri(); ?>/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" alt="cracked-wheat-n-chickpea-bowl-chicken">
                 </div>
               </div>
@@ -127,7 +127,7 @@
 
             <div class="prj-container">
               <div class="col-12">
-                <div class="portfolio-section">
+                <div class="portfolio-section portfolio-3">
                   <img src="<?php echo get_template_directory_uri(); ?>/images/products/quinoa-n-nuts-bowl.jpg" alt="quinoa-n-nuts-bowl">
                 </div>
               </div>
@@ -144,7 +144,7 @@
             <span aria-hidden="true" class="close">&times; Close</span>
 
             <div class="prj-container">
-              <div class="portfolio-section">
+              <div class="portfolio-section portfolio-1">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/products/thai-brown-rice-bowl-panner.jpg" alt="thai-brown-rice-bowl-panner">
               </div>
             </div>
@@ -235,7 +235,7 @@
         </div>
 
         <div class="aj-our-work">
-          <h1 class="font-weight-bold display-3">Our Products</h1>
+          <h1 class="font-weight-bold display-3">Our Bowls</h1>
           <p class="body-text">
             Seeing is believing. Some of our best work.
           </p>
@@ -485,11 +485,11 @@
     </div>
   </div>
 </section>
-<section>
+<section id="we-are-hiring">
   <div class="container p5">
     <div class="row">
       <div class="col  offset-xl-2 col-xl-8 col12">
-        <h3 class="h1 ft6">Common Queries</h3>
+        <h3 class="h1 ft6">We're Hiring</h3>
         <p class="body-text">To help you decide if we are the right fit for you.</p>
         <div class="seperator">
         </div>

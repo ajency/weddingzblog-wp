@@ -1,0 +1,186 @@
+/*------------------------------------------------------*/
+/*---------------------- ERROR PAGE ----------------------*/
+.error404 {
+  .full-height {
+    background-color: #f7f7f7;
+  }
+  .fullheight {
+    display: flex;
+    align-items: center;
+  }
+  .hero-inner {
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    .bigtext {
+      margin-bottom: 20px;
+      font-size: 90px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      color: #004ae2;
+    }
+    .title {
+      margin: 0 15px 30px;
+      font-size: 50px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      color: #222;
+    }
+    .subtitle {
+      margin: 0 15px 10px;
+      color: #999999;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.67;
+      letter-spacing: .2px;
+      text-align: center;
+    }
+    .search {
+      margin-bottom: 15px;
+      form div {
+        margin-top: 25px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+      input {
+        &[type="submit"] {
+          border: 0;
+          font-size: 14px;
+          display: inline-block;
+          letter-spacing: .5px;
+          font-weight: 600;
+          box-sizing: border-box;
+          line-height: 1;
+          padding: 19px 35px 20px;
+          text-decoration: none;
+          -webkit-font-smoothing: antialiased;
+          -webkit-transition: all 350ms ease;
+          transition: all 350ms ease;
+          background-color: #004ae2;
+          background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(50%, #004ae2));
+          background-image: linear-gradient(to right, transparent 50%, #004ae2 50%);
+          border-color: #004ae2;
+          color: #fff;
+          border-width: 1px;
+          border-style: solid;
+          background-size: 200% 100%;
+          background-position: right bottom;
+          &:hover {
+            background-color: transparent;
+            color: #004ae2;
+            border-color: #004ae2;
+            background-position: left bottom;
+          }
+        }
+        &:not([type="submit"]) {
+          width: 500px;
+          padding: 14px 25px;
+          border: 2px solid #004ae2;
+          color: #999999;
+          font-size: 15px;
+          line-height: 1.6;
+          letter-spacing: .2px;
+        }
+      }
+    }
+    .a-btn{
+      margin-top: 25px;
+    }
+  }
+}
+
+.error404 .main-wrapper {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .vertical-align {
+    position: static;
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+    transform: translate(0);
+    padding: 50px 0;
+  }
+}
+
+.error404 .main-wrapper.unit {
+  .overlay-dark-error {
+    background-color: transparent;
+  }
+}
+
+.error404 .main-wrapper.unit .vertical-align a::after {
+  top: 0;
+}
+
+.error404 .main-wrapper.unit .vertical-align a:hover {
+  border-bottom: 1px solid transparent;
+  &::after {
+    top: 6px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .error404 .hero-inner .search{
+    input {
+      &:not([type="submit"]){
+        margin-bottom: 30px;
+        width: 100%;
+        text-align: center;
+      }
+      &[type="submit"] {
+        padding: 20px 38px;
+        width: 100%;
+      }
+    }
+  }
+
+  form div {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .error404 .hero-inner .bigtext {
+    font-size: 100px;
+  }
+  .error404 .hero-inner .title{
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .error404 .hero-inner .subtitle{
+    margin-bottom: 0;
+  }
+  .error404 {
+    .hero-inner {
+      min-height: auto!important;
+      padding-top: 0!important;
+      .search {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .error404{
+    .hero-inner{
+      .title{
+        font-size: 22px;
+      }
+      .subtitle{
+        font-size: 17px;
+      }
+    }
+  }
+}

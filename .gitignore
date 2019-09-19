@@ -7,7 +7,16 @@ wp-content/blogs.dir/
 wp-content/cache/
 wp-content/upgrade/
 wp-content/uploads/
-wp-content/plugins/
+wp-content/plugins/akismet/
+wp-content/plugins/contact-form-7/
+wp-content/plugins/essential-grid/
+wp-content/plugins/js_composer_v-5/
+wp-content/plugins/LayerSlder/
+wp-content/plugins/revslider/
+wp-content/plugins/woocommerce/
+wp-content/plugins/woocommerce-product-addon/
+wp-content/plugins/wordpress-importer/
+wp-content/plugins/wp-instagram-widget/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 wp-content/plugins/LayerSlider/static/admin/media/revisions.mp4

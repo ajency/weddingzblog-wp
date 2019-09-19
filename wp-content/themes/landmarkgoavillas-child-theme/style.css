@@ -1,0 +1,46 @@
+/*
+	Theme Name: landmarkgoavillas
+	Theme URI: 
+	Description: 
+	Version: 1.0.0
+	Author: Ajency
+	Author URI: https://ajency.in/
+	Template: landmarkgoavillas
+	Text Domain: landmarkgoavillas
+	Domain Path: /inc/languages
+*/
+
+
+/* = Add your own modification from here
+-------------------------------------------------------------- */
+#footer-widgets {
+	display: flex;
+	height: 220px;
+}
+.footer-sidebar {
+	width: 100%;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.widget-title{
+	color: #5b7038;
+}
+.textwidget ul{
+	margin-left: 0 !important;
+}
+.textwidget ul li{
+	list-style-type: none;
+}
+.textwidget ul li a{
+	color: #fff;
+	text-decoration: none;
+}
+.textwidget ul li a:hover{
+	color: #6d9b28;
+}
+@media only screen and (max-width: 791px){
+	#footer-widgets{
+		display: inline;
+	}
+}

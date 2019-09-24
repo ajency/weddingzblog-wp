@@ -39,13 +39,13 @@
 <section class="mt-5 mt-md-0">
   <div class="slider variable-width d-flex align-items-center">
     <div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-office-10px.jpg" alt="Ajency Office Workplace" data-srcset=" <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-office-mobile.jpg 296w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-office-tablet.jpg 592w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-office-desktop.jpg 888w" data-sizes="(min-width: 1400px) 890px,(min-width: 992px) 690px, (min-width: 768px) 490px,  296px" class="lazyload blur-up">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/products/orange_barley_bowl.jpg" alt="Ajency Office Workplace"   class="lazyload blur-up">
     </div>
     <div class="align-items-center">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-team-squad-10px.jpg" alt="Ajency Team squad " data-srcset=" <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-team-squad-mobile.jpg 296w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-team-squad-tablet.jpg 592w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-team-squad-desktop.jpg 888w" data-sizes="(min-width: 1400px) 890px,(min-width: 992px) 690px, (min-width: 768px) 490px,  296px" class="lazyload blur-up">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/products/quinoa-n-nuts-bowl.jpg" alt="Ajency Team squad " class="lazyload blur-up">
     </div>
     <div>
-      <img src="<?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-located-at-panjim-10px.jpg" alt="Ajency located at Panjim" data-srcset=" <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-located-at-panjim-desktop.jpg 296w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-located-at-panjim-desktop-tablet.jpg 592w, <?php echo get_template_directory_uri(); ?>/img/gallery-img/ajency-located-at-panjim-desktop-mobile.jpg 888w" data-sizes="(min-width: 1400px) 890px,(min-width: 992px) 690px, (min-width: 768px) 490px,  296px" class="lazyload blur-up">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" alt="Ajency located at Panjim" class="lazyload blur-up">
     </div>
   </div>
 </section>
@@ -410,81 +410,6 @@
     </div>
   </div>
 </div>
-<section>
-  <div class="container p5">
-    <div class="row">
-      <div class="col  offset-xl-2 col-xl-8 col12">
-        <h3 class="h1 ft6">Ably led by</h3>
-        <p class="body-text">
-          Atleast one leadership team member actively works on every project.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="p2">
-  <div class="container slider-contanier ">
-
-    <div class="aj-team-member  d-flex">
-
-      <div>
-        <div class="row ">
-          <div class="col-md-6">
-
-
-            <img src="<?php echo get_template_directory_uri(); ?>/img/team/anuj-10px.jpg" class="lazyload blur-up img-fluid" data-srcset="<?php echo get_template_directory_uri(); ?>/img/team/anuj-desktop.jpg 700w, <?php echo get_template_directory_uri(); ?>/img/team/anuj-tablet.jpg 476w, <?php echo get_template_directory_uri(); ?>/img/team/anuj-mobile.jpg 276w" data-sizes="(min-width: 768px) 42vw, 100vw" alt="Anuj Khurana" class="img-fluid">
-          </div>
-          <div class="col-md-5 offset-md-1">
-            <div class="w-75 team-desc">
-              <h5>CEO/Co-founder</h5>
-              <h1 class="display-3">Anuj Khurana</h1>
-              <div class="black f-paragraph-small no-spacing">
-                <h5 class="font-weight-light">13+ years of Digital experience.</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="align-items-center">
-        <div class="row flex ">
-          <div class="col-md-6">
-
-
-            <img src="<?php echo get_template_directory_uri(); ?>/img/team/avanti-10px.jpg" class="lazyload blur-up img-fluid" data-srcset="<?php echo get_template_directory_uri(); ?>/img/team/avanti-desktop.jpg 700w, <?php echo get_template_directory_uri(); ?>/img/team/avanti-tablet.jpg 476w, <?php echo get_template_directory_uri(); ?>/img/team/avanti-mobile.jpg 276w" data-sizes="(min-width: 768px) 42vw, 100vw" alt="Avanti Hiremath" class="img-fluid">
-          </div>
-          <div class="col-md-5 offset-md-1">
-            <div class="w-75 team-desc">
-              <h5>COO/Co-founder</h5>
-              <h1 class="display-3">Avanti Hiremath</h1>
-              <div class="black f-paragraph-small no-spacing">
-                <h5 class="font-weight-light">13+ years in Brand management and Marketing</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="row">
-          <div class="col-md-6">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/team/amit-10px.jpg" class="lazyload blur-up img-fluid" data-srcset="<?php echo get_template_directory_uri(); ?>/img/team/amit-desktop.jpg 700w, <?php echo get_template_directory_uri(); ?>/img/team/amit-tablet.jpg 476w, <?php echo get_template_directory_uri(); ?>/img/team/amit-mobile.jpg 276w" data-sizes="(min-width: 768px) 42vw, 100vw" alt="Avanti Hiremath" class="img-fluid">
-          </div>
-          <div class="col-md-5 offset-md-1">
-            <div class="w-75 team-desc">
-              <h5>Chief Designer</h5>
-              <h1 class="display-3">Amit Adav</h1>
-              <div class="black f-paragraph-small no-spacing">
-                <h5 class="font-weight-light">7+ years in New Media Design.</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 <section id="we-are-hiring">
   <div class="container p5">
     <div class="row">
@@ -497,7 +422,7 @@
           <div class="card">
             <div class="card-header" id="headingOne">
               <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <h2 class="pt-2 pb-2 m-0 ">Wordpress or others?</h2>
+                <h2 class="pt-2 pb-2 m-0 ">Position 1 </h2>
               </a>
             </div>
 
@@ -511,7 +436,7 @@
             <div class="card-header" id="headingTwo">
 
               <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <h2 class="pt-2 pb-2 m-0 ">How much does it cost?</h2>
+                <h2 class="pt-2 pb-2 m-0 ">Position 2</h2>
               </a>
               </h5>
             </div>
@@ -525,7 +450,7 @@
             <div class="card-header" id="headingThree">
 
               <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <h2 class="pt-2 pb-2 m-0 ">What if we are in different cities?</h2>
+                <h2 class="pt-2 pb-2 m-0 ">Position 3</h2>
               </a>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">

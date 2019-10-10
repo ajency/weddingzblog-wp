@@ -10,8 +10,9 @@ class Cart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			cart : {},
-			cartLoaded : false
+			cartData : {},
+			cartLoaded : false,
+			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 		}
 		this.fetchCart();
 	}
@@ -21,7 +22,7 @@ class Cart extends Component {
 	}
 
 	getItems(){
-		let items = this.state.cart.items.map((item)=>
+		let items = this.state.cartData.cart.items.map((item)=>
 			<Item key={item.variant_id} item={item}/>
 		);
 		return items;
@@ -45,16 +46,16 @@ class Cart extends Component {
 
 					<div>
 						<label className="cart-summary-label">Bill Details</label>
-						<CartSummary summary={this.state.cart.summary}/>
+						<CartSummary summary={this.state.cartData.cart.summary}/>
 					</div>
 
 					<div>
-						<DeliveryAddress address={this.state.cart.delivery_address} delivery_time={this.state.cart.approx_delivery_time}/>
+						<DeliveryAddress address={this.state.cartData.delivery_address} delivery_time={this.state.cartData.approx_delivery_time}/>
 					</div>
 
 					<div>
 						<div className="bottom-bar">
-							<img alt="100% Secure Payments" className="img-fluid" title="100% Secure Payments" width="40" src="https://static.kidsuperstore.in/public/img/shield.png"/>
+							<img alt="100% Secure Payments" title="100% Secure Payments" width="40" src="https://static.kidsuperstore.in/public/img/shield.png"/>
 							<div className="genuinity">
 								<p className="my-1">100% Secure payments.</p>
 							</div>
@@ -78,17 +79,40 @@ class Cart extends Component {
 		);
 	}
 
-	fetchCart(){
+	fetchCart() {
 		console.log("inside fetch cart");
-		let url = "https://demo8558685.mockable.io/get-cart";
-		axios.get(url)
-			.then((res) => {
-				console.log("get items response ==>", res);
-				this.setState({cart : res.data, cartLoaded : true});
-			})
-			.catch((error)=>{
-				console.log("error in place order ==>", error);
-			})
+		let cart_id = this.getCookie('cart_id');
+		if(cart_id){
+			// let url = "https://demo8558685.mockable.io/get-cart";
+			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
+			let body = {
+				cart_id : cart_id
+			}
+			axios.get(url, {params : body})
+				.then((res) => {
+					console.log("fetch cart response ==>", res);
+					this.setState({cartData : res.data, cartLoaded : true});
+				})
+				.catch((error)=>{
+					console.log("error in fetch cart ==>", error);
+				})
+		}
+	}
+
+	getCookie(cname){
+		let name = cname + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let ca = decodedCookie.split(';');
+		for(let i = 0; i <ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
 	}
 }
 

@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 import Cart from './components/cart/cart.js';
 
-const App = (props) => (
-  <Router>
-      <Route exact path="/cart" component={Cart} />
-  </Router>
-)
+class App extends Component {
+  render() {
+    return (
+      <div>
+          <Cart/> 
+      </div>
+    );
+  }
+}
 
 export default App;

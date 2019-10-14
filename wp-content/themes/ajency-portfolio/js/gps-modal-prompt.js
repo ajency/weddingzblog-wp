@@ -15,6 +15,10 @@ var CancelToken = axios.CancelToken;
 var cancel = void 0;
 var debounceTimer = void 0;
 
+var locationStyle = {
+	'list-style': 'none'
+};
+
 var gpsModalPrompt = function (_React$Component) {
 	_inherits(gpsModalPrompt, _React$Component);
 
@@ -113,8 +117,8 @@ var gpsModalPrompt = function (_React$Component) {
 								this.checkLocationErrorMsg()
 							),
 							React.createElement(
-								'div',
-								null,
+								'ul',
+								{ style: locationStyle },
 								this.getAutoCompleteLocations()
 							)
 						)
@@ -168,12 +172,11 @@ var gpsModalPrompt = function (_React$Component) {
 			if (this.state.locations.length) {
 				var locs = this.state.locations.map(function (loc) {
 					return React.createElement(
-						'div',
+						'li',
 						{ key: loc.id, className: 'btn p-1', onClick: function onClick() {
 								_this4.reverseGeocode(loc);
 							} },
-						loc.description,
-						React.createElement('br', null)
+						loc.description
 					);
 				});
 				return locs;

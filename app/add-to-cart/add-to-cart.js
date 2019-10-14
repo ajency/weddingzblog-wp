@@ -38,6 +38,9 @@ class addToCart extends React.Component {
 		if(cart_id){
 			this.addToCartApiCall(null, cart_id);
 		}
+		else if(window.lat_lng){
+			this.addToCartApiCall(window.lat_lng);
+		}
 		else{
 			this.getGeolocation().then((res)=>{
 				this.addToCartApiCall(res);

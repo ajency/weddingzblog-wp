@@ -6,6 +6,10 @@ const CancelToken = axios.CancelToken;
 let cancel;
 let debounceTimer;
 
+const locationStyle = {
+	'list-style' : 'none'
+}
+
 class gpsModalPrompt extends React.Component {
 	constructor(props) {
 		super(props);
@@ -52,9 +56,9 @@ class gpsModalPrompt extends React.Component {
 							<div className="gps-error-msg">
 								{this.checkLocationErrorMsg()}
 							</div>
-							<div>
+							<ul style={locationStyle}>
 								{this.getAutoCompleteLocations()}
-							</div>
+							</ul>
 						</div>
 					</div>
 			  	</div>
@@ -105,10 +109,9 @@ class gpsModalPrompt extends React.Component {
 	getAutoCompleteLocations(){
 		if(this.state.locations.length){
 			let locs =  this.state.locations.map((loc)=>
-				<div key={loc.id} className="btn p-1" onClick={() => {this.reverseGeocode(loc)}}>
+				<li key={loc.id} className="btn p-1" onClick={() => {this.reverseGeocode(loc)}}>
 					{loc.description}
-					<br/>
-				</div>
+				</li>
 			);
 			return locs;
 		}

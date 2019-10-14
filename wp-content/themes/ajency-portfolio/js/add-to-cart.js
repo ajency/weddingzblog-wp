@@ -64,6 +64,8 @@ var addToCart = function (_React$Component) {
 			var cart_id = this.getCookie('cart_id');
 			if (cart_id) {
 				this.addToCartApiCall(null, cart_id);
+			} else if (window.lat_lng) {
+				this.addToCartApiCall(window.lat_lng);
 			} else {
 				this.getGeolocation().then(function (res) {
 					_this3.addToCartApiCall(res);

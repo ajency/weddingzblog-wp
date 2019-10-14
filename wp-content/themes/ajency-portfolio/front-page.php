@@ -315,6 +315,8 @@
           </div>
         </div>
 
+        <!--  -->
+
         <div style="background:#fdf9f6">
           <div class="mb-3 p-4">
             <h1 class="ft6">Weddingz.in</h1>
@@ -401,6 +403,62 @@
     </div>
   </div>
 </div>
+</div>
+
+
+<!-- Products -->
+<div>
+  <h1>
+    Products
+  </h1>
+  <?php
+    $params = array('posts_per_page' => 5, 'post_type' => 'product');
+    $wc_query = new WP_Query($params);
+  ?>
+  <div class="d-flex p-2 m-2">
+       <?php if ($wc_query->have_posts()) : ?>
+       <?php while ($wc_query->have_posts()) :
+              $wc_query->the_post(); ?>
+       <div class="p-2 m-2">
+            <div class="product-image" style="width: 100px; height: 100px;">
+              <?php the_post_thumbnail(); ?>  
+            </div>
+            
+            <h5>
+                 <a href="<?php the_permalink(); ?>">
+                  <?php the_title(); ?>
+                 </a>
+            </h5>
+            <?php echo wc_price($product->get_price_including_tax(1, $product->get_sale_price()));?>
+            <!-- Add to cart button -->
+            <div class='react-add-to-cart-container cursor-pointer' data-variant_id='bupD3ekj2qEketZ0Kpf9'></div>
+       </div>
+       <?php endwhile; ?>
+       <?php wp_reset_postdata(); ?>
+       <?php else:  ?>
+       <div>
+            <?php _e( 'No Products' ); ?>
+       </div>
+       <?php endif; ?>
+  </div>  
+</div>
+
+<!-- gps modal prompt -->
+<div id="react-add-delivery-address-container"></div>
+
+<!-- Add to cart error  -->
+<div class="failure toast d-flex justify-content-center">
+  <span class="alert-danger d-none" id="failure-toast">
+    Add to cart failed
+  </span>
+</div>
+
+<!-- View cart component -->
+<div id="react-view-cart-container" style="width: 100%"></div>
+
+
+<div class="mt-5" id="root">
+  
 </div>
 
 <div class="container p5">

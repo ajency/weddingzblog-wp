@@ -16,6 +16,7 @@ class viewCart extends React.Component {
 		super(props);
 		this.state = { 
 			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			// apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			cart : null,
 		};
 	}
@@ -85,7 +86,6 @@ class viewCart extends React.Component {
 	}
 }
 
-// Find all DOM containers, and render add-to-cart buttons into them.
 let domContainer = document.querySelector('#react-view-cart-container');
 const ViewCartComponent = ReactDOM.render(e(viewCart), domContainer);
 

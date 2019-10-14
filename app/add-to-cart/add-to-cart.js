@@ -7,6 +7,7 @@ class addToCart extends React.Component {
 		super(props);
 		this.state = { 
 			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			// apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			addToCartInProgress : false
 		};
 	}
@@ -33,46 +34,54 @@ class addToCart extends React.Component {
 
 	addToCart() {
 		this.setState({addToCartInProgress : true});
-		this.getGeolocation().then((res)=>{
-			console.log("inside add to cart ", res);
-			let url = this.state.apiEndPoint + "/anonymous/cart/insert";
-			let body = {
-				variant_id : this.props.variant_id,
-				quantity : 1,
-				lat_long : res
+		let cart_id = this.getCookie('cart_id');
+		if(cart_id){
+			this.addToCartApiCall(null, cart_id);
+		}
+		else{
+			this.getGeolocation().then((res)=>{
+				this.addToCartApiCall(res);
+			})
+			.catch((error) => {
+				this.setState({addToCartInProgress : false});
+				console.log("error ==>", error);
+				this.displayError(error);
+			});
+		}
+	}
+
+	addToCartApiCall(lat_long = null, cart_id = null){
+		console.log("inside add to cart ", lat_long, cart_id);
+		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
+		let body = {
+			variant_id : this.props.variant_id,
+			quantity : 1,
+			lat_long : lat_long
+		}
+		if(cart_id)
+			body.cart_id = cart_id;
+
+		console.log("body ==>", body);
+
+		axios.post(url, body)
+		.then((res) => {
+			console.log("add to cart response ==>", res);
+			if(res.data.success){
+				window.updateViewCartCompoent(res.data);
+				if(!cart_id && res.data.cart_id)
+					document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
 			}
-
-			let cart_id = this.getCookie('cart_id');
-			if(cart_id)
-				body.cart_id = cart_id;
-
-			console.log("body ==>", body);
-
-			axios.post(url, body)
-			.then((res) => {
-				console.log("add to cart response ==>", res);
-				if(res.data.success){
-					window.updateViewCartCompoent(res.data);
-					if(!cart_id && res.data.cart_id)
-						document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
-				}
-				else{
-					this.displayError(res.data.message);
-				}
-				this.setState({addToCartInProgress : false});
-			})
-			.catch((error)=>{
-				console.log("error in add to cart ==>", error);
-				this.setState({addToCartInProgress : false});
-				let msg = error && error.message ? error.message : error;
-				this.displayError(msg);
-			})
-		})
-		.catch((error) => {
+			else{
+				this.displayError(res.data.message);
+			}
 			this.setState({addToCartInProgress : false});
-			console.log("error ==>", error);
-			this.displayError(error);
-		});
+		})
+		.catch((error)=>{
+			console.log("error in add to cart ==>", error);
+			this.setState({addToCartInProgress : false});
+			let msg = error && error.message ? error.message : error;
+			this.displayError(msg);
+		})
 	}
 
 	displayError(msg){
@@ -109,19 +118,15 @@ class addToCart extends React.Component {
 							}
 						},geoOptions);
 					}
-					else if (result.state === 'prompt') {
+					else {
 					    console.log("prompt");
 					    window.updategpsModalPromptComponent(true);
 					    let timer = setInterval(()=>{
-					    	if(window.lat_long){
+					    	if(window.lat_lng){
 					    		clearInterval(timer);
-					    		resolve(window.lat_long);
+					    		resolve(window.lat_lng);
 					    	}
 					    },500)
-					}
-					else{
-						console.log("check state ==>", result.state);
-						reject(new Error('Location permissions blocked. Please allow location permissions and try again'));
 					}
 				});
 			}

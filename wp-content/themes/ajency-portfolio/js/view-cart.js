@@ -30,6 +30,7 @@ var viewCart = function (_React$Component) {
 
 		_this.state = {
 			apiEndPoint: 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			// apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			cart: null
 		};
 		return _this;
@@ -123,9 +124,6 @@ var viewCart = function (_React$Component) {
 
 	return viewCart;
 }(React.Component);
-
-// Find all DOM containers, and render add-to-cart buttons into them.
-
 
 var domContainer = document.querySelector('#react-view-cart-container');
 var ViewCartComponent = ReactDOM.render(e(viewCart), domContainer);

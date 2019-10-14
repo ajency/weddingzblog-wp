@@ -405,6 +405,10 @@
 </div>
 </div>
 
+<!-- Selected Location -->
+<div id="selected-location-address" class="font-weight-bold cursor-pointer">
+
+</div>
 
 <!-- Products -->
 <div>

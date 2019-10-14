@@ -195,6 +195,21 @@ $(window).on("load", function() {
 $(document).ready(function(){
      if(window.location.href.includes('#/cart'))
         loadCartApp();
+
+    let lat_lng = getCookie('lat_lng')
+    if(lat_lng){
+
+        window.lat_lng = [parseFloat(lat_lng.split(',')[0]), parseFloat(lat_lng.split(',')[1])]
+        console.log("lat long on load ==>", window.lat_lng);
+        let formatted_address = getCookie('formatted_address');
+        if(getCookie('formatted_address')){
+            window.formatted_address = formatted_address;
+            document.querySelector("#selected-location-address").innerHTML = formatted_address;
+        }
+        else{
+            // TODO : call reverse geo code api to get address
+        }
+    }
 })
 
 $(function() {
@@ -261,4 +276,25 @@ function loadCartApp(){
                 console.log("loadCartApp failed")
             })
     }
+}
+
+$('#selected-location-address').click(function() {
+   window.updategpsModalPromptComponent(true);
+});
+
+
+function getCookie(cname){
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

@@ -242,6 +242,7 @@ function locationHashChanged() {
     console.log("location hash changed");
     if (location.hash === '#/cart') { 
         loadCartApp();
+        $('.cart-wrapper').addClass('active');
     } 
 }
 

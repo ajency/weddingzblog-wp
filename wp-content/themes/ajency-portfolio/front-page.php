@@ -1,5 +1,23 @@
 <?php get_header(); ?>
 
+<style type="text/css">
+  .cart-wrapper{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background: #f5f5f5;
+    z-index: 999;
+    padding: 30px 15px 0;
+    transform: translate(500px, 0px);
+    transition: all 0.3s ease;
+  }
+  .cart-wrapper.active{
+    transform: translate(0,0);
+  }
+</style>
+
 <!-- <div class="container p5">
   <div class="row">
     <div class="col  offset-xl-2 col-xl-8 col12">
@@ -461,7 +479,7 @@
 <div id="react-view-cart-container" style="width: 100%"></div>
 
 
-<div class="mt-5" id="root">
+<div class="cart-wrapper" id="root">
   
 </div>
 

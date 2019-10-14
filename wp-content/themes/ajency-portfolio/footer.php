@@ -83,6 +83,7 @@
               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
           if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
           else window.addEventListener('load', loadDeferredStyles);
+          var react_js_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_file_hash.json'); ?>;
     </script>
 <?php } ?>
 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet"/>
@@ -95,9 +96,15 @@
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/combine.js" type="text/javascript">
 </script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/custom.min.js" type="text/javascript">
+<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js" type="text/javascript">
 </script>
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js" type="text/javascript"></script>
     <?php wp_footer(); ?>
 
     </body>

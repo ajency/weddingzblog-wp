@@ -191,6 +191,12 @@ $(window).on("load", function() {
         }
     //});
 })
+
+$(document).ready(function(){
+     if(window.location.href.includes('#/cart'))
+        loadCartApp();
+})
+
 $(function() {
     $('.pop').on('click', function() {
         $('.imagepreview').attr('src', $(this).find('img').attr('data-original'));
@@ -204,6 +210,7 @@ $('.modal').on('click', function() {
 });
 $(window).on('hashchange', function(event) {
     $('.scroll-left').removeClass('active');
+    locationHashChanged();
 });
 $(document).on('click', '.card-front .card-trigger', function() {
     $(this).toggleClass('active');
@@ -215,3 +222,43 @@ $('.bread-crumb__menu').on('click', function(e) {
     // e.preventDefault();
     $(this).toggleClass('is-active');
 });
+
+function locationHashChanged() {
+    console.log("location hash changed");
+    if (location.hash === '#/cart') { 
+        loadCartApp();
+    } 
+}
+
+loaded = false;
+
+function loadCartApp(){
+    console.log("file_hashes ==>", react_js_file_hashes);
+    if(!loaded){
+        $("<link/>", {
+           rel: "stylesheet",
+           type: "text/css",
+           href: "/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/css/main.0043d354.chunk.css"
+        }).appendTo("head");
+
+        $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        
+            .done(function(script, textStatus){
+                $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/main."+ react_js_file_hashes['main'] +".chunk.js")
+                    .done(function(script2, textStatus2){
+                                $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/2."+ react_js_file_hashes['2'] +".chunk.js")
+                                    .done(function(script4,textStatus4){
+                                        loaded = true;
+                                    })
+                                    .fail(function(jqxhr, settings, exception){
+                                        console.log("loadCartApp failed")
+                                    })
+                    })
+                    .fail(function(jqxhr, settings, exception){
+                        console.log("loadCartApp failed")
+                    })
+            })
+            .fail(function(jqxhr, settings, exception){
+                console.log("loadCartApp failed")
+            })
+    }
+}

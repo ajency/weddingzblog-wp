@@ -6,24 +6,33 @@ class addToCart extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-			added: false,
-			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1'
+			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			addToCartInProgress : false
 		};
 	}
 
 	render() {
-		if (this.state.added) {
-			return 'Remove';
-		}
-
 		return (
-			<button style={btnStyle} onClick={() => this.addToCart()}>
-				ADD
+			<button className="btn-primary" style={btnStyle} onClick={() => this.addToCart()} disabled={this.state.addToCartInProgress}>
+				{this.getButtonContent()}
 			</button>
 		);
 	}
 
+	getButtonContent(){
+		if(this.state.addToCartInProgress){
+			return (<div class="btn-icon">
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>);
+
+		}
+		return (<span>
+					ADD	
+				</span>)
+	}
+
 	addToCart() {
+		this.setState({addToCartInProgress : true});
 		this.getGeolocation().then((res)=>{
 			console.log("inside add to cart ", res);
 			let url = this.state.apiEndPoint + "/anonymous/cart/insert";
@@ -48,16 +57,30 @@ class addToCart extends React.Component {
 						document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
 				}
 				else{
-					//display error message toast
+					this.displayError(res.data.message);
 				}
+				this.setState({addToCartInProgress : false});
 			})
 			.catch((error)=>{
 				console.log("error in add to cart ==>", error);
+				this.setState({addToCartInProgress : false});
+				let msg = error && error.message ? error.message : error;
+				this.displayError(msg);
 			})
 		})
 		.catch((error) => {
+			this.setState({addToCartInProgress : false});
 			console.log("error ==>", error);
+			this.displayError(error);
 		});
+	}
+
+	displayError(msg){
+		document.querySelector('#failure-toast').innerHTML = msg;
+		document.querySelector('#failure-toast').classList.remove('d-none');
+		setTimeout(()=>{
+			document.querySelector('#failure-toast').classList.add('d-none');
+		},3000)
 	}
 
 	getGeolocation(){
@@ -76,13 +99,13 @@ class addToCart extends React.Component {
 						},
 						(geoError) =>{
 							console.log("error in getting geolocation", geoError);
-							if(geoError.code === 1){
+							if(geoError.PositionError.code === 1){
 								// permission denied
-								// show a toast with proper message 
+								reject(new Error('Location permission denied'));
 							}
 							else{
 								// other errors
-								// show a toast with proper message
+								reject(new Error('Error while accessing location permission'));
 							}
 						},geoOptions);
 					}
@@ -96,12 +119,16 @@ class addToCart extends React.Component {
 					    	}
 					    },500)
 					}
+					else{
+						console.log("check state ==>", result.state);
+						reject(new Error('Location permissions blocked. Please allow location permissions and try again'));
+					}
 				});
 			}
 			else {
 				console.log("inside else");
 				//Show the modal prompt to use gps for location
-				reject(new Error('geolocation not enabled'));
+				reject(new Error('geolocation not available on your device'));
 			}
 		});
 	}

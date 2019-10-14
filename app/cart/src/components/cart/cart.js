@@ -11,7 +11,9 @@ class Cart extends Component {
 		super(props);
 		this.state = {
 			cartData : {},
-			cartLoaded : false,
+			fetchCartComplete : false,
+			fetchCartFailed : false,
+			fetchCartFailureMsg : '',
 			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 		}
 		this.fetchCart();
@@ -30,43 +32,49 @@ class Cart extends Component {
 	
 	render() {
 		let cartContainer;
-		if(!this.state.cartLoaded)
+		if(!this.state.fetchCartComplete)
 			cartContainer = <div className="text-center mt-5"> <h4> Loading... </h4>  </div>
-		else
-			cartContainer = 
-				<div>
+		else {
+			if(this.state.fetchCartFailed){
+				cartContainer = <div className="text-center mt-5"> <h4> {this.state.fetchCartFailureMsg} </h4>  </div>
+			}
+			else {
+				cartContainer = 
 					<div>
-						{this.getItems()}
-					</div>
-					<div className="apply-coupon-bar">
-						<div className="coupon-label">
-							Apply Coupon   >
+						<div>
+							{this.getItems()}
 						</div>
-					</div>
+						<div className="apply-coupon-bar">
+							<div className="coupon-label">
+								Apply Coupon   >
+							</div>
+						</div>
 
-					<div>
-						<label className="cart-summary-label">Bill Details</label>
-						<CartSummary summary={this.state.cartData.cart.summary}/>
-					</div>
+						<div>
+							<label className="cart-summary-label">Bill Details</label>
+							<CartSummary summary={this.state.cartData.cart.summary}/>
+						</div>
 
-					<div>
-						<DeliveryAddress address={this.state.cartData.delivery_address} delivery_time={this.state.cartData.approx_delivery_time}/>
-					</div>
+						<div>
+							<DeliveryAddress address={this.state.cartData.delivery_address} delivery_time={this.state.cartData.approx_delivery_time}/>
+						</div>
 
-					<div>
-						<div className="bottom-bar">
-							<img alt="100% Secure Payments" title="100% Secure Payments" width="40" src="https://static.kidsuperstore.in/public/img/shield.png"/>
-							<div className="genuinity">
-								<p className="my-1">100% Secure payments.</p>
+						<div>
+							<div className="bottom-bar">
+								<img alt="100% Secure Payments" title="100% Secure Payments" width="40" src="https://static.kidsuperstore.in/public/img/shield.png"/>
+								<div className="genuinity">
+									<p className="my-1">100% Secure payments.</p>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div className="secure-checkout">
+								<button className="checkout-btn">Secure Checkout</button>
 							</div>
 						</div>
 					</div>
-					<div>
-						<div className="secure-checkout">
-							<button className="checkout-btn">Secure Checkout</button>
-						</div>
-					</div>
-				</div>
+			}
+		}
 
 		return (
 			<div className="cart-container">
@@ -91,9 +99,10 @@ class Cart extends Component {
 			axios.get(url, {params : body})
 				.then((res) => {
 					console.log("fetch cart response ==>", res);
-					this.setState({cartData : res.data, cartLoaded : true});
+					this.setState({cartData : res.data, fetchCartComplete : true});
 				})
 				.catch((error)=>{
+					this.setState({fetchCartFailureMsg : error.message,  fetchCartComplete : true})
 					console.log("error in fetch cart ==>", error);
 				})
 		}

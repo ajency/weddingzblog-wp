@@ -5,29 +5,98 @@ class gpsModalPrompt extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			display : false
+			display : false,
+			apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			locations : []
 		}
+		this.autoCompleteLocation = this.autoCompleteLocation.bind(this);
 	}
 
 	render() {
 		if(this.state.display){
-			return (
-				<div>
-					<div>
-						<h2>ADD DELIVERY ADDRESS</h2>
+			$('#exampleModal').modal('show');
+		}
+
+		return (
+			<div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+			  	<div className="modal-dialog modal-dialog-centered" role="document">
+					<div className="modal-content">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+						<div className="p-5">
+							<h2>ADD DELIVERY ADDRESS</h2>
+						</div>
+						<div className="p-3">
+							<h3> Add your delivery address to proceed </h3>
+							<p> To add this item to your cart, please set your delivery location </p>
+						</div>
+						<div className="d-flex justify-content-center flex-column p-4">
+							<div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}>
+								Get Current Location
+							</div>
+							<div className="p-4">
+								<input type="search" className="w-75" placeholder="search for area, street name" onChange={this.autoCompleteLocation}/>
+							</div>
+							<div>
+								{this.getAutoCompleteLocations()}
+							</div>
+						</div>
 					</div>
-					<div>
-						<h3> Add your delivery address to proceed </h3>
-						<p> To add this item to your cart, please set your delivery location </p>
-					</div>
-					<div style={btnStyle} onClick={() => this.getLocation()}>
-						Get Current Location
-					</div>
+			  	</div>
+		    </div>
+		);
+	}
+
+	autoCompleteLocation(event) {
+		console.log("autoCompleteLocation =>", event.target.value, event.target.value.length);
+		if(event.target.value.length > 2 ) {
+			let url = this.state.apiEndPoint + "/places-autocomplete";
+			let body = {
+				input : event.target.value
+			}
+			this.setState({showLoader : true, locations : []})
+			axios.get(url, {params : body})
+				.then((res) => {
+					this.setState({showLoader : false})
+					if(res.data.status === "OK")
+						this.setState({locations : res.data.predictions})
+					else{
+						//display error
+					}
+				})
+				.catch((error)=>{
+					this.setState({showLoader : false})
+					console.log("error in autoCompleteLocation ==>", error);
+				})
+		}
+		else{
+			this.setState({locations : []})
+		}
+	}
+
+	getAutoCompleteLocations(){
+		console.log("inside getAutoCompleteLocations", this.state.locations);
+		if(this.state.locations.length){
+			let locs =  this.state.locations.map((loc)=>
+				<div key={loc.id} className="btn p-1" onClick={() => {this.reverseGeocode(loc)}}>
+					{loc.description}
 				</div>
 			);
+			console.log("locs ==>", locs);
+			return locs;
 		}
-		else
-			return (<div> </div>);
+		if(this.state.showLoader && !this.state.locations.length){
+			return (
+					<div>
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>
+				)
+		}
+	}
+
+	reverseGeocode(loc) {
+		console.log("reverse geocode ==>", loc);
 	}
 
 	getLocation(){

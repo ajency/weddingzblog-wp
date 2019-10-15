@@ -19,8 +19,8 @@ var addToCart = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (addToCart.__proto__ || Object.getPrototypeOf(addToCart)).call(this, props));
 
 		_this.state = {
-			apiEndPoint: 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
-			// apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
+			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			apiEndPoint: 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			addToCartInProgress: false
 		};
 		return _this;

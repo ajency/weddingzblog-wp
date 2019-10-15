@@ -65,7 +65,7 @@ var viewCart = function (_React$Component) {
 					),
 					React.createElement(
 						'div',
-						{ style: btnStyle, onClick: function onClick() {
+						{ id: 'view-cart-btn', style: btnStyle, onClick: function onClick() {
 								return _this2.loadCart();
 							} },
 						'VIEW CART'

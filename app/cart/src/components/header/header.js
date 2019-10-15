@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './header.scss';
-// declare var $: any;
 
 class Header extends Component {
 	render() {
@@ -20,7 +19,6 @@ class Header extends Component {
 	}
 
 	closeCart(){
-		// $('.cart-wrapper').removeClass('active');
 		document.querySelector(".cart-wrapper").classList.remove('active');
 		let url = window.location.href.split("#")[0];
 		window.history.replaceState({cart : false}, 'cart', url);

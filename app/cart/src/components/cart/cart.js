@@ -21,13 +21,13 @@ class Cart extends Component {
 	}
 
 	componentDidMount(){
-		window.onhashchange = this.locationHashChanged();
-	}
-
-	locationHashChanged() {
-		if (window.location.hash === '#/cart') { 
+		let el = document.querySelector('#view-cart-btn');
+		console.log("component did mount", el);
+		el.addEventListener("click", ()=>{
+			console.log("click event fired");
+			this.setState({cartData : {}, fetchCartComplete : false})
 			this.fetchCart();
-		} 
+		});
 	}
 
 	getItems(){

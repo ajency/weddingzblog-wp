@@ -35,7 +35,7 @@ class viewCart extends React.Component {
 					<div>
 						₹ {this.state.cart.summary.you_pay}
 					</div>
-					<div style={btnStyle} onClick={() => this.loadCart()}>
+					<div id="view-cart-btn" style={btnStyle} onClick={() => this.loadCart()}>
 						VIEW CART
 					</div>
 				</div>

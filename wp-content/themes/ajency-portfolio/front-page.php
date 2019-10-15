@@ -20,6 +20,19 @@
   .cursor-pointer{
     cursor: pointer;
   }
+
+  .gbb-original-price{
+    font-size: 80%;
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .gbb-discount {
+    font-size: 80%;
+    font-weight: 400;
+  }
 </style>
 
 <!-- <div class="container p5">
@@ -437,55 +450,70 @@
   <h1>
     Products
   </h1>
-  <?php
-    $params = array('posts_per_page' => 5, 'post_type' => 'product');
-    $wc_query = new WP_Query($params);
-  ?>
   <div class="d-flex p-2 m-2">
         <div class="p-2 m-2">
             <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/orange_barley_bowl-e1570528360373.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
             </div>
             
             <h5>
-                 <a href="http://localhost:8888/greengrainbowl/product/orange-barley-bowl/">
-                  Orange Barley Bowl                 </a>
+                 <a href="javascript:void(0)">
+                  Orange Barley Bowl                
+                 </a>
             </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>250.00</span>            <!-- Add to cart button -->
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>250.00</span>
+            <small class="gbb-original-price text-muted">₹300</small>
+            <span class="gbb-discount text-danger">17% OFF</span>
+            <!-- Add to cart button -->
             <div class="react-add-to-cart-container cursor-pointer" data-variant_id="bupD3ekj2qEketZ0Kpf9"></div>
        </div>
+
+
         <div class="p-2 m-2">
             <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/cracked-wheat-n-chickpea-bowl-chicken-e1570528505772.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+              <img width="100" height="72" src="http://greengrainbowl.com/wp-content//themes/ajency-portfolio/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
             </div>
             
             <h5>
-                 <a href="http://localhost:8888/greengrainbowl/product/cracked-wheat-chickpea-bowl/">
-                  Cracked Wheat &amp; Chickpea Bowl                 </a>
+                <a href="javascript:void(0)">
+                  Cracked Wheat &amp; Chickpea Bowl                 
+                </a>
             </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            <!-- Add to cart button -->
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            
+            <small class="gbb-original-price text-muted">₹500</small>
+            <span class="gbb-discount text-danger">20% OFF</span>
+            <!-- Add to cart button -->
             <div class="react-add-to-cart-container cursor-pointer" data-variant_id="5awRHIDbXVNMEZhoYjtZ"></div>
        </div>
+
+
         <div class="p-2 m-2">
             <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/thai-brown-rice-bowl-chicken-e1570528544678.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/thai-brown-rice-bowl-panner.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
             </div>
             
             <h5>
-                 <a href="http://localhost:8888/greengrainbowl/product/thai-brown-rice-bowl/">
-                  Thai Brown Rice Bowl                 </a>
+                <a href="javascript:void(0)">
+                  Thai Brown Rice Bowl                 
+                </a>
             </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            <!-- Add to cart button -->
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>
+            <small class="gbb-original-price text-muted">₹450</small>
+            <span class="gbb-discount text-danger">11% OFF</span>            
+            <!-- Add to cart button -->
             <div class="react-add-to-cart-container cursor-pointer" data-variant_id="Nwn6e8h6OWVBpMFN0c9z"></div>
        </div>
+
+
         <div class="p-2 m-2">
             <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/cracked-wheat-n-chickpea-bowl-chicken-e1570528505772.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/quinoa-n-nuts-bowl.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
             </div>
             
             <h5>
-                 <a href="http://localhost:8888/greengrainbowl/product/quinoa-nuts-bowl/">
-                  Quinoa &amp; Nuts Bowl                 </a>
+                <a href="javascript:void(0)">
+                  Quinoa &amp; Nuts Bowl                 
+                </a>
             </h5>
             <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>300.00</span>            <!-- Add to cart button -->
             <div class="react-add-to-cart-container cursor-pointer" data-variant_id="dlI88p2ORp3Wk6W0Hq3t"></div>

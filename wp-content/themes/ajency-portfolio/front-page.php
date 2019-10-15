@@ -442,30 +442,54 @@
     $wc_query = new WP_Query($params);
   ?>
   <div class="d-flex p-2 m-2">
-       <?php if ($wc_query->have_posts()) : ?>
-       <?php while ($wc_query->have_posts()) :
-              $wc_query->the_post(); ?>
-       <div class="p-2 m-2">
+        <div class="p-2 m-2">
             <div class="product-image" style="width: 100px; height: 100px;">
-              <?php the_post_thumbnail(); ?>  
+              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/orange_barley_bowl-e1570528360373.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
             </div>
             
             <h5>
-                 <a href="<?php the_permalink(); ?>">
-                  <?php the_title(); ?>
-                 </a>
+                 <a href="http://localhost:8888/greengrainbowl/product/orange-barley-bowl/">
+                  Orange Barley Bowl                 </a>
             </h5>
-            <?php echo wc_price($product->get_price_including_tax(1, $product->get_sale_price()));?>
-            <!-- Add to cart button -->
-            <div class='react-add-to-cart-container cursor-pointer' data-variant_id='bupD3ekj2qEketZ0Kpf9'></div>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>250.00</span>            <!-- Add to cart button -->
+            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="bupD3ekj2qEketZ0Kpf9"></div>
        </div>
-       <?php endwhile; ?>
-       <?php wp_reset_postdata(); ?>
-       <?php else:  ?>
-       <div>
-            <?php _e( 'No Products' ); ?>
+        <div class="p-2 m-2">
+            <div class="product-image" style="width: 100px; height: 100px;">
+              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/cracked-wheat-n-chickpea-bowl-chicken-e1570528505772.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+            </div>
+            
+            <h5>
+                 <a href="http://localhost:8888/greengrainbowl/product/cracked-wheat-chickpea-bowl/">
+                  Cracked Wheat &amp; Chickpea Bowl                 </a>
+            </h5>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            <!-- Add to cart button -->
+            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="5awRHIDbXVNMEZhoYjtZ"></div>
        </div>
-       <?php endif; ?>
+        <div class="p-2 m-2">
+            <div class="product-image" style="width: 100px; height: 100px;">
+              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/thai-brown-rice-bowl-chicken-e1570528544678.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+            </div>
+            
+            <h5>
+                 <a href="http://localhost:8888/greengrainbowl/product/thai-brown-rice-bowl/">
+                  Thai Brown Rice Bowl                 </a>
+            </h5>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            <!-- Add to cart button -->
+            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="Nwn6e8h6OWVBpMFN0c9z"></div>
+       </div>
+        <div class="p-2 m-2">
+            <div class="product-image" style="width: 100px; height: 100px;">
+              <img width="100" height="72" src="http://localhost:8888/greengrainbowl/wp-content/uploads/2019/10/cracked-wheat-n-chickpea-bowl-chicken-e1570528505772.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
+            </div>
+            
+            <h5>
+                 <a href="http://localhost:8888/greengrainbowl/product/quinoa-nuts-bowl/">
+                  Quinoa &amp; Nuts Bowl                 </a>
+            </h5>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>300.00</span>            <!-- Add to cart button -->
+            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="dlI88p2ORp3Wk6W0Hq3t"></div>
+       </div>
   </div>  
 </div>
 

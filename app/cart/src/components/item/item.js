@@ -24,6 +24,7 @@ class Item extends Component {
 							</div>
 							<div className="price">
 								₹ {this.props.item.attributes.price_final}
+								{this.checkItemDiscount()}
 							</div>
 						</div>
 					</div>
@@ -36,6 +37,16 @@ class Item extends Component {
 				</div>
 			</div>
 		);
+	}
+
+	checkItemDiscount(){
+		if(this.props.item.attributes.price_final < this.props.item.attributes.price_mrp){
+			return <div><small class="gbb-original-price text-muted">₹{this.props.item.attributes.price_mrp}</small> <span class="gbb-discount text-danger">{this.getOffPercentage()}% OFF</span></div>
+		}
+	}
+
+	getOffPercentage(){
+		return Math.round(((this.props.item.attributes.price_mrp - this.props.item.attributes.price_final) / (this.props.item.attributes.price_mrp )) * 100)
 	}
 
 	checkStock(){

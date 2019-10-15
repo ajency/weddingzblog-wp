@@ -39,11 +39,11 @@ class addToCart extends React.Component {
 			this.addToCartApiCall(null, cart_id);
 		}
 		else if(window.lat_lng){
-			this.addToCartApiCall(window.lat_lng);
+			this.addToCartApiCall(window.lat_lng, null, window.formatted_address);
 		}
 		else{
 			this.getGeolocation().then((res)=>{
-				this.addToCartApiCall(res);
+				this.addToCartApiCall(window.lat_lng, null, window.formatted_address);
 			})
 			.catch((error) => {
 				this.setState({addToCartInProgress : false});
@@ -53,13 +53,14 @@ class addToCart extends React.Component {
 		}
 	}
 
-	addToCartApiCall(lat_long = null, cart_id = null){
+	addToCartApiCall(lat_long = null, cart_id = null, formatted_address = null){
 		console.log("inside add to cart ", lat_long, cart_id);
 		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
 		let body = {
 			variant_id : this.props.variant_id,
 			quantity : 1,
-			lat_long : lat_long
+			lat_long : lat_long,
+			formatted_address : formatted_address
 		}
 		if(cart_id)
 			body.cart_id = cart_id;
@@ -97,47 +98,13 @@ class addToCart extends React.Component {
 
 	getGeolocation(){
 		return new Promise((resolve, reject) => {
-			let geoOptions = {
-				maximumAge: 30 * 60 * 1000,
-				timeout: 10 * 1000
-			}
-			if ("geolocation" in navigator){
-				navigator.permissions.query({name:'geolocation'}).then(function(result) {
-				  	if (result.state === 'granted') {
-				  		console.log("granted");
-					    navigator.geolocation.getCurrentPosition((position) => {
-							console.log("position ==>", position.coords);
-							resolve([position.coords.latitude, position.coords.longitude]);
-						},
-						(geoError) =>{
-							console.log("error in getting geolocation", geoError);
-							if(geoError.PositionError.code === 1){
-								// permission denied
-								reject(new Error('Location permission denied'));
-							}
-							else{
-								// other errors
-								reject(new Error('Error while accessing location permission'));
-							}
-						},geoOptions);
-					}
-					else {
-					    console.log("prompt");
-					    window.updategpsModalPromptComponent(true);
-					    let timer = setInterval(()=>{
-					    	if(window.lat_lng){
-					    		clearInterval(timer);
-					    		resolve(window.lat_lng);
-					    	}
-					    },500)
-					}
-				});
-			}
-			else {
-				console.log("inside else");
-				//Show the modal prompt to use gps for location
-				reject(new Error('geolocation not available on your device'));
-			}
+		    window.updategpsModalPromptComponent(true);
+		    let timer = setInterval(()=>{
+		    	if(window.lat_lng){
+		    		clearInterval(timer);
+		    		resolve();
+		    	}
+		    },500)
 		});
 	}
 

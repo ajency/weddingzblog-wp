@@ -188,7 +188,7 @@ class gpsModalPrompt extends React.Component {
 			console.log("error in getting geolocation", geoError);
 			if(geoError.code === 1){
 				// permission denied
-				this.setState({gpsError : 'Permission blocked. Please allow location permission for delivery'})
+				this.setState({gpsError : 'You have blocked Green Grain Bowl from tracking your location. To use this, change your location settings in browser.'})
 			}
 			else{
 				// other errors

@@ -21,7 +21,13 @@ class Cart extends Component {
 	}
 
 	componentDidMount(){
+		window.onhashchange = this.locationHashChanged();
+	}
 
+	locationHashChanged() {
+		if (window.location.hash === '#/cart') { 
+			this.fetchCart();
+		} 
 	}
 
 	getItems(){
@@ -57,7 +63,7 @@ class Cart extends Component {
 						</div>
 
 						<div>
-							<DeliveryAddress address={this.state.cartData.delivery_address} delivery_time={this.state.cartData.approx_delivery_time}/>
+							<DeliveryAddress address={this.state.cartData.cart.formatted_address} delivery_time={this.state.cartData.approx_delivery_time}/>
 						</div>
 
 						<div>

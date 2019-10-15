@@ -65,10 +65,10 @@ var addToCart = function (_React$Component) {
 			if (cart_id) {
 				this.addToCartApiCall(null, cart_id);
 			} else if (window.lat_lng) {
-				this.addToCartApiCall(window.lat_lng);
+				this.addToCartApiCall(window.lat_lng, null, window.formatted_address);
 			} else {
 				this.getGeolocation().then(function (res) {
-					_this3.addToCartApiCall(res);
+					_this3.addToCartApiCall(window.lat_lng, null, window.formatted_address);
 				}).catch(function (error) {
 					_this3.setState({ addToCartInProgress: false });
 					console.log("error ==>", error);
@@ -79,17 +79,20 @@ var addToCart = function (_React$Component) {
 	}, {
 		key: 'addToCartApiCall',
 		value: function addToCartApiCall() {
+			var lat_long = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
 			var _this4 = this;
 
-			var lat_long = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 			var cart_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+			var formatted_address = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
 			console.log("inside add to cart ", lat_long, cart_id);
 			var url = this.state.apiEndPoint + "/anonymous/cart/insert";
 			var body = {
 				variant_id: this.props.variant_id,
 				quantity: 1,
-				lat_long: lat_long
+				lat_long: lat_long,
+				formatted_address: formatted_address
 			};
 			if (cart_id) body.cart_id = cart_id;
 
@@ -124,43 +127,13 @@ var addToCart = function (_React$Component) {
 		key: 'getGeolocation',
 		value: function getGeolocation() {
 			return new Promise(function (resolve, reject) {
-				var geoOptions = {
-					maximumAge: 30 * 60 * 1000,
-					timeout: 10 * 1000
-				};
-				if ("geolocation" in navigator) {
-					navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
-						if (result.state === 'granted') {
-							console.log("granted");
-							navigator.geolocation.getCurrentPosition(function (position) {
-								console.log("position ==>", position.coords);
-								resolve([position.coords.latitude, position.coords.longitude]);
-							}, function (geoError) {
-								console.log("error in getting geolocation", geoError);
-								if (geoError.PositionError.code === 1) {
-									// permission denied
-									reject(new Error('Location permission denied'));
-								} else {
-									// other errors
-									reject(new Error('Error while accessing location permission'));
-								}
-							}, geoOptions);
-						} else {
-							console.log("prompt");
-							window.updategpsModalPromptComponent(true);
-							var timer = setInterval(function () {
-								if (window.lat_lng) {
-									clearInterval(timer);
-									resolve(window.lat_lng);
-								}
-							}, 500);
-						}
-					});
-				} else {
-					console.log("inside else");
-					//Show the modal prompt to use gps for location
-					reject(new Error('geolocation not available on your device'));
-				}
+				window.updategpsModalPromptComponent(true);
+				var timer = setInterval(function () {
+					if (window.lat_lng) {
+						clearInterval(timer);
+						resolve();
+					}
+				}, 500);
 			});
 		}
 	}, {

@@ -254,7 +254,7 @@ function loadCartApp(){
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
-           href: "/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/css/main.0043d354.chunk.css"
+           href: "/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/css/main.c11e78da.chunk.css"
         }).appendTo("head");
 
         $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        

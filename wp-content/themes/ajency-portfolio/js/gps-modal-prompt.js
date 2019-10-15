@@ -258,7 +258,7 @@ var gpsModalPrompt = function (_React$Component) {
 				console.log("error in getting geolocation", geoError);
 				if (geoError.code === 1) {
 					// permission denied
-					_this6.setState({ gpsError: 'Permission blocked. Please allow location permission for delivery' });
+					_this6.setState({ gpsError: 'You have blocked Green Grain Bowl from tracking your location. To use this, change your location settings in browser.' });
 				} else {
 					// other errors
 					_this6.setState({ gpsError: 'Error in getting current location using GPS' });

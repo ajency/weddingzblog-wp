@@ -16,9 +16,9 @@ class DeliveryAddress extends Component {
 						Change
 					</div>
 				</div>
-				<div className="address-details">
+				<div className="address-details pt-3">
 					<label>
-						{this.props.address.address}
+						{this.props.address}
 					</label>
 					<label className="delivery-time">
 						{this.props.delivery_time}

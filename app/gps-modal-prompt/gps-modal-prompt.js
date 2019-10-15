@@ -2,6 +2,7 @@
 const e = React.createElement;
 window.lat_lng = null;
 window.formatted_address = null;
+window.modal_closed = false;
 const CancelToken = axios.CancelToken;
 let cancel;
 let debounceTimer;
@@ -19,8 +20,8 @@ class gpsModalPrompt extends React.Component {
 			// apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			locations : [],
 			locError : '',
-			gpsError : ''
-
+			gpsError : '',
+			fetchingGPS : false,
 		}
 	}
 
@@ -33,7 +34,7 @@ class gpsModalPrompt extends React.Component {
 			<div className="modal fade" id="gpsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
 			  	<div className="modal-dialog modal-dialog-centered" role="document">
 					<div className="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={()=> this.modalClosed()}>
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 						<div className="p-5">
@@ -44,14 +45,12 @@ class gpsModalPrompt extends React.Component {
 							<p> To add this item to your cart, please set your delivery location </p>
 						</div>
 						<div className="d-flex justify-content-center flex-column p-4">
-							<div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}>
-								Get Current Location
-							</div>
+							{this.showFetchLocationUsingGps()}
 							<div className="gps-error-msg">
 								{this.checkGpsErrorMsg()}
 							</div>
 							<div className="p-4">
-								<input type="search" className="w-75" placeholder="search for area, street name" onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
+								{this.showLocationSearch()}
 							</div>
 							<div className="gps-error-msg">
 								{this.checkLocationErrorMsg()}
@@ -64,6 +63,10 @@ class gpsModalPrompt extends React.Component {
 			  	</div>
 		    </div>
 		);
+	}
+
+	modalClosed(){
+		window.modal_closed = true;
 	}
 
 	autoCompleteLocation(value) {
@@ -137,21 +140,20 @@ class gpsModalPrompt extends React.Component {
 
 		axios.get(url, {params : body})
 			.then((res) => {
-				this.setState({showLoader : false})
-				if(res.data.status === "OK" || res.data.statusMessage === "OK"){
+				if(res.data.status === "OK"){
 					if(loc)
 						this.setUserLocations([res.data.result.geometry.location.lat,res.data.result.geometry.location.lng], res.data.result.formatted_address) 
 					else if(latlng)
-						this.setUserLocations(latlng, res.data.data[0].formatted_address);
-					$('#gpsModal').modal('hide');
+						this.setUserLocations(latlng, res.data.results[0].formatted_address);
 					this.setState({gpsError : ''})
 				}
 				else{
 					this.setState({locError : res.data.error_message})
+					this.setState({showLoader : false, fetchingGPS : false});
 				}
 			})
 			.catch((error)=>{
-				this.setState({showLoader : false})
+				this.setState({showLoader : false, fetchingGPS : false});
 				console.log("error in autoCompleteLocation ==>", error);
 				let msg = error.message ? error.message : error;
 				this.setState({locError : msg})
@@ -159,6 +161,36 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	setUserLocations(lat_lng, formatted_address){
+		let cart_id = this.getCookie('cart_id');
+		if(cart_id){
+			let url = this.state.apiEndPoint + "/anonymous/cart/change-location";
+			let body = {
+				cart_id : cart_id,
+				lat_long : lat_lng,
+				formatted_address : formatted_address
+			};
+			axios.post(url, body)
+			.then((res) => {
+				this.updateLocationUI(lat_lng, formatted_address);
+				this.setState({showLoader : false, fetchingGPS : false});
+				$('#gpsModal').modal('hide');
+			})
+			.catch((error)=>{
+				this.setState({showLoader : false, fetchingGPS : false});
+				console.log("error in updating cart location ==>", error);
+				let msg = error.message ? error.message : error;
+				this.setState({locError : msg});
+			})
+		}
+		else{
+			this.setState({showLoader : false, fetchingGPS : false});
+			this.updateLocationUI(lat_lng, formatted_address);
+			$('#gpsModal').modal('hide');
+		}
+		
+	}
+
+	updateLocationUI(lat_lng, formatted_address){
 		console.log("setUser locations ==>", lat_lng, formatted_address)
 		document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
 		document.cookie = "formatted_address=" + formatted_address + ";path=/";
@@ -175,16 +207,17 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	getLocation(){
+		this.setState({showLoader : true, locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
 			timeout: 10 * 1000
 		}
 		navigator.geolocation.getCurrentPosition((position) => {
 			console.log("position ==>", position.coords);
-			this.setState({ display : false });
 			this.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 		},
 		(geoError) =>{
+			this.setState({showLoader : false, fetchingGPS : false});
 			console.log("error in getting geolocation", geoError);
 			if(geoError.code === 1){
 				// permission denied
@@ -201,6 +234,34 @@ class gpsModalPrompt extends React.Component {
 		if(this.state.gpsError){
 			return <div className="alert-danger">{this.state.gpsError}</div>
 		}
+	}
+
+	showLocationSearch(){
+		if(!this.state.fetchingGPS)
+			return <input type="search" className="w-75" placeholder="search for area, street name" onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
+	}
+
+	showFetchLocationUsingGps(){
+		if(this.state.fetchingGPS)
+			return <div className="btn-dark" > Fetching current Location </div>
+		else
+			return <div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </div>
+	}
+
+	getCookie(cname){
+		let name = cname + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let ca = decodedCookie.split(';');
+		for(let i = 0; i <ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
 	}
 }
 

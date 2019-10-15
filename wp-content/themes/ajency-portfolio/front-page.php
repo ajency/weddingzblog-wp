@@ -16,6 +16,10 @@
   .cart-wrapper.active{
     transform: translate(0,0);
   }
+
+  .cursor-pointer{
+    cursor: pointer;
+  }
 </style>
 
 <!-- <div class="container p5">

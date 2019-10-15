@@ -133,6 +133,11 @@ var addToCart = function (_React$Component) {
 						clearInterval(timer);
 						resolve();
 					}
+					if (window.modal_closed) {
+						clearInterval(timer);
+						window.modal_closed = false;
+						reject("Please select location to add to cart");
+					}
 				}, 500);
 			});
 		}

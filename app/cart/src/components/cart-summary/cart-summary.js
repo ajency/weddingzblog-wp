@@ -10,14 +10,13 @@ class CartSummary extends Component {
 			<div className="cart-summary-container">
 				<div className="summary-item">
 					<div><label className="text-muted f-w-4 m-0">Total Item Price</label></div>
-					<div> ₹ {this.props.summary.mrp_total} </div>
+					<div> ₹ {this.props.summary.sale_price_total} </div>
 				</div>
-				<div className="summary-item">
-					<div><label className="text-muted f-w-4 m-0">Sub Total</label></div>
-					<div> ₹ {this.props.summary.sale_price_total}</div>
-				</div>
+
 				{this.getCouponDiscount()}
+
 				{this.getShippingFee()}
+				
 				<div className="summary-item">
 					<div><label className="text-muted f-w-4 m-0">To Pay</label></div>
 					<div> ₹ {this.props.summary.you_pay}</div>

@@ -256,14 +256,14 @@ function loadCartApp(){
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
-           href: "/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/css/main.c11e78da.chunk.css"
+           href: "/wp-content/themes/ajency-portfolio/js/cart/static/css/main.c11e78da.chunk.css"
         }).appendTo("head");
 
-        $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        
+        $.getScript("/wp-content/themes/ajency-portfolio/js/cart/static/js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        
             .done(function(script, textStatus){
-                $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/main."+ react_js_file_hashes['main'] +".chunk.js")
+                $.getScript("/wp-content/themes/ajency-portfolio/js/cart/static/js/main."+ react_js_file_hashes['main'] +".chunk.js")
                     .done(function(script2, textStatus2){
-                                $.getScript("/greengrainbowl/wp-content/themes/ajency-portfolio/js/cart/static/js/2."+ react_js_file_hashes['2'] +".chunk.js")
+                                $.getScript("/wp-content/themes/ajency-portfolio/js/cart/static/js/2."+ react_js_file_hashes['2'] +".chunk.js")
                                     .done(function(script4,textStatus4){
                                         loaded = true;
                                     })

@@ -37,7 +37,7 @@ class CartSummary extends Component {
 	getShippingFee(){
 		if(this.props.summary.shipping_fee)
 			return <div className="summary-item">
-						<div><label className="text-muted f-w-4 m-0">Shipping fee</label></div>
+						<div><label className="text-muted f-w-4 m-0">Delivery fee</label></div>
 						<div> ₹ {this.props.summary.shipping_fee}</div>
 					</div>	
 	}

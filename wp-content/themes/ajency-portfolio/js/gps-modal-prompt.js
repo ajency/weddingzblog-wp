@@ -257,6 +257,8 @@ var gpsModalPrompt = function (_React$Component) {
 			window.lat_lng = lat_lng;
 			window.formatted_address = formatted_address;
 			document.querySelector("#selected-location-address").innerHTML = formatted_address;
+			var cart_address = document.querySelector("#cart-delivery-address");
+			if (cart_address) cart_address.innerHTML = formatted_address;
 		}
 	}, {
 		key: 'checkLocationErrorMsg',

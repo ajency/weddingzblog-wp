@@ -12,12 +12,12 @@ class DeliveryAddress extends Component {
 					<div>
 						Deliver To Address
 					</div>
-					<div>
+					<div className="btn btn-dark" onClick={() => this.openChangeLocationModal()}>
 						Change
 					</div>
 				</div>
 				<div className="address-details pt-3">
-					<label>
+					<label id="cart-delivery-address">
 						{this.props.address}
 					</label>
 					<label className="delivery-time">
@@ -26,6 +26,11 @@ class DeliveryAddress extends Component {
 				</div>
 			</div>
 		);
+	}
+
+	openChangeLocationModal(){
+		console.log("openChangeLocationModal");
+		 window.updategpsModalPromptComponent(true);
 	}
 }
 

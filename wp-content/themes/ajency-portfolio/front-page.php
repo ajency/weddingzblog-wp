@@ -12,6 +12,13 @@
     padding: 30px 15px 0;
     transform: translate(500px, 0px);
     transition: all 0.3s ease;
+    width: 430px;
+    @media (max-width: 767px){
+      width: 50vh;
+    }
+    @media (max-width: 480px){
+      width: 100vh;
+    }
   }
   .cart-wrapper.active{
     transform: translate(0,0);
@@ -32,6 +39,16 @@
   .gbb-discount {
     font-size: 80%;
     font-weight: 400;
+  }
+
+  .cart-app-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
   }
 </style>
 
@@ -536,7 +553,9 @@
 
 
 <div class="cart-wrapper" id="root">
-  
+  <div class="cart-app-loader">
+    Loading...
+  </div>
 </div>
 
 <div class="container p5">

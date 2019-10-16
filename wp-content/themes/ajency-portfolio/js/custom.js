@@ -193,8 +193,10 @@ $(window).on("load", function() {
 })
 
 $(document).ready(function(){
-     if(window.location.href.includes('#/cart'))
+    if(window.location.href.includes('#/cart')){
         loadCartApp();
+        $('.cart-wrapper').addClass('active');
+    }
 
     let lat_lng = getCookie('lat_lng')
     if(lat_lng){

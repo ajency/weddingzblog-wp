@@ -23,11 +23,12 @@ class Cart extends Component {
 	componentDidMount(){
 		let el = document.querySelector('#view-cart-btn');
 		console.log("component did mount", el);
-		el.addEventListener("click", ()=>{
-			console.log("click event fired");
-			this.setState({cartData : {}, fetchCartComplete : false})
-			this.fetchCart();
-		});
+		if(el)
+			el.addEventListener("click", ()=>{
+				console.log("click event fired");
+				this.setState({cartData : {}, fetchCartComplete : false})
+				this.fetchCart();
+			});
 	}
 
 	getItems(){

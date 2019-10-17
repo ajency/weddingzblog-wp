@@ -89,7 +89,7 @@ var viewCart = function (_React$Component) {
 			var _this3 = this;
 
 			console.log("inside fetch cart");
-			var cart_id = this.getCookie('cart_id');
+			var cart_id = window.getCookie('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 				var body = {
@@ -98,27 +98,13 @@ var viewCart = function (_React$Component) {
 				axios.get(url, { params: body }).then(function (res) {
 					console.log("fetch cart response ==>", res);
 					_this3.setState({ cart: res.data.cart });
+					res.data.cart.items.forEach(function (item) {
+						window.updateaddToCartComponent(item);
+					});
 				}).catch(function (error) {
 					console.log("error in fetch cart ==>", error);
 				});
 			}
-		}
-	}, {
-		key: 'getCookie',
-		value: function getCookie(cname) {
-			var name = cname + "=";
-			var decodedCookie = decodeURIComponent(document.cookie);
-			var ca = decodedCookie.split(';');
-			for (var i = 0; i < ca.length; i++) {
-				var c = ca[i];
-				while (c.charAt(0) == ' ') {
-					c = c.substring(1);
-				}
-				if (c.indexOf(name) == 0) {
-					return c.substring(name.length, c.length);
-				}
-			}
-			return "";
 		}
 	}]);
 

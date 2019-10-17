@@ -161,7 +161,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	setUserLocations(lat_lng, formatted_address){
-		let cart_id = this.getCookie('cart_id');
+		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 			let body = {
@@ -249,22 +249,6 @@ class gpsModalPrompt extends React.Component {
 			return <div className="btn-dark" > Fetching current Location </div>
 		else
 			return <div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </div>
-	}
-
-	getCookie(cname){
-		let name = cname + "=";
-		let decodedCookie = decodeURIComponent(document.cookie);
-		let ca = decodedCookie.split(';');
-		for(let i = 0; i <ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
 	}
 }
 

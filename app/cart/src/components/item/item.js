@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './item.scss';
+// import addToCart from '../../../add-to-cart/add-to-cart.js';
+import Quantity from './components/cart_quantity.js';
 
 class Item extends Component {
 	constructor(props) {
@@ -17,11 +19,7 @@ class Item extends Component {
 							{this.props.item.attributes.title}
 						</div>
 						<div>
-							<div className="quantity">
-								<button>-</button>
-									{this.props.item.quantity}
-								<button>+</button>
-							</div>
+							<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
 							<div className="price">
 								₹ {this.props.item.attributes.price_final}
 								{this.checkItemDiscount()}
@@ -57,6 +55,14 @@ class Item extends Component {
 	checkServiceability(){
 		if(!this.props.item.deliverable)
 			return <div className="alert-danger">Cannot be delivred at your location</div>
+	}
+
+	removeItem(){
+		this.props.removeItem(this.props.item.variant_id);
+	}
+
+	updateSummary(summary){
+		this.props.updateSummary(summary);
 	}
 }
 

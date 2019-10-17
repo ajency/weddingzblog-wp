@@ -52,7 +52,7 @@ class viewCart extends React.Component {
 
 	fetchCart() {
 		console.log("inside fetch cart");
-		let cart_id = this.getCookie('cart_id');
+		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 			let body = {
@@ -62,27 +62,14 @@ class viewCart extends React.Component {
 				.then((res) => {
 					console.log("fetch cart response ==>", res);
 					this.setState({cart : res.data.cart})
+					res.data.cart.items.forEach((item)=>{
+						window.updateaddToCartComponent(item);
+					})
 				})
 				.catch((error)=>{
 					console.log("error in fetch cart ==>", error);
 				})
 		}
-	}
-
-	getCookie(cname){
-		let name = cname + "=";
-		let decodedCookie = decodeURIComponent(document.cookie);
-		let ca = decodedCookie.split(';');
-		for(let i = 0; i <ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
 	}
 }
 

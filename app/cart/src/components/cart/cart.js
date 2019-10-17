@@ -16,6 +16,7 @@ class Cart extends Component {
 			fetchCartFailureMsg : '',
 			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 			apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
+			cartEmpty : false
 		}
 		this.fetchCart();
 	}
@@ -26,14 +27,14 @@ class Cart extends Component {
 		if(el)
 			el.addEventListener("click", ()=>{
 				console.log("click event fired");
-				this.setState({cartData : {}, fetchCartComplete : false})
+				this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
 				this.fetchCart();
 			});
 	}
 
 	getItems(){
 		let items = this.state.cartData.cart.items.map((item)=>
-			<Item key={item.variant_id} item={item}/>
+			<Item key={item.variant_id} item={item} removeItem={(variant_id) => this.removeItem(variant_id)} updateSummary={(summary) => this.updateSummary(summary)}/>
 		);
 		return items;
 	}
@@ -43,7 +44,10 @@ class Cart extends Component {
 		if(!this.state.fetchCartComplete)
 			cartContainer = <div className="text-center mt-5"> <h4> Loading... </h4>  </div>
 		else {
-			if(this.state.fetchCartFailed){
+			if(this.state.cartEmpty){
+				cartContainer = <div className="text-center mt-5"> <h4> Your cart is Empty. Add something from the menu </h4>  </div>
+			}
+			else if (this.state.fetchCartFailed){
 				cartContainer = <div className="text-center mt-5"> <h4> {this.state.fetchCartFailureMsg} </h4>  </div>
 			}
 			else {
@@ -97,7 +101,7 @@ class Cart extends Component {
 
 	fetchCart() {
 		console.log("inside fetch cart");
-		let cart_id = this.getCookie('cart_id');
+		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			// let url = "https://demo8558685.mockable.io/get-cart";
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
@@ -114,22 +118,27 @@ class Cart extends Component {
 					console.log("error in fetch cart ==>", error);
 				})
 		}
+		else{
+			console.log("inside else")
+			setTimeout(()=>{
+				this.setState({cartEmpty : true, fetchCartComplete : true});
+			},100)
+		}
 	}
 
-	getCookie(cname){
-		let name = cname + "=";
-		let decodedCookie = decodeURIComponent(document.cookie);
-		let ca = decodedCookie.split(';');
-		for(let i = 0; i <ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
+	removeItem(variant_id){
+		console.log("remove item ==>", variant_id);
+		let cart_data = this.state.cartData;
+		cart_data.cart.items = cart_data.cart.items.filter(item => item.variant_id != variant_id);
+		if(!cart_data.cart.items.length)
+			this.setState({cartEmpty : true});
+		this.setState({cartData : cart_data});
+	}
+
+	updateSummary(summary){
+		let cart_data = this.state.cartData;
+		cart_data.cart.summary = summary;
+		this.setState({cartData : cart_data});
 	}
 }
 

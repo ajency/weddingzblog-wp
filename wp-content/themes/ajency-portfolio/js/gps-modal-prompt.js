@@ -224,7 +224,7 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function setUserLocations(lat_lng, formatted_address) {
 			var _this6 = this;
 
-			var cart_id = this.getCookie('cart_id');
+			var cart_id = window.getCookie('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 				var body = {
@@ -332,23 +332,6 @@ var gpsModalPrompt = function (_React$Component) {
 					} },
 				' Get Current Location '
 			);
-		}
-	}, {
-		key: 'getCookie',
-		value: function getCookie(cname) {
-			var name = cname + "=";
-			var decodedCookie = decodeURIComponent(document.cookie);
-			var ca = decodedCookie.split(';');
-			for (var i = 0; i < ca.length; i++) {
-				var c = ca[i];
-				while (c.charAt(0) == ' ') {
-					c = c.substring(1);
-				}
-				if (c.indexOf(name) == 0) {
-					return c.substring(name.length, c.length);
-				}
-			}
-			return "";
 		}
 	}]);
 

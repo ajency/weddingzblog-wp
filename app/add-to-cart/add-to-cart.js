@@ -8,33 +8,41 @@ class addToCart extends React.Component {
 		this.state = { 
 			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 			apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
-			addToCartInProgress : false
+			apiCallInProgress : false,
+			quantity : 0
 		};
 	}
 
 	render() {
 		return (
-			<button className="btn-primary" style={btnStyle} onClick={() => this.addToCart()} disabled={this.state.addToCartInProgress}>
+			<div>
 				{this.getButtonContent()}
-			</button>
+			</div>
 		);
 	}
 
 	getButtonContent(){
-		if(this.state.addToCartInProgress){
+		if(this.state.apiCallInProgress){
 			return (<div class="btn-icon">
 						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>);
 
 		}
-		return (<span>
-					ADD	
-				</span>)
+		if(this.state.quantity == 0)
+			return (<button className="btn-primary" style={btnStyle} onClick={() => this.addToCart()} disabled={this.state.apiCallInProgress}>ADD</button>)
+
+		return (
+			<div>
+				<button className="btn-primary" style={btnStyle} onClick={() => this.removeFromCart()} disabled={this.state.apiCallInProgress}>-</button>
+				<span className="m-1">	{this.state.quantity} </span>
+				<button className="btn-primary" style={btnStyle} onClick={() => this.addToCart()} disabled={this.state.apiCallInProgress}>+</button>
+			</div>
+		)		
 	}
 
 	addToCart() {
-		this.setState({addToCartInProgress : true});
-		let cart_id = this.getCookie('cart_id');
+		this.setState({apiCallInProgress : true});
+		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			this.addToCartApiCall(null, cart_id);
 		}
@@ -46,11 +54,42 @@ class addToCart extends React.Component {
 				this.addToCartApiCall(window.lat_lng, null, window.formatted_address);
 			})
 			.catch((error) => {
-				this.setState({addToCartInProgress : false});
+				this.setState({apiCallInProgress : false});
 				console.log("error ==>", error);
 				this.displayError(error);
 			});
 		}
+	}
+
+	removeFromCart(){
+		this.setState({apiCallInProgress : true});
+		// let url = this.state.apiEndPoint + "/anonymous/cart/remove";
+		let url = "https://demo8558685.mockable.io/remove-from-cart";
+		let body = {
+			variant_id 	: this.props.variant_id,
+			quantity 	: 1,
+			cart_id 	: window.getCookie('cart_id')
+		}
+
+		axios.post(url, body)
+		.then((res) => {
+			console.log("add to cart response ==>", res);
+			if(res.data.success){
+				let quantity = this.state.quantity - 1;
+				this.setState({quantity : quantity})
+				window.updateViewCartCompoent(res.data);
+			}
+			else{
+				this.displayError(res.data.message);
+			}
+			this.setState({apiCallInProgress : false});
+		})
+		.catch((error)=>{
+			console.log("error in add to cart ==>", error);
+			this.setState({apiCallInProgress : false});
+			let msg = error && error.message ? error.message : error;
+			this.displayError(msg);
+		})
 	}
 
 	addToCartApiCall(lat_long = null, cart_id = null, formatted_address = null){
@@ -71,6 +110,8 @@ class addToCart extends React.Component {
 		.then((res) => {
 			console.log("add to cart response ==>", res);
 			if(res.data.success){
+				let quantity = this.state.quantity + res.data.item.quantity;
+				this.setState({quantity : quantity})
 				window.updateViewCartCompoent(res.data);
 				if(!cart_id && res.data.cart_id)
 					document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
@@ -78,11 +119,11 @@ class addToCart extends React.Component {
 			else{
 				this.displayError(res.data.message);
 			}
-			this.setState({addToCartInProgress : false});
+			this.setState({apiCallInProgress : false});
 		})
 		.catch((error)=>{
 			console.log("error in add to cart ==>", error);
-			this.setState({addToCartInProgress : false});
+			this.setState({apiCallInProgress : false});
 			let msg = error && error.message ? error.message : error;
 			this.displayError(msg);
 		})
@@ -112,30 +153,21 @@ class addToCart extends React.Component {
 		    },500)
 		});
 	}
-
-	getCookie(cname){
-		let name = cname + "=";
-		let decodedCookie = decodeURIComponent(document.cookie);
-		let ca = decodedCookie.split(';');
-		for(let i = 0; i <ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
 }
 
+let addToCartComponents = []
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
-	.forEach(domContainer => {
+	.forEach((domContainer, index) => {
+		console.log(index);
 		const variant_id = domContainer.dataset.variant_id;
-		ReactDOM.render(
-			e(addToCart, { variant_id: variant_id }),
-			domContainer
-		);
+		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { variant_id: variant_id }),domContainer);
 	});
+
+window.updateaddToCartComponent = (item) => {
+	addToCartComponents.forEach((component) =>{
+		if(component.props.variant_id == item.variant_id){
+			component.setState({quantity : item.quantity})
+		}
+	})
+}

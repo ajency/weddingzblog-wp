@@ -45,8 +45,8 @@ class Quantity extends Component {
 
 	removeFromCart(quantity){
 		this.setState({apiCallInProgress : true});
-		// let url = this.state.apiEndPoint + "/anonymous/cart/remove";
-		let url = "https://demo8558685.mockable.io/remove-from-cart";
+		let url = this.state.apiEndPoint + "/anonymous/cart/delete";
+		// let url = "https://demo8558685.mockable.io/remove-from-cart";
 		let body = {
 			variant_id 	: this.props.variant_id,
 			quantity 	: quantity,

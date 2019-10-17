@@ -46,7 +46,7 @@ var viewCart = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
-			if (this.state.cart) {
+			if (this.state.cart && this.state.cart.cart_count) {
 				return React.createElement(
 					'div',
 					{ style: divStyle },

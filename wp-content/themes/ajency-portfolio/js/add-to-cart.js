@@ -109,8 +109,8 @@ var addToCart = function (_React$Component) {
 			var _this4 = this;
 
 			this.setState({ apiCallInProgress: true });
-			// let url = this.state.apiEndPoint + "/anonymous/cart/remove";
-			var url = "https://demo8558685.mockable.io/remove-from-cart";
+			var url = this.state.apiEndPoint + "/anonymous/cart/delete";
+			// let url = "https://demo8558685.mockable.io/remove-from-cart";
 			var body = {
 				variant_id: this.props.variant_id,
 				quantity: 1,

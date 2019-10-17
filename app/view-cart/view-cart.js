@@ -26,7 +26,7 @@ class viewCart extends React.Component {
 	}
 
 	render() {
-		if(this.state.cart){
+		if(this.state.cart && this.state.cart.cart_count){
 			return (
 				<div style={divStyle}>
 					<div>

@@ -1,0 +1,118 @@
+.font-weight-light {
+    font-weight: 300;
+}
+.font-weight-regular {
+    font-weight: 400;
+}
+.font-weight-semibold {
+    font-weight: 600;
+}
+.font-weight-bold {
+    font-weight: 700;
+}
+
+.border {
+    &-0{
+        border: 0;
+    }
+    &-green {
+        border: 1px solid #47A748;
+    }
+    &-lightgrey{
+        border: 1px solid #C4C8C4;
+    }
+    &-radius {
+        &-0 {
+            border-radius: 0;
+        }
+        &-rounded{
+            border-radius: 50%; 
+        }
+    }
+}
+
+.text{
+    &-black{
+        color: #000000;
+    }
+    &-grey{
+        color:#7C7C7C;
+    }
+    &-green{
+        color: #47A748;
+    }
+    &-white{
+        color: #ffffff;
+    }
+}
+
+.d {
+    &-none {
+        display: none;
+    }
+
+    &-block {
+        display: block;
+    }
+
+    &-inline-block {
+        display: inline-block;
+    }
+
+    &-flex {
+        display: flex;        
+        &:before,
+        &:after {
+            display: none;
+        }        
+    }  
+}
+
+.align-items {
+    &-center {
+        align-items: center;
+    }
+    &-start {
+        align-items: flex-start;
+    }
+    &-end {
+        align-items: flex-end;
+    }
+}
+
+.justify-content {
+    &-center {
+        justify-content: center;
+    }
+    &-start {
+        justify-content: flex-start;
+    }
+    &-end {
+        justify-content: flex-end;
+    }
+    &-around {
+        justify-content: space-around;
+    }
+    &-between {
+        justify-content: space-between;
+    }
+}
+
+.position{
+    &-relative{
+        position: relative;
+    }
+    &-absolute{
+        position: relative;
+    }
+}
+
+.w{
+    &-100{
+        width: 100%;
+    }
+}
+
+.p-15{
+    padding: 15px;;
+}

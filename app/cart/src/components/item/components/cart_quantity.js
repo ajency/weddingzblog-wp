@@ -69,9 +69,10 @@ class Quantity extends Component {
 				window.updateViewCartCompoent(res.data);
 				let item = {
 					variant_id : this.props.variant_id,
-					quantity : -quantity
+					quantity : quantity,
+					product_id : this.props.product_id
 				}
-				window.updateItemQuantity(item);
+				window.updateItemQuantity(item, 'remove');
 			}
 			else{
 				this.displayError(res.data.message);
@@ -103,7 +104,7 @@ class Quantity extends Component {
 				let quantity = this.state.quantity + res.data.item.quantity;
 				this.setState({quantity : quantity})
 				window.updateViewCartCompoent(res.data);
-				window.updateItemQuantity(res.data.item);
+				window.updateItemQuantity(res.data.item, 'add');
 			}
 			else{
 				this.displayError(res.data.message);

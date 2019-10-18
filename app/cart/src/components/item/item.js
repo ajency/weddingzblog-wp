@@ -19,11 +19,14 @@ class Item extends Component {
 							{this.props.item.attributes.title}
 						</div>
 						<div>
-							<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
+							<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
 							<div className="price">
 								₹ {this.props.item.attributes.price_final}
 								{this.checkItemDiscount()}
 							</div>
+						</div>
+						<div>
+							Size : {this.props.item.attributes.size}
 						</div>
 					</div>
 				</div>

@@ -61,7 +61,7 @@ var viewCart = function (_React$Component) {
 						'div',
 						null,
 						'\u20B9 ',
-						this.state.cart.summary.you_pay
+						this.state.cart.summary.sale_price_total
 					),
 					React.createElement(
 						'div',

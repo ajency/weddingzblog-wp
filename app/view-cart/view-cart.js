@@ -33,7 +33,7 @@ class viewCart extends React.Component {
 						{this.state.cart.cart_count} {this.state.cart.cart_count > 1 ? 'Items' : 'Item'}
 					</div>
 					<div>
-						₹ {this.state.cart.summary.you_pay}
+						₹ {this.state.cart.summary.sale_price_total}
 					</div>
 					<div id="view-cart-btn" style={btnStyle} onClick={() => this.loadCart()}>
 						VIEW CART

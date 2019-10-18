@@ -171,3 +171,13 @@ window.updateaddToCartComponent = (item) => {
 		}
 	})
 }
+
+window.updateItemQuantity = (item) => {
+	addToCartComponents.forEach((component) =>{
+		if(component.props.variant_id == item.variant_id){
+			const updated_quantity = component.state.quantity + item.quantity
+			console.log("updated quantity =>", updated_quantity,item, component.state.quantity);
+			component.setState({quantity : updated_quantity})
+		}
+	})
+}

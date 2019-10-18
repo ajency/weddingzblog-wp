@@ -5,6 +5,7 @@ import Item from '../item/item.js';
 import CartSummary from '../cart-summary/cart-summary.js';
 import DeliveryAddress from '../delivery-address/delevery-address.js';
 import axios from 'axios';
+ declare var $: any;
 
 class Cart extends Component {
 	constructor(props){
@@ -22,14 +23,19 @@ class Cart extends Component {
 	}
 
 	componentDidMount(){
-		let el = document.querySelector('#view-cart-btn');
-		console.log("component did mount", el);
-		if(el)
-			el.addEventListener("click", ()=>{
-				console.log("click event fired");
-				this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-				this.fetchCart();
-			});
+		// let el = document.querySelector('#view-cart-btn');
+		// console.log("component did mount", el);
+		// if(el)
+		// 	el.addEventListener("click", ()=>{
+		// 		console.log("click event fired");
+		// 		this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+		// 		this.fetchCart();
+		// 	});
+		$('#view-cart-btn').on('click', ()=>{
+			console.log("click event fired");
+			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+			this.fetchCart();
+	    });
 	}
 
 	getItems(){

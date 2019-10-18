@@ -221,3 +221,13 @@ window.updateaddToCartComponent = function (item) {
 		}
 	});
 };
+
+window.updateItemQuantity = function (item) {
+	addToCartComponents.forEach(function (component) {
+		if (component.props.variant_id == item.variant_id) {
+			var updated_quantity = component.state.quantity + item.quantity;
+			console.log("updated quantity =>", updated_quantity, item, component.state.quantity);
+			component.setState({ quantity: updated_quantity });
+		}
+	});
+};

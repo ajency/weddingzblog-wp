@@ -9,25 +9,23 @@ class Item extends Component {
 	}
 	render() {
 		return (
-			<div className="item-container flex-column">
+			<div className="item-container flex-column mb-2">
 				<div className="d-flex">
-					<div className="product-image">
-						<img alt="french fries" title="french fries" height="70" width="50" src={this.props.item.attributes.images['1x']}/>
+					<div className="product-image d-inline-block">
+						<img alt="french fries" title="french fries" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
-					<div className="flex-fill">
+					<div className="product-details d-inline-block">
 						<div className="product-title">
 							{this.props.item.attributes.title}
-						</div>
-						<div>
-							<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
-							<div className="price">
-								₹ {this.props.item.attributes.price_final}
-								{this.checkItemDiscount()}
-							</div>
-						</div>
-						<div>
+						</div>						
+					</div>			
+					<div className="price d-inline-block">
+						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
+							₹ {this.props.item.attributes.price_final}
+							{this.checkItemDiscount()}
+					</div>
+					<div>
 							Size : {this.props.item.attributes.size}
-						</div>
 					</div>
 				</div>
 				<div>

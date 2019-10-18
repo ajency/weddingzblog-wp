@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import './header.scss';
+import logo from '../../assets/images/Logo.png';
+import logoCheckout from '../../assets/images/checkout.png';
 
 class Header extends Component {
 	render() {
 		return (
-			<div className="header-container">
-				<div className="app-name">
-					<label className="app-title">Green Grain Bowl</label>
+			<div className="header-container d-flex align-items-center background-offgreen">
+				<div className="app-name d-flex align-items-center">					
+					<img src={logo} className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+					<label className="app-title text-black">Green Grain Bowl</label>
 				</div>
-				<div>
-					Secure Checkout
+				<div className="app-chekout text-green">
+					<img src={logoCheckout} className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+					Secure <br/>Checkout
 				</div>
-				<div class="ml-auto align-self-center">
-					<h3 class="m-0 text-white btn-pay" onClick={() => this.closeCart()}><span aria-hidden="true">&times;</span></h3>
-				</div>
+				<h3 className="app-close background-green m-0 text-white btn-pay m-0" onClick={() => this.closeCart()}>
+					<span aria-hidden="true">&times;</span>
+				</h3>
 			</div>
 		);
 	}

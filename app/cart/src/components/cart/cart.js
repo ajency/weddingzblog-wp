@@ -22,21 +22,21 @@ class Cart extends Component {
 		this.fetchCart();
 	}
 
-	componentDidMount(){
-		// let el = document.querySelector('#view-cart-btn');
-		// console.log("component did mount", el);
-		// if(el)
-		// 	el.addEventListener("click", ()=>{
-		// 		console.log("click event fired");
-		// 		this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-		// 		this.fetchCart();
-		// 	});
-		$('#view-cart-btn').on('click', ()=>{
-			console.log("click event fired");
-			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-			this.fetchCart();
-	    });
-	}
+	// componentDidMount(){
+	// 	// let el = document.querySelector('#view-cart-btn');
+	// 	// console.log("component did mount", el);
+	// 	// if(el)
+	// 	// 	el.addEventListener("click", ()=>{
+	// 	// 		console.log("click event fired");
+	// 	// 		this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+	// 	// 		this.fetchCart();
+	// 	// 	});
+	// 	$('#view-cart-btn').on('click', ()=>{
+	// 		console.log("click event fired");
+	// 		this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+	// 		this.fetchCart();
+	//     });
+	// }
 
 	getItems(){
 		let items = this.state.cartData.cart.items.map((item)=>
@@ -108,9 +108,9 @@ class Cart extends Component {
 	fetchCart() {
 		console.log("inside fetch cart");
 		let cart_id = window.getCookie('cart_id');
-		if(cart_id){
-			// let url = "https://demo8558685.mockable.io/get-cart";
-			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
+		if(true){
+			let url = "https://demo8558685.mockable.io/get-cart";
+			// let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 			let body = {
 				cart_id : cart_id
 			}

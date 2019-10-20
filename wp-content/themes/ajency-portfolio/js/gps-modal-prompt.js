@@ -340,6 +340,6 @@ var gpsModalPrompt = function (_React$Component) {
 var domContainer = document.querySelector('#react-add-delivery-address-container');
 var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 
-window.updategpsModalPromptComponent = function (data) {
+window.showGpsModalPrompt = function (data) {
 	$('#gpsModal').modal('show');
 };

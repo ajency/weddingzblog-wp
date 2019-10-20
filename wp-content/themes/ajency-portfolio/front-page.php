@@ -458,9 +458,11 @@
 </div>
 
 <!-- Selected Location -->
-<div id="selected-location-address" class="font-weight-bold cursor-pointer">
-
+<div class="delivery-location d-flex cursor-pointer">
+  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+  <div id="selected-location-address" class="font-weight-bold"></div>  
 </div>
+
 
 <!-- Products -->
 <div>

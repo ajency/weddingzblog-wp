@@ -284,7 +284,7 @@ class addToCart extends React.Component {
 
 	getGeolocation(){
 		return new Promise((resolve, reject) => {
-		    window.updategpsModalPromptComponent(true);
+		    window.showGpsModalPrompt(true);
 		    let timer = setInterval(()=>{
 		    	if(window.lat_lng){
 		    		clearInterval(timer);

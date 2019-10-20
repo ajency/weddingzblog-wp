@@ -440,7 +440,7 @@ var addToCart = function (_React$Component) {
 		key: 'getGeolocation',
 		value: function getGeolocation() {
 			return new Promise(function (resolve, reject) {
-				window.updategpsModalPromptComponent(true);
+				window.showGpsModalPrompt(true);
 				var timer = setInterval(function () {
 					if (window.lat_lng) {
 						clearInterval(timer);

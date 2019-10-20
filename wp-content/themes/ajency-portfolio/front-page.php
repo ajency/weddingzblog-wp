@@ -548,6 +548,13 @@
   </span>
 </div>
 
+<!-- Add to cart error  -->
+<div class="success toast d-flex justify-content-center">
+  <span class="alert-success d-none" id="success-toast">
+    Successfully added to cart
+  </span>
+</div>
+
 <!-- View cart component -->
 <div id="react-view-cart-container" style="width: 100%"></div>
 

@@ -220,6 +220,7 @@ class addToCart extends React.Component {
 			if(res.data.success){
 				this.addItems(res.data.item);
 				window.updateViewCartCompoent(res.data);
+				this.displaySuccess("Successfully added to cart")
 				if(!cart_id && res.data.cart_id)
 					document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
 			}
@@ -270,6 +271,14 @@ class addToCart extends React.Component {
 		document.querySelector('#failure-toast').classList.remove('d-none');
 		setTimeout(()=>{
 			document.querySelector('#failure-toast').classList.add('d-none');
+		},3000)
+	}
+
+	displaySuccess(msg){
+		document.querySelector('#success-toast').innerHTML = msg;
+		document.querySelector('#success-toast').classList.remove('d-none');
+		setTimeout(()=>{
+			document.querySelector('#success-toast').classList.add('d-none');
 		},3000)
 	}
 

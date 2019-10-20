@@ -370,6 +370,7 @@ var addToCart = function (_React$Component) {
 				if (res.data.success) {
 					_this8.addItems(res.data.item);
 					window.updateViewCartCompoent(res.data);
+					_this8.displaySuccess("Successfully added to cart");
 					if (!cart_id && res.data.cart_id) document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
 				} else {
 					_this8.displayError(res.data.message);
@@ -424,6 +425,15 @@ var addToCart = function (_React$Component) {
 			document.querySelector('#failure-toast').classList.remove('d-none');
 			setTimeout(function () {
 				document.querySelector('#failure-toast').classList.add('d-none');
+			}, 3000);
+		}
+	}, {
+		key: 'displaySuccess',
+		value: function displaySuccess(msg) {
+			document.querySelector('#success-toast').innerHTML = msg;
+			document.querySelector('#success-toast').classList.remove('d-none');
+			setTimeout(function () {
+				document.querySelector('#success-toast').classList.add('d-none');
 			}, 3000);
 		}
 	}, {

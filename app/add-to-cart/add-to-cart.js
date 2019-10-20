@@ -308,7 +308,7 @@ window.updateaddToCartComponent = (item) => {
 			let items = component.state.items;
 			items.push(item)
 			items.sort((a,b)=>{
-	  			return b.created._seconds - a.created._seconds;
+	  			return b.timestamp._seconds - a.timestamp._seconds;
 	  		})
 			let last_added = items[0].variant_id;
 			let qty = 0;

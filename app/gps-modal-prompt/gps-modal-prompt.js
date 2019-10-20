@@ -211,7 +211,8 @@ class gpsModalPrompt extends React.Component {
 		this.setState({showLoader : true, locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
-			timeout: 10 * 1000
+			timeout: 10 * 1000,
+			enableHighAccuracy : true
 		}
 		navigator.geolocation.getCurrentPosition((position) => {
 			console.log("position ==>", position.coords);

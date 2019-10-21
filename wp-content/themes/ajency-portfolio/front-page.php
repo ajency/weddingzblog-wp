@@ -463,81 +463,86 @@
   <div id="selected-location-address" class="font-weight-bold"></div>  
 </div>
 
-
-<!-- Products -->
-<div>
-  <h1>
-    Products
-  </h1>
-  <div class="d-flex p-2 m-2">
-        <div class="p-2 m-2">
-            <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
-            </div>
-            
-            <h5>
-                 <a href="javascript:void(0)">
-                  Orange Barley Bowl                
-                 </a>
-            </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>100.00</span>
-            <small class="gbb-original-price text-muted">₹150</small>
-            <span class="gbb-discount text-danger">33% OFF</span>
-            <!-- Add to cart button -->
-            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="bupD3ekj2qEketZ0Kpf9" data-product_data='{ "product_id" : "yykiWcEv48MtR2oRiWla", "title" : "Orange Barley Bowl", "default" : "72mIBZ9aTr8Okr05SfSN", "variants" : [ { "id" : "72mIBZ9aTr8Okr05SfSN", "mrp" : 150, "sale_price" : 100, "size" : "Small" }, { "id" : "bupD3ekj2qEketZ0Kpf9", "mrp" : 300, "sale_price" : 250, "size" : "Regular" }, { "id" : "EvG1uPu3uFKZpxAh35OP", "mrp" : 500, "sale_price" : 450, "size" : "Large" } ] }'></div>
-       </div>
-
-
-        <div class="p-2 m-2">
-            <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://greengrainbowl.com/wp-content//themes/ajency-portfolio/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
-            </div>
-            
-            <h5>
-                <a href="javascript:void(0)">
-                  Cracked Wheat &amp; Chickpea Bowl                 
-                </a>
-            </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>            
-            <small class="gbb-original-price text-muted">₹500</small>
-            <span class="gbb-discount text-danger">20% OFF</span>
-            <!-- Add to cart button -->
-            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="5awRHIDbXVNMEZhoYjtZ" data-product_data='{ "product_id" : "ReAlsVnx73KSVrYGvbsn", "title" : "Cracked Wheat & Chickpea Bowl", "default" : "5awRHIDbXVNMEZhoYjtZ", "variants" : [ { "id" : "5awRHIDbXVNMEZhoYjtZ", "mrp" : 500, "sale_price" : 400, "size" : "Regular" } ] }'></div>
-       </div>
-
-
-        <div class="p-2 m-2">
-            <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/thai-brown-rice-bowl-panner.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
-            </div>
-            
-            <h5>
-                <a href="javascript:void(0)">
-                  Thai Brown Rice Bowl                 
-                </a>
-            </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>400.00</span>
-            <small class="gbb-original-price text-muted">₹450</small>
-            <span class="gbb-discount text-danger">11% OFF</span>            
-            <!-- Add to cart button -->
-            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="Nwn6e8h6OWVBpMFN0c9z" data-product_data='{ "product_id" : "moVonufnFw46emRbKy7W", "title" : "Thai Brown Rice Bowl", "default" : "Nwn6e8h6OWVBpMFN0c9z", "variants" : [ { "id" : "Nwn6e8h6OWVBpMFN0c9z", "mrp" : 450, "sale_price" : 400, "size" : "Regular" } ] }'></div>
-       </div>
-
-
-        <div class="p-2 m-2">
-            <div class="product-image" style="width: 100px; height: 100px;">
-              <img width="100" height="72" src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/quinoa-n-nuts-bowl.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">  
-            </div>
-            
-            <h5>
-                <a href="javascript:void(0)">
-                  Quinoa &amp; Nuts Bowl                 
-                </a>
-            </h5>
-            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₹</span>200.00</span>            <!-- Add to cart button -->
-            <div class="react-add-to-cart-container cursor-pointer" data-variant_id="dlI88p2ORp3Wk6W0Hq3t" data-product_data='{ "product_id" : "JS42fGblvs7VJ8uxXuaD", "title" : "Quinoa & Nuts Bowl", "default" : "WpKYzupzbBimyAt3WOrg", "variants" : [ { "id" : "WpKYzupzbBimyAt3WOrg", "mrp" : 200, "sale_price" : 200, "size" : "Small" }, { "id" : "dlI88p2ORp3Wk6W0Hq3t", "mrp" : 300, "sale_price" : 300, "size" : "Regular" }, { "id" : "auYzBeDEuvqIiu1gxx9J", "mrp" : 400, "sale_price" : 400, "size" : "Large" } ] }'></div>
-       </div>
-  </div>  
+<div class="product-section">  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-21">
+      </div>
+      <div class="col-xl-12">
+        <h1 class="ft6 product-section__title mb-4">Products</h1>
+        <div class="row product-list">
+          <div class="col-sm-3 product-list-item">
+            <div class="product-wrapper bg-primary text-center">
+              <div class="product-image">
+                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
+              </div>
+              <div class="product-info text-white p-3">
+                <div class="product-title mb-2">Noodle Salad Bowl</div>
+                <div class="product_excerpt mb-4">
+                  nd a colorful mix of greens,  Served with a very Asian soy-sesame & ginger dressing.
+                </div>
+                <div class="product-meta">
+                  <span class="product-likes">165 Likes</span> - <span class="product-price"> 450 </span>
+                </div>
+                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white">Add to cart</a>
+              </div>
+            </div>      
+          </div>
+          <div class="col-sm-3 product-list-item">
+            <div class="product-wrapper bg-primary text-center">
+              <div class="product-image">
+                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
+              </div>
+              <div class="product-info text-white p-3">
+                <div class="product-title mb-2">Noodle Salad Bowl</div>
+                <div class="product_excerpt mb-4">
+                  Buckwheat noodles and a colorftofu. Served with a very Asian soy-sesame & ginger dressing.
+                </div>
+                <div class="product-meta">
+                  <span class="product-likes">165 Likes</span> - <span class="product-price"> 450 </span>
+                </div>
+                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white">Add to cart</a>
+              </div>
+            </div> 
+          </div>
+          <div class="col-sm-3 product-list-item">
+             <div class="product-wrapper bg-primary text-center">
+              <div class="product-image">
+                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
+              </div>
+              <div class="product-info text-white p-3">
+                <div class="product-title mb-2">Noodle Salad Bowl</div>
+                <div class="product_excerpt mb-4">
+                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
+                </div>
+                <div class="product-meta">
+                  <span class="product-likes">165 Likes</span> - <span class="product-price"> 450 </span>
+                </div>
+                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white">Add to cart</a>
+              </div>
+            </div>  
+          </div>
+          <div class="col-sm-3 product-list-item">
+             <div class="product-wrapper bg-primary text-center">
+              <div class="product-image">
+                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
+              </div>
+              <div class="product-info text-white p-3">
+                <div class="product-title mb-2">Noodle Salad Bowl</div>
+                <div class="product_excerpt mb-4">
+                  Buckwheat noodles and a colorful mix of greens, rovery Asian soy-sesame & ginger dressing.
+                </div>
+                <div class="product-meta">
+                  <span class="product-likes">165 Likes</span> - <span class="product-price"> 450 </span>
+                </div>
+                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white">Add to cart</a>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
 </div>
 
 <!-- gps modal prompt -->

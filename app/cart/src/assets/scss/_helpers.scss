@@ -4,6 +4,9 @@
 .font-weight-regular {
     font-weight: 400;
 }
+.font-weight-medium {
+    font-weight: 500;
+}
 .font-weight-semibold {
     font-weight: 600;
 }
@@ -12,11 +15,17 @@
 }
 
 .border {
-    &-0{
-        border: 0;
-    }
     &-green {
         border: 1px solid #47A748;
+        &-2{
+            border: 2px solid #47A748;
+        }
+    }
+    &-grey{
+        border: 1px solid #7C7C7C;
+        &-50{
+            border: 1px solid rgba(124, 124, 124, 0.5);
+        }
     }
     &-lightgrey{
         border: 1px solid #C4C8C4;
@@ -25,8 +34,23 @@
         &-0 {
             border-radius: 0;
         }
+        &-8{
+            border-radius: 8px;
+        }
+        &-30{
+            border-radius: 30px;
+        }
         &-rounded{
             border-radius: 50%; 
+        }
+    }
+    &-0{
+        border: 0;
+        &-left{
+            border-left: 0;
+        }
+        &-right{
+            border-right: 0;
         }
     }
 }
@@ -43,6 +67,21 @@
     }
     &-white{
         color: #ffffff;
+    }
+}
+
+
+.text{
+    &-align{
+        &-right{
+            text-align: right;
+        }
+        &-left{
+            text-align: left;
+        }
+        &-center{
+            text-align: center;
+        }
     }
 }
 
@@ -111,8 +150,35 @@
     &-100{
         width: 100%;
     }
+    &-50{
+        width: 50%;
+    }
 }
 
 .p-15{
     padding: 15px;;
+}
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+    right: -100%;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s ease-in;
+    &.visible{
+        right: 0;
+    }
+}
+
+.vertical-align{
+    &-middle{
+        vertical-align: middle;
+    }
+    &-top{
+        vertical-align: top;
+    }
+    &-bottom{
+        vertical-align: bottom;
+    }
 }

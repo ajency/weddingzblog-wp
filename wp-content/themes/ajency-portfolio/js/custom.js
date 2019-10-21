@@ -261,7 +261,7 @@ function loadCartApp(){
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
-           href: url+"css/main.c11e78da.chunk.css"
+           href: url+"css/main.dbbe8bbe.chunk.css"
         }).appendTo("head");
 
         $.getScript(url+"js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        

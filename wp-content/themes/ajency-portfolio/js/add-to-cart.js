@@ -25,7 +25,7 @@ var addToCart = function (_React$Component) {
 			quantity: 0,
 			lastSelected: '',
 			items: [],
-			defaultVariant: ''
+			selectedVariant: ''
 		};
 		return _this;
 	}
@@ -33,7 +33,10 @@ var addToCart = function (_React$Component) {
 	_createClass(addToCart, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			this.setState({ defaultVariant: this.props.product_data.default });
+			this.setState({ selectedVariant: this.props.product_data.default });
+			// .then(()=>{
+			// 	console.log("check ==>", this.state.selectedVariant);
+			// })
 		}
 	}, {
 		key: 'render',
@@ -88,7 +91,7 @@ var addToCart = function (_React$Component) {
 							React.createElement(
 								'button',
 								{ className: 'btn btn-primary', onClick: function onClick() {
-										return _this2.addToCart();
+										return _this2.addToCart(_this2.state.selectedVariant);
 									} },
 								' CONTINUE '
 							)
@@ -144,7 +147,7 @@ var addToCart = function (_React$Component) {
 								React.createElement(
 									'button',
 									{ className: 'btn btn-primary', onClick: function onClick() {
-											return _this2.addToCart();
+											return _this2.addToCart(_this2.state.lastSelected);
 										} },
 									' Repeat Last '
 								)
@@ -166,7 +169,7 @@ var addToCart = function (_React$Component) {
 					React.createElement(
 						'label',
 						null,
-						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, onChange: function onChange(event) {
+						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, checked: _this3.state.selectedVariant == variant.id, onChange: function onChange(event) {
 								return _this3.handleOptionChange(event);
 							} }),
 						React.createElement(
@@ -211,7 +214,7 @@ var addToCart = function (_React$Component) {
 		key: 'handleOptionChange',
 		value: function handleOptionChange(event) {
 			console.log(event.target.value);
-			this.setState({ lastSelected: event.target.value, defaultVariant: event.target.value });
+			this.setState({ selectedVariant: event.target.value });
 		}
 	}, {
 		key: 'getButtonContent',
@@ -325,6 +328,7 @@ var addToCart = function (_React$Component) {
 			axios.post(url, body).then(function (res) {
 				console.log("add to cart response ==>", res);
 				if (res.data.success) {
+					_this7.displaySuccess("Successfully removed from cart");
 					var item = {
 						variant_id: variant_id,
 						quantity: 1
@@ -356,7 +360,7 @@ var addToCart = function (_React$Component) {
 			console.log("inside add to cart ", lat_long, cart_id);
 			var url = this.state.apiEndPoint + "/anonymous/cart/insert";
 			var body = {
-				variant_id: variant_id ? variant_id : this.state.lastSelected,
+				variant_id: variant_id,
 				quantity: 1,
 				lat_long: lat_long,
 				formatted_address: formatted_address
@@ -405,7 +409,7 @@ var addToCart = function (_React$Component) {
 			var updated_item_index = items.findIndex(function (i) {
 				return i.variant_id == item.variant_id;
 			});
-			var last_selected = void 0,
+			var last_selected = '',
 			    quantity = this.state.quantity - item.quantity;
 			if (updated_item_index !== -1) {
 				items[updated_item_index].quantity -= item.quantity;
@@ -462,10 +466,10 @@ var addToCart = function (_React$Component) {
 var addToCartComponents = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container').forEach(function (domContainer, index) {
-	console.log(index);
+	// console.log(index);
 	var variant_id = domContainer.dataset.variant_id;
 	var product_data = JSON.parse(domContainer.dataset.product_data);
-	console.log("product_data ==>", product_data);
+	// console.log("product_data ==>", product_data);
 	addToCartComponents[index] = ReactDOM.render(e(addToCart, { product_data: product_data }), domContainer);
 });
 

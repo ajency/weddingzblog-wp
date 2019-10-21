@@ -12,12 +12,15 @@ class addToCart extends React.Component {
 			quantity : 0,
 			lastSelected : '',
 			items : [],
-			defaultVariant : ''
+			selectedVariant : ''
 		};
 	}
 
 	componentDidMount(){
-		this.setState({defaultVariant : this.props.product_data.default })
+		this.setState({selectedVariant : this.props.product_data.default })
+			// .then(()=>{
+			// 	console.log("check ==>", this.state.selectedVariant);
+			// })
 	}
 
 	render() {
@@ -41,7 +44,7 @@ class addToCart extends React.Component {
 								{this.getVariants()}
 							</div>
 
-							<button className="btn btn-primary" onClick={()=>this.addToCart()}> CONTINUE </button>
+							<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.selectedVariant)}> CONTINUE </button>
 						</div>
 				  	</div>
 			    </div>
@@ -60,7 +63,7 @@ class addToCart extends React.Component {
 
 							<div className="d-flex justify-content-between">
 								<button className="btn btn-primary" onClick={()=>this.showVariantModal()}> I'll Choose </button>
-								<button className="btn btn-primary" onClick={()=>this.addToCart()}> Repeat Last </button>
+								<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
 							</div>
 						</div>
 				  	</div>
@@ -73,7 +76,7 @@ class addToCart extends React.Component {
 		let variants = this.props.product_data.variants.map((variant)=>{
 			return (<div key={variant.id} className="d-flex justify-content-between p-3 ml-5 mr-5">
 				<label>
-					<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} onChange={(event) => this.handleOptionChange(event)}/> 
+					<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} checked={this.state.selectedVariant == variant.id} onChange={(event) => this.handleOptionChange(event)}/> 
 					<span>{variant.size}</span> <span className="ml-5">{variant.sale_price}</span>
 				</label>
 			</div>)
@@ -95,7 +98,7 @@ class addToCart extends React.Component {
 
 	handleOptionChange(event){
 		console.log(event.target.value)
-		this.setState({lastSelected : event.target.value, defaultVariant : event.target.value});
+		this.setState({selectedVariant : event.target.value });
 	}
 
 	getButtonContent(){
@@ -180,6 +183,7 @@ class addToCart extends React.Component {
 		.then((res) => {
 			console.log("add to cart response ==>", res);
 			if(res.data.success){
+				this.displaySuccess("Successfully removed from cart");
 				let item = {
 					variant_id : variant_id,
 					quantity : 1
@@ -204,7 +208,7 @@ class addToCart extends React.Component {
 		console.log("inside add to cart ", lat_long, cart_id);
 		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
 		let body = {
-			variant_id : variant_id ? variant_id : this.state.lastSelected,
+			variant_id : variant_id,
 			quantity : 1,
 			lat_long : lat_long,
 			formatted_address : formatted_address
@@ -253,7 +257,7 @@ class addToCart extends React.Component {
 	removeItems(item){
 		let items = this.state.items;
 		let updated_item_index = items.findIndex((i) => { return i.variant_id == item.variant_id});
-		let last_selected, quantity = this.state.quantity - item.quantity;
+		let last_selected = '', quantity = this.state.quantity - item.quantity;
 		if(updated_item_index !== -1){
 			items[updated_item_index].quantity -= item.quantity;
 		}
@@ -304,10 +308,10 @@ let addToCartComponents = []
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
 	.forEach((domContainer, index) => {
-		console.log(index);
+		// console.log(index);
 		const variant_id = domContainer.dataset.variant_id;
 		const product_data = JSON.parse(domContainer.dataset.product_data);
-		console.log("product_data ==>", product_data);
+		// console.log("product_data ==>", product_data);
 		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { product_data : product_data }),domContainer);
 	});
 

@@ -1,8 +1,8 @@
 'use strict';
 const e = React.createElement;
-window.lat_lng = null;
-window.formatted_address = null;
-window.modal_closed = false;
+window.lat_lng = null;				// store lat long in global varaible.
+window.formatted_address = null;	// store address to be displayed in global variable.
+window.modal_closed = false;		// used in add to cart component to resolve promise of geolocation.
 const CancelToken = axios.CancelToken;
 let cancel;
 let debounceTimer;
@@ -15,21 +15,17 @@ class gpsModalPrompt extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			display : false,
 			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 			apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			locations : [],
 			locError : '',
 			gpsError : '',
 			fetchingGPS : false,
+			searchText : ''
 		}
 	}
 
 	render() {
-		// if(this.state.display){
-		// 	$('#gpsModal').modal('show');
-		// }
-
 		return (
 			<div className="modal fade" id="gpsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
 			  	<div className="modal-dialog modal-dialog-centered" role="document">
@@ -67,10 +63,12 @@ class gpsModalPrompt extends React.Component {
 
 	modalClosed(){
 		window.modal_closed = true;
+		this.setState({searchText : '', locError : '', gpsError : ''});
 	}
 
 	autoCompleteLocation(value) {
 		clearTimeout(debounceTimer);
+		this.setState({searchText : value});
 		debounceTimer = setTimeout(()=>{
 			console.log("autoCompleteLocation =>", value);
 			this.setState({locError : ''});
@@ -172,7 +170,7 @@ class gpsModalPrompt extends React.Component {
 			axios.post(url, body)
 			.then((res) => {
 				this.updateLocationUI(lat_lng, formatted_address);
-				this.setState({showLoader : false, fetchingGPS : false});
+				this.setState({showLoader : false, fetchingGPS : false, searchText : ''});
 				$('#gpsModal').modal('hide');
 			})
 			.catch((error)=>{
@@ -183,7 +181,7 @@ class gpsModalPrompt extends React.Component {
 			})
 		}
 		else{
-			this.setState({showLoader : false, fetchingGPS : false});
+			this.setState({showLoader : false, fetchingGPS : false, searchText: ''});
 			this.updateLocationUI(lat_lng, formatted_address);
 			$('#gpsModal').modal('hide');
 		}
@@ -213,7 +211,8 @@ class gpsModalPrompt extends React.Component {
 		this.setState({showLoader : true, locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
-			timeout: 10 * 1000
+			timeout: 10 * 1000,
+			enableHighAccuracy : true
 		}
 		navigator.geolocation.getCurrentPosition((position) => {
 			console.log("position ==>", position.coords);
@@ -241,7 +240,7 @@ class gpsModalPrompt extends React.Component {
 
 	showLocationSearch(){
 		if(!this.state.fetchingGPS)
-			return <input type="search" className="w-75" placeholder="search for area, street name" onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
+			return <input type="search" className="w-75" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
 	}
 
 	showFetchLocationUsingGps(){
@@ -256,7 +255,6 @@ let domContainer = document.querySelector('#react-add-delivery-address-container
 const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 
 
-window.updategpsModalPromptComponent = (display) => {
+window.showGpsModalPrompt = (data) => {
 	$('#gpsModal').modal('show');
-	// gpsModalPromptComponent.setState({display : display})
 }

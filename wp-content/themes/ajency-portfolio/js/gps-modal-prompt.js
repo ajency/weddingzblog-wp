@@ -9,9 +9,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var e = React.createElement;
-window.lat_lng = null;
-window.formatted_address = null;
-window.modal_closed = false;
+window.lat_lng = null; // store lat long in global varaible.
+window.formatted_address = null; // store address to be displayed in global variable.
+window.modal_closed = false; // used in add to cart component to resolve promise of geolocation.
 var CancelToken = axios.CancelToken;
 var cancel = void 0;
 var debounceTimer = void 0;
@@ -29,13 +29,13 @@ var gpsModalPrompt = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (gpsModalPrompt.__proto__ || Object.getPrototypeOf(gpsModalPrompt)).call(this, props));
 
 		_this.state = {
-			display: false,
 			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
 			apiEndPoint: 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
 			locations: [],
 			locError: '',
 			gpsError: '',
-			fetchingGPS: false
+			fetchingGPS: false,
+			searchText: ''
 		};
 		return _this;
 	}
@@ -44,10 +44,6 @@ var gpsModalPrompt = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
-
-			// if(this.state.display){
-			// 	$('#gpsModal').modal('show');
-			// }
 
 			return React.createElement(
 				'div',
@@ -125,6 +121,7 @@ var gpsModalPrompt = function (_React$Component) {
 		key: 'modalClosed',
 		value: function modalClosed() {
 			window.modal_closed = true;
+			this.setState({ searchText: '', locError: '', gpsError: '' });
 		}
 	}, {
 		key: 'autoCompleteLocation',
@@ -132,6 +129,7 @@ var gpsModalPrompt = function (_React$Component) {
 			var _this3 = this;
 
 			clearTimeout(debounceTimer);
+			this.setState({ searchText: value });
 			debounceTimer = setTimeout(function () {
 				console.log("autoCompleteLocation =>", value);
 				_this3.setState({ locError: '' });
@@ -234,7 +232,7 @@ var gpsModalPrompt = function (_React$Component) {
 				};
 				axios.post(url, body).then(function (res) {
 					_this6.updateLocationUI(lat_lng, formatted_address);
-					_this6.setState({ showLoader: false, fetchingGPS: false });
+					_this6.setState({ showLoader: false, fetchingGPS: false, searchText: '' });
 					$('#gpsModal').modal('hide');
 				}).catch(function (error) {
 					_this6.setState({ showLoader: false, fetchingGPS: false });
@@ -243,7 +241,7 @@ var gpsModalPrompt = function (_React$Component) {
 					_this6.setState({ locError: msg });
 				});
 			} else {
-				this.setState({ showLoader: false, fetchingGPS: false });
+				this.setState({ showLoader: false, fetchingGPS: false, searchText: '' });
 				this.updateLocationUI(lat_lng, formatted_address);
 				$('#gpsModal').modal('hide');
 			}
@@ -279,7 +277,8 @@ var gpsModalPrompt = function (_React$Component) {
 			this.setState({ showLoader: true, locations: [], fetchingGPS: true });
 			var geoOptions = {
 				maximumAge: 30 * 60 * 1000,
-				timeout: 10 * 1000
+				timeout: 10 * 1000,
+				enableHighAccuracy: true
 			};
 			navigator.geolocation.getCurrentPosition(function (position) {
 				console.log("position ==>", position.coords);
@@ -312,7 +311,7 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function showLocationSearch() {
 			var _this8 = this;
 
-			if (!this.state.fetchingGPS) return React.createElement('input', { type: 'search', className: 'w-75', placeholder: 'search for area, street name', onChange: function onChange(e) {
+			if (!this.state.fetchingGPS) return React.createElement('input', { type: 'search', className: 'w-75', placeholder: 'search for area, street name', value: this.state.searchText, onChange: function onChange(e) {
 					_this8.autoCompleteLocation(e.target.value);
 				} });
 		}
@@ -341,7 +340,6 @@ var gpsModalPrompt = function (_React$Component) {
 var domContainer = document.querySelector('#react-add-delivery-address-container');
 var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 
-window.updategpsModalPromptComponent = function (display) {
+window.showGpsModalPrompt = function (data) {
 	$('#gpsModal').modal('show');
-	// gpsModalPromptComponent.setState({display : display})
 };

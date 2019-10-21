@@ -31,7 +31,7 @@ class DeliveryAddress extends Component {
 
 	openChangeLocationModal(){
 		console.log("openChangeLocationModal");
-		 window.updategpsModalPromptComponent(true);
+		 window.showGpsModalPrompt(true);
 	}
 }
 

@@ -286,8 +286,8 @@ function loadCartApp(){
     }
 }
 
-$('#selected-location-address').click(function() {
-   window.updategpsModalPromptComponent(true);
+$('.delivery-location').click(function() {
+   window.showGpsModalPrompt(true);
 });
 
 

@@ -31,9 +31,6 @@ class Item extends Component {
 					</div>
 				</div>
 				<div>
-					{this.checkStock()}
-				</div>
-				<div>
 					{this.checkServiceability()}
 				</div>
 			</div>
@@ -50,14 +47,11 @@ class Item extends Component {
 		return Math.round(((this.props.item.attributes.price_mrp - this.props.item.attributes.price_final) / (this.props.item.attributes.price_mrp )) * 100)
 	}
 
-	checkStock(){
-		if(!this.props.item.availability)
-			return <div className="alert-danger">Out of Stock</div>
-	}
-
 	checkServiceability(){
 		if(!this.props.item.deliverable)
 			return <div className="alert-danger">Cannot be delivred at your location</div>
+		if(!this.props.item.availability)
+			return <div className="alert-danger">Out of Stock</div>
 	}
 
 	removeItem(){

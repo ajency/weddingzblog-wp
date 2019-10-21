@@ -32,12 +32,12 @@ class Quantity extends Component {
 
 		}
 		return (
-			<div>
-				<button className="btn-primary cursor-pointer" onClick={() => this.removeFromCart(1)} disabled={this.state.apiCallInProgress}>-</button>
-				<span className="m-1">	{this.state.quantity} </span>
-				<button className="btn-primary cursor-pointer" onClick={() => this.addToCart(1)} disabled={this.state.apiCallInProgress}>+</button>
+			<div className="border-grey-50 border-radius-30">
+				<button className="btn btn-qty text-grey" onClick={() => this.removeFromCart(1)} disabled={this.state.apiCallInProgress}>-</button>
+				<span className="cart-qty">	{this.state.quantity} </span>
+				<button className="btn btn-qty text-green" onClick={() => this.addToCart(1)} disabled={this.state.apiCallInProgress}>+</button>
 				<div>
-					<i className="far fa-trash-alt cursor-pointer" onClick={() => this.removeFromCart(this.state.quantity)} disabled={this.state.apiCallInProgress}></i>
+					<i className="far fa-trash-alt" onClick={() => this.removeFromCart(this.state.quantity)} disabled={this.state.apiCallInProgress}></i>
 				</div>
 			</div>
 		)		

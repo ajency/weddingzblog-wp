@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.map-container {
+    width: auto;
+    height: 300px;
+    position: relative;
+}
+
+#marker {
+    position: absolute;
+    top: calc(50% - 13px);
+    left: calc(50% - 10px);
+    height: 20px;
+    width: 20px;
+    border: 3px solid blue;
+    border-radius: 50%;
+    background-color: rgba(30,144,255,0.5);
+    box-sizing: border-box;
+    pointer-events: none;
+}

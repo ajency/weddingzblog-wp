@@ -18,6 +18,7 @@ export class GoogleMap extends Component {
                     streetViewControl={false}
                     onDragend={this.props.handleCenter}
                 >
+                    <Marker/>
                 </Map>
         );
     }

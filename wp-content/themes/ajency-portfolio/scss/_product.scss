@@ -18,6 +18,28 @@
     }
     &-excerpt{
         font-family: 'Futura PT Book';
+        
+    }
+    &-quantity{
+        .minus{
+            border-top-left-radius: 4px !important;
+            border-bottom-left-radius: 4px !important;
+        }
+        .plus{
+            border-top-right-radius: 4px !important;
+            border-bottom-right-radius: 4px !important;
+        }
+        .input-text {
+            width: 85px;
+            margin: 0 -5px;
+            background: transparent;
+            border: 1px solid #fff;
+            text-align: center;
+            color: #fff;
+        }
+    }
+    &-size{
+        margin-top: 10px;
     }
 }
 
@@ -28,4 +50,14 @@
     transform: translateX(-50%);
     text-transform: uppercase;
     min-width: 165px;
+}
+
+.dash{
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    opacity: 0.5;
+    margin: 0 20px;
 }

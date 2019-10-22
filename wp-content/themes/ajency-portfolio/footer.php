@@ -121,64 +121,66 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_3" type="text/javascript"></script>
 
 <script type="text/javascript">
-    // build scene
-    var scene = new ScrollMagic.Scene({
-                        triggerElement: ".trigger1", 
-                        triggerHook: 'onLeave', 
-                        duration: '100%'
-                    })
-                    // animate color and top border in relation to scroll position
-                    .setTween(".cardone", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                    .setPin(".trigger1", {pushFollowers: false})
-                    // .offset(-10)
-                    // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
-                    .addTo(controller);
-    var scene = new ScrollMagic.Scene({
-                        triggerElement: ".trigger2", 
-                        triggerHook: 'onLeave', 
-                        duration: '100%'
-                    })
-                    // animate color and top border in relation to scroll position
-                    .setTween(".cardtwo", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                    .setPin(".trigger2", {pushFollowers: false})
-                    // .offset(-10)
-                    // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
-                    .addTo(controller);
-    var scene = new ScrollMagic.Scene({
-                        triggerElement: ".trigger3", 
-                        triggerHook: 'onLeave', 
-                        duration: '100%'
-                    })
-                    // animate color and top border in relation to scroll position
-                    .setTween(".cardthree", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                    .setPin(".trigger3", {pushFollowers: false})
-                    // .offset(-10)
-                    // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
-                    .addTo(controller);
-    var scene = new ScrollMagic.Scene({
-                        triggerElement: ".trigger4", 
-                        triggerHook: 'onLeave', 
-                        duration: '100%'
-                    })
-                    // animate color and top border in relation to scroll position
-                    .setTween(".cardfour", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                    .setPin(".trigger4", {pushFollowers: false})
-                    // .offset(-10)
-                    // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
-                    .addTo(controller);
+    if ($(window).innerWidth() < 767) {
+        // build scene
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".trigger1", 
+                            triggerHook: 'onLeave', 
+                            duration: '100%'
+                        })
+                        // animate color and top border in relation to scroll position
+                        .setTween(".cardone", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".trigger1", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".trigger2", 
+                            triggerHook: 'onLeave', 
+                            duration: '100%'
+                        })
+                        // animate color and top border in relation to scroll position
+                        .setTween(".cardtwo", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".trigger2", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".trigger3", 
+                            triggerHook: 'onLeave', 
+                            duration: '100%'
+                        })
+                        // animate color and top border in relation to scroll position
+                        .setTween(".cardthree", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".trigger3", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".trigger4", 
+                            triggerHook: 'onLeave', 
+                            duration: '100%'
+                        })
+                        // animate color and top border in relation to scroll position
+                        .setTween(".cardfour", { scale: 0.9, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".trigger4", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
 
 
-    $(function() {
-      $.scrollify({
-        section : ".product-list-item",
-        setHeights: false,
-        // scrollbars: true,
-        standardScrollElements: "#we-are-hiring, #our-bowls, .footer",
-        scrollSpeed: 750,
-        updateHash: false,
-        // offset: -20
-      });
-    });
+        $(function() {
+          $.scrollify({
+            section : ".product-list-item",
+            setHeights: false,
+            // scrollbars: true,
+            standardScrollElements: "#we-are-hiring, #our-bowls, .footer",
+            scrollSpeed: 750,
+            updateHash: false,
+            // offset: -20
+          });
+        });
+    }
 </script>
     <?php wp_footer(); ?>
 

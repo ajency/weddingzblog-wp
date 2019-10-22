@@ -108,6 +108,12 @@ footer {
     }
 }
 
+.letter-spacing{
+    &-5{
+        letter-spacing: 0.5px;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 767.98px) {
     .footer-section {
         padding-top: 2rem;

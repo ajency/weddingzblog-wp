@@ -1,7 +1,5 @@
 .product-section{
-    &__title{
-
-    }
+    font-family: 'Futura PT';
 }
 .product{
     &-list{
@@ -16,13 +14,10 @@
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
         box-shadow: 0 0 9px 0 rgba(122,122,122,0.25);
-        padding-bottom: 50px;
+        padding-bottom: 55px;
     }
-    &-image{
-
-    }
-    &-info{
-
+    &-excerpt{
+        font-family: 'Futura PT Book';
     }
 }
 
@@ -31,4 +26,6 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    text-transform: uppercase;
+    min-width: 165px;
 }

@@ -18,7 +18,8 @@ class AddNewAddress extends Component {
             latlng: {
                 lat:this.props.latlng.lat,
                 lng:this.props.latlng.lng
-            }
+            },
+            address_type:''
 		};
     }
 
@@ -45,6 +46,24 @@ class AddNewAddress extends Component {
                             Landmark:
                             <input type="text" value={this.state.landmark}  onChange={this.handleLandmarkChange}/>
                         </label> <br/>
+                        <div className="radio">
+                            <label>
+                                <input type="radio" onChange={this.handleAddressTypeChange} value="home"  checked={this.state.address_type ==='home'} />
+                                Home
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label>
+                                <input type="radio" onChange={this.handleAddressTypeChange} value="work" checked={this.state.address_type ==='work'} />
+                                Work
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label>
+                                <input type="radio" onChange={this.handleAddressTypeChange}  value="other" checked={this.state.address_type ==='other'} />
+                                Other
+                            </label>
+                        </div>
                         <button onClick={this.handleSubmit}>Add Address</button>
                     </form>
                 </div>
@@ -67,15 +86,21 @@ class AddNewAddress extends Component {
         this.setState({'building':e.target.value});
     }
 
+    handleAddressTypeChange = (e) => {
+        this.setState({'address_type':e.target.value})
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         let data = {
             address: this.state.address,
             latlng: this.state.latlng,
             building:this.state.building,
-            landmark:this.state.landmark
+            landmark:this.state.landmark,
+            address_type:this.state.address_type
         }
-        console.log(data)
+        console.log(data);
+        
     }
    
     reverseGeocode = (lat = null, lng = null) => {
@@ -100,7 +125,6 @@ class AddNewAddress extends Component {
         })
         .catch((error)=>{
             this.setState({showLoader : false});
-            console.log("error in autoCompleteLocation ==>", error);
             let msg = error.message ? error.message : error;
             this.setState({locError : msg})
         })

@@ -74,389 +74,8 @@
     </div>
   </div>
 </div> -->
-<div class="seperator">
-</div>
-<section>
-  <div class="container p5">
-    <div class="row">
-      <div class="col  offset-xl-2 col-xl-8 col12">
-        <p class="body-text">
-          We <strong class="font-weight-bold h1">design</strong> and <strong class="font-weight-bold h1">code websites </strong> for online stores, real estate projects, hotels, company or product websites, blog and others. Sites we build are buzzword and <strong class="font-weight-bold h1">SEO compliant</strong>, and <strong class="font-weight-bold h1">load under 4 seconds</strong>.</p>
-      </div>
-    </div>
-  </div>
-  <div>
-  </div>
-</section>
-<section class="mt-5 mt-md-0">
-  <div class="slider variable-width d-flex align-items-center">
-    <div>
-      <img src="<?php echo get_template_directory_uri(); ?>/images/products/orange_barley_bowl.jpg" alt="Ajency Office Workplace"   class="lazyload blur-up">
-    </div>
-    <div class="align-items-center">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/products/quinoa-n-nuts-bowl.jpg" alt="Ajency Team squad " class="lazyload blur-up">
-    </div>
-    <div>
-      <img src="<?php echo get_template_directory_uri(); ?>/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" alt="Ajency located at Panjim" class="lazyload blur-up">
-    </div>
-  </div>
-</section>
-<section>
-  <div class="container p5">
-    <div class="row">
-      <div class="col  offset-xl-2 col-xl-8 col12">
-        <h3 class="h1 ft6">6 years in the making</h3>
-        <p class="body-text">
-          We are a boutique agency with a team size of 30+. Not too small where projects depend on 1-2 individuals, but small enough for you to have a chat/coffee/beer with the founders.
 
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="container p5">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-</div>
-
-<!-- Our Work -->
-
-<section id="our-bowl" class="overflow-h aj-engineering">
-  <div class="container p5">
-    <div class="row">
-    <div class="col-lg-2"></div>
-      <div class="col-xl-8 our-work aj-engineering-work">
-
-        <h1 class="font-weight-bold d-block d-md-none mobile-header mb-4 text-muted">Our Bowls</h1>
-
-        <div class="items mb-5 ">
-          <div id="showdiv1" class="text-black text-link pf-1">
-            <h1 class="ft6">Orange Barley Bowl</h1>
-            <!-- <h5 class="font-weight-light">
-            A Sequoia-backed omnichannel marketplace for health products.
-          </h5> -->
-          </div>
-
-          <div id="div1">
-            <span aria-hidden="true" class="close">&times; Close</span>
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="ajency-portfolio portfolio-1">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/products/orange_barley_bowl.jpg" alt="orange-barley-bowl">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="items mb-5">
-          <div id="showdiv2" class="text-black text-link pf-2">
-            <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
-          </div>
-          <div id="div2">
-            <span aria-hidden="true" class="close">&times; Close</span>
-
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section portfolio-2">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/products/cracked-wheat-n-chickpea-bowl-chicken.jpg" alt="cracked-wheat-n-chickpea-bowl-chicken">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="items mb-5">
-          <div id="showdiv4" class="text-black text-link pf-4">
-            <h1 class="ft6">Quinoa & Nuts Bowl</h1>
-          </div>
-          <div id="div4">
-            <span aria-hidden="true" class="close">&times; Close</span>
-
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section portfolio-3">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/products/quinoa-n-nuts-bowl.jpg" alt="quinoa-n-nuts-bowl">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="items mb-5">
-          <div id="showdiv5" class="text-black text-link  pf-5">
-            <h1 class="ft6">Thai Brown Rice Bowl</h1>
-          </div>
-          <div id="div5">
-            <span aria-hidden="true" class="close">&times; Close</span>
-
-            <div class="prj-container">
-              <div class="portfolio-section portfolio-1">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/products/thai-brown-rice-bowl-panner.jpg" alt="thai-brown-rice-bowl-panner">
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
-        <div class="scroll-left d-block d-xl-none">
-          <div class="row no-gutter fixed-header shadow">
-            <div class="col-1 ml-3 p-0">
-              <h3 class="m-0 font-weight-bold back">
-                <img class="btn-back mt-1 " src="<?php echo get_template_directory_uri(); ?>/img/left-arrow.png" style="width:20px;" />
-              </h3>
-            </div>
-            <div class="col-7 pl-0">
-              <h3 class="modal-title font-weight-bold back" id="exampleModalLabel">Back</h3>
-            </div>
-          </div>
-
-          <div class="img-section">
-            <div class="mobile-slick ">
-              <div>
-                <div class="mb-3 p-4">
-                  <h1 class="ft6">Healthkart.com</h1>
-                  <h5 class="font-weight-light">
-                    Sequoia backed omnichannel marketplace for health products.
-                  </h5>
-                </div>
-                <div>
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio/healthkart/healthkart-homepage-mo-10px.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio/healthkart/Healthkart-Homepage-1600px.jpg 1600w, <?php echo get_template_directory_uri(); ?>/img/portfolio/healthkart/Healthkart-Homepage-800px.jpg 800w, <?php echo get_template_directory_uri(); ?>/img/portfolio/healthkart/Healthkart-Homepage-400px.jpg 400w" data-sizes="100w" class="img-fluid lazyload blur-up">
-                </div>
-              </div>
-
-              <div style="background:#FFFAF1">
-                <div class="mb-3 p-4">
-                  <h1 class="ft6">Commonfloor.com</h1>
-                  <h5 class="font-weight-light">
-                    Tiger Global and Google Capital backed Real estate platform.
-                  </h5>
-                </div>
-                <div>
-
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio/commonfloor/commonfloor-homepage-mo-10px.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio/commonfloor/Commonfloor-Homepage-1600px.jpg 1600w, <?php echo get_template_directory_uri(); ?>/img/portfolio/commonfloor/Commonfloor-Homepage-800px.jpg 800w, <?php echo get_template_directory_uri(); ?>/img/portfolio/commonfloor/Commonfloor-Homepage-400px.jpg 400w" data-sizes="100w" class="img-fluid lazyload blur-up">
-                </div>
-              </div>
-
-              <div style="background:#F5FAFF">
-                <div class="mb-3 p-4">
-                  <h1 class="ft6">Growthinvest.com</h1>
-                  <h5 class="font-weight-light">
-                    London based platform that helps startups raise early stage investment.
-                  </h5>
-                </div>
-                <div>
-
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio/growthinvest/growthInvest-homepage-mo-10px.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio/growthinvest/GrowthInvest-Homepage-1600px.jpg 1600w, <?php echo get_template_directory_uri(); ?>/img/portfolio/growthinvest/GrowthInvest-Homepage-800px.jpg 800w, <?php echo get_template_directory_uri(); ?>/img/portfolio/growthinvest/GrowthInvest-Homepage-400px.jpg 400w" data-sizes="100w" class="img-fluid lazyload blur-up">
-                </div>
-              </div>
-
-              <div>
-                <div class="mb-3 p-4">
-                  <h1 class="ft6">Weddingz.in</h1>
-                  <h5 class="font-weight-light">
-                    Online marketplace for Wedding industry. Acquired by Softbank backed Oyo Rooms in 2018.
-                  </h5>
-                </div>
-                <div>
-
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio/weddingz/weddingz-homepage-mo-10px.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio/weddingz/Weddingz-Homepage-1600px.jpg 1600w, <?php echo get_template_directory_uri(); ?>/img/portfolio/weddingz/Weddingz-Homepage-800px.jpg 800w, <?php echo get_template_directory_uri(); ?>/img/portfolio/weddingz/Weddingz-Homepage-400px.jpg 400w" data-sizes="100w" class="img-fluid lazyload blur-up">
-                </div>
-              </div>
-
-              <div>
-                <div class="mb-3 p-4">
-                  <h1 class="ft6">Mylan</h1>
-                  <h5 class="font-weight-light">
-                    A tele-medicine solution that helps hospitals reduce costs of patient visits.
-                  </h5>
-                </div>
-                <div>
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio/mylan/mylan-homepage-mo-10px.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio/mylan/mylan-homepage-1600px.jpg 1600w, <?php echo get_template_directory_uri(); ?>/img/portfolio/mylan/mylan-homepage-800px.jpg 800w, <?php echo get_template_directory_uri(); ?>/img/portfolio/mylan/mylan-homepage-400px.jpg 400w" data-sizes="100w" class="img-fluid lazyload blur-up">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="aj-our-work">
-          <h1 class="font-weight-bold display-3">Our Bowls</h1>
-          <p class="body-text">
-            Seeing is believing. Some of our best work.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- End of Our Work -->
-
-
-<div class="aj-engineering">
-  <div class="scroll-left d-block d-xl-none">
-    <div class="row no-gutter fixed-header shadow">
-      <div class="col-1 ml-3 p-0">
-        <h3 class="m-0 font-weight-bold back">
-          <img class="btn-back mt-1 " src="<?php echo get_template_directory_uri(); ?>/img/left-arrow.png" style="width:20px;" />
-        </h3>
-      </div>
-      <div class="col-7 pl-0">
-        <h3 class="modal-title font-weight-bold back" id="exampleModalLabel">Back</h3>
-      </div>
-    </div>
-
-    <div class="img-section">
-      <div class="mobile-slick ">
-        <div>
-          <div class="mb-3 p-4">
-            <h1 class="ft6">Orange Barley Bowl</h1>
-          </div>
-          <div>
-
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section pf-1">
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div style="background:#FFFAF1">
-          <div class="mb-3 p-4">
-            <h1 class="ft6">Cracked Wheat & Chickpea Bowl (Chicken)</h1>
-          </div>
-          <div>
-
-          <div class="prj-container">
-            <div class="col-12">
-              <div class="portfolio-section pf-2">
-
-              </div>
-            </div>
-          </div>
-
-          </div>
-        </div>
-
-        <div style="background:#F5FAFF">
-          <div class="mb-3 p-4">
-            <h1 class="ft6">Cracked Wheat & Chickpea Bowl</h1>
-          </div>
-          <div>
-
-            <!-- Growthinvest -->
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section pf-3">
-
-                </div>
-              </div>
-            </div>
-            <!-- End of Growthinvest -->
-          </div>
-        </div>
-
-        <!--  -->
-
-        <div style="background:#fdf9f6">
-          <div class="mb-3 p-4">
-            <h1 class="ft6">Weddingz.in</h1>
-          </div>
-          <div>
-
-            <!-- Weddingz -->
-            <div class="prj-container">
-              <div class="col-12">
-                <div class="portfolio-section pf-4">
-
-                </div>
-              </div>
-            </div>
-            <!-- End of Weddingz -->
-          </div>
-        </div>
-
-        <div style="background:#fcfcfc">
-          <div class="mb-3 p-4">
-            <h1 class="ft6">Mylan</h1>
-            <h5 class="font-weight-light">
-              A tele-medicine solution that helps hospitals reduce costs of patient visits.
-            </h5>
-          </div>
-          <div>
-            <!-- Mylan -->
-            <div class="prj-container">
-              <div class="portfolio-section project-mylan">
-                <div class="header-top">
-                  <picture>
-                    <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/mylan-desktop.png">
-                    <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/mylan-mobile.png">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/mylan-desktop.png" class="img-responsive" alt="header">
-                  </picture>
-                </div>
-
-                <div class="container-fluid p-0">
-                  <div class="project-info">
-                    <div class="row">
-                      <div class="col-6 col-lg-3 info-col mb-3">
-                        <div class="info-box team-member">
-                          <h3 class="info-value">Multi-Tenant Architecture</h2>
-                        </div>
-                      </div>
-                      <div class="col-6 col-lg-3 info-col order-lg-2 mb-3">
-                        <div class="info-box team-member">
-                          <h3 class="info-value">NHS monitored pilot</h3>
-                        </div>
-                      </div>
-                      <div class="col-6 col-lg-3 info-col order-lg-1 mb-3">
-                        <div class="info-box lang-used">
-                          <h3 class="info-value">Compliant with patient privacy laws</h3>
-                        </div>
-                      </div>
-                      <div class="col-6 col-lg-3 info-col mb-3 order-lg-3">
-                        <div class="info-box prj-progress">
-                          <h3 class="info-value date">2015-2017</h3>
-                          <label class="info-label">Project duration</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="omniplatform">
-                  <div class="section-header">
-                    <h2 class="section-title">Omniplatform</h2>
-                    <p>A tele-medicine solution that helps hospitals reduce cost of patient visits</p>
-                  </div>
-                  <picture>
-                    <source media="(min-width: 992px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/omniplatform-desktop.png">
-                    <source media="(max-width: 991px)" srcset="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/omniplatform-mobile.png">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/portfolio_assets/mylan/omniplatform-desktop.png" class="img-responsive" alt="header">
-                  </picture>
-                </div>
-
-              </div>
-            </div>
-            <!-- End of Mylan -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
+<div class="spacer py-5"></div>
 <!-- Selected Location -->
 <div class="delivery-location d-flex cursor-pointer">
   <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
@@ -469,11 +88,11 @@
       <div class="col-lg-21">
       </div>
       <div class="col-xl-12">
-        <h1 class="ft6 product-section__title mb-4">Products</h1>
+        <h1 class="ft6 product-section__title mb-4 text-center" id="our-bowls">Bowls</h1>
         <?php //echo get_template_directory_uri().'/images/cracked-wheat-n-chickpea-bowl-chicken.jpg';?>
         <div class="row product-list">
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper bg-primary text-center">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger1">
+            <div class="product-wrapper cardone bg-primary text-center">
               <div class="product-image">
                 <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
               </div>
@@ -489,8 +108,8 @@
               </div>
             </div>      
           </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper bg-primary text-center">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger2">
+            <div class="product-wrapper cardtwo bg-primary text-center">
               <div class="product-image">
                 <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
               </div>
@@ -506,8 +125,8 @@
               </div>
             </div> 
           </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger3">
+             <div class="product-wrapper cardthree bg-primary text-center">
               <div class="product-image">
                 <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
               </div>
@@ -523,8 +142,8 @@
               </div>
             </div>  
           </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger4">
+             <div class="product-wrapper cardfour bg-primary text-center">
               <div class="product-image">
                 <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
               </div>
@@ -540,8 +159,8 @@
               </div>
             </div> 
           </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger5">
+             <div class="product-wrapper cardend bg-primary text-center">
               <div class="product-image">
                 <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="" title="">
               </div>

@@ -1,3 +1,13 @@
+@media(max-width: 767px){
+  body{
+    scroll-snap-type: y mandatory; 
+    scroll-padding: 20px;
+    & > div{
+       scroll-snap-align: start;
+       scroll-snap-stop: normal; 
+    }
+  }
+}
 .product-section{
     font-family: 'Futura PT';
 }
@@ -8,6 +18,8 @@
             padding: 0 10px;
             display: flex;
             margin-bottom: 40px;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
     }
     &-wrapper{

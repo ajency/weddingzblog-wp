@@ -169,17 +169,17 @@
                         .addTo(controller);
 
 
-        $(function() {
-          $.scrollify({
-            section : ".product-list-item",
-            setHeights: false,
-            // scrollbars: true,
-            standardScrollElements: "#we-are-hiring, #our-bowls, .footer",
-            scrollSpeed: 750,
-            updateHash: false,
-            // offset: -20
-          });
-        });
+        // $(function() {
+        //   $.scrollify({
+        //     section : ".product-list-item",
+        //     setHeights: false,
+        //     // scrollbars: true,
+        //     standardScrollElements: "#we-are-hiring, #our-bowls, .footer",
+        //     scrollSpeed: 750,
+        //     updateHash: false,
+        //     // offset: -20
+        //   });
+        // });
     }
 </script>
     <?php wp_footer(); ?>

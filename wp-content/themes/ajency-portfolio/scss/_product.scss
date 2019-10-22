@@ -11,14 +11,26 @@
         }
     }
     &-wrapper{
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-        box-shadow: 0 0 9px 0 rgba(122,122,122,0.25);
-        padding-bottom: 55px;
+        background: #fff;
+        border-radius: 6px;
+        -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.3);
+        box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.3);
+    }
+    &-title{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        z-index: 2;
+        font-size: 24px;
+        line-height: 31px;
+        text-shadow: 0 2px 2px 0 rgba(167,167,167,0.5);
     }
     &-excerpt{
-        font-family: 'Futura PT Book';
-        
+        //font-family: 'Futura PT Book'; 
+        line-height: 17px;       
     }
     &-quantity{
         .minus{
@@ -41,23 +53,51 @@
     &-size{
         margin-top: 10px;
     }
+    &-image{
+        height: 0;
+        padding-bottom: 100%;
+        overflow: hidden;
+        img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            object-fit: contain;
+        }
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.10);
+            z-index: 1;
+        }
+    }
+    &-meta{
+        align-items: center;
+        justify-content: space-between;
+    }
+    &-price{
+        img{
+            position: relative;
+            top: -3px;
+        }
+    }
 }
 
 .btn-add-to-cart{
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     text-transform: uppercase;
-    min-width: 165px;
-}
-
-.dash{
-    display: inline-block;
-    vertical-align: middle;
-    width: 10px;
-    height: 2px;
-    background: #fff;
-    opacity: 0.5;
-    margin: 0 20px;
+    font-size: 16px;    
+    @media (min-width: 1200px) {
+        min-width: 135px;
+    }
+    @media (max-width: 767px) {
+        font-size: 18px;
+        line-height: 23px;
+        min-width: 145px;
+    }
 }

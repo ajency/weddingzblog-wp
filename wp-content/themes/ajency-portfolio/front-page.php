@@ -468,101 +468,92 @@
       <div class="col-lg-21">
       </div>
       <div class="col-xl-12">
-        <h1 class="ft6 product-section__title mb-4">Products</h1>
-        <?php //echo get_template_directory_uri().'/images/cracked-wheat-n-chickpea-bowl-chicken.jpg';?>
+        <h1 class="ft6 product-section__title mb-4">Products</h1>        
         <div class="row product-list">
           <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper bg-primary text-center">
-              <div class="product-image">
-                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-              </div>
-              <div class="product-info text-white p-3">
-                <h4 class="product-title letter-spacing-5 mb-2">Noodle Salad Bowl</h4>
-                <div class="product-excerpt font-size-13 mb-3">
+            <div class="product-wrapper">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
+                </div>
+              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
+                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
                 </div>
-                <div class="product-meta font-size-15">
-                  <span class="product-likes">165 Likes</span> <span class="dash"></span> <span class="product-price"> 450 </span>
+                <div class="product-meta d-flex">
+                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
                 </div>
-                <!--<div class="product-quantity mt-3">
-                  <input type="button" value="-" class="btn minus rounded-0 text-primary font-size-18">
-                  <input readonly="" type="number" class="input-text btn rounded-0 font-size-18" value="2" inputmode="numeric">
-                  <input type="button" value="+" class="btn plus rounded-0 text-primary font-size-18">
-                </div>
-                <div class="product-size font-size-13 text-center">
-                  1 Regular Bowl
-                </div>-->
-                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white font-size-18" title="Add Noodle Salad Bowl to cart">Add to cart</a>
               </div>
             </div>      
           </div>
           <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper bg-primary text-center">
-              <div class="product-image">
-                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="Sprouts Bowl" title="Sprouts Bowl">
-              </div>
-              <div class="product-info text-white p-3">
-                <h4 class="product-title letter-spacing-5 mb-2">Sprouts Bowl</h4>
-                <div class="product-excerpt font-size-13 mb-3">
-                  Salad vegetables and greens with a healthy sprout mix and herbed brown rice. Served with a mint dressing.
+            <div class="product-wrapper">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
-                <div class="product-meta font-size-15">
-                  <span class="product-likes">190 Likes</span> <span class="dash"></span> <span class="product-price"> 450 </span>
+              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
+                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
+                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
                 </div>
-                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white font-size-18" title="Add Sprouts Bowl to cart ">Add to cart</a>
+                <div class="product-meta d-flex">
+                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
+                </div>
               </div>
-            </div> 
+            </div>      
           </div>
           <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
-              <div class="product-image">
-                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="Bean Barley Bowl" title="Bean Barley Bowl">
-              </div>
-              <div class="product-info text-white p-3">
-                <h4 class="product-title letter-spacing-5 mb-2">Bean Barley Bowl</h4>
-                <div class="product-excerpt font-size-13 mb-3">
-                  Barley, vegetables, beans and mixed seeds for a wholesome meal. Tossed in a lemon garlic herb dressing.
+            <div class="product-wrapper">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
-                <div class="product-meta font-size-15">
-                  <span class="product-likes">280 Likes</span> <span class="dash"></span> <span class="product-price"> 450 </span>
-                </div>               
-                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white font-size-18" title="Add Bean Barley Bowl to cart">Add to cart</a>
+              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
+                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
+                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
+                </div>
+                <div class="product-meta d-flex">
+                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
+                </div>
               </div>
-            </div>  
+            </div>      
           </div>
           <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
-              <div class="product-image">
-                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="Mediterranean Cracked Wheat Bowl" title="Mediterranean Cracked Wheat Bowl">
-              </div>
-              <div class="product-info text-white p-3">
-                <h4 class="product-title letter-spacing-5 mb-2">Mediterranean Cracked Wheat Bowl</h4>
-                <div class="product-excerpt font-size-13 mb-3">
-                   Usual suspects of a Mediterranean salad, chickpeas, and grilled eggplant tossed with cracked wheat…
+            <div class="product-wrapper">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
-                <div class="product-meta font-size-15">
-                  <span class="product-likes">230 Likes</span> <span class="dash"></span> <span class="product-price"> 450 </span>
+              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
+                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
+                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
                 </div>
-                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white font-size-18" title="Add Mediterranean Cracked Wheat Bowl to cart">Add to cart</a>
+                <div class="product-meta d-flex">
+                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
+                </div>
               </div>
-            </div> 
+            </div>      
           </div>
           <div class="col-lg-3 col-sm-6 product-list-item">
-             <div class="product-wrapper bg-primary text-center">
-              <div class="product-image">
-                <img src="http://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/orange_barley_bowl.jpg" class="img-fluid" alt="Harvest Bowl" title="Harvest Bowl">
-              </div>
-              <div class="product-info text-white p-3">
-                <h4 class="product-title letter-spacing-5 mb-2">Harvest Bowl</h4>
-                <div class="product-excerpt font-size-13 mb-3">
-                  Lots of roasted seasonal vegetables, quinoa a bit of fruit and seeds. All mixed in a balsamic vinaigrette.
+            <div class="product-wrapper">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
-                <div class="product-meta font-size-15">
-                  <span class="product-likes">330 Likes</span> <span class="dash"></span> <span class="product-price"> 450 </span>
+              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
+                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
+                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
                 </div>
-                <a href="#" class="btn btn-add-to-cart text-white border-radius-4 border-white font-size-18" title="Add Harvest Bowl to cart">Add to cart</a>
+                <div class="product-meta d-flex">
+                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
+                </div>
               </div>
-            </div> 
+            </div>      
           </div>
         </div>
       </div>

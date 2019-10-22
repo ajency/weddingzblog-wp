@@ -6,6 +6,13 @@ $('.mobile-slick').slick({
     arrows: false,
     adaptiveHeight: true
 });
+// $('.product-image').slick({
+//     infinite: false,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     arrows: false,
+// });
+
 $('.mobile-slick').on('setPosition', function() {
     // jbResizeSlider();
 });

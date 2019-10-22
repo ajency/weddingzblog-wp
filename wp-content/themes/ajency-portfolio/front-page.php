@@ -82,6 +82,19 @@
   <div id="selected-location-address" class="font-weight-bold"></div>  
 </div>
 
+<section>
+  <div class="container p5">
+    <div class="row">
+      <div class="col  offset-xl-2 col-xl-8 col12">
+        <p class="body-text">
+          We <strong class="font-weight-bold h1">design</strong> and <strong class="font-weight-bold h1">code websites </strong> for online stores, real estate projects, hotels, company or product websites, blog and others. Sites we build are buzzword and <strong class="font-weight-bold h1">SEO compliant</strong>, and <strong class="font-weight-bold h1">load under 4 seconds</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+</section>
+
 <div class="product-section">  
   <div class="container">
     <div class="row">
@@ -90,87 +103,21 @@
       <div class="col-xl-12">
         <h1 class="ft6 product-section__title mb-4">Products</h1>        
         <div class="row product-list">
-          <div class="col-lg-3 col-sm-6 product-list-item">
+          <div class="col-lg-3 col-md-6 product-list-item">
             <div class="product-wrapper">
               <div class="product-image position-relative">
                 <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
-                </div>
-              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
-                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
-                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
-                </div>
-                <div class="product-meta d-flex">
-                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
-                </div>
               </div>
-            </div>      
-          </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image position-relative">
-                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
-                </div>
-              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
-                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
+              <div class="product-info"> 
+                <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
+                <h4 class="font-weight-light mt-0 mb-3">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
-                </div>
+                </h4>
                 <div class="product-meta d-flex">
-                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
-                </div>
-              </div>
-            </div>      
-          </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image position-relative">
-                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
-                </div>
-              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
-                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
-                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
-                </div>
-                <div class="product-meta d-flex">
-                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
-                </div>
-              </div>
-            </div>      
-          </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image position-relative">
-                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
-                </div>
-              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
-                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
-                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
-                </div>
-                <div class="product-meta d-flex">
-                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
-                </div>
-              </div>
-            </div>      
-          </div>
-          <div class="col-lg-3 col-sm-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image position-relative">
-                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
-                </div>
-              <div class="product-info pt-3 pb-3 pl-4 pr-4">                
-                <div class="product-excerpt line-clamp-2 font-size-15 text-grey mb-3">
-                  Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
-                </div>
-                <div class="product-meta d-flex">
-                  <div class="product-price font-size-24"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn btn-add-to-cart bg-primary text-white border-radius-4 border-white" title="Add Noodle Salad Bowl to cart">Add to cart</a>
+                  <div class="product-price h1 ft6 mb-0"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
+                  <a href="#" class="btn-add-to-cart text-primary border-radius-4 border-white m-0 h1 ft6" title="Add Noodle Salad Bowl to cart">
+                  Add to cart  <img src="<?php echo get_template_directory_uri().'/images/products/cart-arrow.png';?>" class="" alt="" title="">
+                  </a>
                 </div>
               </div>
             </div>      

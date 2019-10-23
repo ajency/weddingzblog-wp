@@ -74,8 +74,8 @@
   </div>
 </div> -->
 
-<div class=" py-5"></div>
 
+<div class="spacer py-5"></div>
 <!-- Selected Location -->
 <div class="delivery-location d-flex cursor-pointer">
   <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
@@ -101,13 +101,14 @@
       <div class="col-lg-21">
       </div>
       <div class="col-xl-12">
+
         <h1 class="ft6 product-section__title mb-4">Products</h1>        
         <div class="row product-list">
-          <div class="col-md-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image ">
-                <div class="item">
-                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+          <div class="col-lg-3 col-sm-6 product-list-item trigger1">
+            <div class="product-wrapper cardone">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
                 <div class="item">
                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
@@ -132,13 +133,14 @@
                 </div>
               </div>
             </div>      
-          </div>
-          <div class="col-md-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image ">
-                <div class="item">
-                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
-                </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 product-list-item trigger2">
+            <div class="product-wrapper cardtwo">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
+              </div>
                 <div class="item">
                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -163,11 +165,12 @@
               </div>
             </div>      
           </div>
-          <div class="col-md-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image ">
-                <div class="item">
-                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_three.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+
+          <div class="col-lg-3 col-sm-6 product-list-item trigger3">
+            <div class="product-wrapper cardthree">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
                 <div class="item">
                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
@@ -193,11 +196,12 @@
               </div>
             </div>      
           </div>
-          <div class="col-md-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image ">
-                <div class="item">
-                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+
+          <div class="col-lg-3 col-sm-6 product-list-item trigger4">
+            <div class="product-wrapper cardfour">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
                 <div class="item">
                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
@@ -223,11 +227,12 @@
               </div>
             </div>      
           </div>
-          <div class="col-md-6 product-list-item">
-            <div class="product-wrapper">
-              <div class="product-image ">
-                <div class="item">
-                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+
+          <div class="col-lg-3 col-sm-6 product-list-item trigger5">
+            <div class="product-wrapper cardend">
+              <div class="product-image position-relative">
+                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                <h4 class="product-title letter-spacing-5 text-white mb-0 pl-4 pr-4">Noodle Salad Bowl</h4>
                 </div>
                 <div class="item">
                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">

@@ -18,9 +18,6 @@ class addToCart extends React.Component {
 
 	componentDidMount(){
 		this.setState({selectedVariant : this.props.product_data.default })
-			// .then(()=>{
-			// 	console.log("check ==>", this.state.selectedVariant);
-			// })
 	}
 
 	render() {
@@ -97,7 +94,6 @@ class addToCart extends React.Component {
 	}
 
 	handleOptionChange(event){
-		console.log(event.target.value)
 		this.setState({selectedVariant : event.target.value });
 	}
 
@@ -181,7 +177,6 @@ class addToCart extends React.Component {
 
 		axios.post(url, body)
 		.then((res) => {
-			console.log("add to cart response ==>", res);
 			if(res.data.success){
 				this.displaySuccess("Successfully removed from cart");
 				let item = {
@@ -205,7 +200,6 @@ class addToCart extends React.Component {
 	}
 
 	addToCartApiCall(variant_id = null, lat_long = null, cart_id = null, formatted_address = null){
-		console.log("inside add to cart ", lat_long, cart_id);
 		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
 		let body = {
 			variant_id : variant_id,
@@ -216,11 +210,8 @@ class addToCart extends React.Component {
 		if(cart_id)
 			body.cart_id = cart_id;
 
-		console.log("body ==>", body);
-
 		axios.post(url, body)
 		.then((res) => {
-			console.log("add to cart response ==>", res);
 			if(res.data.success){
 				this.addItems(res.data.item);
 				window.updateViewCartCompoent(res.data);
@@ -308,10 +299,8 @@ let addToCartComponents = []
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
 	.forEach((domContainer, index) => {
-		// console.log(index);
 		const variant_id = domContainer.dataset.variant_id;
 		const product_data = JSON.parse(domContainer.dataset.product_data);
-		// console.log("product_data ==>", product_data);
 		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { product_data : product_data }),domContainer);
 	});
 

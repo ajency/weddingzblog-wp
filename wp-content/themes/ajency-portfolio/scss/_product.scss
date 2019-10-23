@@ -114,3 +114,13 @@
         }        
     }      
 }
+
+.product-image .item {
+    display: none;
+}
+.product-image .item:first-child {
+    display: block;
+}
+.product-image.slick-initialized .item {
+    display: block;
+}

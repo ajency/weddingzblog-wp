@@ -51,7 +51,6 @@ class viewCart extends React.Component {
 	}
 
 	fetchCart() {
-		console.log("inside fetch cart");
 		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
@@ -60,7 +59,6 @@ class viewCart extends React.Component {
 			}
 			axios.get(url, {params : body})
 				.then((res) => {
-					console.log("fetch cart response ==>", res);
 					this.setState({cart : res.data.cart})
 					res.data.cart.items.forEach((item)=>{
 						window.updateaddToCartComponent(item);

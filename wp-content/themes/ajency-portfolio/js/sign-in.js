@@ -303,13 +303,11 @@ var signInModal = function (_React$Component) {
 			var _this5 = this;
 
 			this.setState({ disableButtons: true, showSignInLoader: true });
-			console.log("mobile number ==>", this.state.phoneNumber);
 			var url = this.state.apiEndPoint + "/check-user-exist";
 			var body = {
 				phone_number: this.state.phoneNumber
 			};
 			axios.get(url, { params: body }).then(function (res) {
-				console.log("check user exist response ==>", res);
 				_this5.signInWithPhoneNumber();
 			}).catch(function (error) {
 				console.log("error in check user exist ==>", error);
@@ -344,12 +342,8 @@ var signInModal = function (_React$Component) {
 		value: function signInAnonymously() {
 			var _this7 = this;
 
-			console.log("inside signInAnonymously", firebase);
-
 			firebase.auth().signInAnonymously().then(function (res) {
-				console.log("anonymouse sign in success ==>", res);
 				res.user.getIdToken().then(function (idToken) {
-					// console.log("idtoken ==>",idToken);
 					_this7.updateUserDetails(idToken);
 				});
 				_this7.showGpsModal();
@@ -379,12 +373,9 @@ var signInModal = function (_React$Component) {
 		value: function verifyOtp() {
 			var _this8 = this;
 
-			console.log("inside verify otp");
 			this.setState({ showOtpLoader: true, disableButtons: true, otpErrorMsg: '' });
 			this.state.confirmationResult.confirm(this.state.otp).then(function (res) {
-				console.log("otp verification res ==>", res);
 				res.user.getIdToken().then(function (idToken) {
-					// console.log("idtoken ==>",idToken);
 					_this8.fetchAddresses(idToken);
 				});
 			}).catch(function (error) {
@@ -403,9 +394,9 @@ var signInModal = function (_React$Component) {
 			};
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
-				console.log("fetch addresses response ==>", res);
 				$('#verifyOtpPrompt').modal('hide');
-				_this9.showGpsModal(res.data.addresses);
+				_this9.showGpsModal();
+				window.updateAddresses(res.data.addresses);
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);
 				var msg = error.message ? error.message : error;
@@ -423,10 +414,8 @@ var signInModal = function (_React$Component) {
 	}, {
 		key: 'showGpsModal',
 		value: function showGpsModal() {
-			var addresses = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
 			$('#signInModalPrompt').modal('hide');
-			window.showGpsModalPrompt(true, addresses);
+			window.showGpsModalPrompt(true);
 		}
 	}]);
 

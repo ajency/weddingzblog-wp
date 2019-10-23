@@ -37,7 +37,8 @@ var gpsModalPrompt = function (_React$Component) {
 			fetchingGPS: false,
 			searchText: '',
 			addresses: '',
-			showNoAddressMsg: false
+			showNoAddressMsg: false,
+			settingUserLocation: false
 		};
 		firebase.auth().onAuthStateChanged(function (user) {
 			if (user) {
@@ -69,7 +70,7 @@ var gpsModalPrompt = function (_React$Component) {
 							'button',
 							{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', onClick: function onClick() {
 									return _this2.modalClosed();
-								} },
+								}, disabled: this.state.fetchingGPS || this.state.settingUserLocation },
 							React.createElement(
 								'span',
 								{ 'aria-hidden': 'true' },
@@ -132,7 +133,8 @@ var gpsModalPrompt = function (_React$Component) {
 								'div',
 								null,
 								this.getSavedAddresses()
-							)
+							),
+							this.showAddressUpdateMsg()
 						)
 					)
 				)
@@ -154,7 +156,7 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function showLocationSearch() {
 			var _this3 = this;
 
-			if (!this.state.fetchingGPS) return React.createElement('input', { type: 'search', className: 'w-75', placeholder: 'search for area, street name', value: this.state.searchText, onChange: function onChange(e) {
+			if (!this.state.settingUserLocation && !this.state.fetchingGPS) return React.createElement('input', { type: 'search', className: 'w-75', placeholder: 'search for area, street name', value: this.state.searchText, onChange: function onChange(e) {
 					_this3.autoCompleteLocation(e.target.value);
 				} });
 		}
@@ -163,28 +165,44 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function showFetchLocationUsingGps() {
 			var _this4 = this;
 
-			if (this.state.fetchingGPS) return React.createElement(
+			if (this.state.fetchingGPS && !this.state.settingUserLocation) return React.createElement(
 				'div',
 				{ className: 'btn-dark' },
 				' Fetching current Location '
-			);else return React.createElement(
-				'div',
-				{ className: 'btn-dark', style: btnStyle, onClick: function onClick() {
+			);else if (!this.state.settingUserLocation) return React.createElement(
+				'button',
+				{ className: '', style: btnStyle, onClick: function onClick() {
 						return _this4.getLocation();
 					} },
 				' Get Current Location '
 			);
 		}
 	}, {
+		key: 'showAddressUpdateMsg',
+		value: function showAddressUpdateMsg() {
+			if (this.state.settingUserLocation) return React.createElement(
+				'div',
+				null,
+				'Setting User location ...',
+				React.createElement(
+					'div',
+					null,
+					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+				)
+			);
+		}
+	}, {
 		key: 'getSavedAddresses',
 		value: function getSavedAddresses() {
-			if (this.state.addresses && this.state.addresses.length && !this.state.locations.length) {
-				console.log("check state addresses ==>", this.state.addresses);
+			var _this5 = this;
+
+			if (this.state.addresses && this.state.addresses.length && !this.state.locations.length && !this.state.settingUserLocation && !this.state.fetchingGPS) {
 				var addresses = this.state.addresses.map(function (address) {
-					console.log("add ==>", address);
-					React.createElement(
+					return React.createElement(
 						'li',
-						{ key: address.id, className: 'btn p-1' },
+						{ key: address.id, className: 'cursor-pointer p-1 saved-address-item', onClick: function onClick() {
+								return _this5.setUserLocations(address.address.lat_long, address.address.formatted_address);
+							} },
 						address.address.address,
 						', ',
 						address.address.landmark,
@@ -196,7 +214,6 @@ var gpsModalPrompt = function (_React$Component) {
 						address.address.pincode
 					);
 				});
-				console.log("addresses element ==>", addresses);
 				return React.createElement(
 					'div',
 					null,
@@ -216,14 +233,14 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'getAutoCompleteLocations',
 		value: function getAutoCompleteLocations() {
-			var _this5 = this;
+			var _this6 = this;
 
 			if (this.state.locations.length) {
 				var locs = this.state.locations.map(function (loc) {
 					return React.createElement(
 						'li',
 						{ key: loc.id, className: 'btn p-1', onClick: function onClick() {
-								_this5.reverseGeocode(loc);
+								_this6.reverseGeocode(loc);
 							} },
 						loc.description
 					);
@@ -267,77 +284,72 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'autoCompleteLocation',
 		value: function autoCompleteLocation(value) {
-			var _this6 = this;
+			var _this7 = this;
 
 			clearTimeout(debounceTimer);
 			this.setState({ searchText: value });
 			debounceTimer = setTimeout(function () {
-				console.log("autoCompleteLocation =>", value);
-				_this6.setState({ locError: '' });
+				_this7.setState({ locError: '' });
 				if (value.length > 2) {
-					var url = _this6.state.apiEndPoint + "/places-autocomplete";
+					var url = _this7.state.apiEndPoint + "/places-autocomplete";
 					var body = {
 						input: value
 					};
-					_this6.setState({ showLoader: true, locations: [] });
+					_this7.setState({ showLoader: true, locations: [] });
 					cancel && cancel();
-					console.log("cancel ==>", cancel);
 					axios.get(url, { params: body,
 						cancelToken: new CancelToken(function (c) {
 							cancel = c;
 						})
 					}).then(function (res) {
-						_this6.setState({ showLoader: false });
-						if (res.data.status === "OK") _this6.setState({ locations: res.data.predictions });else {
+						_this7.setState({ showLoader: false });
+						if (res.data.status === "OK") _this7.setState({ locations: res.data.predictions });else {
 							//display error
-							_this6.setState({ locError: res.data.error_message });
+							_this7.setState({ locError: res.data.error_message });
 						}
 					}).catch(function (error) {
-						// this.setState({showLoader : false})
 						console.log("error in autoCompleteLocation ==>", error);
 						// let msg = error.message ? error.message : error;
 						// this.setState({locError : msg})
 					});
 				} else {
-					_this6.setState({ locations: [] });
+					_this7.setState({ locations: [] });
 				}
 			}, 500);
 		}
 	}, {
 		key: 'reverseGeocode',
 		value: function reverseGeocode() {
-			var _this7 = this;
+			var _this8 = this;
 
 			var loc = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 			var latlng = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-			console.log("reverse geocode ==>", loc);
-			this.setState({ locError: '' });
-			this.setState({ showLoader: true, locations: [] });
+			this.setState({ locations: [], locError: '', settingUserLocation: true });
 			var url = this.state.apiEndPoint + "/reverse-geocode";
 			var body = {};
 			if (loc) body.place_id = loc.place_id;else if (latlng) body.latlng = latlng[0] + ',' + latlng[1];
 
 			axios.get(url, { params: body }).then(function (res) {
 				if (res.data.status === "OK") {
-					if (loc) _this7.setUserLocations([res.data.result.geometry.location.lat, res.data.result.geometry.location.lng], res.data.result.formatted_address);else if (latlng) _this7.setUserLocations(latlng, res.data.results[0].formatted_address);
-					_this7.setState({ gpsError: '' });
+					_this8.setState({ settingUserLocation: false, gpsError: '' });
+					if (loc) _this8.setUserLocations([res.data.result.geometry.location.lat, res.data.result.geometry.location.lng], res.data.result.formatted_address);else if (latlng) _this8.setUserLocations(latlng, res.data.results[0].formatted_address);
 				} else {
-					_this7.setState({ locError: res.data.error_message });
-					_this7.setState({ showLoader: false, fetchingGPS: false });
+					_this8.setState({ fetchingGPS: false, locError: res.data.error_message });
 				}
 			}).catch(function (error) {
-				_this7.setState({ showLoader: false, fetchingGPS: false });
+				_this8.setState({ fetchingGPS: false, settingUserLocation: false });
 				console.log("error in autoCompleteLocation ==>", error);
 				var msg = error.message ? error.message : error;
-				_this7.setState({ locError: msg });
+				_this8.setState({ locError: msg });
 			});
 		}
 	}, {
 		key: 'setUserLocations',
 		value: function setUserLocations(lat_lng, formatted_address) {
-			var _this8 = this;
+			var _this9 = this;
 
+			this.setState({ settingUserLocation: true });
 			var cart_id = window.getCookie('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/change-location";
@@ -347,17 +359,17 @@ var gpsModalPrompt = function (_React$Component) {
 					formatted_address: formatted_address
 				};
 				axios.post(url, body).then(function (res) {
-					_this8.updateLocationUI(lat_lng, formatted_address);
-					_this8.setState({ showLoader: false, fetchingGPS: false, searchText: '' });
+					_this9.updateLocationUI(lat_lng, formatted_address);
+					_this9.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
 					$('#gpsModal').modal('hide');
 				}).catch(function (error) {
-					_this8.setState({ showLoader: false, fetchingGPS: false });
+					_this9.setState({ fetchingGPS: false, settingUserLocation: false });
 					console.log("error in updating cart location ==>", error);
 					var msg = error.message ? error.message : error;
-					_this8.setState({ locError: msg });
+					_this9.setState({ locError: msg });
 				});
 			} else {
-				this.setState({ showLoader: false, fetchingGPS: false, searchText: '' });
+				this.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
 				this.updateLocationUI(lat_lng, formatted_address);
 				$('#gpsModal').modal('hide');
 			}
@@ -365,7 +377,6 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'updateLocationUI',
 		value: function updateLocationUI(lat_lng, formatted_address) {
-			console.log("setUser locations ==>", lat_lng, formatted_address);
 			document.cookie = "lat_lng=" + lat_lng[0] + ',' + lat_lng[1] + ";path=/";
 			document.cookie = "formatted_address=" + formatted_address + ";path=/";
 			window.lat_lng = lat_lng;
@@ -377,9 +388,9 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'getLocation',
 		value: function getLocation() {
-			var _this9 = this;
+			var _this10 = this;
 
-			this.setState({ showLoader: true, locations: [], fetchingGPS: true });
+			this.setState({ locations: [], fetchingGPS: true });
 			var geoOptions = {
 				maximumAge: 30 * 60 * 1000,
 				timeout: 10 * 1000,
@@ -387,37 +398,47 @@ var gpsModalPrompt = function (_React$Component) {
 			};
 			navigator.geolocation.getCurrentPosition(function (position) {
 				console.log("position ==>", position.coords);
-				_this9.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
+				_this10.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 			}, function (geoError) {
-				_this9.setState({ showLoader: false, fetchingGPS: false });
+				_this10.setState({ fetchingGPS: false });
 				console.log("error in getting geolocation", geoError);
 				if (geoError.code === 1) {
 					// permission denied
-					_this9.setState({ gpsError: 'You have blocked Green Grain Bowl from tracking your location. To use this, change your location settings in browser.' });
+					_this10.setState({ gpsError: 'You have blocked Green Grain Bowl from tracking your location. To use this, change your location settings in browser.' });
 				} else {
 					// other errors
-					_this9.setState({ gpsError: 'Error in getting current location using GPS' });
+					_this10.setState({ gpsError: 'Error in getting current location using GPS' });
 				}
 			}, geoOptions);
 		}
 	}, {
 		key: 'fetchAddresses',
 		value: function fetchAddresses(idToken) {
-			var _this10 = this;
+			var _this11 = this;
 
 			var headers = {
 				Authorization: 'Bearer ' + idToken
 			};
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
-				console.log("fetch addresses response ==>", res);
-				$('#verifyOtpPrompt').modal('hide');
-				_this10.showGpsModal(res.data.addresses);
+				_this11.setState({ addresses: res.data.addresses });
+				_this11.setDefaultAddress(res.data.addresses);
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);
-				var msg = error.message ? error.message : error;
-				_this10.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
 			});
+		}
+	}, {
+		key: 'setDefaultAddress',
+		value: function setDefaultAddress(addresses) {
+			if (!window.lat_lng) {
+				var default_address = addresses.find(function (address) {
+					return address.address.default;
+				});
+				console.log("check default address ==>", default_address);
+				if (default_address) {
+					this.setUserLocations(default_address.address.lat_long, default_address.address.formatted_address);
+				}
+			}
 		}
 	}]);
 
@@ -430,7 +451,12 @@ var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-	console.log("addresses ==>", addresses, addresses.length);
+	$('#gpsModal').modal('show');
+};
+
+window.updateAddresses = function () {
+	var addresses = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
 	var showNoAddressMsg = false;
 	if (addresses && !addresses.length) showNoAddressMsg = true;
 
@@ -438,5 +464,4 @@ window.showGpsModalPrompt = function (display) {
 	setTimeout(function () {
 		gpsModalPromptComponent.setState({ showNoAddressMsg: false });
 	}, 4000);
-	$('#gpsModal').modal('show');
 };

@@ -153,14 +153,12 @@ class signInModal extends React.Component {
 
 	checkUserExist(){
 		this.setState({disableButtons : true, showSignInLoader : true});
-		console.log("mobile number ==>", this.state.phoneNumber);
 		let url = this.state.apiEndPoint + "/check-user-exist";
 			let body = {
 				phone_number : this.state.phoneNumber
 			}
 			axios.get(url, {params : body})
 				.then((res) => {
-					console.log("check user exist response ==>", res);
 					this.signInWithPhoneNumber();
 				})
 				.catch((error)=>{
@@ -191,13 +189,9 @@ class signInModal extends React.Component {
 	}
 
 	signInAnonymously(){
-		console.log("inside signInAnonymously", firebase);
-
 		firebase.auth().signInAnonymously()
 			.then((res)=>{
-				console.log("anonymouse sign in success ==>", res);
 				res.user.getIdToken().then((idToken) => {
-		           // console.log("idtoken ==>",idToken);
 		           this.updateUserDetails(idToken);
 		        });
 				this.showGpsModal();
@@ -226,13 +220,10 @@ class signInModal extends React.Component {
 	}
 
 	verifyOtp(){
-		console.log("inside verify otp");
 		this.setState({showOtpLoader : true , disableButtons : true, otpErrorMsg : ''});
 		this.state.confirmationResult.confirm(this.state.otp)
 			.then((res) =>{
-				console.log("otp verification res ==>", res);
 				res.user.getIdToken().then((idToken) => {
-		           // console.log("idtoken ==>",idToken);
 		           this.fetchAddresses(idToken);
 		        });
 			})
@@ -250,9 +241,9 @@ class signInModal extends React.Component {
 		let url = this.state.apiEndPoint + "/user/get-addresses";
 		axios.get(url, {headers :  headers })
 			.then((res) => {
-				console.log("fetch addresses response ==>", res);
 				$('#verifyOtpPrompt').modal('hide');
-		      	this.showGpsModal(res.data.addresses);
+		      	this.showGpsModal();
+		      	window.updateAddresses(res.data.addresses);
 			})
 			.catch((error)=>{
 				console.log("error in fetch addresses ==>", error);
@@ -269,9 +260,9 @@ class signInModal extends React.Component {
 
 	}
 
-	showGpsModal(addresses = null){
+	showGpsModal(){
 		$('#signInModalPrompt').modal('hide');
-		window.showGpsModalPrompt(true, addresses);
+		window.showGpsModalPrompt(true);
 	}
 
 }

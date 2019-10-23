@@ -88,7 +88,6 @@ var viewCart = function (_React$Component) {
 		value: function fetchCart() {
 			var _this3 = this;
 
-			console.log("inside fetch cart");
 			var cart_id = window.getCookie('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/fetch";
@@ -96,7 +95,6 @@ var viewCart = function (_React$Component) {
 					cart_id: cart_id
 				};
 				axios.get(url, { params: body }).then(function (res) {
-					console.log("fetch cart response ==>", res);
 					_this3.setState({ cart: res.data.cart });
 					res.data.cart.items.forEach(function (item) {
 						window.updateaddToCartComponent(item);

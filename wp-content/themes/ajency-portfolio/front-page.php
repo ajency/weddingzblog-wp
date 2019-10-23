@@ -50,6 +50,11 @@
     font-weight: 500;
     text-transform: uppercase;
   }
+
+  .saved-address-item {
+    white-space: normal;
+    text-align: left;
+  }
 </style>
 
 <!-- <div class="container p5">

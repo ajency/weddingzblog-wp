@@ -23,7 +23,8 @@ class gpsModalPrompt extends React.Component {
 			fetchingGPS : false,
 			searchText : '',
 			addresses : '',
-			showNoAddressMsg : false
+			showNoAddressMsg : false,
+			settingUserLocation : false
 		}
 		firebase.auth().onAuthStateChanged((user) => {
 		  	if (user) {
@@ -41,7 +42,7 @@ class gpsModalPrompt extends React.Component {
 			<div className="modal fade" id="gpsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
 			  	<div className="modal-dialog modal-dialog-centered" role="document">
 					<div className="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={()=> this.modalClosed()}>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={()=> this.modalClosed()} disabled={this.state.fetchingGPS || this.state.settingUserLocation}>
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 						<div className="p-5">
@@ -74,6 +75,8 @@ class gpsModalPrompt extends React.Component {
 							<div>
 								{this.getSavedAddresses()}
 							</div>
+
+							{this.showAddressUpdateMsg()}
 						</div>
 					</div>
 			  	</div>
@@ -88,27 +91,38 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	showLocationSearch(){
-		if(!this.state.fetchingGPS)
+		if(!this.state.settingUserLocation && !this.state.fetchingGPS)
 			return <input type="search" className="w-75" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
 	}
 
 	showFetchLocationUsingGps(){
-		if(this.state.fetchingGPS)
+		if(this.state.fetchingGPS && !this.state.settingUserLocation)
 			return <div className="btn-dark" > Fetching current Location </div>
-		else
-			return <div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </div>
+		else if(!this.state.settingUserLocation)
+			return <button className="" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </button>
+	}
+
+	showAddressUpdateMsg(){
+		if(this.state.settingUserLocation)
+			return (
+				<div>
+					Setting User location ...
+					<div>
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>
+				</div>
+			)
 	}
 
 	getSavedAddresses(){
-		if(this.state.addresses && this.state.addresses.length && !this.state.locations.length){
-			console.log("check state addresses ==>", this.state.addresses);
+		if(this.state.addresses && this.state.addresses.length && !this.state.locations.length && !this.state.settingUserLocation && !this.state.fetchingGPS){
 			let addresses = this.state.addresses.map((address)=>{
-				console.log("add ==>", address);
-				<li key={address.id} className="btn p-1">
-					{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}
-				</li>
+				return (
+					<li key={address.id} className="cursor-pointer p-1 saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
+						{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}
+					</li>
+				)
 			})
-			console.log("addresses element ==>", addresses)
 			return (
 				<div>
 					<h4>Saved Addresses</h4>
@@ -162,7 +176,6 @@ class gpsModalPrompt extends React.Component {
 		clearTimeout(debounceTimer);
 		this.setState({searchText : value});
 		debounceTimer = setTimeout(()=>{
-			console.log("autoCompleteLocation =>", value);
 			this.setState({locError : ''});
 			if(value.length > 2 ) {
 				let url = this.state.apiEndPoint + "/places-autocomplete";
@@ -171,7 +184,6 @@ class gpsModalPrompt extends React.Component {
 				}
 				this.setState({showLoader : true, locations : []})
 				cancel && cancel();
-				console.log("cancel ==>", cancel);
 				axios.get(url, {params : body,
 						cancelToken : new CancelToken((c) => {
 							cancel = c;
@@ -187,7 +199,6 @@ class gpsModalPrompt extends React.Component {
 						}
 					})
 					.catch((error)=>{
-						// this.setState({showLoader : false})
 						console.log("error in autoCompleteLocation ==>", error);
 						// let msg = error.message ? error.message : error;
 						// this.setState({locError : msg})
@@ -200,9 +211,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	reverseGeocode(loc = null, latlng=null) {
-		console.log("reverse geocode ==>", loc);
-		this.setState({locError : ''});
-		this.setState({showLoader : true, locations : []})
+		this.setState({locations : [], locError : '', settingUserLocation : true})
 		let url = this.state.apiEndPoint + "/reverse-geocode";
 		let body = {};
 		if(loc)
@@ -213,19 +222,18 @@ class gpsModalPrompt extends React.Component {
 		axios.get(url, {params : body})
 			.then((res) => {
 				if(res.data.status === "OK"){
+					this.setState({settingUserLocation : false, gpsError : ''});
 					if(loc)
 						this.setUserLocations([res.data.result.geometry.location.lat,res.data.result.geometry.location.lng], res.data.result.formatted_address) 
 					else if(latlng)
 						this.setUserLocations(latlng, res.data.results[0].formatted_address);
-					this.setState({gpsError : ''})
 				}
 				else{
-					this.setState({locError : res.data.error_message})
-					this.setState({showLoader : false, fetchingGPS : false});
+					this.setState({fetchingGPS : false, locError : res.data.error_message});
 				}
 			})
 			.catch((error)=>{
-				this.setState({showLoader : false, fetchingGPS : false});
+				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in autoCompleteLocation ==>", error);
 				let msg = error.message ? error.message : error;
 				this.setState({locError : msg})
@@ -233,6 +241,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	setUserLocations(lat_lng, formatted_address){
+		this.setState({settingUserLocation : true});
 		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/change-location";
@@ -244,18 +253,18 @@ class gpsModalPrompt extends React.Component {
 			axios.post(url, body)
 			.then((res) => {
 				this.updateLocationUI(lat_lng, formatted_address);
-				this.setState({showLoader : false, fetchingGPS : false, searchText : ''});
+				this.setState({ fetchingGPS : false, searchText : '', settingUserLocation : false});
 				$('#gpsModal').modal('hide');
 			})
 			.catch((error)=>{
-				this.setState({showLoader : false, fetchingGPS : false});
+				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in updating cart location ==>", error);
 				let msg = error.message ? error.message : error;
 				this.setState({locError : msg});
 			})
 		}
 		else{
-			this.setState({showLoader : false, fetchingGPS : false, searchText: ''});
+			this.setState({ fetchingGPS : false, searchText: '', settingUserLocation : false});
 			this.updateLocationUI(lat_lng, formatted_address);
 			$('#gpsModal').modal('hide');
 		}
@@ -263,7 +272,6 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	updateLocationUI(lat_lng, formatted_address){
-		console.log("setUser locations ==>", lat_lng, formatted_address)
 		document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
 		document.cookie = "formatted_address=" + formatted_address + ";path=/";
 		window.lat_lng = lat_lng;
@@ -276,7 +284,7 @@ class gpsModalPrompt extends React.Component {
 
 
 	getLocation(){
-		this.setState({showLoader : true, locations : [], fetchingGPS : true})
+		this.setState({locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
 			timeout: 10 * 1000,
@@ -287,7 +295,7 @@ class gpsModalPrompt extends React.Component {
 			this.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 		},
 		(geoError) =>{
-			this.setState({showLoader : false, fetchingGPS : false});
+			this.setState({fetchingGPS : false});
 			console.log("error in getting geolocation", geoError);
 			if(geoError.code === 1){
 				// permission denied
@@ -307,15 +315,22 @@ class gpsModalPrompt extends React.Component {
 		let url = this.state.apiEndPoint + "/user/get-addresses";
 		axios.get(url, {headers :  headers })
 			.then((res) => {
-				console.log("fetch addresses response ==>", res);
-				$('#verifyOtpPrompt').modal('hide');
-		      	this.showGpsModal(res.data.addresses);
+				this.setState({ addresses : res.data.addresses });
+				this.setDefaultAddress(res.data.addresses)
 			})
 			.catch((error)=>{
 				console.log("error in fetch addresses ==>", error);
-				let msg = error.message ? error.message : error;
-				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});
 			})
+	}
+
+	setDefaultAddress(addresses){
+		if(!window.lat_lng){
+			let default_address = addresses.find((address) => {return address.address.default});
+			console.log("check default address ==>", default_address);
+			if(default_address){
+				this.setUserLocations(default_address.address.lat_long, default_address.address.formatted_address);
+			}
+		}
 	}
 
 }
@@ -325,7 +340,10 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 
 window.showGpsModalPrompt = (display, addresses = null) => {
-	console.log("addresses ==>", addresses, addresses.length);
+	$('#gpsModal').modal('show');
+}
+
+window.updateAddresses = (addresses = null) => {
 	let showNoAddressMsg = false;
 	if(addresses && !addresses.length)
 		showNoAddressMsg = true;
@@ -334,5 +352,4 @@ window.showGpsModalPrompt = (display, addresses = null) => {
 	setTimeout(() => {
 		gpsModalPromptComponent.setState({showNoAddressMsg : false});
 	},4000);
-	$('#gpsModal').modal('show');
 }

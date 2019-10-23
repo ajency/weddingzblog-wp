@@ -14,6 +14,7 @@ export class GoogleMap extends Component {
                     zoom = {18}
                     initialCenter={this.props.latlng}
                     mapTypeControl={false}
+                    center = {this.props.latlng}
                     fullscreenControl={false}
                     streetViewControl={false}
                     onDragend={this.props.handleCenter}

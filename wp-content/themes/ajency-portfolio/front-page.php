@@ -543,6 +543,9 @@
 <!-- gps modal prompt -->
 <div id="react-add-delivery-address-container"></div>
 
+<!-- sign-in modal prompt -->
+<div id="react-sign-in-container"></div>
+
 <!-- Add to cart error  -->
 <div class="failure toast d-flex justify-content-center">
   <span class="alert-danger d-none" id="failure-toast">

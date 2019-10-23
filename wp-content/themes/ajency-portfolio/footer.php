@@ -99,12 +99,32 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/custom.js" type="text/javascript">
 </script>
 
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyC-w19gW41OaoyjuK4jHPVN5JtviKGB7KQ",
+        authDomain: "project-ggb-dev.firebaseapp.com",
+        databaseURL: "https://project-ggb-dev.firebaseio.com",
+        projectId: "project-ggb-dev",
+        storageBucket: "project-ggb-dev.appspot.com",
+        messagingSenderId: "1034785903670",
+        appId: "1:1034785903670:web:496c7762259b7fb3b9f497"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_3" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_3" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_3" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_3" type="text/javascript"></script>
+
     <?php wp_footer(); ?>
 
     </body>

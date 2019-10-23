@@ -21,8 +21,19 @@ class gpsModalPrompt extends React.Component {
 			locError : '',
 			gpsError : '',
 			fetchingGPS : false,
-			searchText : ''
+			searchText : '',
+			addresses : '',
+			showNoAddressMsg : false
 		}
+		firebase.auth().onAuthStateChanged((user) => {
+		  	if (user) {
+		    	user.getIdToken().then((idToken) => {
+		   			this.fetchAddresses(idToken);        
+		        });
+		  	} else {
+		  		console.log("no user");
+		  	}
+		});
 	}
 
 	render() {
@@ -40,6 +51,11 @@ class gpsModalPrompt extends React.Component {
 							<h3> Add your delivery address to proceed </h3>
 							<p> To add this item to your cart, please set your delivery location </p>
 						</div>
+
+						<div>
+							{this.getNoSavedAddressesMsg()}
+						</div>
+
 						<div className="d-flex justify-content-center flex-column p-4">
 							{this.showFetchLocationUsingGps()}
 							<div className="gps-error-msg">
@@ -54,11 +70,87 @@ class gpsModalPrompt extends React.Component {
 							<ul style={locationStyle}>
 								{this.getAutoCompleteLocations()}
 							</ul>
+
+							<div>
+								{this.getSavedAddresses()}
+							</div>
 						</div>
 					</div>
 			  	</div>
 		    </div>
 		);
+	}
+
+	checkGpsErrorMsg(){
+		if(this.state.gpsError){
+			return <div className="alert-danger">{this.state.gpsError}</div>
+		}
+	}
+
+	showLocationSearch(){
+		if(!this.state.fetchingGPS)
+			return <input type="search" className="w-75" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
+	}
+
+	showFetchLocationUsingGps(){
+		if(this.state.fetchingGPS)
+			return <div className="btn-dark" > Fetching current Location </div>
+		else
+			return <div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </div>
+	}
+
+	getSavedAddresses(){
+		if(this.state.addresses && this.state.addresses.length && !this.state.locations.length){
+			console.log("check state addresses ==>", this.state.addresses);
+			let addresses = this.state.addresses.map((address)=>{
+				console.log("add ==>", address);
+				<li key={address.id} className="btn p-1">
+					{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}
+				</li>
+			})
+			console.log("addresses element ==>", addresses)
+			return (
+				<div>
+					<h4>Saved Addresses</h4>
+					<ul style={locationStyle}>
+						{addresses}
+					</ul>
+				</div>
+			);
+		}
+	}
+
+	getAutoCompleteLocations(){
+		if(this.state.locations.length){
+			let locs =  this.state.locations.map((loc)=>
+				<li key={loc.id} className="btn p-1" onClick={() => {this.reverseGeocode(loc)}}>
+					{loc.description}
+				</li>
+			);
+			return locs;
+		}
+		if(this.state.showLoader && !this.state.locations.length){
+			return (
+					<div>
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>
+				)
+		}
+	}
+
+	checkLocationErrorMsg(){
+		if(this.state.locError){
+			return <div className="alert-danger">{this.state.locError}</div>
+		}
+	}
+
+	getNoSavedAddressesMsg(){
+		if(this.state.showNoAddressMsg)
+			return (
+				<div className="p-3 alert-danger">
+					You have no saved addreses. Please set delivery location from options below
+				</div>
+			);
 	}
 
 	modalClosed(){
@@ -105,24 +197,6 @@ class gpsModalPrompt extends React.Component {
 				this.setState({locations : []})
 			}
 		},500);
-	}
-
-	getAutoCompleteLocations(){
-		if(this.state.locations.length){
-			let locs =  this.state.locations.map((loc)=>
-				<li key={loc.id} className="btn p-1" onClick={() => {this.reverseGeocode(loc)}}>
-					{loc.description}
-				</li>
-			);
-			return locs;
-		}
-		if(this.state.showLoader && !this.state.locations.length){
-			return (
-					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
-					</div>
-				)
-		}
 	}
 
 	reverseGeocode(loc = null, latlng=null) {
@@ -201,12 +275,6 @@ class gpsModalPrompt extends React.Component {
 	}
 
 
-	checkLocationErrorMsg(){
-		if(this.state.locError){
-			return <div className="alert-danger">{this.state.locError}</div>
-		}
-	}
-
 	getLocation(){
 		this.setState({showLoader : true, locations : [], fetchingGPS : true})
 		let geoOptions = {
@@ -232,29 +300,39 @@ class gpsModalPrompt extends React.Component {
 		},geoOptions);
 	}
 
-	checkGpsErrorMsg(){
-		if(this.state.gpsError){
-			return <div className="alert-danger">{this.state.gpsError}</div>
+	fetchAddresses(idToken){
+		let headers = {
+			Authorization : 'Bearer '+ idToken
 		}
+		let url = this.state.apiEndPoint + "/user/get-addresses";
+		axios.get(url, {headers :  headers })
+			.then((res) => {
+				console.log("fetch addresses response ==>", res);
+				$('#verifyOtpPrompt').modal('hide');
+		      	this.showGpsModal(res.data.addresses);
+			})
+			.catch((error)=>{
+				console.log("error in fetch addresses ==>", error);
+				let msg = error.message ? error.message : error;
+				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});
+			})
 	}
 
-	showLocationSearch(){
-		if(!this.state.fetchingGPS)
-			return <input type="search" className="w-75" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
-	}
-
-	showFetchLocationUsingGps(){
-		if(this.state.fetchingGPS)
-			return <div className="btn-dark" > Fetching current Location </div>
-		else
-			return <div className="btn-dark" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </div>
-	}
 }
 
 let domContainer = document.querySelector('#react-add-delivery-address-container');
 const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 
 
-window.showGpsModalPrompt = (data) => {
+window.showGpsModalPrompt = (display, addresses = null) => {
+	console.log("addresses ==>", addresses, addresses.length);
+	let showNoAddressMsg = false;
+	if(addresses && !addresses.length)
+		showNoAddressMsg = true;
+
+	gpsModalPromptComponent.setState({addresses : addresses, showNoAddressMsg : showNoAddressMsg});
+	setTimeout(() => {
+		gpsModalPromptComponent.setState({showNoAddressMsg : false});
+	},4000);
 	$('#gpsModal').modal('show');
 }

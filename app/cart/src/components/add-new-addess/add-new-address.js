@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './add-new-address.scss'
 import GoogleMap from '../google-map/google-map.js';
+const CancelToken = axios.CancelToken;
+let cancel;
+let debounceTimer;
+const locationStyle = {
+	// 'list-style' : 'none'
+}
 class AddNewAddress extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +25,10 @@ class AddNewAddress extends Component {
                 lat:this.props.latlng.lat,
                 lng:this.props.latlng.lng
             },
-            address_type:''
+            address_type:'',
+            addressInput: false,
+            locations : [],
+            searchText:'',
 		};
     }
 
@@ -30,40 +39,21 @@ class AddNewAddress extends Component {
             <div className="container">
                 <div style={{width:"inherit", height:"auto"}}>
                     <div className="map-container">
-                        <GoogleMap handleCenter={this.handleCenter} latlng={this.props.latlng}/>
+                        <GoogleMap handleCenter={this.handleCenter} latlng={this.state.latlng}/>
                         <div id="marker"></div>
                     </div>
                     {this.state.showLoader?<div>Address is loading...</div>:null}
+                    {this.state.address}
                     <h3>Set a delivery address</h3>
                     <form>
-                        <p>{this.state.address}</p>
-
-                        <label>
-                           House/Flat/Block no:
-                            <input type="text" value={this.state.building} onChange={this.handleBuildingChange}/>
-                        </label>
-                        <label>
-                            Landmark:
-                            <input type="text" value={this.state.landmark}  onChange={this.handleLandmarkChange}/>
-                        </label> <br/>
-                        <div className="radio">
-                            <label>
-                                <input type="radio" onChange={this.handleAddressTypeChange} value="home"  checked={this.state.address_type ==='home'} />
-                                Home
-                            </label>
-                            </div>
-                            <div className="radio">
-                            <label>
-                                <input type="radio" onChange={this.handleAddressTypeChange} value="work" checked={this.state.address_type ==='work'} />
-                                Work
-                            </label>
-                            </div>
-                            <div className="radio">
-                            <label>
-                                <input type="radio" onChange={this.handleAddressTypeChange}  value="other" checked={this.state.address_type ==='other'} />
-                                Other
-                            </label>
+                        <div>
+                                                  
+                            {this.state.addressInput? this.getChangeAddressInput() : <button onClick={this.changeAddress}>Change</button>}                         
+                         
+                            {this.getAddressTypeRadio()} 
                         </div>
+
+                     
                         <button onClick={this.handleSubmit}>Add Address</button>
                     </form>
                 </div>
@@ -73,8 +63,7 @@ class AddNewAddress extends Component {
 
     
     handleCenter = (mapProps,map) => {
-        this.setState({'landmark':''});
-        this.setState({'latlng':{lat:map.getCenter().lat(), lng: map.getCenter().lng()}});
+        this.setState({'landmark':'','latlng':{lat:map.getCenter().lat(), lng: map.getCenter().lng()}});
         this.reverseGeocode(map.getCenter().lat(), map.getCenter().lng());
     }
 
@@ -102,20 +91,33 @@ class AddNewAddress extends Component {
         console.log(data);
         
     }
+
+    changeAddress = (e) => {
+        e.preventDefault();
+        this.setState({'addressInput': !this.state.addressInput});
+    }
    
-    reverseGeocode = (lat = null, lng = null) => {
+    reverseGeocode = (loc=null, lat = null, lng = null) => {
 		this.setState({locError : ''});
 		this.setState({showLoader : true})
 		let url = this.state.apiEndPoint + "/reverse-geocode";
 		let body = {};
-	    if(lat && lng) {
+        if(loc) {
+            body.place_id = loc.place_id;
+        } else if(lat && lng) {
             body.latlng = lat + ',' +lng;
         }
         
 		axios.get(url, {params : body})
         .then((res) => {
             if(res.data.status === "OK"){
-                this.setState({"address":res.data.results[0].formatted_address})
+                if(loc) {
+                    this.setState({"address": res.data.result.formatted_address});
+                    this.setState({'latlng':{lat: res.data.result.geometry.location.lat,lng: res.data.result.geometry.location.lng}});
+                    this.setState({'locations':[], 'addressInput':false});
+                } else if(lat && lng) {
+                    this.setState({"address":res.data.results[0].formatted_address});
+                }
                 this.setState({showLoader : false})
             }
             else{
@@ -129,6 +131,120 @@ class AddNewAddress extends Component {
             this.setState({locError : msg})
         })
     }
+
+    autoCompleteLocation =(value)=> {
+		clearTimeout(debounceTimer);
+		this.setState({searchText : value});
+		debounceTimer = setTimeout(()=>{
+			console.log("autoCompleteLocation =>", value);
+			this.setState({locError : ''});
+			if(value.length > 2 ) {
+				let url = this.state.apiEndPoint + "/places-autocomplete";
+				let body = {
+					input : value
+				}
+				this.setState({showLoader : true, locations : []})
+				cancel && cancel();
+				console.log("cancel ==>", cancel);
+				axios.get(url, {params : body,
+						cancelToken : new CancelToken((c) => {
+							cancel = c;
+						})
+					})
+					.then((res) => {
+						this.setState({showLoader : false})
+						if(res.data.status === "OK")
+							this.setState({locations : res.data.predictions})
+						else{
+							//display error
+							this.setState({locError : res.data.error_message})
+						}
+					})
+					.catch((error)=>{
+						// this.setState({showLoader : false})
+						console.log("error in autoCompleteLocation ==>", error);
+						// let msg = error.message ? error.message : error;
+						// this.setState({locError : msg})
+					})
+			}
+			else{
+				this.setState({locations : []})
+			}
+		},600);
+    }
+    
+    getAutoCompleteLocations(){
+		if(this.state.locations.length){
+			let locs =  this.state.locations.map((loc)=>
+				<li key={loc.id} onClick={() => this.reverseGeocode(loc)}>
+					{loc.description}
+				</li>
+			);
+			return locs;
+		}
+		if(this.state.showLoader && !this.state.locations.length){
+			return (
+					<div>
+						<i >loading...</i>
+					</div>
+				)
+		}
+    }
+    
+    getAddressTypeRadio = () => {
+       return (
+        <div>
+            <label>
+                House/Flat/Block no:
+                <input type="text" value={this.state.building} onChange={this.handleBuildingChange}/>
+            </label>
+            <label>
+                Landmark:
+                <input type="text" value={this.state.landmark}  onChange={this.handleLandmarkChange}/>
+            </label> <br/>
+            <div className="radio">
+                <label>
+                    <input type="radio" onChange={this.handleAddressTypeChange} value="home"  checked={this.state.address_type ==='home'} />
+                    Home
+                </label>
+            </div>
+            <div className="radio">
+                <label>
+                    <input type="radio" onChange={this.handleAddressTypeChange} value="work" checked={this.state.address_type ==='work'} />
+                    Work
+                </label>
+            </div>
+            <div className="radio">
+                <label>
+                    <input type="radio" onChange={this.handleAddressTypeChange}  value="other" checked={this.state.address_type ==='other'} />
+                    Other
+                </label>
+            </div>
+        </div>
+        );
+    } 
+
+    getChangeAddressInput = () => {
+        return (
+            <div>
+                {this.showLocationSearch()}
+                <ul style={{listStyle:'none'}}>
+                    {this.getAutoCompleteLocations()}
+                </ul>
+                
+            </div>  
+        ); 
+    }
+
+    showLocationSearch(){
+		if(!this.state.fetchingGPS)
+            return (
+                <div>
+                    <input type="search"  placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/> 
+                    <button onClick={this.changeAddress}>Cancel</button>
+                </div>
+            );
+	}
 }
 
 export default AddNewAddress;

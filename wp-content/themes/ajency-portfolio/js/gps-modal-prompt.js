@@ -167,8 +167,17 @@ var gpsModalPrompt = function (_React$Component) {
 
 			if (this.state.fetchingGPS && !this.state.settingUserLocation) return React.createElement(
 				'div',
-				{ className: 'btn-dark' },
-				' Fetching current Location '
+				null,
+				React.createElement(
+					'div',
+					{ className: '' },
+					' Fetching current Location '
+				),
+				React.createElement(
+					'div',
+					null,
+					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+				)
 			);else if (!this.state.settingUserLocation) return React.createElement(
 				'button',
 				{ className: '', style: btnStyle, onClick: function onClick() {

@@ -97,7 +97,14 @@ class gpsModalPrompt extends React.Component {
 
 	showFetchLocationUsingGps(){
 		if(this.state.fetchingGPS && !this.state.settingUserLocation)
-			return <div className="btn-dark" > Fetching current Location </div>
+			return (
+				<div>
+					<div className="" > Fetching current Location </div>
+					<div>
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>
+				</div>
+			)
 		else if(!this.state.settingUserLocation)
 			return <button className="" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </button>
 	}

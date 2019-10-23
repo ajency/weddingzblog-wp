@@ -17,9 +17,11 @@
         &-item{
             padding: 0 10px;
             display: flex;
-            margin-bottom: 60px;
             scroll-snap-align: start;
             scroll-snap-stop: always;
+            @media (max-width: 991px) {
+                margin-bottom: 60px;
+            }
         }
     }
     &-wrapper{
@@ -30,29 +32,29 @@
             margin: 0 !important;
         }
         .slick-dots{
-            bottom: 25px;
-            text-align: center;
+            bottom: 20px;
+            text-align: left;
             display: block;
-            li{
-                width: auto;
-                height: auto;
-                button{
-                    width: 5px;
-                    height: 5px;
-                    background: transparent;
-                    border: 2px solid #fff;
-                    border-radius: 50%;
-                    padding: 4px;
-                    &:before{
-                        display: none;
-                    }
-                }
-                &.slick-active{
-                    button{
-                        background: #fff;
-                    }
-                }
-            }
+            // li{
+            //     width: auto;
+            //     height: auto;
+            //     button{
+            //         width: 5px;
+            //         height: 5px;
+            //         background: transparent;
+            //         border: 2px solid #fff;
+            //         border-radius: 50%;
+            //         padding: 4px;
+            //         &:before{
+            //             display: none;
+            //         }
+            //     }
+            //     &.slick-active{
+            //         button{
+            //             background: #fff;
+            //         }
+            //     }
+            // }
         }
     }
     &-quantity{

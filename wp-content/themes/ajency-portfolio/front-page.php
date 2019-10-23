@@ -103,9 +103,9 @@
       <div class="col-xl-12">
         <h1 class="ft6 product-section__title mb-4">Products</h1>        
         <div class="row product-list">   
-          <div class="col-md-6 product-list-item trigger1">
-            <div class="product-wrapper cardone">
-              <div class="product-image ">
+          <div class="col-xl-6 col-lg-7 product-list-item trigger1">
+            <div class="product-wrapper d-lg-flex align-items-lg-end cardone">
+              <div class="product-image lg-w-50">
                 <div class="item">
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -119,7 +119,7 @@
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
               </div>
-              <div class="product-info"> 
+              <div class="product-info lg-w-50 pl-lg-2"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
                 <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
@@ -133,10 +133,16 @@
               </div>
             </div>      
           </div>
+
+          <div class="col-xl-6 col-lg-5">
+          </div>
+
+          <div class="col-xl-6 col-lg-5">
+          </div>
           
-          <div class="col-md-6 product-list-item trigger2">
-            <div class="product-wrapper cardtwo">
-              <div class="product-image ">
+          <div class="col-xl-6 col-lg-7 product-list-item trigger2">
+            <div class="product-wrapper d-lg-flex align-items-lg-end cardtwo reverse-order">
+              <div class="product-image lg-w-50">
                 <div class="item">
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -150,7 +156,7 @@
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
               </div>
-              <div class="product-info"> 
+              <div class="product-info lg-w-50 pr-lg-2 text-md-right"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
                 <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
@@ -163,11 +169,11 @@
                 </div>
               </div>
             </div>      
-          </div>
+          </div>       
 
-          <div class="col-md-6 product-list-item trigger3">
-            <div class="product-wrapper cardthree">
-              <div class="product-image ">
+          <div class="col-xl-6 col-lg-7 product-list-item trigger3">
+            <div class="product-wrapper d-lg-flex align-items-lg-end cardthree">
+              <div class="product-image lg-w-50">
                 <div class="item">
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_three.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -181,7 +187,7 @@
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
               </div>
-              <div class="product-info"> 
+              <div class="product-info lg-w-50 pl-lg-2"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
                 <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
@@ -196,9 +202,15 @@
             </div>      
           </div>
 
-          <div class="col-md-6 product-list-item trigger4">
-            <div class="product-wrapper cardfour">
-              <div class="product-image ">
+          <div class="col-xl-6 col-lg-5">
+          </div>
+
+          <div class="col-xl-6 col-lg-5">
+          </div>
+
+          <div class="col-xl-6 col-lg-7 product-list-item trigger4">
+            <div class="product-wrapper d-lg-flex align-items-lg-end cardfour reverse-order">
+              <div class="product-image lg-w-50">
                 <div class="item">
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -212,7 +224,7 @@
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
               </div>
-              <div class="product-info"> 
+              <div class="product-info lg-w-50 pr-lg-2 text-md-right"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
                 <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
@@ -226,10 +238,10 @@
               </div>
             </div>      
           </div>
-
-          <div class="col-md-6 product-list-item trigger5">
-            <div class="product-wrapper cardend">
-              <div class="product-image ">
+        
+          <div class="col-xl-6 col-lg-7 product-list-item trigger5">
+            <div class="product-wrapper d-lg-flex align-items-lg-end cardend">
+              <div class="product-image lg-w-50">
                 <div class="item">
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
@@ -243,7 +255,7 @@
                   <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
                 </div>
               </div>
-              <div class="product-info"> 
+              <div class="product-info lg-w-50 pl-lg-2"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
                 <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.

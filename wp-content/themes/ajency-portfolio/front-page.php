@@ -103,19 +103,30 @@
       <div class="col-xl-12">
         <h1 class="ft6 product-section__title mb-4">Products</h1>        
         <div class="row product-list">
-          <div class="col-lg-3 col-md-6 product-list-item">
+          <div class="col-md-6 product-list-item">
             <div class="product-wrapper">
-              <div class="product-image position-relative">
-                <img src="<?php echo get_template_directory_uri().'/images/products/product_one.png';?>" class="img-fluid" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+              <div class="product-image ">
+                <div class="item">
+                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_four.png';?>"  alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                </div>
+                <div class="item">
+                 <img src="<?php echo get_template_directory_uri().'/images/products/prod_two.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                </div>
+                <div class="item">
+                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_three.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                </div>
+                <div class="item">
+                  <img src="<?php echo get_template_directory_uri().'/images/products/prod_one.png';?>" alt="Noodle Salad Bowl" title="Noodle Salad Bowl">
+                </div>
               </div>
               <div class="product-info"> 
                 <h3 class="product-title h1 ft6">Noodle Salad Bowl</h3>               
-                <h4 class="font-weight-light mt-0 mb-3">
+                <h4 class="product-excerpt font-weight-light mt-0">
                   Buckwheat noodles and a colorful mix of greens, roasted vegetables and teriyaki tofu. Served with a very Asian soy-sesame & ginger dressing.
                 </h4>
                 <div class="product-meta d-flex">
                   <div class="product-price h1 ft6 mb-0"><img src="<?php echo get_template_directory_uri().'/images/products/ruppeIcon.png';?>" class="" alt="" title=""> 450</div>
-                  <a href="#" class="btn-add-to-cart text-primary border-radius-4 border-white m-0 h1 ft6" title="Add Noodle Salad Bowl to cart">
+                  <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 h1 ft6" title="Add Noodle Salad Bowl to cart">
                   Add to cart  <img src="<?php echo get_template_directory_uri().'/images/products/cart-arrow.png';?>" class="" alt="" title="">
                   </a>
                 </div>

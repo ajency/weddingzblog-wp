@@ -447,26 +447,26 @@ nav {
         opacity: 1;
     }
 }
-.slick-track {
-    img {
-        width: 890px;
-        @media (min-width: 768px) and (max-width: 991.98px) {
-            width:490px;
-        }
-        @media (min-width: 992px) and (max-width: 1399.98px) {
-            width: 690px;
-        }
-        @media (min-width: 320px) and (max-width: 767.98px) {
-            width: 297px;
-        }
-        @media (max-width: 400px) {
-            width: 280px;
-        }
-        @media (max-width: 360px) {
-            width: 265px;
-        }
-    }
-}
+// .slick-track {
+//     img {
+//         width: 890px;
+//         @media (min-width: 768px) and (max-width: 991.98px) {
+//             width:490px;
+//         }
+//         @media (min-width: 992px) and (max-width: 1399.98px) {
+//             width: 690px;
+//         }
+//         @media (min-width: 320px) and (max-width: 767.98px) {
+//             width: 297px;
+//         }
+//         @media (max-width: 400px) {
+//             width: 280px;
+//         }
+//         @media (max-width: 360px) {
+//             width: 265px;
+//         }
+//     }
+// }
 .aj-team-member {
     .slick-slide {
         width: 1300px;

@@ -1,4 +1,5 @@
 var $ = jQuery.noConflict();
+
 $('.mobile-slick').slick({
     infinite: true,
     slidesToShow: 1,
@@ -6,12 +7,18 @@ $('.mobile-slick').slick({
     arrows: false,
     adaptiveHeight: true
 });
-// $('.product-image').slick({
-//     infinite: false,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     arrows: false,
-// });
+
+$('.product-image').slick({
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true,
+    fade: true,
+    speed: 900,
+    cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+    touchThreshold: 100
+});
 
 $('.mobile-slick').on('setPosition', function() {
     // jbResizeSlider();

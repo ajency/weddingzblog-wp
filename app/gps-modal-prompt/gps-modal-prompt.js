@@ -24,14 +24,16 @@ class gpsModalPrompt extends React.Component {
 			searchText : '',
 			addresses : '',
 			showNoAddressMsg : false,
-			settingUserLocation : false
+			settingUserLocation : false,
+			notLoggedIn : false
 		}
 		firebase.auth().onAuthStateChanged((user) => {
-		  	if (user) {
+		  	if (user && !this.state.notLoggedIn) {
 		    	user.getIdToken().then((idToken) => {
 		   			this.fetchAddresses(idToken);        
 		        });
 		  	} else {
+		  		this.setState({notLoggedIn : true})
 		  		console.log("no user");
 		  	}
 		});

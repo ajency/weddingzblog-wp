@@ -38,14 +38,16 @@ var gpsModalPrompt = function (_React$Component) {
 			searchText: '',
 			addresses: '',
 			showNoAddressMsg: false,
-			settingUserLocation: false
+			settingUserLocation: false,
+			notLoggedIn: false
 		};
 		firebase.auth().onAuthStateChanged(function (user) {
-			if (user) {
+			if (user && !_this.state.notLoggedIn) {
 				user.getIdToken().then(function (idToken) {
 					_this.fetchAddresses(idToken);
 				});
 			} else {
+				_this.setState({ notLoggedIn: true });
 				console.log("no user");
 			}
 		});

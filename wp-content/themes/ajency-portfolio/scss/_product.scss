@@ -7,7 +7,7 @@
         &-item{
             padding: 0 10px;
             display: flex;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
     }
     &-wrapper{
@@ -83,7 +83,7 @@
     }
     &-price{
         img{
-            width: 16px;
+            width: 14px;
             position: relative;
             top: -2px;
         }
@@ -99,18 +99,20 @@
     }
 }
 
-.btn-add-to-cart{
+a.btn-add-to-cart{
     text-decoration: none;
+    overflow: hidden;
     img{
         position: relative;
         top: -1px;
-        transition: all .4s ease;
+        right: -50px;
+        transition: all .5s ease;
     }  
     &:hover{
         text-decoration: none;
-        color: #4aa751;
+        color: #4aa751 !important;
         img{
-            transform: translateX(5px);            
+            right: 0;
         }        
     }      
 }

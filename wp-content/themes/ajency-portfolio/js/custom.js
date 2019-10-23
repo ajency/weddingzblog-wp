@@ -17,7 +17,9 @@ $('.product-image').slick({
     fade: true,
     speed: 900,
     cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-    touchThreshold: 100
+    touchThreshold: 100,
+    autoplay: true,
+    autoplaySpeed: 2000,
 });
 
 $('.mobile-slick').on('setPosition', function() {

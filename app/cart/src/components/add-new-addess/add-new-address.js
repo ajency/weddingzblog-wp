@@ -5,9 +5,7 @@ import GoogleMap from '../google-map/google-map.js';
 const CancelToken = axios.CancelToken;
 let cancel;
 let debounceTimer;
-const locationStyle = {
-	// 'list-style' : 'none'
-}
+
 class AddNewAddress extends Component {
     constructor(props) {
         super(props);
@@ -42,18 +40,13 @@ class AddNewAddress extends Component {
                         <GoogleMap handleCenter={this.handleCenter} latlng={this.state.latlng}/>
                         <div id="marker"></div>
                     </div>
-                    {this.state.showLoader?<div>Address is loading...</div>:null}
-                    {this.state.address}
+                    {this.state.showLoader?<div>Address is loading...</div>:this.state.address}
+                    {this.state.addressInput ? this.getChangeAddressInput() : this.state.address?<button onClick={this.changeAddress}>Change</button>:null}                         
                     <h3>Set a delivery address</h3>
                     <form>
                         <div>
-                                                  
-                            {this.state.addressInput? this.getChangeAddressInput() : <button onClick={this.changeAddress}>Change</button>}                         
-                         
                             {this.getAddressTypeRadio()} 
                         </div>
-
-                     
                         <button onClick={this.handleSubmit}>Add Address</button>
                     </form>
                 </div>
@@ -64,7 +57,8 @@ class AddNewAddress extends Component {
     
     handleCenter = (mapProps,map) => {
         this.setState({'landmark':'','latlng':{lat:map.getCenter().lat(), lng: map.getCenter().lng()}});
-        this.reverseGeocode(map.getCenter().lat(), map.getCenter().lng());
+        //  console.log(map.getCenter().lat(), map.getCenter().lng())
+        this.reverseGeocode({'lat':map.getCenter().lat(), 'lng':map.getCenter().lng()});
     }
 
     handleLandmarkChange = (e) => {
@@ -94,28 +88,29 @@ class AddNewAddress extends Component {
 
     changeAddress = (e) => {
         e.preventDefault();
-        this.setState({'addressInput': !this.state.addressInput});
+        this.setState({'addressInput': !this.state.addressInput, 'searchText':''});
     }
    
-    reverseGeocode = (loc=null, lat = null, lng = null) => {
+    reverseGeocode = (obj) => {
 		this.setState({locError : ''});
 		this.setState({showLoader : true})
 		let url = this.state.apiEndPoint + "/reverse-geocode";
 		let body = {};
-        if(loc) {
-            body.place_id = loc.place_id;
-        } else if(lat && lng) {
-            body.latlng = lat + ',' +lng;
-        }
         
+        if(obj.loc) {
+            body.place_id = obj.loc.place_id;
+        } else if(obj.lat && obj.lng) {
+            body.latlng = obj.lat + ',' +obj.lng;
+        }
+            
 		axios.get(url, {params : body})
         .then((res) => {
             if(res.data.status === "OK"){
-                if(loc) {
+                if(obj.loc) {
                     this.setState({"address": res.data.result.formatted_address});
                     this.setState({'latlng':{lat: res.data.result.geometry.location.lat,lng: res.data.result.geometry.location.lng}});
                     this.setState({'locations':[], 'addressInput':false});
-                } else if(lat && lng) {
+                } else if(obj.lat && obj.lng) {
                     this.setState({"address":res.data.results[0].formatted_address});
                 }
                 this.setState({showLoader : false})
@@ -176,7 +171,7 @@ class AddNewAddress extends Component {
     getAutoCompleteLocations(){
 		if(this.state.locations.length){
 			let locs =  this.state.locations.map((loc)=>
-				<li key={loc.id} onClick={() => this.reverseGeocode(loc)}>
+				<li key={loc.id} onClick={() => this.reverseGeocode({loc:loc})}>
 					{loc.description}
 				</li>
 			);

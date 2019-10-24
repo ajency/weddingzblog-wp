@@ -46,36 +46,43 @@ var viewCart = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
+			return React.createElement(
+				'div',
+				{ style: divStyle, className: !this.state.cart || !this.state.cart.cart_count ? 'd-none' : '' },
+				this.getItemsCount(),
+				this.getCartTotal(),
+				React.createElement(
+					'div',
+					{ id: 'view-cart-btn', style: btnStyle, onClick: function onClick() {
+							return _this2.loadCart();
+						} },
+					'VIEW CART'
+				)
+			);
+		}
+	}, {
+		key: 'getItemsCount',
+		value: function getItemsCount() {
 			if (this.state.cart && this.state.cart.cart_count) {
 				return React.createElement(
 					'div',
-					{ style: divStyle },
-					React.createElement(
-						'div',
-						null,
-						this.state.cart.cart_count,
-						' ',
-						this.state.cart.cart_count > 1 ? 'Items' : 'Item'
-					),
-					React.createElement(
-						'div',
-						null,
-						'\u20B9 ',
-						this.state.cart.summary.sale_price_total
-					),
-					React.createElement(
-						'div',
-						{ id: 'view-cart-btn', style: btnStyle, onClick: function onClick() {
-								return _this2.loadCart();
-							} },
-						'VIEW CART'
-					)
+					null,
+					this.state.cart.cart_count,
+					' Item(s)'
 				);
-			} else return React.createElement(
-				'div',
-				null,
-				' '
-			);
+			}
+		}
+	}, {
+		key: 'getCartTotal',
+		value: function getCartTotal() {
+			if (this.state.cart && this.state.cart.cart_count) {
+				return React.createElement(
+					'div',
+					null,
+					'\u20B9 ',
+					this.state.cart.summary.sale_price_total
+				);
+			}
 		}
 	}, {
 		key: 'loadCart',

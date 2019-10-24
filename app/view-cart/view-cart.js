@@ -26,23 +26,37 @@ class viewCart extends React.Component {
 	}
 
 	render() {
-		if(this.state.cart && this.state.cart.cart_count){
 			return (
-				<div style={divStyle}>
-					<div>
-						{this.state.cart.cart_count} {this.state.cart.cart_count > 1 ? 'Items' : 'Item'}
-					</div>
-					<div>
-						₹ {this.state.cart.summary.sale_price_total}
-					</div>
+				<div style={divStyle} className={(!this.state.cart || !this.state.cart.cart_count ? 'd-none' : '')}>
+						{this.getItemsCount()}
+
+						{this.getCartTotal()}
+						
 					<div id="view-cart-btn" style={btnStyle} onClick={() => this.loadCart()}>
 						VIEW CART
 					</div>
 				</div>
 			);
+	}
+
+	getItemsCount(){
+		if(this.state.cart && this.state.cart.cart_count){
+			return (
+				<div>
+					{this.state.cart.cart_count} Item(s)
+				</div>
+			)
 		}
-		else
-			return (<div> </div>);
+	}
+
+	getCartTotal(){
+		if(this.state.cart && this.state.cart.cart_count){
+			return (
+				<div>
+					₹ {this.state.cart.summary.sale_price_total}
+				</div>
+			)
+		}
 	}
 
 	loadCart() {

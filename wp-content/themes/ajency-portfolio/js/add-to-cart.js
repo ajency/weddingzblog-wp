@@ -33,7 +33,8 @@ var addToCart = function (_React$Component) {
 	_createClass(addToCart, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			this.setState({ selectedVariant: this.props.product_data.default });
+			this.setState({ selectedVariant: this.props.product_data.default.id });
+			variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);
 		}
 	}, {
 		key: 'render',
@@ -46,51 +47,46 @@ var addToCart = function (_React$Component) {
 				this.getButtonContent(),
 				React.createElement(
 					'div',
-					{ className: 'modal fade', id: 'variantSelectionModal-' + this.props.product_data.product_id, tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', 'data-backdrop': 'static' },
+					{ className: 'custom-modal', id: 'variantSelectionModal-' + this.props.product_data.product_id },
 					React.createElement(
 						'div',
-						{ className: 'modal-dialog modal-dialog-centered', role: 'document' },
+						{ className: 'custom-modal-content p-4' },
 						React.createElement(
 							'div',
-							{ className: 'modal-content' },
+							{ className: 'product-variant text-left' },
 							React.createElement(
-								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
-								React.createElement(
-									'span',
-									{ 'aria-hidden': 'true' },
-									'\xD7'
-								)
+								'div',
+								{ className: 'product-variant-title text-grey font-size-18 letter-spacing-5 mb-3', title: 'Noodle Salad Bowl' },
+								React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png', className: 'mr-3', alt: 'Bowl icon' }),
+								this.props.product_data.title
 							),
 							React.createElement(
 								'div',
-								{ className: 'p-5' },
-								React.createElement(
-									'h2',
-									null,
-									'CHOOSE YOUR BOWL'
-								)
+								{ className: 'font-size-15 text-black mb-3 ft6' },
+								'Choose your Bowl'
 							),
 							React.createElement(
 								'div',
-								{ className: 'p-3' },
-								React.createElement(
-									'h3',
-									null,
-									this.props.product_data.title
-								)
-							),
-							React.createElement(
-								'div',
-								null,
+								{ className: 'variant-list' },
 								this.getVariants()
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'custom-modal-footer text-right' },
+							React.createElement(
+								'button',
+								{ type: 'button', className: 'btn-reset btn-back font-size-15 text-grey text-uppercase mr-5', onClick: function onClick() {
+										return _this2.hideVariantModal();
+									} },
+								'Back'
 							),
 							React.createElement(
 								'button',
-								{ className: 'btn btn-primary', onClick: function onClick() {
+								{ type: 'button', className: 'btn-reset btn-continue font-size-15 text-uppercase', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.selectedVariant);
 									} },
-								' CONTINUE '
+								'Continue'
 							)
 						)
 					)
@@ -162,24 +158,21 @@ var addToCart = function (_React$Component) {
 			var variants = this.props.product_data.variants.map(function (variant) {
 				return React.createElement(
 					'div',
-					{ key: variant.id, className: 'd-flex justify-content-between p-3 ml-5 mr-5' },
+					{ key: variant.id, className: 'list-item' },
 					React.createElement(
 						'label',
-						null,
-						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, checked: _this3.state.selectedVariant == variant.id, onChange: function onChange(event) {
-								return _this3.handleOptionChange(event);
-							} }),
+						{ className: 'custom-radio-btn font-size-15 text-grey mb-4' },
 						React.createElement(
 							'span',
-							null,
+							{ className: "mw-70 " + (_this3.state.selectedVariant == variant.id ? 'text-primary' : '') },
 							variant.size
 						),
 						' ',
-						React.createElement(
-							'span',
-							{ className: 'ml-5' },
-							variant.sale_price
-						)
+						variant.sale_price,
+						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, checked: _this3.state.selectedVariant == variant.id, onChange: function onChange(event) {
+								return _this3.handleOptionChange(event);
+							} }),
+						React.createElement('span', { className: 'checkmark' })
 					)
 				);
 			});
@@ -188,8 +181,13 @@ var addToCart = function (_React$Component) {
 	}, {
 		key: 'showVariantModal',
 		value: function showVariantModal() {
-			$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
-			$('#variantSelectionModal-' + this.props.product_data.product_id).modal('show');
+			// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
+		}
+	}, {
+		key: 'hideVariantModal',
+		value: function hideVariantModal() {
+			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
 		}
 	}, {
 		key: 'getLastSelected',
@@ -268,7 +266,7 @@ var addToCart = function (_React$Component) {
 					if (this.state.items.length) {
 						$('#repeatLast-' + this.props.product_data.product_id).modal('show');
 					} else {
-						$('#variantSelectionModal-' + this.props.product_data.product_id).modal('show');
+						this.showVariantModal();
 					}
 				} else {
 					if (this.state.items.length > 1) {
@@ -288,7 +286,7 @@ var addToCart = function (_React$Component) {
 			var variant_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 			$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
-			$('#variantSelectionModal-' + this.props.product_data.product_id).modal('hide');
+			this.hideVariantModal();
 			this.setState({ apiCallInProgress: true });
 			var cart_id = window.getCookie('cart_id');
 			if (cart_id) {
@@ -455,11 +453,24 @@ var addToCart = function (_React$Component) {
 }(React.Component);
 
 var addToCartComponents = [];
+var variantModals = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container').forEach(function (domContainer, index) {
 	var product_data = JSON.parse(domContainer.dataset.product_data);
 	addToCartComponents[index] = ReactDOM.render(e(addToCart, { product_data: product_data }), domContainer);
 });
+
+function toggleModal(modal) {
+	modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+	for (var i in variantModals) {
+		if (event.target === variantModals[i]) toggleModal(variantModals[i]);
+	}
+}
+
+window.addEventListener("click", windowOnClick);
 
 window.updateaddToCartComponent = function (item) {
 	addToCartComponents.forEach(function (component) {

@@ -17,34 +17,35 @@ class addToCart extends React.Component {
 	}
 
 	componentDidMount(){
-		this.setState({selectedVariant : this.props.product_data.default })
+		this.setState({selectedVariant : this.props.product_data.default.id })
+		variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);		
 	}
 
 	render() {
 		return (
 			<div>
 				{this.getButtonContent()}
-				<div className="modal fade" id={'variantSelectionModal-' + this.props.product_data.product_id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-				  	<div className="modal-dialog modal-dialog-centered" role="document">
-						<div className="modal-content">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-							<div className="p-5">
-								<h2>CHOOSE YOUR BOWL</h2>
-							</div>
-							<div className="p-3">
-								<h3>{this.props.product_data.title}</h3>
-							</div>
 
-							<div>
-								{this.getVariants()}
-							</div>
+			    <div className="custom-modal" id={'variantSelectionModal-' + this.props.product_data.product_id}>
+				    <div className="custom-modal-content p-4">
+				        <div className="product-variant text-left">
+				          <div className="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
+				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
+				            	{this.props.product_data.title}
+				          </div>
+				          <div className="font-size-15 text-black mb-3 ft6">Choose your Bowl</div>
+				          <div className="variant-list">
+				          		{this.getVariants()}
+				          </div>
+				        </div>
+				        <div className="custom-modal-footer text-right">
+				          <button type="button" className="btn-reset btn-back font-size-15 text-grey text-uppercase mr-5" onClick={()=> this.hideVariantModal()}>Back</button>
+				          <button type="button" className="btn-reset btn-continue font-size-15 text-uppercase" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
+				        </div>
+				    </div>
+				</div>
 
-							<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.selectedVariant)}> CONTINUE </button>
-						</div>
-				  	</div>
-			    </div>
+
 			    <div className="modal fade" id={'repeatLast-' + this.props.product_data.product_id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
 				  	<div className="modal-dialog modal-dialog-centered" role="document">
 						<div className="modal-content">
@@ -71,19 +72,26 @@ class addToCart extends React.Component {
 
 	getVariants(){
 		let variants = this.props.product_data.variants.map((variant)=>{
-			return (<div key={variant.id} className="d-flex justify-content-between p-3 ml-5 mr-5">
-				<label>
-					<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} checked={this.state.selectedVariant == variant.id} onChange={(event) => this.handleOptionChange(event)}/> 
-					<span>{variant.size}</span> <span className="ml-5">{variant.sale_price}</span>
-				</label>
-			</div>)
+			return (
+				<div key={variant.id} className="list-item">
+		              <label className="custom-radio-btn font-size-15 text-grey mb-4">
+		              		<span className={"mw-70 " + (this.state.selectedVariant == variant.id ? 'text-primary' : '') }>{variant.size}</span> {variant.sale_price}
+		                	<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} checked={this.state.selectedVariant == variant.id} onChange={(event) => this.handleOptionChange(event)} />
+		                	<span className="checkmark"></span>
+		              </label>
+				</div>
+			)
 		})
 		return variants;
 	}
 
 	showVariantModal(){
-		$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
-		$('#variantSelectionModal-' + this.props.product_data.product_id).modal('show');
+		// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
+	}
+
+	hideVariantModal(){
+		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
 	}
 
 	getLastSelected(){
@@ -131,7 +139,7 @@ class addToCart extends React.Component {
 					$('#repeatLast-' + this.props.product_data.product_id).modal('show');
 				}
 				else{
-					$('#variantSelectionModal-' + this.props.product_data.product_id).modal('show');
+					this.showVariantModal()
 				}
 			}
 			else{
@@ -148,7 +156,7 @@ class addToCart extends React.Component {
 
 	addToCart(variant_id = null) {
 		$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
-		$('#variantSelectionModal-' + this.props.product_data.product_id).modal('hide');
+		this.hideVariantModal()
 		this.setState({apiCallInProgress : true});
 		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
@@ -299,13 +307,27 @@ class addToCart extends React.Component {
 	}
 }
 
-let addToCartComponents = []
+let addToCartComponents = [];
+let variantModals = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
 	.forEach((domContainer, index) => {
 		const product_data = JSON.parse(domContainer.dataset.product_data);
 		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { product_data : product_data }),domContainer);
 	});
+
+function toggleModal(modal) {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+	for(let i in variantModals) {
+		if(event.target === variantModals[i])
+			toggleModal(variantModals[i]);
+	}
+}
+
+window.addEventListener("click", windowOnClick);
 
 window.updateaddToCartComponent = (item) => {
 	addToCartComponents.forEach((component) =>{

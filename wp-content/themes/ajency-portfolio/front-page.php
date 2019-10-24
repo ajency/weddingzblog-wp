@@ -377,7 +377,7 @@
 
 <button class="trigger">Click here to trigger the modal!</button>
 
-<div class="custom-modal">
+<!--<div class="custom-modal">
     <div class="custom-modal-content p-4">
         <div class="product-variant text-left">
           <div class="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
@@ -408,6 +408,41 @@
         <div class="custom-modal-footer text-right">
           <button type="button" class="btn-reset btn-back font-size-15 text-grey text-uppercase mr-5" data-dismiss="modal">Back</button>
           <button type="button" class="btn-reset btn-continue btn-disabled font-size-15 text-uppercase">Continue</button>
+        </div>
+    </div>
+</div>-->
+
+<div class="custom-modal">
+    <div class="custom-modal-content p-4">
+        <div class="location">
+          <div class="location-wrap">
+              <div class="location-text">
+                <h3 class="ft6">Add your Delivery Address to proceed</h3>
+                <h5 class="font-weight-light">To add items to your cart, please set your delivery location</h5>
+              </div>
+              <div class="location-icon">
+                <img src="<?php echo get_template_directory_uri().'/images/products/locationIcon.png';?>" class="" alt="Location icon">
+              </div>
+          </div>
+          <h5 class="text-primary text-right mt-2 ft6">SET LOCATION</h5>
+        </div>
+        <div class="location">
+          <div class="location-wrap">
+              <div class="location-text">
+                <h3 class="ft6">Would you like to add your phone number?</h3>
+                <h5 class="font-weight-light">Your number will be saved at the time of checkout</h5>
+              </div>
+              <div class="location-icon">
+                <img src="<?php echo get_template_directory_uri().'/images/products/phoneIcon.png';?>" class="" alt="Phone number">
+              </div>
+          </div>
+          <div class="input-wrap">
+            <input type="tel" name="phone" class="input-number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter Phone Number">
+          </div>
+        </div>
+        <div class="custom-modal-footer text-right">
+          <button type="button" class="btn-reset btn-back h5 text-grey text-uppercase mr-5" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn-reset btn-continue btn-disabled h5 text-primary text-uppercase">ADD AND PROCEED</button>
         </div>
     </div>
 </div>

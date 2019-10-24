@@ -39,4 +39,6 @@ app/view-cart/package.json
 app/view-cart/package-lock.json
 app/gps-modal-prompt/package.json
 app/gps-modal-prompt/package-lock.json
+app/sign-in/package.json
+app/sign-in/package-lock.json
 

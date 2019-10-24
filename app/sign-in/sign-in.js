@@ -13,9 +13,7 @@ class signInModal extends React.Component {
 			confirmationResult : '',
 			disableButtons : false,
 			showSignInLoader : false,
-			errorMessage : '',
-			showOtpLoader : false,
-			otpErrorMsg : ''
+			errorMessage : ''
 		}
 	}
 
@@ -35,7 +33,7 @@ class signInModal extends React.Component {
 								<h3> Add your delivery address to proceed </h3>
 								<p> To add this item to your cart, please set your delivery location </p>
 
-								<button onClick={()=> this.showGpsModal()} disabled={this.state.disableButtons} >Set Location</button>
+								<button onClick={()=> this.showGpsSlider()} disabled={this.state.disableButtons} >Set Location</button>
 							</div>
 
 							<div className="p-3">
@@ -50,37 +48,6 @@ class signInModal extends React.Component {
 							
 							{this.displaySignInErrorMsg()}
 
-						</div>
-				  	</div>
-			    </div>
-
-			    <div className="modal fade" id="verifyOtpPrompt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-				  	<div className="modal-dialog modal-dialog-centered" role="document">
-						<div className="modal-content">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={()=> this.modalClosed()}>
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-							<div className="p-5">
-								<h2>Verify Mobile</h2>
-							</div>
-							<div className="p-3">
-								<p> Enter the 6 digit code sent to the below number </p>
-							</div>
-							
-							<div className="p-3">
-								{this.state.phoneNumber}
-								<input className="mobile-input" type="tel" onChange={e => {this.setOtp(e.target.value)}} />
-							</div>
-
-							<div>
-								<p>Didn't receive the code ? <a onClick={()=>{this.resendOtpCode()}}>RESEND CODE</a></p>
-							</div>
-
-							<div>
-								{this.getOtpButtons()}
-							</div>
-
-							{this.displayOtpErrorMsg()}
 						</div>
 				  	</div>
 			    </div>
@@ -103,39 +70,14 @@ class signInModal extends React.Component {
 		);
 	}
 
-	getOtpButtons(){
-		if(this.state.showOtpLoader){
-			return (<div class="btn-icon">
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
-					</div>
-			);
-		}
-		return (<div> 
-					<button onClick={()=>{this.skipOtp()}}>SKIP OTP</button>
-					<button onClick={()=>{this.verifyOtp()}} disabled={this.state.otp.length < 6}>VERIFY OTP</button>
-				</div>
-			);
-
-	}
-
 	displaySignInErrorMsg(){
 		if(this.state.errorMessage){
 			return  <div className="alert-danger">{this.state.errorMessage}</div>
 		}
 	}
 
-	displayOtpErrorMsg(){
-		if(this.state.otpErrorMsg){
-			return  <div className="alert-danger">{this.state.otpErrorMsg}</div>
-		}
-	}
-
 	setUserMobile(value){
 		this.setState({phoneNumber : value});
-	}
-
-	setOtp(value){
-		this.setState({otp : value});
 	}
 
 	validateMobile(e){
@@ -180,8 +122,8 @@ class signInModal extends React.Component {
 		    .then( (confirmationResult) => {
 		    	console.log("SMS sent.");
 		      	this.setState({confirmationResult : confirmationResult});
-		      	$('#signInModalPrompt').modal('hide');
-		      	$('#verifyOtpPrompt').modal('show');
+		      	this.hideSignInPopUp() // TODO : function to hide this popup 
+		      	this.showOtpSlider()   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 		    }).catch(function (error) {
 		      	console.log("Error :  SMS not sent", error);
 		      	this.setState({errorMessage : error, disableButtons : false, showSignInLoader : false});
@@ -194,7 +136,7 @@ class signInModal extends React.Component {
 				res.user.getIdToken().then((idToken) => {
 		           this.updateUserDetails(idToken);
 		        });
-				this.showGpsModal();
+				this.showGpsSlider();
 			})
 			.catch((error) => {
 			  	console.log("error in anonymouse sign in", error);
@@ -219,50 +161,17 @@ class signInModal extends React.Component {
 			})
 	}
 
-	verifyOtp(){
-		this.setState({showOtpLoader : true , disableButtons : true, otpErrorMsg : ''});
-		this.state.confirmationResult.confirm(this.state.otp)
-			.then((res) =>{
-				res.user.getIdToken().then((idToken) => {
-		           this.fetchAddresses(idToken);
-		        });
-			})
-			.catch((error)=>{
-				let msg = error.message ? error.message : error;
-				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});
-				console.log("error in otp verification ==>", error);
-			})
-	}
-
-	fetchAddresses(idToken){
-		let headers = {
-			Authorization : 'Bearer '+ idToken
-		}
-		let url = this.state.apiEndPoint + "/user/get-addresses";
-		axios.get(url, {headers :  headers })
-			.then((res) => {
-				$('#verifyOtpPrompt').modal('hide');
-		      	this.showGpsModal();
-		      	window.updateAddresses(res.data.addresses);
-			})
-			.catch((error)=>{
-				console.log("error in fetch addresses ==>", error);
-				let msg = error.message ? error.message : error;
-				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});
-			})
-	}
-
-	resendOtpCode(){
-		console.log("inside verify otp code");
-	}
-
-	skipOtp(){
-
-	}
-
-	showGpsModal(){
-		$('#signInModalPrompt').modal('hide');
+	showGpsSlider(){
+		// $('#signInModalPrompt').modal('hide');
 		window.showGpsModalPrompt(true);
+	}
+
+	hideSignInPopUp(){
+
+	}
+
+	showOtpSlider(){
+
 	}
 
 }

@@ -26,9 +26,7 @@ var signInModal = function (_React$Component) {
 			confirmationResult: '',
 			disableButtons: false,
 			showSignInLoader: false,
-			errorMessage: '',
-			showOtpLoader: false,
-			otpErrorMsg: ''
+			errorMessage: ''
 		};
 		return _this;
 	}
@@ -86,7 +84,7 @@ var signInModal = function (_React$Component) {
 								React.createElement(
 									'button',
 									{ onClick: function onClick() {
-											return _this2.showGpsModal();
+											return _this2.showGpsSlider();
 										}, disabled: this.state.disableButtons },
 									'Set Location'
 								)
@@ -115,77 +113,6 @@ var signInModal = function (_React$Component) {
 								React.createElement('div', { className: 'd-none', id: 'sign-in-button' })
 							),
 							this.displaySignInErrorMsg()
-						)
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'modal fade', id: 'verifyOtpPrompt', tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', 'data-backdrop': 'static' },
-					React.createElement(
-						'div',
-						{ className: 'modal-dialog modal-dialog-centered', role: 'document' },
-						React.createElement(
-							'div',
-							{ className: 'modal-content' },
-							React.createElement(
-								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', onClick: function onClick() {
-										return _this2.modalClosed();
-									} },
-								React.createElement(
-									'span',
-									{ 'aria-hidden': 'true' },
-									'\xD7'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-5' },
-								React.createElement(
-									'h2',
-									null,
-									'Verify Mobile'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-3' },
-								React.createElement(
-									'p',
-									null,
-									' Enter the 6 digit code sent to the below number '
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-3' },
-								this.state.phoneNumber,
-								React.createElement('input', { className: 'mobile-input', type: 'tel', onChange: function onChange(e) {
-										_this2.setOtp(e.target.value);
-									} })
-							),
-							React.createElement(
-								'div',
-								null,
-								React.createElement(
-									'p',
-									null,
-									'Didn\'t receive the code ? ',
-									React.createElement(
-										'a',
-										{ onClick: function onClick() {
-												_this2.resendOtpCode();
-											} },
-										'RESEND CODE'
-									)
-								)
-							),
-							React.createElement(
-								'div',
-								null,
-								this.getOtpButtons()
-							),
-							this.displayOtpErrorMsg()
 						)
 					)
 				)
@@ -221,37 +148,6 @@ var signInModal = function (_React$Component) {
 			);
 		}
 	}, {
-		key: 'getOtpButtons',
-		value: function getOtpButtons() {
-			var _this4 = this;
-
-			if (this.state.showOtpLoader) {
-				return React.createElement(
-					'div',
-					{ 'class': 'btn-icon' },
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
-				);
-			}
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'button',
-					{ onClick: function onClick() {
-							_this4.skipOtp();
-						} },
-					'SKIP OTP'
-				),
-				React.createElement(
-					'button',
-					{ onClick: function onClick() {
-							_this4.verifyOtp();
-						}, disabled: this.state.otp.length < 6 },
-					'VERIFY OTP'
-				)
-			);
-		}
-	}, {
 		key: 'displaySignInErrorMsg',
 		value: function displaySignInErrorMsg() {
 			if (this.state.errorMessage) {
@@ -263,25 +159,9 @@ var signInModal = function (_React$Component) {
 			}
 		}
 	}, {
-		key: 'displayOtpErrorMsg',
-		value: function displayOtpErrorMsg() {
-			if (this.state.otpErrorMsg) {
-				return React.createElement(
-					'div',
-					{ className: 'alert-danger' },
-					this.state.otpErrorMsg
-				);
-			}
-		}
-	}, {
 		key: 'setUserMobile',
 		value: function setUserMobile(value) {
 			this.setState({ phoneNumber: value });
-		}
-	}, {
-		key: 'setOtp',
-		value: function setOtp(value) {
-			this.setState({ otp: value });
 		}
 	}, {
 		key: 'validateMobile',
@@ -300,7 +180,7 @@ var signInModal = function (_React$Component) {
 	}, {
 		key: 'checkUserExist',
 		value: function checkUserExist() {
-			var _this5 = this;
+			var _this4 = this;
 
 			this.setState({ disableButtons: true, showSignInLoader: true });
 			var url = this.state.apiEndPoint + "/check-user-exist";
@@ -308,16 +188,16 @@ var signInModal = function (_React$Component) {
 				phone_number: this.state.phoneNumber
 			};
 			axios.get(url, { params: body }).then(function (res) {
-				_this5.signInWithPhoneNumber();
+				_this4.signInWithPhoneNumber();
 			}).catch(function (error) {
 				console.log("error in check user exist ==>", error);
-				_this5.signInAnonymously();
+				_this4.signInAnonymously();
 			});
 		}
 	}, {
 		key: 'signInWithPhoneNumber',
 		value: function signInWithPhoneNumber() {
-			var _this6 = this;
+			var _this5 = this;
 
 			var phone_number = "+91" + this.state.phoneNumber;
 			var recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
@@ -329,9 +209,9 @@ var signInModal = function (_React$Component) {
 
 			firebase.auth().signInWithPhoneNumber(phone_number, recaptchaVerifier).then(function (confirmationResult) {
 				console.log("SMS sent.");
-				_this6.setState({ confirmationResult: confirmationResult });
-				$('#signInModalPrompt').modal('hide');
-				$('#verifyOtpPrompt').modal('show');
+				_this5.setState({ confirmationResult: confirmationResult });
+				_this5.hideSignInPopUp(); // TODO : function to hide this popup 
+				_this5.showOtpSlider(); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 			}).catch(function (error) {
 				console.log("Error :  SMS not sent", error);
 				this.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
@@ -340,16 +220,16 @@ var signInModal = function (_React$Component) {
 	}, {
 		key: 'signInAnonymously',
 		value: function signInAnonymously() {
-			var _this7 = this;
+			var _this6 = this;
 
 			firebase.auth().signInAnonymously().then(function (res) {
 				res.user.getIdToken().then(function (idToken) {
-					_this7.updateUserDetails(idToken);
+					_this6.updateUserDetails(idToken);
 				});
-				_this7.showGpsModal();
+				_this6.showGpsSlider();
 			}).catch(function (error) {
 				console.log("error in anonymouse sign in", error);
-				_this7.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
+				_this6.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
 			});
 		}
 	}, {
@@ -369,54 +249,17 @@ var signInModal = function (_React$Component) {
 			});
 		}
 	}, {
-		key: 'verifyOtp',
-		value: function verifyOtp() {
-			var _this8 = this;
-
-			this.setState({ showOtpLoader: true, disableButtons: true, otpErrorMsg: '' });
-			this.state.confirmationResult.confirm(this.state.otp).then(function (res) {
-				res.user.getIdToken().then(function (idToken) {
-					_this8.fetchAddresses(idToken);
-				});
-			}).catch(function (error) {
-				var msg = error.message ? error.message : error;
-				_this8.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
-				console.log("error in otp verification ==>", error);
-			});
-		}
-	}, {
-		key: 'fetchAddresses',
-		value: function fetchAddresses(idToken) {
-			var _this9 = this;
-
-			var headers = {
-				Authorization: 'Bearer ' + idToken
-			};
-			var url = this.state.apiEndPoint + "/user/get-addresses";
-			axios.get(url, { headers: headers }).then(function (res) {
-				$('#verifyOtpPrompt').modal('hide');
-				_this9.showGpsModal();
-				window.updateAddresses(res.data.addresses);
-			}).catch(function (error) {
-				console.log("error in fetch addresses ==>", error);
-				var msg = error.message ? error.message : error;
-				_this9.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
-			});
-		}
-	}, {
-		key: 'resendOtpCode',
-		value: function resendOtpCode() {
-			console.log("inside verify otp code");
-		}
-	}, {
-		key: 'skipOtp',
-		value: function skipOtp() {}
-	}, {
-		key: 'showGpsModal',
-		value: function showGpsModal() {
-			$('#signInModalPrompt').modal('hide');
+		key: 'showGpsSlider',
+		value: function showGpsSlider() {
+			// $('#signInModalPrompt').modal('hide');
 			window.showGpsModalPrompt(true);
 		}
+	}, {
+		key: 'hideSignInPopUp',
+		value: function hideSignInPopUp() {}
+	}, {
+		key: 'showOtpSlider',
+		value: function showOtpSlider() {}
 	}]);
 
 	return signInModal;

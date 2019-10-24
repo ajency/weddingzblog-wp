@@ -447,11 +447,10 @@
     </div>
 </div>
 
-<div class="slide-in visible">
+<div class="slide-in">
   <div class="slide-in-header header-container d-flex align-items-center">
       <div class="app-name d-flex align-items-center">					
-          <img src="<?php echo get_template_directory_uri().'/images/slidein/Logo.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
-          <label class="app-title text-black">Green Grain Bowl</label>
+          <img src="<?php echo get_template_directory_uri().'/images/slidein/Newlogo.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
       </div>
       <div class="app-chekout text-green">
           <img src="<?php echo get_template_directory_uri().'/images/slidein/checkout.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
@@ -462,19 +461,31 @@
       </h3>
   </div>
   <div class="slide-in-content">
-      <h3 class="ft6">Add Delivery Address</h3>
-      <h6 class="font-weight-light mb-3">We are currently servicing at Panjim, Carazalem, Porvorim, Sangolda, Succor, Penha De franca, Taleigao. Please choose from amongst these</h6>
-      <button type="button" class="btn-reset btn-continue btn-primary h5 text-primary text-uppercase">ADD AND PROCEED</button>
+      <div class="list-text-block p-3 mb-2">
+          <div class="list-meta mt-0">If you have ordered with us before, <a href-"#" class="text-underline test-primary text-underline">Sign in</a> to fetch saved addresses.</div>
+      </div>
+      <h3 class="h1 ft6">Add your delivery address to proceed</h3>
+      <h4 class="font-weight-light mt-4 pb-4">
+        We are currently servicing at Panjim, Carazalem, Porvorim, Sangolda, Succor, Penha De franca, Taleigao. Please choose from amongst these
+      </h5>
+      <div class="mb-3 pt-4">
+        <button type="button" class="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img class="position-absolute-right20" src="<?php echo get_template_directory_uri().'/images/slidein/location.png';?>"/></button>
+      </div>
+      <div class="text-center h4 mb-0 font-weight-light">-OR-</div>
+      <div class="position-relative mb-3 mt-3">
+        <input type="text" class="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location">
+        <img class="position-absolute-right20" src="<?php echo get_template_directory_uri().'/images/slidein/search.png';?>"/>
+      </div>
   </div>
 </div>
 
 <script>
-var modal = document.querySelector(".custom-modal");
+var modal = document.querySelector(".slide-in");
 var trigger = document.querySelector(".trigger");
-var closeButton = document.querySelector(".btn-back");
+var closeButton = document.querySelector(".app-close");
 
 function toggleModal() {
-    modal.classList.toggle("show-modal");
+    modal.classList.toggle("visible");
 }
 
 function windowOnClick(event) {
@@ -486,6 +497,7 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
 </script>
 
 <?php get_footer(); ?>

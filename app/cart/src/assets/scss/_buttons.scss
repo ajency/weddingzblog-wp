@@ -1,0 +1,33 @@
+.btn{
+    outline: 0;
+    cursor: pointer;
+    &-edit{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        cursor: pointer;
+    }
+    &-primary{
+        border: 1px solid #47A748;
+        background: #47A748;
+        color: #fff;
+        padding: 11px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    &-checkout{
+        font-size: 20px;
+        line-height: 26px;
+    }
+    &-qty{
+        display: inline-block;
+        border: 0;
+        width: 20px;
+        background: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 23px;
+    }
+}

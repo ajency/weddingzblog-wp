@@ -9,24 +9,24 @@ class Item extends Component {
 	}
 	render() {
 		return (
-			<div className="item-container flex-column">
+			<div className="item-container flex-column mb-2">
 				<div className="d-flex">
-					<div className="product-image">
-						<img alt="french fries" title="french fries" height="70" width="50" src={this.props.item.attributes.images['1x']}/>
+					<div className="product-image d-inline-block">
+						<img class="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
-					<div className="flex-fill">
-						<div className="product-title">
+					<div className="product-details d-inline-block">
+						<div className="product-title font-weight-light">
 							{this.props.item.attributes.title}
-						</div>
-						<div>
-							<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
-							<div className="price">
-								₹ {this.props.item.attributes.price_final}
-								{this.checkItemDiscount()}
-							</div>
-						</div>
-						<div>
-							Size : {this.props.item.attributes.size}
+						</div>	
+						<div className="product-size text-green">
+							{this.props.item.attributes.size}
+						</div>				
+					</div>			
+					<div className="product-quantity d-inline-block">
+						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
+						<div className="product-price text-grey font-weight-light">
+							₹ {this.props.item.attributes.price_final}
+							{this.checkItemDiscount()}
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@ class Item extends Component {
 
 	checkItemDiscount(){
 		if(this.props.item.attributes.price_final < this.props.item.attributes.price_mrp){
-			return <div><small class="gbb-original-price text-muted">₹{this.props.item.attributes.price_mrp}</small> <span class="gbb-discount text-danger">{this.getOffPercentage()}% OFF</span></div>
+			return <div><span class="gbb-original-price text-muted">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger">{this.getOffPercentage()}% OFF</span></div>
 		}
 	}
 

@@ -1,22 +1,7 @@
-.address-heading {
-	display: flex;
-	justify-content: space-between;
-	padding-top: .25rem;
-	padding-bottom: .25reml
-}
-
 .delivery-address-container {
-	background-color: white;
-	margin : 30px;
-	padding: 20px;
-}
-
-.address-details {
-	display: flex;
-	flex-direction: column;
-	width: 250px;
-}
-
-.delivery-time {
-	margin-top: 10px;
+	padding: 15px;
+	padding-top: 0;
+	.address-details-inner{
+		max-width: 252px;	
+	}
 }

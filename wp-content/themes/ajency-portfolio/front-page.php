@@ -447,6 +447,27 @@
     </div>
 </div>
 
+<div class="slide-in visible">
+  <div class="slide-in-header header-container d-flex align-items-center">
+      <div class="app-name d-flex align-items-center">					
+          <img src="<?php echo get_template_directory_uri().'/images/slidein/Logo.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+          <label class="app-title text-black">Green Grain Bowl</label>
+      </div>
+      <div class="app-chekout text-green">
+          <img src="<?php echo get_template_directory_uri().'/images/slidein/checkout.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+          Secure <br/>Checkout
+      </div>
+      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0">
+          <span aria-hidden="true"><img src="<?php echo get_template_directory_uri().'/images/slidein/remove.png';?>" class="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/></span>
+      </h3>
+  </div>
+  <div class="slide-in-content">
+      <h3 class="ft6">Add Delivery Address</h3>
+      <h6 class="font-weight-light mb-3">We are currently servicing at Panjim, Carazalem, Porvorim, Sangolda, Succor, Penha De franca, Taleigao. Please choose from amongst these</h6>
+      <button type="button" class="btn-reset btn-continue btn-primary h5 text-primary text-uppercase">ADD AND PROCEED</button>
+  </div>
+</div>
+
 <script>
 var modal = document.querySelector(".custom-modal");
 var trigger = document.querySelector(".trigger");

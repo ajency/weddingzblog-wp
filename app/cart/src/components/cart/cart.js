@@ -115,11 +115,19 @@ class Cart extends Component {
 				<Header/>
 				<div className="cart-heading d-flex">
 					<span className="cart-title w-50">Cart</span>
-					<span className="add-to-cart w-50 text-align-right text-green"><img src={add} className="app-log" alt="Add item" title="Add item"/>Add item</span>
+					<span className="add-to-cart w-50 text-align-right text-green" onClick={()=> this.closeCart()}>
+						<img src={add} className="app-log" alt="Add item" title="Add item" />Add item
+					</span>
 				</div>
 				{cartContainer}
 			</div>
 		);
+	}
+
+	closeCart(){
+		document.querySelector(".cart-wrapper").classList.remove('active');
+		let url = window.location.href.split("#")[0];
+		window.history.replaceState({cart : false}, 'cart', url);
 	}
 
 	fetchCart() {

@@ -256,7 +256,15 @@ function locationHashChanged() {
     if (location.hash === '#/cart') { 
         loadCartApp();
         $('.cart-wrapper').addClass('active');
-    } 
+    }
+    else if(!location.hash){
+        closeCart();
+    }
+}
+
+
+function closeCart(){
+    document.querySelector(".cart-wrapper").classList.remove('active');
 }
 
 loaded = false;

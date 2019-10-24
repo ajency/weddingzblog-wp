@@ -34,9 +34,6 @@ var addToCart = function (_React$Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.setState({ selectedVariant: this.props.product_data.default });
-			// .then(()=>{
-			// 	console.log("check ==>", this.state.selectedVariant);
-			// })
 		}
 	}, {
 		key: 'render',
@@ -213,7 +210,6 @@ var addToCart = function (_React$Component) {
 	}, {
 		key: 'handleOptionChange',
 		value: function handleOptionChange(event) {
-			console.log(event.target.value);
 			this.setState({ selectedVariant: event.target.value });
 		}
 	}, {
@@ -326,7 +322,6 @@ var addToCart = function (_React$Component) {
 			};
 
 			axios.post(url, body).then(function (res) {
-				console.log("add to cart response ==>", res);
 				if (res.data.success) {
 					_this7.displaySuccess("Successfully removed from cart");
 					var item = {
@@ -357,7 +352,6 @@ var addToCart = function (_React$Component) {
 			var cart_id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 			var formatted_address = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-			console.log("inside add to cart ", lat_long, cart_id);
 			var url = this.state.apiEndPoint + "/anonymous/cart/insert";
 			var body = {
 				variant_id: variant_id,
@@ -367,10 +361,7 @@ var addToCart = function (_React$Component) {
 			};
 			if (cart_id) body.cart_id = cart_id;
 
-			console.log("body ==>", body);
-
 			axios.post(url, body).then(function (res) {
-				console.log("add to cart response ==>", res);
 				if (res.data.success) {
 					_this8.addItems(res.data.item);
 					window.updateViewCartCompoent(res.data);
@@ -444,7 +435,7 @@ var addToCart = function (_React$Component) {
 		key: 'getGeolocation',
 		value: function getGeolocation() {
 			return new Promise(function (resolve, reject) {
-				window.showGpsModalPrompt(true);
+				window.showSignInModal(true);
 				var timer = setInterval(function () {
 					if (window.lat_lng) {
 						clearInterval(timer);
@@ -466,10 +457,8 @@ var addToCart = function (_React$Component) {
 var addToCartComponents = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container').forEach(function (domContainer, index) {
-	// console.log(index);
 	var variant_id = domContainer.dataset.variant_id;
 	var product_data = JSON.parse(domContainer.dataset.product_data);
-	// console.log("product_data ==>", product_data);
 	addToCartComponents[index] = ReactDOM.render(e(addToCart, { product_data: product_data }), domContainer);
 });
 

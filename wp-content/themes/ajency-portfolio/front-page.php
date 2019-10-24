@@ -50,6 +50,11 @@
     font-weight: 500;
     text-transform: uppercase;
   }
+
+  .saved-address-item {
+    white-space: normal;
+    text-align: left;
+  }
 </style>
 <!-- <div class="container p5">
   <div class="row">
@@ -156,6 +161,9 @@
 
 <!-- gps modal prompt -->
 <div id="react-add-delivery-address-container"></div>
+
+<!-- sign-in modal prompt -->
+<div id="react-sign-in-container"></div>
 
 <!-- Add to cart error  -->
 <div class="failure toast d-flex justify-content-center">

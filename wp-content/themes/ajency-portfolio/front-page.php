@@ -261,4 +261,62 @@
   </div>
 </div>
 
+
+<button class="trigger">Click here to trigger the modal!</button>
+
+<div class="custom-modal">
+    <div class="custom-modal-content p-4">
+        <div class="product-variant text-left">
+          <div class="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
+            <img src="<?php echo get_template_directory_uri().'/images/products/bowl-icon.png';?>" class="mr-3" alt="Bowl icon">Noodle Salad Bowl
+          </div>
+          <div class="font-size-15 text-black mb-3 ft6">Choose your Bowl</div>
+          <div class="variant-list">
+            <div class="list-item">
+              <label class="custom-radio-btn font-size-15 text-grey mb-4"><span class="mw-70">Small</span> 340
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="list-item">             
+              <label class="custom-radio-btn font-size-15 text-grey mb-4"><span class="mw-70">Regular</span> 340
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="list-item">              
+              <label class="custom-radio-btn font-size-15 text-grey mb-4"><span class="mw-70">Large</span> 560
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="custom-modal-footer text-right">
+          <button type="button" class="btn-reset btn-back font-size-15 text-grey text-uppercase mr-5" data-dismiss="modal">Back</button>
+          <button type="button" class="btn-reset btn-continue btn-disabled font-size-15 text-uppercase">Continue</button>
+        </div>
+    </div>
+</div>
+
+<script>
+var modal = document.querySelector(".custom-modal");
+var trigger = document.querySelector(".trigger");
+var closeButton = document.querySelector(".btn-back");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+</script>
+
 <?php get_footer(); ?>

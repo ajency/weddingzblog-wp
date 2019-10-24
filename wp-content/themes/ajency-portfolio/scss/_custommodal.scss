@@ -1,0 +1,94 @@
+.custom-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.custom-modal-content {
+    position: absolute;    
+    background-color: white;
+    max-width: 600px;
+    width: 100%;
+    @media (min-width: 768px) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @media (max-width: 767px) {
+        max-width: 100%;
+        bottom: 0;
+    }
+}
+.mw-70{
+    min-width: 70px;
+    display: inline-block;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+/****** Custom radio button styles ******/
+
+.custom-radio-btn {
+    display: block;
+    position: relative;
+    padding-right: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+
+.custom-radio-btn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 23px;
+    width: 23px;
+    background-color: #fff;
+    border: 1px solid #C4C8C4;
+    border-radius: 50%;
+}
+
+.custom-radio-btn input:checked ~ .checkmark {
+    background-color: #fff;
+    border: 1px solid #4aa751;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-radio-btn input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.custom-radio-btn .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #4aa751;
+}

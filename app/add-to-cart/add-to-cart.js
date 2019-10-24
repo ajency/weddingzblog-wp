@@ -105,7 +105,11 @@ class addToCart extends React.Component {
 
 		}
 		if(this.state.quantity == 0)
-			return (<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>ADD</button>)
+			return (
+				 <a className="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
+                            Add to cart  
+                 </a>
+				)
 
 		return (
 			<div>
@@ -299,7 +303,6 @@ let addToCartComponents = []
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
 	.forEach((domContainer, index) => {
-		const variant_id = domContainer.dataset.variant_id;
 		const product_data = JSON.parse(domContainer.dataset.product_data);
 		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { product_data : product_data }),domContainer);
 	});

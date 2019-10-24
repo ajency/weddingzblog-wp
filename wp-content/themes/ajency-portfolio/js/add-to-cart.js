@@ -225,11 +225,11 @@ var addToCart = function (_React$Component) {
 				);
 			}
 			if (this.state.quantity == 0) return React.createElement(
-				'button',
-				{ className: 'btn-primary', style: btnStyle, onClick: function onClick() {
+				'a',
+				{ className: 'btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer', onClick: function onClick() {
 						return _this5.checkVariant('add');
 					}, disabled: this.state.apiCallInProgress },
-				'ADD'
+				'Add to cart'
 			);
 
 			return React.createElement(
@@ -457,7 +457,6 @@ var addToCart = function (_React$Component) {
 var addToCartComponents = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container').forEach(function (domContainer, index) {
-	var variant_id = domContainer.dataset.variant_id;
 	var product_data = JSON.parse(domContainer.dataset.product_data);
 	addToCartComponents[index] = ReactDOM.render(e(addToCart, { product_data: product_data }), domContainer);
 });

@@ -138,10 +138,11 @@
                                 <?php echo $product['default']['sale_price'] ?>
                             </div>
                             
-                            <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6" title="Add Noodle Salad Bowl to cart">
+                           <!--  <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6" title="Add Noodle Salad Bowl to cart">
                             Add to cart  
-                                <img src="<?php echo get_template_directory_uri().'/images/products/cart-arrow.png';?>" class="" alt="" title="">
-                            </a>
+                            </a> -->
+
+                            <div class="react-add-to-cart-container" data-product_data='<?php echo json_encode($product); ?>'></div>
                         </div>
                     </div>
                 </div>      

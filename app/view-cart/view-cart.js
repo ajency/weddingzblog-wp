@@ -2,9 +2,9 @@
 const e = React.createElement;
 
 const divStyle = {
-	display : 'flex',
-	'justify-content': 'space-between',
-	'background' : '#A3DE9A'
+	// display : 'flex',
+	// 'justify-content': 'space-between',
+	// 'background' : '#A3DE9A'
 }
 
 const btnStyle = {
@@ -29,9 +29,7 @@ class viewCart extends React.Component {
 			return (
 				<div style={divStyle} className={(!this.state.cart || !this.state.cart.cart_count ? 'd-none' : '')}>
 						{this.getItemsCount()}
-
-						{this.getCartTotal()}
-						
+						{/* {this.getCartTotal()} */}
 					<div id="view-cart-btn" style={btnStyle} onClick={() => this.loadCart()}>
 						VIEW CART
 					</div>

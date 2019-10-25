@@ -11,9 +11,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var e = React.createElement;
 
 var divStyle = {
-	display: 'flex',
-	'justify-content': 'space-between',
-	'background': '#A3DE9A'
+	// display : 'flex',
+	// 'justify-content': 'space-between',
+	// 'background' : '#A3DE9A'
 };
 
 var btnStyle = {
@@ -50,7 +50,6 @@ var viewCart = function (_React$Component) {
 				'div',
 				{ style: divStyle, className: !this.state.cart || !this.state.cart.cart_count ? 'd-none' : '' },
 				this.getItemsCount(),
-				this.getCartTotal(),
 				React.createElement(
 					'div',
 					{ id: 'view-cart-btn', style: btnStyle, onClick: function onClick() {

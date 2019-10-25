@@ -44,14 +44,14 @@ class gpsModalPrompt extends React.Component {
 		    <div className="slide-in" id="gpsModal">
 			  <div className="slide-in-header header-container d-flex align-items-center">
 			      <div className="app-name d-flex align-items-center">					
-			          <img src="<?php echo get_template_directory_uri().'/images/slidein/Newlogo.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			      </div>
 			      <div className="app-chekout text-green">
-			          <img src="<?php echo get_template_directory_uri().'/images/slidein/checkout.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			          Secure <br/>Checkout
 			      </div>
-			      <h3 className="app-close bg-primary m-0 text-white btn-pay m-0">
-			          <span aria-hidden="true"><img src="<?php echo get_template_directory_uri().'/images/slidein/remove.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/></span>
+			      <h3 className="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.closeGpsSlider()}>
+			          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
 			      </h3>
 			  </div>
 			  <div className="slide-in-content">
@@ -183,9 +183,10 @@ class gpsModalPrompt extends React.Component {
 			);
 	}
 
-	modalClosed(){
+	closeGpsSlider(){
 		window.modal_closed = true;
 		this.setState({searchText : '', locError : '', gpsError : ''});
+		this.closeGpsModal();
 	}
 
 	autoCompleteLocation(value) {
@@ -304,7 +305,7 @@ class gpsModalPrompt extends React.Component {
 		this.setState({locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
-			timeout: 10 * 1000,
+			timeout: 20 * 1000,
 			enableHighAccuracy : true
 		}
 		navigator.geolocation.getCurrentPosition((position) => {

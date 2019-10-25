@@ -1,0 +1,31 @@
+.msg-container{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#react-view-cart-container{
+    >div{
+        background: #4aa751;
+        border-color: #4aa751;
+        padding: 15px;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+    }    
+}
+
+.success.toast{
+    background: #ecf6ec;
+    color: #4aa751;
+}
+
+.failure{
+    background: #ecf6ec;
+}
+
+.p-15{
+    padding: 15px;
+}

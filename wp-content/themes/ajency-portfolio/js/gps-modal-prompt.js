@@ -61,83 +61,83 @@ var gpsModalPrompt = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				{ className: 'modal fade', id: 'gpsModal', tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', 'data-backdrop': 'static' },
+				{ className: 'slide-in', id: 'gpsModal' },
 				React.createElement(
 					'div',
-					{ className: 'modal-dialog modal-dialog-centered', role: 'document' },
+					{ className: 'slide-in-header header-container d-flex align-items-center' },
 					React.createElement(
 						'div',
-						{ className: 'modal-content' },
+						{ className: 'app-name d-flex align-items-center' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
+					),
+					React.createElement(
+						'div',
+						{ className: 'app-chekout text-green' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' }),
+						'Secure ',
+						React.createElement('br', null),
+						'Checkout'
+					),
+					React.createElement(
+						'h3',
+						{ className: 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
+								return _this2.closeGpsSlider();
+							} },
 						React.createElement(
-							'button',
-							{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', onClick: function onClick() {
-									return _this2.modalClosed();
-								}, disabled: this.state.fetchingGPS || this.state.settingUserLocation },
-							React.createElement(
-								'span',
-								{ 'aria-hidden': 'true' },
-								'\xD7'
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'p-5' },
-							React.createElement(
-								'h2',
-								null,
-								'ADD DELIVERY ADDRESS'
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'p-3' },
-							React.createElement(
-								'h3',
-								null,
-								' Add your delivery address to proceed '
-							),
-							React.createElement(
-								'p',
-								null,
-								' To add this item to your cart, please set your delivery location '
-							)
-						),
-						React.createElement(
-							'div',
-							null,
-							this.getNoSavedAddressesMsg()
-						),
-						React.createElement(
-							'div',
-							{ className: 'd-flex justify-content-center flex-column p-4' },
-							this.showFetchLocationUsingGps(),
-							React.createElement(
-								'div',
-								{ className: 'gps-error-msg' },
-								this.checkGpsErrorMsg()
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-4' },
-								this.showLocationSearch()
-							),
-							React.createElement(
-								'div',
-								{ className: 'gps-error-msg' },
-								this.checkLocationErrorMsg()
-							),
-							React.createElement(
-								'ul',
-								{ style: locationStyle },
-								this.getAutoCompleteLocations()
-							),
-							React.createElement(
-								'div',
-								null,
-								this.getSavedAddresses()
-							),
-							this.showAddressUpdateMsg()
+							'span',
+							{ 'aria-hidden': 'true' },
+							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
 						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'slide-in-content' },
+					React.createElement(
+						'div',
+						{ className: 'list-text-block p-3 mb-2' },
+						React.createElement(
+							'div',
+							{ className: 'list-meta mt-0' },
+							'If you have ordered with us before, ',
+							React.createElement(
+								'a',
+								{ className: 'text-underline test-primary text-underline' },
+								'Sign in'
+							),
+							' to fetch saved addresses.'
+						)
+					),
+					React.createElement(
+						'h3',
+						{ className: 'h1 ft6' },
+						'Add your delivery address to proceed'
+					),
+					React.createElement(
+						'h4',
+						{ className: 'font-weight-light mt-4 pb-4' },
+						'We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de Fran\xE7a, Taleigao. Please choose from amongst these'
+					),
+					React.createElement(
+						'div',
+						{ className: 'mb-3 pt-4' },
+						this.showFetchLocationUsingGps()
+					),
+					React.createElement(
+						'div',
+						{ className: 'gps-error-msg' },
+						this.checkGpsErrorMsg()
+					),
+					this.showLocationSearch(),
+					React.createElement(
+						'div',
+						{ className: 'gps-error-msg' },
+						this.checkLocationErrorMsg()
+					),
+					React.createElement(
+						'ul',
+						{ style: locationStyle },
+						this.getAutoCompleteLocations()
 					)
 				)
 			);
@@ -158,9 +158,23 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function showLocationSearch() {
 			var _this3 = this;
 
-			if (!this.state.settingUserLocation && !this.state.fetchingGPS) return React.createElement('input', { type: 'search', className: 'w-75', placeholder: 'search for area, street name', value: this.state.searchText, onChange: function onChange(e) {
-					_this3.autoCompleteLocation(e.target.value);
-				} });
+			if (!this.state.settingUserLocation && !this.state.fetchingGPS) return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'div',
+					{ className: 'text-center h4 mb-0 font-weight-light' },
+					'-OR-'
+				),
+				React.createElement(
+					'div',
+					{ className: 'position-relative mb-3 mt-3' },
+					React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
+							_this3.autoCompleteLocation(e.target.value);
+						} }),
+					React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png' })
+				)
+			);
 		}
 	}, {
 		key: 'showFetchLocationUsingGps',
@@ -182,10 +196,11 @@ var gpsModalPrompt = function (_React$Component) {
 				)
 			);else if (!this.state.settingUserLocation) return React.createElement(
 				'button',
-				{ className: '', style: btnStyle, onClick: function onClick() {
+				{ onClick: function onClick() {
 						return _this4.getLocation();
-					} },
-				' Get Current Location '
+					}, type: 'button', className: 'btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative' },
+				'Use Current Location ',
+				React.createElement('img', { 'class': 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png' })
 			);
 		}
 	}, {
@@ -287,10 +302,11 @@ var gpsModalPrompt = function (_React$Component) {
 			);
 		}
 	}, {
-		key: 'modalClosed',
-		value: function modalClosed() {
+		key: 'closeGpsSlider',
+		value: function closeGpsSlider() {
 			window.modal_closed = true;
 			this.setState({ searchText: '', locError: '', gpsError: '' });
+			this.closeGpsModal();
 		}
 	}, {
 		key: 'autoCompleteLocation',
@@ -372,7 +388,7 @@ var gpsModalPrompt = function (_React$Component) {
 				axios.post(url, body).then(function (res) {
 					_this9.updateLocationUI(lat_lng, formatted_address);
 					_this9.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
-					$('#gpsModal').modal('hide');
+					_this9.closeGpsModal();
 				}).catch(function (error) {
 					_this9.setState({ fetchingGPS: false, settingUserLocation: false });
 					console.log("error in updating cart location ==>", error);
@@ -382,7 +398,7 @@ var gpsModalPrompt = function (_React$Component) {
 			} else {
 				this.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
 				this.updateLocationUI(lat_lng, formatted_address);
-				$('#gpsModal').modal('hide');
+				this.closeGpsModal();
 			}
 		}
 	}, {
@@ -451,6 +467,11 @@ var gpsModalPrompt = function (_React$Component) {
 				}
 			}
 		}
+	}, {
+		key: 'closeGpsModal',
+		value: function closeGpsModal() {
+			document.querySelector('#gpsModal').classList.remove('visible');
+		}
 	}]);
 
 	return gpsModalPrompt;
@@ -462,7 +483,7 @@ var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-	$('#gpsModal').modal('show');
+	document.querySelector('#gpsModal').classList.add('visible');
 };
 
 window.updateAddresses = function () {

@@ -89,10 +89,6 @@
 
 <div class="spacer py-5"></div>
 <!-- Selected Location -->
-<div class="delivery-location d-flex cursor-pointer">
-  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-  <div id="selected-location-address" class="font-weight-bold"></div>  
-</div>
 
 <section>
   <div class="container p5">
@@ -107,6 +103,13 @@
   </div>
 </section>
 
+
+<div class="delivery-location d-flex cursor-pointer">
+  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+  <div id="selected-location-address" class="font-weight-bold"></div>  
+</div>
+
+
 <div class="product-section">  
   <div class="container">
     <div class="row">
@@ -118,7 +121,7 @@
           <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
             foreach ($products as $key => $product) { ?>
 
-            <div class="col-xl-6 col-lg-7 product-list-item trigger1">
+            <div class="col-xl-6 col-lg-7 product-list-item trigger<?php echo $key+1 ?>">
                 <div class="product-wrapper d-lg-flex align-items-lg-end <?php echo $product['class'] ?>">
                     <div class="product-image lg-w-50">
                         <div class="item">
@@ -270,5 +273,6 @@
     </div>
   </div>
 </div>
+
 
 <?php get_footer(); ?>

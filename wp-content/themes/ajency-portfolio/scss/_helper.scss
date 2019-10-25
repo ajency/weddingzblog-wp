@@ -101,6 +101,16 @@ footer {
     &-white{
         border: 1px solid #fff;
     }
+    &-green{
+        &-2{
+            border: 2px solid #47A748;
+        }
+    }
+    &-grey{
+        &-2{
+            border: 2px solid #EEEFEE;
+        }
+    }
     &-radius{
         &-4{
             border-radius: 4px;
@@ -128,6 +138,17 @@ footer {
     }
 }
 
+.position{
+    &-absolute{
+        &-right20{
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+        }
+    }
+}
+
 .reverse-order{
     @media (min-width: 992px) {
         .product-image{
@@ -137,6 +158,11 @@ footer {
             order: 1;
         }
     }
+}
+
+.text-underline{
+    color: #47a748 !important;
+    text-decoration: underline !important;
 }
 
 @media (min-width: 320px) and (max-width: 767.98px) {

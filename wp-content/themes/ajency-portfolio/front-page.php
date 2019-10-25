@@ -63,28 +63,6 @@
     
   }
 </style>
-<!-- <div class="container p5">
-  <div class="row">
-    <div class="col  offset-xl-2 col-xl-8 col12">
-      <div class="headerfix ">
-        <div class="bread-crumb d-flex">
-          <span class="h1 font-weight-light pt-6 pr-2 pr-md-3">/</span>
-          <div class="bread-crumb__menu">
-             <a  href="<?php echo get_site_url(); ?>" class="actionable text-link h1">Home</a>
-            <a href="<?php echo get_site_url(); ?>/software-development-engineering/" class="actionable text-link h1">Engineering</a>
-            <a href="<?php echo get_site_url(); ?>/product-user-interface-design/" class="actionable text-link h1">User interface design</a>
-            <a href="<?php echo get_site_url(); ?>/website-design/" class="actionable is-active text-link text-black h1">Website design</a> -->
-
-<!-- <a href="#" class="actionable text-link h1">Blog</a>
-            <a href="#" class="actionable text-link h1">Careers</a> -->
-
-<!--  
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 
 <div class="spacer py-5"></div>
@@ -121,7 +99,7 @@
           <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
             foreach ($products as $key => $product) { ?>
 
-            <div class="col-xl-6 col-lg-7 product-list-item trigger<?php echo $key+1 ?>">
+            <div class="col-xl-6 col-lg-7 product-list-item effect trigger<?php echo $key+1 ?>">
                 <div class="product-wrapper d-lg-flex align-items-lg-end <?php echo $product['class'] ?>">
                     <div class="product-image lg-w-50">
                         <div class="item">
@@ -200,77 +178,6 @@
 <div class="cart-wrapper" id="root">
   <div class="cart-app-loader">
     Loading...
-  </div>
-</div>
-
-<div class="container p5">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-</div>
-<section id="we-are-hiring">
-  <div class="container p5">
-    <div class="row">
-      <div class="col  offset-xl-2 col-xl-8 col12">
-        <h3 class="h1 ft6">We're Hiring</h3>
-        <p class="body-text">To help you decide if we are the right fit for you.</p>
-        <div class="seperator">
-        </div>
-        <div class="accordion aj-faq" id="accordionExample">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <h2 class="pt-2 pb-2 m-0 ">Position 1 </h2>
-              </a>
-            </div>
-
-            <div id="collapseOne" class="collapse  " aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                <p class="body-text">As they say, horses for the courses. Each site is different and we take a call on whether to use Wordpress, Shopify, Squarespace or any other.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-
-              <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <h2 class="pt-2 pb-2 m-0 ">Position 2</h2>
-              </a>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body">
-                <p class="body-text">The right answer would be "It depends". It is difficult to give a cost without details of the kind of website you want. However, if it helps to have rough ball parks, then it can vary from $500 (Rs.30,000/-) to $5000 (Rs.3,50,000/-)</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-
-              <a class=" text-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <h2 class="pt-2 pb-2 m-0 ">Position 3</h2>
-              </a>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-              <div class="card-body">
-                <p class="body-text">Distance has never been a challenge. We regularly work with clients in Singapore, London, Australia, Norway, USA, Delhi, Mumbai and even Uruguay! The world truly is flat.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container p5">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
   </div>
 </div>
 

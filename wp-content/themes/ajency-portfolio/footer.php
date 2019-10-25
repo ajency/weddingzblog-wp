@@ -1,4 +1,4 @@
-<footer id="footer">
+<!-- <footer id="footer">
     <section class="footer-section">
         <div class="container p5">
             <div class="row">
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <?php if (!is_page_template('archive.php') && !is_singular('post') && !is_page_template('template-blogs.php') && !is_page_template('template-fullwidth.php') ) { ?>
     <noscript id="deferred-styles">

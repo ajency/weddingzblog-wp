@@ -13,12 +13,6 @@
     transform: translate(500px, 0px);
     transition: all 0.3s ease;
     width: 430px;
-    @media (max-width: 767px){
-      width: 50vh;
-    }
-    @media (max-width: 480px){
-      width: 100vh;
-    }
   }
   .cart-wrapper.active{
     transform: translate(0,0);
@@ -54,6 +48,19 @@
   .saved-address-item {
     white-space: normal;
     text-align: left;
+  }
+
+  @media (max-width: 767px){
+    .cart-wrapper{
+      width: 50vh;
+    }
+    
+  }
+  @media (max-width: 480px){
+    .cart-wrapper{
+      width: 100%;
+    }
+    
   }
 </style>
 <!-- <div class="container p5">
@@ -166,22 +173,25 @@
 <!-- sign-in modal prompt -->
 <div id="react-sign-in-container"></div>
 
+<div class="msg-container">
 <!-- Add to cart error  -->
 <div class="failure toast d-flex justify-content-center">
-  <span class="alert-danger d-none" id="failure-toast">
+  <span class="alert-danger p-15 w-100 d-none" id="failure-toast">
     Add to cart failed
   </span>
 </div>
 
 <!-- Add to cart error  -->
 <div class="success toast d-flex justify-content-center">
-  <span class="alert-success d-none" id="success-toast">
+  <span class="alert-success p-15 w-100 d-none" id="success-toast">
     Successfully added to cart
   </span>
 </div>
 
+
 <!-- View cart component -->
 <div id="react-view-cart-container" style="width: 100%"></div>
+</div>
 
 
 <div class="cart-wrapper" id="root">

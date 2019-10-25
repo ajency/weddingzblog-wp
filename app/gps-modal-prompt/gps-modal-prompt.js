@@ -41,48 +41,45 @@ class gpsModalPrompt extends React.Component {
 
 	render() {
 		return (
-			<div className="modal fade" id="gpsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-			  	<div className="modal-dialog modal-dialog-centered" role="document">
-					<div className="modal-content">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={()=> this.modalClosed()} disabled={this.state.fetchingGPS || this.state.settingUserLocation}>
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-						<div className="p-5">
-							<h2>ADD DELIVERY ADDRESS</h2>
-						</div>
-						<div className="p-3">
-							<h3> Add your delivery address to proceed </h3>
-							<p> To add this item to your cart, please set your delivery location </p>
-						</div>
+		    <div className="slide-in" id="gpsModal">
+			  <div className="slide-in-header header-container d-flex align-items-center">
+			      <div className="app-name d-flex align-items-center">					
+			          <img src="<?php echo get_template_directory_uri().'/images/slidein/Newlogo.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			      </div>
+			      <div className="app-chekout text-green">
+			          <img src="<?php echo get_template_directory_uri().'/images/slidein/checkout.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			          Secure <br/>Checkout
+			      </div>
+			      <h3 className="app-close bg-primary m-0 text-white btn-pay m-0">
+			          <span aria-hidden="true"><img src="<?php echo get_template_directory_uri().'/images/slidein/remove.png';?>" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/></span>
+			      </h3>
+			  </div>
+			  <div className="slide-in-content">
+			      <div className="list-text-block p-3 mb-2">
+			          <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline">Sign in</a> to fetch saved addresses.</div>
+			      </div>
+			      <h3 className="h1 ft6">Add your delivery address to proceed</h3>
+			      <h4 className="font-weight-light mt-4 pb-4">
+			        We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de França, Taleigao. Please choose from amongst these
+			      </h4>
+			      <div className="mb-3 pt-4">
+			       		{this.showFetchLocationUsingGps()}
+			      </div>
+			      <div className="gps-error-msg">
+					{this.checkGpsErrorMsg()}
+				  </div>
+			      <div className="text-center h4 mb-0 font-weight-light">-OR-</div>
+			      	{this.showLocationSearch()}
 
-						<div>
-							{this.getNoSavedAddressesMsg()}
-						</div>
-
-						<div className="d-flex justify-content-center flex-column p-4">
-							{this.showFetchLocationUsingGps()}
-							<div className="gps-error-msg">
-								{this.checkGpsErrorMsg()}
-							</div>
-							<div className="p-4">
-								{this.showLocationSearch()}
-							</div>
-							<div className="gps-error-msg">
-								{this.checkLocationErrorMsg()}
-							</div>
-							<ul style={locationStyle}>
-								{this.getAutoCompleteLocations()}
-							</ul>
-
-							<div>
-								{this.getSavedAddresses()}
-							</div>
-
-							{this.showAddressUpdateMsg()}
-						</div>
+			      	<div className="gps-error-msg">
+						{this.checkLocationErrorMsg()}
 					</div>
-			  	</div>
-		    </div>
+
+			      	<ul style={locationStyle}>
+						{this.getAutoCompleteLocations()}
+					</ul>
+			  </div>
+			</div>
 		);
 	}
 
@@ -94,7 +91,12 @@ class gpsModalPrompt extends React.Component {
 
 	showLocationSearch(){
 		if(!this.state.settingUserLocation && !this.state.fetchingGPS)
-			return <input type="search" className="w-75" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/>
+			return (
+					<div className="position-relative mb-3 mt-3">
+		        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
+		       			<img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png"/>
+		      		</div>
+			)
 	}
 
 	showFetchLocationUsingGps(){
@@ -108,7 +110,9 @@ class gpsModalPrompt extends React.Component {
 				</div>
 			)
 		else if(!this.state.settingUserLocation)
-			return <button className="" style={btnStyle} onClick={() => this.getLocation()}> Get Current Location </button>
+			return (
+				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img class="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
+			)
 	}
 
 	showAddressUpdateMsg(){
@@ -263,7 +267,8 @@ class gpsModalPrompt extends React.Component {
 			.then((res) => {
 				this.updateLocationUI(lat_lng, formatted_address);
 				this.setState({ fetchingGPS : false, searchText : '', settingUserLocation : false});
-				$('#gpsModal').modal('hide');
+				this.closeGpsModal()
+
 			})
 			.catch((error)=>{
 				this.setState({ fetchingGPS : false, settingUserLocation : false});
@@ -275,7 +280,7 @@ class gpsModalPrompt extends React.Component {
 		else{
 			this.setState({ fetchingGPS : false, searchText: '', settingUserLocation : false});
 			this.updateLocationUI(lat_lng, formatted_address);
-			$('#gpsModal').modal('hide');
+			this.closeGpsModal();
 		}
 		
 	}
@@ -342,6 +347,10 @@ class gpsModalPrompt extends React.Component {
 		}
 	}
 
+	closeGpsModal(){
+		document.querySelector('#gpsModal').classList.remove('visible');
+	}
+
 }
 
 let domContainer = document.querySelector('#react-add-delivery-address-container');
@@ -349,7 +358,7 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 
 window.showGpsModalPrompt = (display, addresses = null) => {
-	$('#gpsModal').modal('show');
+	document.querySelector('#gpsModal').classList.add('visible');
 }
 
 window.updateAddresses = (addresses = null) => {

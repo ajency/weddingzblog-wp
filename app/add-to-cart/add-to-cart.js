@@ -135,12 +135,12 @@ class addToCart extends React.Component {
 		}
 		else{
 			if(action == 'add'){
-				if(this.state.items.length){
-					$('#repeatLast-' + this.props.product_data.product_id).modal('show');
-				}
-				else{
+				// if(this.state.items.length){
+				// 	$('#repeatLast-' + this.props.product_data.product_id).modal('show');
+				// }
+				// else{
 					this.showVariantModal()
-				}
+				// }
 			}
 			else{
 				if(this.state.items.length > 1){
@@ -155,7 +155,7 @@ class addToCart extends React.Component {
 	}
 
 	addToCart(variant_id = null) {
-		$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+		// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
 		this.hideVariantModal()
 		this.setState({apiCallInProgress : true});
 		let cart_id = window.getCookie('cart_id');

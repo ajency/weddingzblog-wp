@@ -263,11 +263,12 @@ var addToCart = function (_React$Component) {
 				action == 'add' ? this.addToCart(this.props.product_data.variants[0].id) : this.removeFromCart(this.props.product_data.variants[0].id);
 			} else {
 				if (action == 'add') {
-					if (this.state.items.length) {
-						$('#repeatLast-' + this.props.product_data.product_id).modal('show');
-					} else {
-						this.showVariantModal();
-					}
+					// if(this.state.items.length){
+					// 	$('#repeatLast-' + this.props.product_data.product_id).modal('show');
+					// }
+					// else{
+					this.showVariantModal();
+					// }
 				} else {
 					if (this.state.items.length > 1) {
 						var msg = "Item has multiple variants added. Remove correct item from cart";
@@ -285,7 +286,7 @@ var addToCart = function (_React$Component) {
 
 			var variant_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-			$('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+			// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
 			this.hideVariantModal();
 			this.setState({ apiCallInProgress: true });
 			var cart_id = window.getCookie('cart_id');

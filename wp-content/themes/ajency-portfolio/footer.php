@@ -141,64 +141,71 @@
 
 <script type="text/javascript">
     if ($(window).innerWidth() < 767) {
+
+        $('.product-list').find('.product-list-item:last').removeClass('effect');
+
         // build scene
         var scene = new ScrollMagic.Scene({
-                            triggerElement: ".trigger1", 
+                            triggerElement: ".effect.trigger1", 
                             triggerHook: 'onLeave', 
                             duration: '150%'
                         })
-                        // animate color and top border in relation to scroll position
                         .setTween(".cardone", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                        .setPin(".trigger1", {pushFollowers: false})
+                        .setPin(".effect.trigger1", {pushFollowers: false})
                         // .offset(-10)
                         // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
                         .addTo(controller);
         var scene = new ScrollMagic.Scene({
-                            triggerElement: ".trigger2", 
+                            triggerElement: ".effect.trigger2", 
                             triggerHook: 'onLeave', 
                             duration: '150%'
                         })
-                        // animate color and top border in relation to scroll position
                         .setTween(".cardtwo", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                        .setPin(".trigger2", {pushFollowers: false})
+                        .setPin(".effect.trigger2", {pushFollowers: false})
                         // .offset(-10)
                         // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
                         .addTo(controller);
         var scene = new ScrollMagic.Scene({
-                            triggerElement: ".trigger3", 
+                            triggerElement: ".effect.trigger3", 
                             triggerHook: 'onLeave', 
                             duration: '150%'
                         })
-                        // animate color and top border in relation to scroll position
                         .setTween(".cardthree", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                        .setPin(".trigger3", {pushFollowers: false})
+                        .setPin(".effect.trigger3", {pushFollowers: false})
                         // .offset(-10)
                         // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
                         .addTo(controller);
         var scene = new ScrollMagic.Scene({
-                            triggerElement: ".trigger4", 
+                            triggerElement: ".effect.trigger4", 
                             triggerHook: 'onLeave', 
                             duration: '150%'
                         })
-                        // animate color and top border in relation to scroll position
                         .setTween(".cardfour", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
-                        .setPin(".trigger4", {pushFollowers: false})
+                        .setPin(".effect.trigger4", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".effect.trigger5", 
+                            triggerHook: 'onLeave', 
+                            duration: '150%'
+                        })
+                        .setTween(".cardfive", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".effect.trigger5", {pushFollowers: false})
+                        // .offset(-10)
+                        // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
+                        .addTo(controller);
+        var scene = new ScrollMagic.Scene({
+                            triggerElement: ".effect.trigger6", 
+                            triggerHook: 'onLeave', 
+                            duration: '150%'
+                        })
+                        .setTween(".cardsix", { scale: 0.75, opacity: 0}) // the tween durtion can be omitted and defaults to 1
+                        .setPin(".effect.trigger6", {pushFollowers: false})
                         // .offset(-10)
                         // .addIndicators({name: "2 (duration: 300)"}) // add indicators (requires plugin)
                         .addTo(controller);
 
-
-        // $(function() {
-        //   $.scrollify({
-        //     section : ".product-list-item",
-        //     setHeights: false,
-        //     // scrollbars: true,
-        //     standardScrollElements: "#we-are-hiring, #our-bowls, .footer",
-        //     scrollSpeed: 750,
-        //     updateHash: false,
-        //     // offset: -20
-        //   });
-        // });
     }
 </script>
     <?php wp_footer(); ?>

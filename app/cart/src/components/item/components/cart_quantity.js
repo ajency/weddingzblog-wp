@@ -123,6 +123,7 @@ class Quantity extends Component {
 
 	displayError(msg){
 		// TODO : Display error message
+		this.props.showApiErrorMsg(msg);
 	}
 }
 

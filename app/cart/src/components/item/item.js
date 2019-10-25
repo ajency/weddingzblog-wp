@@ -5,7 +5,10 @@ import Quantity from './components/cart_quantity.js';
 
 class Item extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
+		this.state = {
+			apiErrorMsg : ''
+		}
 	}
 	render() {
 		return (
@@ -23,7 +26,7 @@ class Item extends Component {
 						</div>				
 					</div>			
 					<div className="product-quantity d-inline-block">
-						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)}/>
+						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
 						<div className="product-price text-grey font-weight-light">
 							₹ {this.props.item.attributes.price_final}
 							{this.checkItemDiscount()}
@@ -32,6 +35,7 @@ class Item extends Component {
 				</div>
 				<div>
 					{this.checkServiceability()}
+					{this.displayApiErrorMsg()}
 				</div>
 			</div>
 		);
@@ -51,11 +55,24 @@ class Item extends Component {
 		if(!this.props.item.deliverable)
 			return <div className="alert-danger">Cannot be delivred at your location</div>
 		if(!this.props.item.availability)
-			return <div className="alert-danger">Out of Stock</div>
+			return <div className="alert-danger">Quantity not available</div>
+	}
+
+	displayApiErrorMsg(){
+		if(this.state.apiErrorMsg){
+			return <div className="alert-danger">{this.state.apiErrorMsg}</div>
+		}
 	}
 
 	removeItem(){
 		this.props.removeItem(this.props.item.variant_id);
+	}
+
+	setApiErrorMsg(msg){
+		this.setState({apiErrorMsg : msg});
+		setTimeout(()=>{
+			this.setState({apiErrorMsg : ''});
+		},3000)
 	}
 
 	updateSummary(summary){

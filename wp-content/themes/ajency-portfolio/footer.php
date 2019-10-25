@@ -134,10 +134,10 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_3" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_3" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_3" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_3" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_4" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_4" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_4" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_4" type="text/javascript"></script>
 
 <script type="text/javascript">
     if ($(window).innerWidth() < 767) {

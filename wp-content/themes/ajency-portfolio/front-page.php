@@ -466,7 +466,7 @@
       </div>
       <h3 class="h1 ft6">Add your delivery address to proceed</h3>
       <h4 class="font-weight-light mt-4 pb-4">
-        We are currently servicing at Panjim, Carazalem, Porvorim, Sangolda, Succor, Penha De franca, Taleigao. Please choose from amongst these
+        We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de França, Taleigao. Please choose from amongst these
       </h5>
       <div class="mb-3 pt-4">
         <button type="button" class="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img class="position-absolute-right20" src="<?php echo get_template_directory_uri().'/images/slidein/location.png';?>"/></button>

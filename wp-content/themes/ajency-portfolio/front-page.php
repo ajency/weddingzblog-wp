@@ -82,10 +82,6 @@
 
 <div class="spacer py-5"></div>
 <!-- Selected Location -->
-<div class="delivery-location d-flex cursor-pointer">
-  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-  <div id="selected-location-address" class="font-weight-bold"></div>  
-</div>
 
 <section>
   <div class="container p5">
@@ -99,6 +95,13 @@
   <div>
   </div>
 </section>
+
+
+<div class="delivery-location d-flex cursor-pointer">
+  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+  <div id="selected-location-address" class="font-weight-bold"></div>  
+</div>
+
 
 <div class="product-section">  
   <div class="container">

@@ -124,11 +124,6 @@ var gpsModalPrompt = function (_React$Component) {
 						{ className: 'gps-error-msg' },
 						this.checkGpsErrorMsg()
 					),
-					React.createElement(
-						'div',
-						{ className: 'text-center h4 mb-0 font-weight-light' },
-						'-OR-'
-					),
 					this.showLocationSearch(),
 					React.createElement(
 						'div',
@@ -161,11 +156,20 @@ var gpsModalPrompt = function (_React$Component) {
 
 			if (!this.state.settingUserLocation && !this.state.fetchingGPS) return React.createElement(
 				'div',
-				{ className: 'position-relative mb-3 mt-3' },
-				React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
-						_this2.autoCompleteLocation(e.target.value);
-					} }),
-				React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png' })
+				null,
+				React.createElement(
+					'div',
+					{ className: 'text-center h4 mb-0 font-weight-light' },
+					'-OR-'
+				),
+				React.createElement(
+					'div',
+					{ className: 'position-relative mb-3 mt-3' },
+					React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
+							_this2.autoCompleteLocation(e.target.value);
+						} }),
+					React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png' })
+				)
 			);
 		}
 	}, {

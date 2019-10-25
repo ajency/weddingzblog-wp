@@ -68,7 +68,7 @@ class gpsModalPrompt extends React.Component {
 			      <div className="gps-error-msg">
 					{this.checkGpsErrorMsg()}
 				  </div>
-			      <div className="text-center h4 mb-0 font-weight-light">-OR-</div>
+			      
 			      	{this.showLocationSearch()}
 
 			      	<div className="gps-error-msg">
@@ -92,10 +92,13 @@ class gpsModalPrompt extends React.Component {
 	showLocationSearch(){
 		if(!this.state.settingUserLocation && !this.state.fetchingGPS)
 			return (
-					<div className="position-relative mb-3 mt-3">
-		        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
-		       			<img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png"/>
-		      		</div>
+					<div>
+						<div className="text-center h4 mb-0 font-weight-light">-OR-</div>
+						<div className="position-relative mb-3 mt-3">
+			        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
+			       			<img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png"/>
+			      		</div>
+			      	</div>
 			)
 	}
 

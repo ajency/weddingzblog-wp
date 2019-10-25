@@ -169,6 +169,11 @@ footer {
     height: 200px;
 }
 
+.transform-none{
+    transform: none;
+    z-index: 1;
+}
+
 @media (min-width: 320px) and (max-width: 767.98px) {
     .footer-section {
         padding-top: 2rem;

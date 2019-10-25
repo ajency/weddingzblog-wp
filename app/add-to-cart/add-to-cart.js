@@ -87,6 +87,7 @@ class addToCart extends React.Component {
 
 	showVariantModal(){
 		// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+		this.setState({selectedVariant : this.props.product_data.default.id });
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
 	}
 

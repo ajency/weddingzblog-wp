@@ -14,7 +14,7 @@ class Item extends Component {
 		return (
 			<div className="item-container flex-column mb-2">
 				<div className="d-flex">
-					<div className="product-image d-inline-block">
+					<div className="product-cartimage d-inline-block">
 						<img class="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
 					<div className="product-details d-inline-block">

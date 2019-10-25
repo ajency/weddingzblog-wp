@@ -13,7 +13,7 @@ class DeliveryAddress extends Component {
 					<div className="address-details-inner font-weight-light">
 						<span className="text-green font-weight-semibold">Deliver to</span> {this.props.address}
 					</div>
-					<div className="btn btn-dark btn-edit" onClick={() => this.openChangeLocationModal()}>
+					<div className="btn-edit" onClick={() => this.openChangeLocationModal()}>
 						<img src={editImage} className="app-log" alt="Edit address" title="Edit address"/>
 					</div>
 				</div>

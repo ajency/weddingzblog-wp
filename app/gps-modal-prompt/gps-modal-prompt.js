@@ -360,6 +360,7 @@ class gpsModalPrompt extends React.Component {
 
 	closeGpsModal(){
 		document.querySelector('#gpsModal').classList.remove('visible');
+		window.removeBackDrop();
 	}
 
 }
@@ -370,6 +371,7 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 window.showGpsModalPrompt = (display, addresses = null) => {
 	document.querySelector('#gpsModal').classList.add('visible');
+	window.addBackDrop();
 }
 
 window.updateAddresses = (addresses = null) => {

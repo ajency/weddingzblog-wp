@@ -482,6 +482,7 @@ var gpsModalPrompt = function (_React$Component) {
 		key: 'closeGpsModal',
 		value: function closeGpsModal() {
 			document.querySelector('#gpsModal').classList.remove('visible');
+			window.removeBackDrop();
 		}
 	}]);
 
@@ -495,6 +496,7 @@ window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
 	document.querySelector('#gpsModal').classList.add('visible');
+	window.addBackDrop();
 };
 
 window.updateAddresses = function () {

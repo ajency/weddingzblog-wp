@@ -325,3 +325,14 @@ function getCookie(cname){
     }
     return "";
 }
+
+function addBackDrop(){
+    $('.backdrop').addClass('show');
+    $('body').addClass('hide-scroll');
+}
+
+
+function removeBackDrop(){
+    $('.backdrop').removeClass('show');
+    $('body').removeClass('hide-scroll');
+}

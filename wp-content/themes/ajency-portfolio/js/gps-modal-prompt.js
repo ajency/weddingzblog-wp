@@ -450,7 +450,7 @@ var gpsModalPrompt = function (_React$Component) {
 
 			this.setSliderLoader();
 			this.setState({ settingUserLocation: true });
-			var cart_id = window.getCookie('cart_id');
+			var cart_id = window.readFromLocalStorage('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 				var body = {
@@ -480,8 +480,10 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'updateLocationUI',
 		value: function updateLocationUI(lat_lng, formatted_address) {
-			document.cookie = "lat_lng=" + lat_lng[0] + ',' + lat_lng[1] + ";path=/";
-			document.cookie = "formatted_address=" + formatted_address + ";path=/";
+			// document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
+			// document.cookie = "formatted_address=" + formatted_address + ";path=/";
+			window.writeInLocalStorage('lat_lng', lat_lng[0] + ',' + lat_lng[1]);
+			window.writeInLocalStorage('formatted_address', formatted_address);
 			window.lat_lng = lat_lng;
 			window.formatted_address = formatted_address;
 			document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';

@@ -189,7 +189,7 @@ class addToCart extends React.Component {
 		this.hideRepeateLastModal();
 		this.hideVariantModal()
 		this.setState({apiCallInProgress : true});
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			this.addToCartApiCall(variant_id, null, cart_id);
 		}
@@ -216,7 +216,7 @@ class addToCart extends React.Component {
 		let body = {
 			variant_id 	: variant_id,
 			quantity 	: 1,
-			cart_id 	: window.getCookie('cart_id')
+			cart_id 	: window.readFromLocalStorage('cart_id')
 		}
 
 		axios.post(url, body)
@@ -263,8 +263,10 @@ class addToCart extends React.Component {
 				this.addItems(res.data.item);
 				window.updateViewCartCompoent(res.data);
 				this.displaySuccess("Successfully added to cart")
-				if(!cart_id && res.data.cart_id)
-					document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
+				if(!cart_id && res.data.cart_id){
+					// document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
+					window.writeInLocalStorage('cart_id' , res.data.cart_id);
+				}
 			}
 			else{
 				this.displayError(res.data.message);

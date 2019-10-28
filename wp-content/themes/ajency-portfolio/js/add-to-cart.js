@@ -310,7 +310,7 @@ var addToCart = function (_React$Component) {
 			this.hideRepeateLastModal();
 			this.hideVariantModal();
 			this.setState({ apiCallInProgress: true });
-			var cart_id = window.getCookie('cart_id');
+			var cart_id = window.readFromLocalStorage('cart_id');
 			if (cart_id) {
 				this.addToCartApiCall(variant_id, null, cart_id);
 			} else if (window.lat_lng) {
@@ -339,7 +339,7 @@ var addToCart = function (_React$Component) {
 			var body = {
 				variant_id: variant_id,
 				quantity: 1,
-				cart_id: window.getCookie('cart_id')
+				cart_id: window.readFromLocalStorage('cart_id')
 			};
 
 			axios.post(url, body).then(function (res) {
@@ -390,7 +390,10 @@ var addToCart = function (_React$Component) {
 					_this8.addItems(res.data.item);
 					window.updateViewCartCompoent(res.data);
 					_this8.displaySuccess("Successfully added to cart");
-					if (!cart_id && res.data.cart_id) document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
+					if (!cart_id && res.data.cart_id) {
+						// document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
+						window.writeInLocalStorage('cart_id', res.data.cart_id);
+					}
 				} else {
 					_this8.displayError(res.data.message);
 				}

@@ -317,7 +317,7 @@ class gpsModalPrompt extends React.Component {
 	setUserLocations(lat_lng, formatted_address){
 		this.setSliderLoader();
 		this.setState({settingUserLocation : true});
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 			let body = {
@@ -350,8 +350,10 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	updateLocationUI(lat_lng, formatted_address){
-		document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
-		document.cookie = "formatted_address=" + formatted_address + ";path=/";
+		// document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
+		// document.cookie = "formatted_address=" + formatted_address + ";path=/";
+		window.writeInLocalStorage('lat_lng', lat_lng[0] + ',' +lat_lng[1]);
+		window.writeInLocalStorage('formatted_address', formatted_address);
 		window.lat_lng = lat_lng;
 		window.formatted_address = formatted_address;
 		document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';

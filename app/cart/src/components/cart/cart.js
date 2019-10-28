@@ -164,7 +164,7 @@ class Cart extends Component {
 	fetchCart() {
 		window.addCartLoader();
 		console.log("inside fetch cart");
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			// let url = "https://demo8558685.mockable.io/get-cart";
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";

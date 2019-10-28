@@ -63,7 +63,7 @@ class viewCart extends React.Component {
 	}
 
 	fetchCart() {
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 			let body = {

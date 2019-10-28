@@ -214,10 +214,10 @@ $(document).ready(function(){
         showCartSlider()
     }
 
-    let lat_lng = getCookie('lat_lng')
+    let lat_lng = readFromLocalStorage('lat_lng')
     if(lat_lng){
         window.lat_lng = [parseFloat(lat_lng.split(',')[0]), parseFloat(lat_lng.split(',')[1])]
-        let formatted_address = getCookie('formatted_address');
+        let formatted_address = readFromLocalStorage('formatted_address');
         if(formatted_address){
             window.formatted_address = formatted_address;
             document.querySelector("#selected-location-address").innerHTML = 
@@ -285,6 +285,8 @@ function loadCartApp(){
             url = "/greengrainbowl" + url;
         }
 
+        $.ajaxSetup({ cache: true });
+
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
@@ -351,6 +353,7 @@ function getCookie(cname){
     return "";
 }
 
+
 function addBackDrop(){
     $('.backdrop').addClass('show');
     $('body').addClass('hide-scroll');
@@ -380,4 +383,44 @@ function addCartLoader(){
 function removeCartLoader(){
     // $('.cart-wrapper').removeClass('cart-loader');   
     $('.site-loader').removeClass('visible');
+}
+
+
+function writeInLocalStorage(item_name, value) {
+    if(isLocalStorageSupported()) {
+        localStorage.setItem(item_name, value);
+    }
+    else {
+        document.cookie = item_name + "=" + value + ";expires="+getCookieExpiryDate()+";max-age="+getCookieMaxAge()+";path=/";
+    }
+}
+
+
+function readFromLocalStorage(item_name) {
+    if(isLocalStorageSupported()) {
+        return localStorage.getItem(item_name);
+    }
+    else {
+        return getCookie(item_name);
+    }
+}
+
+function isLocalStorageSupported() {
+    try {
+        localStorage.setItem('test', 'test');
+        localStorage.removeItem('test');
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+function getCookieMaxAge(){
+    return 30*24*60*60;
+}
+
+function getCookieExpiryDate(){
+    let milli_sec = new Date().getTime();
+    milli_sec = milli_sec+(30*24*60*60*1000);
+    let expiredate = new Date(milli_sec).toUTCString();
 }

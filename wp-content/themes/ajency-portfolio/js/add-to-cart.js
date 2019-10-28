@@ -178,21 +178,33 @@ var addToCart = function (_React$Component) {
 			this.hideRepeateLastModal();
 			this.setState({ selectedVariant: this.props.product_data.default.id });
 			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
+			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
+				domContainer.classList.add('transform-none');
+			});
 		}
 	}, {
 		key: 'hideVariantModal',
 		value: function hideVariantModal() {
 			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
-		}
-	}, {
-		key: 'hideRepeateLastModal',
-		value: function hideRepeateLastModal() {
-			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
+				domContainer.classList.remove('transform-none');
+			});
 		}
 	}, {
 		key: 'showRepeateLastModal',
 		value: function showRepeateLastModal() {
 			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.add('show-modal');
+			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
+				domContainer.classList.add('transform-none');
+			});
+		}
+	}, {
+		key: 'hideRepeateLastModal',
+		value: function hideRepeateLastModal() {
+			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
+				domContainer.classList.remove('transform-none');
+			});
 		}
 	}, {
 		key: 'getLastSelected',
@@ -232,7 +244,8 @@ var addToCart = function (_React$Component) {
 				{ className: 'btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer', onClick: function onClick() {
 						return _this5.checkVariant('add');
 					}, disabled: this.state.apiCallInProgress },
-				'Add to cart'
+				'Add to cart',
+				React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/cart-arrow.png', alt: '', title: '' })
 			);
 
 			return React.createElement(
@@ -468,6 +481,9 @@ document.querySelectorAll('.react-add-to-cart-container').forEach(function (domC
 
 function toggleModal(modal) {
 	modal.classList.toggle("show-modal");
+	document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
+		domContainer.classList.remove('transform-none');
+	});
 }
 
 function windowOnClick(event) {

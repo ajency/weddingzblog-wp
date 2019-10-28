@@ -9,7 +9,7 @@ class DeliveryAddress extends Component {
 	render() {
 		return (
 			<div className="delivery-address-container">
-				<div className="address-details border-green-2 border-radius-8 position-relative p-2">
+				<div className="address-details border-green-2 border-radius-0 position-relative p-2">
 					<div className="address-details-inner font-weight-light">
 						<span className="text-green font-weight-semibold">Deliver to</span> {this.props.address}
 					</div>

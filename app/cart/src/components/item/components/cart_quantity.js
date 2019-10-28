@@ -39,7 +39,7 @@ class Quantity extends Component {
 					<button className="btn btn-qty text-green" onClick={() => this.addToCart(1)} disabled={this.state.apiCallInProgress}>+</button>
 				</div>
 				<div>
-					<i className="far fa-trash-alt" onClick={() => this.removeFromCart(this.state.quantity)} disabled={this.state.apiCallInProgress}></i>
+					<i className="far fa-trash-alt mt-2" onClick={() => this.removeFromCart(this.state.quantity)} disabled={this.state.apiCallInProgress}></i>
 				</div>
 			</div>
 		)		

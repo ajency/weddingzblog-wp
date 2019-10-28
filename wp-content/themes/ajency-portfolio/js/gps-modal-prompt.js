@@ -277,6 +277,7 @@ var gpsModalPrompt = function (_React$Component) {
 						loc.description
 					);
 				});
+				this.scrollTop();
 				return locs;
 			}
 			if (this.state.showLoader && !this.state.locations.length) {
@@ -284,6 +285,14 @@ var gpsModalPrompt = function (_React$Component) {
 					'div',
 					null,
 					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+				);
+			}
+
+			if (!this.state.locations.length && this.state.searchText.length > 2) {
+				return React.createElement(
+					'div',
+					null,
+					'No results, please enter a valid street address'
 				);
 			}
 		}
@@ -306,6 +315,14 @@ var gpsModalPrompt = function (_React$Component) {
 				{ className: 'p-3 alert-danger' },
 				'You have no saved addreses. Please set delivery location from options below'
 			);
+		}
+	}, {
+		key: 'scrollTop',
+		value: function scrollTop() {
+			setTimeout(function () {
+				var objDiv = document.getElementById("gpsModal");
+				objDiv.scrollTop = objDiv.scrollHeight;
+			}, 100);
 		}
 	}, {
 		key: 'closeGpsSlider',

@@ -158,6 +158,7 @@ class gpsModalPrompt extends React.Component {
 					{loc.description}
 				</li>
 			);
+			this.scrollTop();
 			return locs;
 		}
 		if(this.state.showLoader && !this.state.locations.length){
@@ -166,6 +167,14 @@ class gpsModalPrompt extends React.Component {
 						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				)
+		}
+
+		if(!this.state.locations.length && this.state.searchText.length > 2){
+			return (
+					<div>
+						No results, please enter a valid street address
+					</div>
+				);
 		}
 	}
 
@@ -182,6 +191,13 @@ class gpsModalPrompt extends React.Component {
 					You have no saved addreses. Please set delivery location from options below
 				</div>
 			);
+	}
+
+	scrollTop(){
+		setTimeout(()=> {
+			let objDiv = document.getElementById("gpsModal"); 
+			objDiv.scrollTop = objDiv.scrollHeight;
+		},100)
 	}
 
 	closeGpsSlider(){

@@ -102,6 +102,7 @@ footer {
         border: 1px solid #fff;
     }
     &-green{
+        border: 1px solid #47A748;
         &-2{
             border: 2px solid #47A748;
         }
@@ -167,6 +168,10 @@ footer {
 
 .spacer-200{
     height: 200px;
+}
+
+.spacer-210{
+    height: 210px;
 }
 
 .transform-none{

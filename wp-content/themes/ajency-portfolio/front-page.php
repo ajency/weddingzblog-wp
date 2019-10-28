@@ -62,6 +62,21 @@
     }
     
   }
+  .custom-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
 </style>
 
 
@@ -181,5 +196,85 @@
   </div>
 </div>
 
+<button class="trigger">Click here to trigger the modal!</button>
+
+<div class="slide-in" id="phoner_number">
+  <div class="slide-in-header header-container d-flex align-items-center">
+      <div class="app-name d-flex align-items-center">					
+          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+      </div>
+      <div class="app-chekout text-green">
+          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+          Secure <br/>Checkout
+      </div>
+      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0">
+          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
+      </h3>
+  </div>
+  <div class="slide-in-content">
+      <div class="spacer-210"></div>
+      <h3 class="h1 ft6">Login</h3>
+      <h4 class="font-weight-light mt-4 pb-4">
+        Please enter your phone number
+      </h4>
+      <div class="mb-3 pt-4">
+        <input type="tel" class="w-100 p-3 border-green h5 ft6 rounded-0" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="10 digit mobile number">
+      </div>
+      <div class="">
+        <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0">Submit</button>
+      </div>
+  </div>
+</div>
+
+<div class="slide-in" id="otp">
+  <div class="slide-in-header header-container d-flex align-items-center">
+      <div class="app-name d-flex align-items-center">					
+          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+      </div>
+      <div class="app-chekout text-green">
+          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+          Secure <br/>Checkout
+      </div>
+      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0">
+          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
+      </h3>
+  </div>
+  <div class="slide-in-content">
+      <div class="spacer-210"></div>
+      <h3 class="h1 ft6">Verify Mobile</h3>
+      <h4 class="font-weight-light mt-4 pb-4">
+        Enter the 6 digit code sent to the number 
+      </h4>
+      <div class="mb-1 pt-4">
+        <input type="number" class="w-100 p-3 border-green h5 ft6 rounded-0" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="Enter OTP">
+        <!-- <input id="partitioned" type="text" maxlength="" /> -->
+      </div>
+      <h6 class="mb-4">Didn't receive the code? <a href="#">RESEND</a></h6>
+      <div class="">
+        <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0">Verify OTP</button>
+      </div>
+  </div>
+</div>
+
+<script>
+var modal = document.querySelector(".slide-in");
+var trigger = document.querySelector(".trigger");
+var closeButton = document.querySelector(".app-close");
+
+function toggleModal() {
+    modal.classList.toggle("visible");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+
+</script>
 
 <?php get_footer(); ?>

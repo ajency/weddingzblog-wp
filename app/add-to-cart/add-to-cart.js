@@ -89,18 +89,34 @@ class addToCart extends React.Component {
 		this.hideRepeateLastModal();
 		this.setState({selectedVariant : this.props.product_data.default.id });
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.add('transform-none');
+			});
 	}
 
 	hideVariantModal(){
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
-	}
-
-	hideRepeateLastModal(){
-		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.remove('transform-none');
+			});
 	}
 
 	showRepeateLastModal(){
 		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.add('show-modal');	
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.add('transform-none');
+			});
+	}
+
+	hideRepeateLastModal(){
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.remove('transform-none');
+			});
 	}
 
 	getLastSelected(){
@@ -124,7 +140,9 @@ class addToCart extends React.Component {
 		if(this.state.quantity == 0)
 			return (
 				 <a className="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
-                            Add to cart  
+                        Add to cart  
+                        <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/cart-arrow.png" alt="" title="" />
+
                  </a>
 				)
 
@@ -328,6 +346,10 @@ document.querySelectorAll('.react-add-to-cart-container')
 
 function toggleModal(modal) {
     modal.classList.toggle("show-modal");
+    document.querySelectorAll('.product-wrapper')
+		.forEach((domContainer) => {
+			domContainer.classList.remove('transform-none');
+		});
 }
 
 function windowOnClick(event) {

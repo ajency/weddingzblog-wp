@@ -7,7 +7,6 @@
     right: 0;
     bottom: 0;
     height: 100vh;
-    background: #f5f5f5;
     z-index: 999;
     padding: 30px 15px 0;
     transform: translate(500px, 0px);

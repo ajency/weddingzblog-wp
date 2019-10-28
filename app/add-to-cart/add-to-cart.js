@@ -18,7 +18,8 @@ class addToCart extends React.Component {
 
 	componentDidMount(){
 		this.setState({selectedVariant : this.props.product_data.default.id })
-		variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);		
+		variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);
+		repeateModals[this.props.product_data.product_id] = document.querySelector('#repeatLast-' + this.props.product_data.product_id);
 	}
 
 	render() {
@@ -46,23 +47,22 @@ class addToCart extends React.Component {
 				</div>
 
 
-			    <div className="modal fade" id={'repeatLast-' + this.props.product_data.product_id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-				  	<div className="modal-dialog modal-dialog-centered" role="document">
-						<div className="modal-content">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-							<div className="p-5">
-								<h2>Repeat last used customization?</h2>
-							</div>
-							<div className="p-3">
-								<h3>{this.getLastSelected()}</h3>
-							</div>
+			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
+				  	<div className="custom-modal-content p-4">
+						<div className="p-5">
+							<h2>Repeat last used customization?</h2>
+						</div>
+						<div className="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
+				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
+				            	{this.props.product_data.title}
+				        </div>
+						<div className="p-3">
+							<h3>{this.getLastSelected()}</h3>
+						</div>
 
-							<div className="d-flex justify-content-between">
-								<button className="btn btn-primary" onClick={()=>this.showVariantModal()}> I'll Choose </button>
-								<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
-							</div>
+						<div className="d-flex justify-content-between">
+							<button className="btn btn-primary" onClick={()=>this.showVariantModal()}> I'll Choose </button>
+							<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
 						</div>
 				  	</div>
 			    </div>
@@ -86,13 +86,21 @@ class addToCart extends React.Component {
 	}
 
 	showVariantModal(){
-		// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+		this.hideRepeateLastModal();
 		this.setState({selectedVariant : this.props.product_data.default.id });
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
 	}
 
 	hideVariantModal(){
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
+	}
+
+	hideRepeateLastModal(){
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+	}
+
+	showRepeateLastModal(){
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.add('show-modal');	
 	}
 
 	getLastSelected(){
@@ -136,12 +144,12 @@ class addToCart extends React.Component {
 		}
 		else{
 			if(action == 'add'){
-				// if(this.state.items.length){
-				// 	$('#repeatLast-' + this.props.product_data.product_id).modal('show');
-				// }
-				// else{
+				if(this.state.items.length){
+					this.showRepeateLastModal();
+				}
+				else{
 					this.showVariantModal()
-				// }
+				}
 			}
 			else{
 				if(this.state.items.length > 1){
@@ -156,7 +164,7 @@ class addToCart extends React.Component {
 	}
 
 	addToCart(variant_id = null) {
-		// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+		this.hideRepeateLastModal();
 		this.hideVariantModal()
 		this.setState({apiCallInProgress : true});
 		let cart_id = window.getCookie('cart_id');
@@ -310,6 +318,7 @@ class addToCart extends React.Component {
 
 let addToCartComponents = [];
 let variantModals = [];
+let repeateModals = []
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container')
 	.forEach((domContainer, index) => {
@@ -325,6 +334,10 @@ function windowOnClick(event) {
 	for(let i in variantModals) {
 		if(event.target === variantModals[i])
 			toggleModal(variantModals[i]);
+	}
+	for(let i in repeateModals) {
+		if(event.target === repeateModals[i])
+			toggleModal(repeateModals[i]);
 	}
 }
 

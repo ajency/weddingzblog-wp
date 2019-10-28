@@ -35,6 +35,7 @@ var addToCart = function (_React$Component) {
 		value: function componentDidMount() {
 			this.setState({ selectedVariant: this.props.product_data.default.id });
 			variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);
+			repeateModals[this.props.product_data.product_id] = document.querySelector('#repeatLast-' + this.props.product_data.product_id);
 		}
 	}, {
 		key: 'render',
@@ -93,57 +94,50 @@ var addToCart = function (_React$Component) {
 				),
 				React.createElement(
 					'div',
-					{ className: 'modal fade', id: 'repeatLast-' + this.props.product_data.product_id, tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', 'data-backdrop': 'static' },
+					{ className: 'custom-modal', id: 'repeatLast-' + this.props.product_data.product_id },
 					React.createElement(
 						'div',
-						{ className: 'modal-dialog modal-dialog-centered', role: 'document' },
+						{ className: 'custom-modal-content p-4' },
 						React.createElement(
 							'div',
-							{ className: 'modal-content' },
+							{ className: 'p-5' },
+							React.createElement(
+								'h2',
+								null,
+								'Repeat last used customization?'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'product-variant-title text-grey font-size-18 letter-spacing-5 mb-3', title: 'Noodle Salad Bowl' },
+							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png', className: 'mr-3', alt: 'Bowl icon' }),
+							this.props.product_data.title
+						),
+						React.createElement(
+							'div',
+							{ className: 'p-3' },
+							React.createElement(
+								'h3',
+								null,
+								this.getLastSelected()
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'd-flex justify-content-between' },
 							React.createElement(
 								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
-								React.createElement(
-									'span',
-									{ 'aria-hidden': 'true' },
-									'\xD7'
-								)
+								{ className: 'btn btn-primary', onClick: function onClick() {
+										return _this2.showVariantModal();
+									} },
+								' I\'ll Choose '
 							),
 							React.createElement(
-								'div',
-								{ className: 'p-5' },
-								React.createElement(
-									'h2',
-									null,
-									'Repeat last used customization?'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-3' },
-								React.createElement(
-									'h3',
-									null,
-									this.getLastSelected()
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'd-flex justify-content-between' },
-								React.createElement(
-									'button',
-									{ className: 'btn btn-primary', onClick: function onClick() {
-											return _this2.showVariantModal();
-										} },
-									' I\'ll Choose '
-								),
-								React.createElement(
-									'button',
-									{ className: 'btn btn-primary', onClick: function onClick() {
-											return _this2.addToCart(_this2.state.lastSelected);
-										} },
-									' Repeat Last '
-								)
+								'button',
+								{ className: 'btn btn-primary', onClick: function onClick() {
+										return _this2.addToCart(_this2.state.lastSelected);
+									} },
+								' Repeat Last '
 							)
 						)
 					)
@@ -181,7 +175,7 @@ var addToCart = function (_React$Component) {
 	}, {
 		key: 'showVariantModal',
 		value: function showVariantModal() {
-			// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+			this.hideRepeateLastModal();
 			this.setState({ selectedVariant: this.props.product_data.default.id });
 			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
 		}
@@ -189,6 +183,16 @@ var addToCart = function (_React$Component) {
 		key: 'hideVariantModal',
 		value: function hideVariantModal() {
 			document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
+		}
+	}, {
+		key: 'hideRepeateLastModal',
+		value: function hideRepeateLastModal() {
+			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+		}
+	}, {
+		key: 'showRepeateLastModal',
+		value: function showRepeateLastModal() {
+			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.add('show-modal');
 		}
 	}, {
 		key: 'getLastSelected',
@@ -264,12 +268,11 @@ var addToCart = function (_React$Component) {
 				action == 'add' ? this.addToCart(this.props.product_data.variants[0].id) : this.removeFromCart(this.props.product_data.variants[0].id);
 			} else {
 				if (action == 'add') {
-					// if(this.state.items.length){
-					// 	$('#repeatLast-' + this.props.product_data.product_id).modal('show');
-					// }
-					// else{
-					this.showVariantModal();
-					// }
+					if (this.state.items.length) {
+						this.showRepeateLastModal();
+					} else {
+						this.showVariantModal();
+					}
 				} else {
 					if (this.state.items.length > 1) {
 						var msg = "Item has multiple variants added. Remove correct item from cart";
@@ -287,7 +290,7 @@ var addToCart = function (_React$Component) {
 
 			var variant_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-			// $('#repeatLast-' + this.props.product_data.product_id).modal('hide');
+			this.hideRepeateLastModal();
 			this.hideVariantModal();
 			this.setState({ apiCallInProgress: true });
 			var cart_id = window.getCookie('cart_id');
@@ -456,6 +459,7 @@ var addToCart = function (_React$Component) {
 
 var addToCartComponents = [];
 var variantModals = [];
+var repeateModals = [];
 // Find all DOM containers, and render add-to-cart buttons into them.
 document.querySelectorAll('.react-add-to-cart-container').forEach(function (domContainer, index) {
 	var product_data = JSON.parse(domContainer.dataset.product_data);
@@ -469,6 +473,9 @@ function toggleModal(modal) {
 function windowOnClick(event) {
 	for (var i in variantModals) {
 		if (event.target === variantModals[i]) toggleModal(variantModals[i]);
+	}
+	for (var _i in repeateModals) {
+		if (event.target === repeateModals[_i]) toggleModal(repeateModals[_i]);
 	}
 }
 

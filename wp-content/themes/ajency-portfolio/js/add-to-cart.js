@@ -181,6 +181,7 @@ var addToCart = function (_React$Component) {
 			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 				domContainer.classList.add('transform-none');
 			});
+			window.addBackDrop();
 		}
 	}, {
 		key: 'hideVariantModal',
@@ -189,6 +190,7 @@ var addToCart = function (_React$Component) {
 			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 				domContainer.classList.remove('transform-none');
 			});
+			window.removeBackDrop();
 		}
 	}, {
 		key: 'showRepeateLastModal',
@@ -197,6 +199,7 @@ var addToCart = function (_React$Component) {
 			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 				domContainer.classList.add('transform-none');
 			});
+			window.addBackDrop();
 		}
 	}, {
 		key: 'hideRepeateLastModal',
@@ -205,6 +208,7 @@ var addToCart = function (_React$Component) {
 			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 				domContainer.classList.remove('transform-none');
 			});
+			window.removeBackDrop();
 		}
 	}, {
 		key: 'getLastSelected',
@@ -484,6 +488,7 @@ function toggleModal(modal) {
 	document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 		domContainer.classList.remove('transform-none');
 	});
+	window.removeBackDrop();
 }
 
 function windowOnClick(event) {

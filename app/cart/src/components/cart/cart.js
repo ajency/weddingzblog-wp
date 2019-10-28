@@ -35,7 +35,13 @@ class Cart extends Component {
 		// 		this.fetchCart();
 		// 	});
 		$('#view-cart-btn').on('click', ()=>{
-			console.log("click event fired");
+			console.log("view cart click event fired");
+			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+			this.fetchCart();
+	    });
+
+	    $('#cart-address-change-trigger').on('click', ()=>{
+			console.log("address change event fired");
 			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
 			this.fetchCart();
 	    });
@@ -71,7 +77,7 @@ class Cart extends Component {
 							{this.getItems()}
 						</div>
 
-						<div className="p-15 pt-0 d-flex">
+						{/*<div className="p-15 pt-0 d-flex">
 							<div className="w-50 font-weight-medium">
 								Estimated Time:
 							</div>
@@ -79,7 +85,7 @@ class Cart extends Component {
 								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
 								<span className="d-inline-block vertical-align-middle">30 mins</span>
 							</div>
-						</div>
+						</div> */}
 
 						{/* <div className="apply-coupon-bar">
 							<div className="coupon-label">

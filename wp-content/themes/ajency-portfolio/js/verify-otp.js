@@ -88,7 +88,7 @@ var verifyOtp = function (_React$Component) {
 						{ 'class': 'mb-1 pt-4' },
 						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'number', placeholder: 'Enter OTP', onChange: function onChange(e) {
 								_this2.setOtp(e.target.value);
-							} })
+							}, value: this.state.otp })
 					),
 					React.createElement(
 						'h6',
@@ -201,7 +201,7 @@ var verifyOtp = function (_React$Component) {
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
 				_this5.hideVerifyOtpSlider();
-				_this5.showGpsSlider();
+				// this.showGpsSlider();
 				window.updateAddresses(res.data.addresses);
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);

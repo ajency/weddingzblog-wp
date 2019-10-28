@@ -109,7 +109,7 @@ class Cart extends Component {
 
 						<div className="p-15 pt-0 pb-0">
 							<div className="secure-checkout fixed-bottom visible">
-								<button className="btn btn-primary btn-checkout font-weight-medium w-100">Proceed to Checkout</button>
+								<button className="btn btn-primary btn-checkout font-weight-medium w-100 p-15 rounded-0">Proceed to Checkout</button>
 							</div>
 						</div>
 					</div>
@@ -134,6 +134,7 @@ class Cart extends Component {
 		document.querySelector(".cart-wrapper").classList.remove('active');
 		let url = window.location.href.split("#")[0];
 		window.history.replaceState({cart : false}, 'cart', url);
+		window.removeBackDrop();
 	}
 
 	fetchCart() {

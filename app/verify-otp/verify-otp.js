@@ -42,7 +42,7 @@ class verifyOtp extends React.Component {
 			      {this.state.phoneNumber}
 
 			      <div class="mb-1 pt-4">
-			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="number" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} />
+			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="number" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
 			      </div>
 			      <h6 class="mb-4 pb-3">Didn't receive the code? <a href="javascript:void(0)" onClick={()=>{this.resendOtpCode()}}>RESEND</a></h6>
 			      <div class="btn-wrapper pt-4">
@@ -126,7 +126,7 @@ class verifyOtp extends React.Component {
 		axios.get(url, {headers :  headers })
 			.then((res) => {
 				this.hideVerifyOtpSlider();
-		      	this.showGpsSlider();
+		      	// this.showGpsSlider();
 		      	window.updateAddresses(res.data.addresses);
 			})
 			.catch((error)=>{

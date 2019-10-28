@@ -88,7 +88,7 @@ var signInModal = function (_React$Component) {
 								_this2.validateMobile(e);
 							}, onChange: function onChange(e) {
 								_this2.setUserMobile(e.target.value);
-							} }),
+							}, value: this.state.phoneNumber }),
 						' ',
 						React.createElement('br', null),
 						React.createElement('div', { className: 'd-none', id: 'sign-in-button' })

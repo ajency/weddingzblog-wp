@@ -39,7 +39,7 @@ class signInModal extends React.Component {
 			        Having an account with GGB makes it dead simple to place orders
 			      </h4>
 			      <div class="mb-3 pt-4 pb-2">
-			        <input className="w-100 p-3 border-green h5 ft6 rounded-0" placeholder="10 digit mobile number" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} /> <br/>
+			        <input className="w-100 p-3 border-green h5 ft6 rounded-0" placeholder="10 digit mobile number" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} value={this.state.phoneNumber} /> <br/>
 					<div className="d-none" id='sign-in-button'></div>
 			      </div>
 			      <div class="btn-wrapper pt-4">

@@ -211,7 +211,7 @@ $(window).on("load", function() {
 $(document).ready(function(){
     if(window.location.href.includes('#/cart')){
         loadCartApp();
-        $('.cart-wrapper').addClass('active');
+        showCartSlider()
     }
 
     let lat_lng = getCookie('lat_lng')
@@ -255,7 +255,7 @@ function locationHashChanged() {
     console.log("location hash changed");
     if (location.hash === '#/cart') { 
         loadCartApp();
-        $('.cart-wrapper').addClass('active');
+        showCartSlider()
     }
     else if(!location.hash){
         closeCart();
@@ -265,6 +265,12 @@ function locationHashChanged() {
 
 function closeCart(){
     document.querySelector(".cart-wrapper").classList.remove('active');
+    removeBackDrop();
+}
+
+function showCartSlider(){
+    $('.cart-wrapper').addClass('active');
+    addBackDrop();
 }
 
 loaded = false;
@@ -280,7 +286,7 @@ function loadCartApp(){
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
-           href: url+"css/main.3b7285be.chunk.css"
+           href: url+"css/main.bd624936.chunk.css"
         }).appendTo("head");
 
         $.getScript(url+"js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        

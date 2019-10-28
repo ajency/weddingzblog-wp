@@ -7,7 +7,7 @@
     right: 0;
     bottom: 0;
     height: 100vh;
-    z-index: 999;
+    z-index: 1200;
     padding: 30px 15px 0;
     transform: translate(500px, 0px);
     transition: all 0.3s ease;

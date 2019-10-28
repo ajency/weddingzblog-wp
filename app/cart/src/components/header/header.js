@@ -26,6 +26,7 @@ class Header extends Component {
 		document.querySelector(".cart-wrapper").classList.remove('active');
 		let url = window.location.href.split("#")[0];
 		window.history.replaceState({cart : false}, 'cart', url);
+		window.removeBackDrop();
 	}
 }
 

@@ -297,8 +297,14 @@ class gpsModalPrompt extends React.Component {
 		window.formatted_address = formatted_address;
 		document.querySelector("#selected-location-address").innerHTML = formatted_address;
 		let cart_address = document.querySelector("#cart-delivery-address");
-		if(cart_address)
+		if(cart_address){
 			cart_address.innerHTML = formatted_address;
+			
+			let cart_add_trigger = document.querySelector("#cart-address-change-trigger");
+			if(cart_add_trigger && document.getElementById("root").classList.contains('active')){
+				cart_add_trigger.click();
+			}
+		}
 	}
 
 

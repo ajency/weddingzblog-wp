@@ -182,4 +182,6 @@
 
 <div class="backdrop"></div>
 
+<button id="cart-address-change-trigger" className="d-none"></button>
+
 <?php get_footer(); ?>

@@ -55,10 +55,10 @@ class gpsModalPrompt extends React.Component {
 			      </h3>
 			  </div>
 			  <div className="slide-in-content">
-			      <div className="list-text-block p-3 mb-2">
+			      <div className="list-text-block p-3 mb-2 full-width-15">
 			          <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline">Sign in</a> to fetch saved addresses.</div>
 			      </div>
-			      <h3 className="h1 ft6">Add your delivery address to proceed</h3>
+			      <h3 className="mt-4 h1 ft6">Add your delivery address to proceed</h3>
 			      <h4 className="font-weight-light mt-4 pb-4">
 			        We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de França, Taleigao. Please choose from amongst these
 			      </h4>
@@ -68,14 +68,15 @@ class gpsModalPrompt extends React.Component {
 			      <div className="gps-error-msg">
 					{this.checkGpsErrorMsg()}
 				  </div>
-			      
-			      	{this.showLocationSearch()}
 
+					<div className="test-center">
+			      		{this.showLocationSearch()}
+					</div>
 			      	<div className="gps-error-msg">
 						{this.checkLocationErrorMsg()}
 					</div>
 
-			      	<ul style={locationStyle}>
+			      	<ul style={locationStyle} className="pl-0 h5 mb-0">
 						{this.getAutoCompleteLocations()}
 					</ul>
 			  </div>
@@ -94,7 +95,7 @@ class gpsModalPrompt extends React.Component {
 			return (
 					<div>
 						<div className="text-center h4 mb-0 font-weight-light">-OR-</div>
-						<div className="position-relative mb-3 mt-3">
+						<div className="position-relative mb-3 mt-3 text-center">
 			        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
 			       			<img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png"/>
 			      		</div>
@@ -142,7 +143,7 @@ class gpsModalPrompt extends React.Component {
 			return (
 				<div>
 					<h4>Saved Addresses</h4>
-					<ul style={locationStyle}>
+					<ul style={locationStyle} className="pl-0">
 						{addresses}
 					</ul>
 				</div>

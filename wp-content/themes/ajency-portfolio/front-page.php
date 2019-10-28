@@ -181,5 +181,6 @@
   </div>
 </div>
 
+<div class="backdrop"></div>
 
 <?php get_footer(); ?>

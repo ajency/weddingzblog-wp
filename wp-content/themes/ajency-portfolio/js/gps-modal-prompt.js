@@ -95,7 +95,7 @@ var gpsModalPrompt = function (_React$Component) {
 					{ className: 'slide-in-content' },
 					React.createElement(
 						'div',
-						{ className: 'list-text-block p-3 mb-2' },
+						{ className: 'list-text-block p-3 mb-2 full-width-15' },
 						React.createElement(
 							'div',
 							{ className: 'list-meta mt-0' },
@@ -110,7 +110,7 @@ var gpsModalPrompt = function (_React$Component) {
 					),
 					React.createElement(
 						'h3',
-						{ className: 'h1 ft6' },
+						{ className: 'mt-4 h1 ft6' },
 						'Add your delivery address to proceed'
 					),
 					React.createElement(
@@ -128,7 +128,11 @@ var gpsModalPrompt = function (_React$Component) {
 						{ className: 'gps-error-msg' },
 						this.checkGpsErrorMsg()
 					),
-					this.showLocationSearch(),
+					React.createElement(
+						'div',
+						{ className: 'test-center' },
+						this.showLocationSearch()
+					),
 					React.createElement(
 						'div',
 						{ className: 'gps-error-msg' },
@@ -136,7 +140,7 @@ var gpsModalPrompt = function (_React$Component) {
 					),
 					React.createElement(
 						'ul',
-						{ style: locationStyle },
+						{ style: locationStyle, className: 'pl-0 h5 mb-0' },
 						this.getAutoCompleteLocations()
 					)
 				)
@@ -168,7 +172,7 @@ var gpsModalPrompt = function (_React$Component) {
 				),
 				React.createElement(
 					'div',
-					{ className: 'position-relative mb-3 mt-3' },
+					{ className: 'position-relative mb-3 mt-3 text-center' },
 					React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
 							_this3.autoCompleteLocation(e.target.value);
 						} }),
@@ -250,7 +254,7 @@ var gpsModalPrompt = function (_React$Component) {
 					),
 					React.createElement(
 						'ul',
-						{ style: locationStyle },
+						{ style: locationStyle, className: 'pl-0' },
 						addresses
 					)
 				);

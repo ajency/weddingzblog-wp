@@ -19,38 +19,35 @@ class signInModal extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<div className="modal fade" id="signInModalPrompt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-				  	<div className="modal-dialog modal-dialog-centered" role="document">
-						<div className="modal-content">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close" disabled={this.state.disableButtons} onClick={()=> this.modalClosed()}>
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-							<div className="p-5">
-								<h2>ADD DELIVERY ADDRESS</h2>
-							</div>
-							<div className="p-3">
-								<h3> Add your delivery address to proceed </h3>
-								<p> To add this item to your cart, please set your delivery location </p>
+			<div class="slide-in flex-slide-in" id="phone_number">
+			  <div class="slide-in-header header-container d-flex align-items-center">
+			      <div class="app-name d-flex align-items-center">					
+			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			      </div>
+			      <div class="app-chekout text-green">
+			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
+			          Secure <br/>Checkout
+			      </div>
+			      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.closeSignInSlider()} disabled={this.state.disableButtons}>
+			          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
+			      </h3>
+			  </div>
+			  <div class="slide-in-content">
+			      <div class="spacer-210"></div>
+			      <h3 class="h1 ft6">Login</h3>
+			      <h4 class="font-weight-light mt-4 pb-4">
+			        Having an account with GGB makes it dead simple to place orders
+			      </h4>
+			      <div class="mb-3 pt-4 pb-2">
+			        <input className="w-100 p-3 border-green h5 ft6 rounded-0" placeholder="10 digit mobile number" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} /> <br/>
+					<div className="d-none" id='sign-in-button'></div>
+			      </div>
+			      <div class="btn-wrapper pt-4">
+			      		{this.getSignInButtons()}
+			      </div>
 
-								<button onClick={()=> this.showGpsSlider()} disabled={this.state.disableButtons} >Set Location</button>
-							</div>
-
-							<div className="p-3">
-								<h3>Or enter your Mobile Number to order again</h3>
-								<p> If you have already ordered with us, kindly add your phone number </p>
-
-								<input className="mobile-input" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} /> <br/>
-								{this.getSignInButtons()}
-
-								<div className="d-none" id='sign-in-button'></div>
-							</div>
-							
-							{this.displaySignInErrorMsg()}
-
-						</div>
-				  	</div>
-			    </div>
+			      {this.displaySignInErrorMsg()}
+			  </div>
 			</div>
 		);
 	}
@@ -63,10 +60,10 @@ class signInModal extends React.Component {
 				</div>
 			);
 		}
-		return (<div>
-					<button >Skip Sign In</button>
-					<button onClick={()=> this.checkUserExist()} disabled={this.state.phoneNumber.length < 10} >Proceed To Sign In</button>
-				</div>
+		return (<div class="btn-inner-wrap">
+		          <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=> this.signInWithPhoneNumber()} disabled={this.state.phoneNumber.length < 10}>Submit</button>
+		          <i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+		        </div>
 		);
 	}
 
@@ -93,23 +90,24 @@ class signInModal extends React.Component {
 		window.modal_closed = true;
 	}
 
-	checkUserExist(){
-		this.setState({disableButtons : true, showSignInLoader : true});
-		let url = this.state.apiEndPoint + "/check-user-exist";
-			let body = {
-				phone_number : this.state.phoneNumber
-			}
-			axios.get(url, {params : body})
-				.then((res) => {
-					this.signInWithPhoneNumber();
-				})
-				.catch((error)=>{
-					console.log("error in check user exist ==>", error);
-					this.signInAnonymously();
-				})
-	}
+	// checkUserExist(){
+	// 	this.setState({disableButtons : true, showSignInLoader : true});
+	// 	let url = this.state.apiEndPoint + "/check-user-exist";
+	// 		let body = {
+	// 			phone_number : this.state.phoneNumber
+	// 		}
+	// 		axios.get(url, {params : body})
+	// 			.then((res) => {
+	// 				this.signInWithPhoneNumber();
+	// 			})
+	// 			.catch((error)=>{
+	// 				console.log("error in check user exist ==>", error);
+	// 				this.signInAnonymously();
+	// 			})
+	// }
 
 	signInWithPhoneNumber(){
+		this.setState({disableButtons : true, showSignInLoader : true});
 		let phone_number = "+91" + this.state.phoneNumber;
 		let recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
 		  'size': 'invisible',
@@ -122,56 +120,57 @@ class signInModal extends React.Component {
 		    .then( (confirmationResult) => {
 		    	console.log("SMS sent.");
 		      	this.setState({confirmationResult : confirmationResult});
-		      	this.hideSignInPopUp() // TODO : function to hide this popup 
-		      	this.showOtpSlider()   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
-		    }).catch(function (error) {
+		      	this.closeSignInSlider() // TODO : function to hide this popup 
+		      	this.showOtpSlider(confirmationResult, this.state.phoneNumber)   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
+		    }).catch( (error) => {
 		      	console.log("Error :  SMS not sent", error);
-		      	this.setState({errorMessage : error, disableButtons : false, showSignInLoader : false});
+		      	this.setState({errorMessage : error.message, disableButtons : false, showSignInLoader : false});
 		    });
 	}
 
-	signInAnonymously(){
-		firebase.auth().signInAnonymously()
-			.then((res)=>{
-				res.user.getIdToken().then((idToken) => {
-		           this.updateUserDetails(idToken);
-		        });
-				this.showGpsSlider();
-			})
-			.catch((error) => {
-			  	console.log("error in anonymouse sign in", error);
-			  	this.setState({errorMessage : error, disableButtons : false, showSignInLoader : false});
-			});
+	// signInAnonymously(){
+	// 	firebase.auth().signInAnonymously()
+	// 		.then((res)=>{
+	// 			res.user.getIdToken().then((idToken) => {
+	// 	           this.updateUserDetails(idToken);
+	// 	        });
+	// 			this.showGpsSlider();
+	// 		})
+	// 		.catch((error) => {
+	// 		  	console.log("error in anonymouse sign in", error);
+	// 		  	this.setState({errorMessage : error, disableButtons : false, showSignInLoader : false});
+	// 		});
+	// }
+
+	// updateUserDetails(idToken){
+	// 	let body = {
+	// 		phone : this.state.phoneNumber
+	// 	}
+	// 	let headers = {
+	// 		Authorization : 'Bearer '+ idToken
+	// 	}
+	// 	let url = this.state.apiEndPoint + "/user/update-user-details";
+	// 	axios.post(url, body, {headers :  headers })
+	// 		.then((res) => {
+	// 			console.log("update user details response ==>", res);
+	// 		})
+	// 		.catch((error)=>{
+	// 			console.log("error in update user details ==>", error);
+	// 		})
+	// }
+
+	// showGpsSlider(){
+	// 	// $('#signInModalPrompt').modal('hide');
+	// 	window.showGpsModalPrompt(true);
+	// }
+
+	closeSignInSlider(){
+		document.querySelector('#phone_number').classList.remove('visible');
 	}
 
-	updateUserDetails(idToken){
-		let body = {
-			phone : this.state.phoneNumber
-		}
-		let headers = {
-			Authorization : 'Bearer '+ idToken
-		}
-		let url = this.state.apiEndPoint + "/user/update-user-details";
-		axios.post(url, body, {headers :  headers })
-			.then((res) => {
-				console.log("update user details response ==>", res);
-			})
-			.catch((error)=>{
-				console.log("error in update user details ==>", error);
-			})
-	}
-
-	showGpsSlider(){
-		// $('#signInModalPrompt').modal('hide');
-		window.showGpsModalPrompt(true);
-	}
-
-	hideSignInPopUp(){
-
-	}
-
-	showOtpSlider(){
-
+	showOtpSlider(confirmationResult, phone_number){
+		window.showVerifyOtpSlider(true);
+		window.updateOtpSLider(confirmationResult, phone_number);
 	}
 
 }
@@ -182,5 +181,5 @@ const signInModalComponent = ReactDOM.render(e(signInModal), domContainer);
 
 window.showSignInModal = (data) => {
 	signInModalComponent.setState({phoneNumber : '', otp : '', confirmationResult : '', disableButtons : false, showSignInLoader : false, errorMessage : '', showOtpLoader : false, otpErrorMsg : ''})
-	$('#signInModalPrompt').modal('show');
+	document.querySelector('#phone_number').classList.add('visible');
 }

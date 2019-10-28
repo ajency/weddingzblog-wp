@@ -38,83 +38,67 @@ var signInModal = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				null,
+				{ 'class': 'slide-in flex-slide-in', id: 'phone_number' },
 				React.createElement(
 					'div',
-					{ className: 'modal fade', id: 'signInModalPrompt', tabindex: '-1', role: 'dialog', 'aria-labelledby': 'exampleModalLabel', 'aria-hidden': 'true', 'data-backdrop': 'static' },
+					{ 'class': 'slide-in-header header-container d-flex align-items-center' },
 					React.createElement(
 						'div',
-						{ className: 'modal-dialog modal-dialog-centered', role: 'document' },
+						{ 'class': 'app-name d-flex align-items-center' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
+					),
+					React.createElement(
+						'div',
+						{ 'class': 'app-chekout text-green' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' }),
+						'Secure ',
+						React.createElement('br', null),
+						'Checkout'
+					),
+					React.createElement(
+						'h3',
+						{ 'class': 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
+								return _this2.closeSignInSlider();
+							}, disabled: this.state.disableButtons },
 						React.createElement(
-							'div',
-							{ className: 'modal-content' },
-							React.createElement(
-								'button',
-								{ type: 'button', 'class': 'close', 'data-dismiss': 'modal', 'aria-label': 'Close', disabled: this.state.disableButtons, onClick: function onClick() {
-										return _this2.modalClosed();
-									} },
-								React.createElement(
-									'span',
-									{ 'aria-hidden': 'true' },
-									'\xD7'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-5' },
-								React.createElement(
-									'h2',
-									null,
-									'ADD DELIVERY ADDRESS'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-3' },
-								React.createElement(
-									'h3',
-									null,
-									' Add your delivery address to proceed '
-								),
-								React.createElement(
-									'p',
-									null,
-									' To add this item to your cart, please set your delivery location '
-								),
-								React.createElement(
-									'button',
-									{ onClick: function onClick() {
-											return _this2.showGpsSlider();
-										}, disabled: this.state.disableButtons },
-									'Set Location'
-								)
-							),
-							React.createElement(
-								'div',
-								{ className: 'p-3' },
-								React.createElement(
-									'h3',
-									null,
-									'Or enter your Mobile Number to order again'
-								),
-								React.createElement(
-									'p',
-									null,
-									' If you have already ordered with us, kindly add your phone number '
-								),
-								React.createElement('input', { className: 'mobile-input', type: 'text', onKeyDown: function onKeyDown(e) {
-										_this2.validateMobile(e);
-									}, onChange: function onChange(e) {
-										_this2.setUserMobile(e.target.value);
-									} }),
-								' ',
-								React.createElement('br', null),
-								this.getSignInButtons(),
-								React.createElement('div', { className: 'd-none', id: 'sign-in-button' })
-							),
-							this.displaySignInErrorMsg()
+							'span',
+							{ 'aria-hidden': 'true' },
+							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
 						)
 					)
+				),
+				React.createElement(
+					'div',
+					{ 'class': 'slide-in-content' },
+					React.createElement('div', { 'class': 'spacer-210' }),
+					React.createElement(
+						'h3',
+						{ 'class': 'h1 ft6' },
+						'Login'
+					),
+					React.createElement(
+						'h4',
+						{ 'class': 'font-weight-light mt-4 pb-4' },
+						'Having an account with GGB makes it dead simple to place orders'
+					),
+					React.createElement(
+						'div',
+						{ 'class': 'mb-3 pt-4 pb-2' },
+						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', placeholder: '10 digit mobile number', type: 'text', onKeyDown: function onKeyDown(e) {
+								_this2.validateMobile(e);
+							}, onChange: function onChange(e) {
+								_this2.setUserMobile(e.target.value);
+							} }),
+						' ',
+						React.createElement('br', null),
+						React.createElement('div', { className: 'd-none', id: 'sign-in-button' })
+					),
+					React.createElement(
+						'div',
+						{ 'class': 'btn-wrapper pt-4' },
+						this.getSignInButtons()
+					),
+					this.displaySignInErrorMsg()
 				)
 			);
 		}
@@ -132,19 +116,15 @@ var signInModal = function (_React$Component) {
 			}
 			return React.createElement(
 				'div',
-				null,
+				{ 'class': 'btn-inner-wrap' },
 				React.createElement(
 					'button',
-					null,
-					'Skip Sign In'
-				),
-				React.createElement(
-					'button',
-					{ onClick: function onClick() {
-							return _this3.checkUserExist();
+					{ type: 'button', 'class': 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
+							return _this3.signInWithPhoneNumber();
 						}, disabled: this.state.phoneNumber.length < 10 },
-					'Proceed To Sign In'
-				)
+					'Submit'
+				),
+				React.createElement('i', { 'class': 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
 			);
 		}
 	}, {
@@ -177,28 +157,29 @@ var signInModal = function (_React$Component) {
 		value: function modalClosed() {
 			window.modal_closed = true;
 		}
-	}, {
-		key: 'checkUserExist',
-		value: function checkUserExist() {
-			var _this4 = this;
 
-			this.setState({ disableButtons: true, showSignInLoader: true });
-			var url = this.state.apiEndPoint + "/check-user-exist";
-			var body = {
-				phone_number: this.state.phoneNumber
-			};
-			axios.get(url, { params: body }).then(function (res) {
-				_this4.signInWithPhoneNumber();
-			}).catch(function (error) {
-				console.log("error in check user exist ==>", error);
-				_this4.signInAnonymously();
-			});
-		}
+		// checkUserExist(){
+		// 	this.setState({disableButtons : true, showSignInLoader : true});
+		// 	let url = this.state.apiEndPoint + "/check-user-exist";
+		// 		let body = {
+		// 			phone_number : this.state.phoneNumber
+		// 		}
+		// 		axios.get(url, {params : body})
+		// 			.then((res) => {
+		// 				this.signInWithPhoneNumber();
+		// 			})
+		// 			.catch((error)=>{
+		// 				console.log("error in check user exist ==>", error);
+		// 				this.signInAnonymously();
+		// 			})
+		// }
+
 	}, {
 		key: 'signInWithPhoneNumber',
 		value: function signInWithPhoneNumber() {
-			var _this5 = this;
+			var _this4 = this;
 
+			this.setState({ disableButtons: true, showSignInLoader: true });
 			var phone_number = "+91" + this.state.phoneNumber;
 			var recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
 				'size': 'invisible',
@@ -209,57 +190,62 @@ var signInModal = function (_React$Component) {
 
 			firebase.auth().signInWithPhoneNumber(phone_number, recaptchaVerifier).then(function (confirmationResult) {
 				console.log("SMS sent.");
-				_this5.setState({ confirmationResult: confirmationResult });
-				_this5.hideSignInPopUp(); // TODO : function to hide this popup 
-				_this5.showOtpSlider(); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
+				_this4.setState({ confirmationResult: confirmationResult });
+				_this4.closeSignInSlider(); // TODO : function to hide this popup 
+				_this4.showOtpSlider(confirmationResult, _this4.state.phoneNumber); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 			}).catch(function (error) {
 				console.log("Error :  SMS not sent", error);
-				this.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
+				_this4.setState({ errorMessage: error.message, disableButtons: false, showSignInLoader: false });
 			});
 		}
-	}, {
-		key: 'signInAnonymously',
-		value: function signInAnonymously() {
-			var _this6 = this;
 
-			firebase.auth().signInAnonymously().then(function (res) {
-				res.user.getIdToken().then(function (idToken) {
-					_this6.updateUserDetails(idToken);
-				});
-				_this6.showGpsSlider();
-			}).catch(function (error) {
-				console.log("error in anonymouse sign in", error);
-				_this6.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
-			});
-		}
+		// signInAnonymously(){
+		// 	firebase.auth().signInAnonymously()
+		// 		.then((res)=>{
+		// 			res.user.getIdToken().then((idToken) => {
+		// 	           this.updateUserDetails(idToken);
+		// 	        });
+		// 			this.showGpsSlider();
+		// 		})
+		// 		.catch((error) => {
+		// 		  	console.log("error in anonymouse sign in", error);
+		// 		  	this.setState({errorMessage : error, disableButtons : false, showSignInLoader : false});
+		// 		});
+		// }
+
+		// updateUserDetails(idToken){
+		// 	let body = {
+		// 		phone : this.state.phoneNumber
+		// 	}
+		// 	let headers = {
+		// 		Authorization : 'Bearer '+ idToken
+		// 	}
+		// 	let url = this.state.apiEndPoint + "/user/update-user-details";
+		// 	axios.post(url, body, {headers :  headers })
+		// 		.then((res) => {
+		// 			console.log("update user details response ==>", res);
+		// 		})
+		// 		.catch((error)=>{
+		// 			console.log("error in update user details ==>", error);
+		// 		})
+		// }
+
+		// showGpsSlider(){
+		// 	// $('#signInModalPrompt').modal('hide');
+		// 	window.showGpsModalPrompt(true);
+		// }
+
 	}, {
-		key: 'updateUserDetails',
-		value: function updateUserDetails(idToken) {
-			var body = {
-				phone: this.state.phoneNumber
-			};
-			var headers = {
-				Authorization: 'Bearer ' + idToken
-			};
-			var url = this.state.apiEndPoint + "/user/update-user-details";
-			axios.post(url, body, { headers: headers }).then(function (res) {
-				console.log("update user details response ==>", res);
-			}).catch(function (error) {
-				console.log("error in update user details ==>", error);
-			});
+		key: 'closeSignInSlider',
+		value: function closeSignInSlider() {
+			document.querySelector('#phone_number').classList.remove('visible');
 		}
-	}, {
-		key: 'showGpsSlider',
-		value: function showGpsSlider() {
-			// $('#signInModalPrompt').modal('hide');
-			window.showGpsModalPrompt(true);
-		}
-	}, {
-		key: 'hideSignInPopUp',
-		value: function hideSignInPopUp() {}
 	}, {
 		key: 'showOtpSlider',
-		value: function showOtpSlider() {}
+		value: function showOtpSlider(confirmationResult, phone_number) {
+			window.showVerifyOtpSlider(true);
+			window.updateOtpSLider(confirmationResult, phone_number);
+		}
 	}]);
 
 	return signInModal;
@@ -270,5 +256,5 @@ var signInModalComponent = ReactDOM.render(e(signInModal), domContainer);
 
 window.showSignInModal = function (data) {
 	signInModalComponent.setState({ phoneNumber: '', otp: '', confirmationResult: '', disableButtons: false, showSignInLoader: false, errorMessage: '', showOtpLoader: false, otpErrorMsg: '' });
-	$('#signInModalPrompt').modal('show');
+	document.querySelector('#phone_number').classList.add('visible');
 };

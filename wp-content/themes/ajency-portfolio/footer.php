@@ -141,7 +141,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_6" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_6" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_6" type="text/javascript"></script>
-
+<script src="<?php echo get_template_directory_uri(); ?>/js/verify-otp.js?_6" type="text/javascript"></script>
 <script type="text/javascript">
     if ($(window).innerWidth() < 767) {
 

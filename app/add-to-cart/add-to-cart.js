@@ -209,6 +209,7 @@ class addToCart extends React.Component {
 	}
 
 	removeFromCart(variant_id = null){
+		window.addBackDrop();
 		this.setState({apiCallInProgress : true});
 		let url = this.state.apiEndPoint + "/anonymous/cart/delete";
 		// let url = "https://demo8558685.mockable.io/remove-from-cart";
@@ -233,16 +234,19 @@ class addToCart extends React.Component {
 				this.displayError(res.data.message);
 			}
 			this.setState({apiCallInProgress : false});
+			window.removeBackDrop();
 		})
 		.catch((error)=>{
 			console.log("error in add to cart ==>", error);
 			this.setState({apiCallInProgress : false});
 			let msg = error && error.message ? error.message : error;
 			this.displayError(msg);
+			window.removeBackDrop();
 		})
 	}
 
 	addToCartApiCall(variant_id = null, lat_long = null, cart_id = null, formatted_address = null){
+		window.addBackDrop();
 		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
 		let body = {
 			variant_id : variant_id,
@@ -266,12 +270,14 @@ class addToCart extends React.Component {
 				this.displayError(res.data.message);
 			}
 			this.setState({apiCallInProgress : false});
+			window.removeBackDrop();
 		})
 		.catch((error)=>{
 			console.log("error in add to cart ==>", error);
 			this.setState({apiCallInProgress : false});
 			let msg = error && error.message ? error.message : error;
 			this.displayError(msg);
+			window.removeBackDrop();
 		})
 	}
 

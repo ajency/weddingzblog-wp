@@ -332,6 +332,7 @@ var addToCart = function (_React$Component) {
 
 			var variant_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
+			window.addBackDrop();
 			this.setState({ apiCallInProgress: true });
 			var url = this.state.apiEndPoint + "/anonymous/cart/delete";
 			// let url = "https://demo8558685.mockable.io/remove-from-cart";
@@ -354,11 +355,13 @@ var addToCart = function (_React$Component) {
 					_this7.displayError(res.data.message);
 				}
 				_this7.setState({ apiCallInProgress: false });
+				window.removeBackDrop();
 			}).catch(function (error) {
 				console.log("error in add to cart ==>", error);
 				_this7.setState({ apiCallInProgress: false });
 				var msg = error && error.message ? error.message : error;
 				_this7.displayError(msg);
+				window.removeBackDrop();
 			});
 		}
 	}, {
@@ -372,6 +375,7 @@ var addToCart = function (_React$Component) {
 			var cart_id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 			var formatted_address = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
+			window.addBackDrop();
 			var url = this.state.apiEndPoint + "/anonymous/cart/insert";
 			var body = {
 				variant_id: variant_id,
@@ -391,11 +395,13 @@ var addToCart = function (_React$Component) {
 					_this8.displayError(res.data.message);
 				}
 				_this8.setState({ apiCallInProgress: false });
+				window.removeBackDrop();
 			}).catch(function (error) {
 				console.log("error in add to cart ==>", error);
 				_this8.setState({ apiCallInProgress: false });
 				var msg = error && error.message ? error.message : error;
 				_this8.displayError(msg);
+				window.removeBackDrop();
 			});
 		}
 	}, {

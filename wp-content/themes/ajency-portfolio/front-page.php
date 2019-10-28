@@ -198,7 +198,7 @@
 
 <button class="trigger">Click here to trigger the modal!</button>
 
-<div class="slide-in" id="phoner_number">
+<div class="slide-in flex-slide-in" id="phoner_number">
   <div class="slide-in-header header-container d-flex align-items-center">
       <div class="app-name d-flex align-items-center">					
           <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
@@ -215,18 +215,21 @@
       <div class="spacer-210"></div>
       <h3 class="h1 ft6">Login</h3>
       <h4 class="font-weight-light mt-4 pb-4">
-        Please enter your phone number
+        Having an account with GGB makes it dead simple to place orders
       </h4>
       <div class="mb-3 pt-4">
         <input type="tel" class="w-100 p-3 border-green h5 ft6 rounded-0" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="10 digit mobile number">
       </div>
-      <div class="">
-        <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0">Submit</button>
+      <div class="btn-wrapper">
+        <div class="btn-inner-wrap">
+          <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0">Submit</button>
+          <i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+        </div>
       </div>
   </div>
 </div>
 
-<div class="slide-in" id="otp">
+<div class="slide-in flex-slide-in" id="otp">
   <div class="slide-in-header header-container d-flex align-items-center">
       <div class="app-name d-flex align-items-center">					
           <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
@@ -250,8 +253,11 @@
         <!-- <input id="partitioned" type="text" maxlength="" /> -->
       </div>
       <h6 class="mb-4">Didn't receive the code? <a href="#">RESEND</a></h6>
-      <div class="">
+      <div class="btn-wrapper">
+        <div class="btn-inner-wrap">
         <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0">Verify OTP</button>
+          <i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+        </div>
       </div>
   </div>
 </div>
@@ -276,5 +282,7 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 </script>
+
+<div class="backdrop-wrap"></div>
 
 <?php get_footer(); ?>

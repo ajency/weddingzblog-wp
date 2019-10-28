@@ -13,3 +13,13 @@
         color: #C4C8C4;
     }
 }
+
+.btn-inner-wrap{
+    position: relative;
+    .fa{
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

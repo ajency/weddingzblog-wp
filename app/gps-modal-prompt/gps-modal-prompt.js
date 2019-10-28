@@ -56,7 +56,7 @@ class gpsModalPrompt extends React.Component {
 			  </div>
 			  <div className="slide-in-content">
 			      <div className="list-text-block p-3 mb-2 full-width-15">
-			          <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline">Sign in</a> to fetch saved addresses.</div>
+			          <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline cursor-pointer" onClick={()=> this.showSignInScreen()} >Sign in</a> to fetch saved addresses.</div>
 			      </div>
 			      <h3 className="mt-4 h1 ft6">Add your delivery address to proceed</h3>
 			      <h4 className="font-weight-light mt-4 pb-4">
@@ -361,6 +361,10 @@ class gpsModalPrompt extends React.Component {
 	closeGpsModal(){
 		document.querySelector('#gpsModal').classList.remove('visible');
 		window.removeBackDrop();
+	}
+
+	showSignInScreen(){
+		window.showSignInModal(true);
 	}
 
 }

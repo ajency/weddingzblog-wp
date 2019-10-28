@@ -102,7 +102,9 @@ var gpsModalPrompt = function (_React$Component) {
 							'If you have ordered with us before, ',
 							React.createElement(
 								'a',
-								{ className: 'text-underline test-primary text-underline' },
+								{ className: 'text-underline test-primary text-underline cursor-pointer', onClick: function onClick() {
+										return _this2.showSignInScreen();
+									} },
 								'Sign in'
 							),
 							' to fetch saved addresses.'
@@ -483,6 +485,11 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function closeGpsModal() {
 			document.querySelector('#gpsModal').classList.remove('visible');
 			window.removeBackDrop();
+		}
+	}, {
+		key: 'showSignInScreen',
+		value: function showSignInScreen() {
+			window.showSignInModal(true);
 		}
 	}]);
 

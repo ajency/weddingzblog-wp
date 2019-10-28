@@ -61,6 +61,21 @@
     }
     
   }
+  .custom-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
 </style>
 
 
@@ -150,7 +165,10 @@
 <!-- gps modal prompt -->
 <div id="react-add-delivery-address-container"></div>
 
-<!-- sign-in modal prompt -->
+<!-- sign-in container -->
+<div id="react-sign-in-container"></div>
+
+<!-- verify-otp container -->
 <div id="react-sign-in-container"></div>
 
 <div class="msg-container">
@@ -183,5 +201,7 @@
 <div class="backdrop"></div>
 
 <button id="cart-address-change-trigger" className="d-none"></button>
+
+<div class="backdrop-wrap"></div>
 
 <?php get_footer(); ?>

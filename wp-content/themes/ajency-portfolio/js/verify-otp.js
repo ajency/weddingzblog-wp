@@ -39,56 +39,73 @@ var verifyOtp = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				null,
+				{ 'class': 'slide-in flex-slide-in', id: 'otp' },
 				React.createElement(
 					'div',
-					{ className: 'modal-content' },
+					{ 'class': 'slide-in-header header-container d-flex align-items-center' },
 					React.createElement(
 						'div',
-						{ className: 'p-5' },
-						React.createElement(
-							'h2',
-							null,
-							'Verify Mobile'
-						)
+						{ 'class': 'app-name d-flex align-items-center' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
 					),
 					React.createElement(
 						'div',
-						{ className: 'p-3' },
-						React.createElement(
-							'p',
-							null,
-							' Enter the 6 digit code sent to the below number '
-						)
+						{ 'class': 'app-chekout text-green' },
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' }),
+						'Secure ',
+						React.createElement('br', null),
+						'Checkout'
 					),
 					React.createElement(
+						'h3',
+						{ 'class': 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
+								return _this2.hideVerifyOtpSlider();
+							} },
+						React.createElement(
+							'span',
+							{ 'aria-hidden': 'true' },
+							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ 'class': 'slide-in-content' },
+					React.createElement('div', { 'class': 'spacer-210' }),
+					React.createElement(
+						'h3',
+						{ 'class': 'h1 ft6' },
+						'Verify Mobile'
+					),
+					React.createElement(
+						'h4',
+						{ 'class': 'font-weight-light mt-4 pb-4' },
+						'Enter the 6 digit code sent to the number'
+					),
+					this.state.phoneNumber,
+					React.createElement(
 						'div',
-						{ className: 'p-3' },
-						this.state.phoneNumber,
-						React.createElement('input', { className: 'mobile-input', type: 'tel', onChange: function onChange(e) {
+						{ 'class': 'mb-1 pt-4' },
+						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'number', placeholder: 'Enter OTP', onChange: function onChange(e) {
 								_this2.setOtp(e.target.value);
 							} })
 					),
 					React.createElement(
-						'div',
-						null,
-						this.getOtpButtons()
+						'h6',
+						{ 'class': 'mb-4 pb-3' },
+						'Didn\'t receive the code? ',
+						React.createElement(
+							'a',
+							{ href: 'javascript:void(0)', onClick: function onClick() {
+									_this2.resendOtpCode();
+								} },
+							'RESEND'
+						)
 					),
 					React.createElement(
 						'div',
-						null,
-						React.createElement(
-							'p',
-							null,
-							'Didn\'t receive the code ? ',
-							React.createElement(
-								'a',
-								{ onClick: function onClick() {
-										_this2.resendOtpCode();
-									} },
-								'RESEND CODE'
-							)
-						)
+						{ 'class': 'btn-wrapper pt-4' },
+						this.getOtpButtons()
 					),
 					this.displayOtpErrorMsg()
 				)
@@ -106,23 +123,23 @@ var verifyOtp = function (_React$Component) {
 					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
 				);
 			}
+			// return (<div> 
+			// 			<button onClick={()=>{this.skipOtp()}}>SKIP OTP</button>
+			// 			<button onClick={()=>{this.verifyOtp()}} disabled={this.state.otp.length < 6}>VERIFY OTP</button>
+			// 		</div>
+			// 	);
+
 			return React.createElement(
 				'div',
-				null,
+				{ 'class': 'btn-inner-wrap' },
 				React.createElement(
 					'button',
-					{ onClick: function onClick() {
-							_this3.skipOtp();
-						} },
-					'SKIP OTP'
-				),
-				React.createElement(
-					'button',
-					{ onClick: function onClick() {
+					{ type: 'button', 'class': 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
 							_this3.verifyOtp();
 						}, disabled: this.state.otp.length < 6 },
-					'VERIFY OTP'
-				)
+					'Verify OTP'
+				),
+				React.createElement('i', { 'class': 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
 			);
 		}
 	}, {
@@ -140,21 +157,6 @@ var verifyOtp = function (_React$Component) {
 		key: 'setOtp',
 		value: function setOtp(value) {
 			this.setState({ otp: value });
-		}
-	}, {
-		key: 'signInAnonymously',
-		value: function signInAnonymously() {
-			var _this4 = this;
-
-			firebase.auth().signInAnonymously().then(function (res) {
-				res.user.getIdToken().then(function (idToken) {
-					_this4.updateUserDetails(idToken);
-				});
-				_this4.showGpsModal();
-			}).catch(function (error) {
-				console.log("error in anonymouse sign in", error);
-				_this4.setState({ errorMessage: error, disableButtons: false, showSignInLoader: false });
-			});
 		}
 	}, {
 		key: 'updateUserDetails',
@@ -175,41 +177,43 @@ var verifyOtp = function (_React$Component) {
 	}, {
 		key: 'verifyOtp',
 		value: function verifyOtp() {
-			var _this5 = this;
+			var _this4 = this;
 
 			this.setState({ showOtpLoader: true, disableButtons: true, otpErrorMsg: '' });
 			this.state.confirmationResult.confirm(this.state.otp).then(function (res) {
 				res.user.getIdToken().then(function (idToken) {
-					_this5.fetchAddresses(idToken);
+					_this4.fetchAddresses(idToken);
 				});
 			}).catch(function (error) {
 				var msg = error.message ? error.message : error;
-				_this5.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
+				_this4.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
 				console.log("error in otp verification ==>", error);
 			});
 		}
 	}, {
 		key: 'fetchAddresses',
 		value: function fetchAddresses(idToken) {
-			var _this6 = this;
+			var _this5 = this;
 
 			var headers = {
 				Authorization: 'Bearer ' + idToken
 			};
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
-				_this6.hideVerifyOtpSlider();
-				_this6.showGpsSlider();
+				_this5.hideVerifyOtpSlider();
+				_this5.showGpsSlider();
 				window.updateAddresses(res.data.addresses);
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);
 				var msg = error.message ? error.message : error;
-				_this6.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
+				_this5.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
 			});
 		}
 	}, {
 		key: 'hideVerifyOtpSlider',
-		value: function hideVerifyOtpSlider() {}
+		value: function hideVerifyOtpSlider() {
+			document.querySelector('#otp').classList.remove('visible');
+		}
 	}, {
 		key: 'resendOtpCode',
 		value: function resendOtpCode() {
@@ -221,7 +225,6 @@ var verifyOtp = function (_React$Component) {
 	}, {
 		key: 'showGpsSlider',
 		value: function showGpsSlider() {
-			// $('#signInModalPrompt').modal('hide');
 			window.showGpsModalPrompt(true);
 		}
 	}]);
@@ -229,10 +232,15 @@ var verifyOtp = function (_React$Component) {
 	return verifyOtp;
 }(React.Component);
 
-var domContainer = document.querySelector('#react-sign-in-container');
-var signInModalComponent = ReactDOM.render(e(verifyOtp), domContainer);
+var domContainer = document.querySelector('#react-verify-otp-container');
+var otpModalComponent = ReactDOM.render(e(verifyOtp), domContainer);
 
-window.showSignInModal = function (data) {
-	signInModalComponent.setState({ phoneNumber: '', otp: '', confirmationResult: '', disableButtons: false, showSignInLoader: false, errorMessage: '', showOtpLoader: false, otpErrorMsg: '' });
-	$('#signInModalPrompt').modal('show');
+window.showVerifyOtpSlider = function (data) {
+	console.log("check show otp modal==>");
+	otpModalComponent.setState({ phoneNumber: '', otp: '', confirmationResult: '', disableButtons: false, errorMessage: '', showOtpLoader: false, otpErrorMsg: '' });
+	document.querySelector('#otp').classList.add('visible');
+};
+
+window.updateOtpSLider = function (confirmationResult, phone_number) {
+	otpModalComponent.setState({ phoneNumber: phone_number, confirmationResult: confirmationResult });
 };

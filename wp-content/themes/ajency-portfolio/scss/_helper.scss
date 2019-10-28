@@ -102,6 +102,7 @@ footer {
         border: 1px solid #fff;
     }
     &-green{
+        border: 1px solid #47A748;
         &-2{
             border: 2px solid #47A748;
         }
@@ -169,6 +170,10 @@ footer {
     height: 200px;
 }
 
+.spacer-210{
+    height: 210px;
+}
+
 .transform-none{
     transform: none !important;
     z-index: 10 !important;
@@ -192,6 +197,17 @@ footer {
     left: 0;
     background: rgba(173,181,189,.6);
     z-index: 1199;
+    display: none;
+}
+
+.backdrop-wrap{
+    position: fixed;
+    min-height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(173,181,189,.6);
+    z-index: 9999;
     display: none;
 }
 

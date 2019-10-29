@@ -206,8 +206,8 @@ class gpsModalPrompt extends React.Component {
 	getNoSavedAddressesMsg(){
 		if(this.state.showNoAddressMsg)
 			return (
-				<div className="p-3 alert-danger">
-					You have no saved addreses. Please set delivery location to continue.
+				<div class="list-text-block p-3 mb-2 full-width-15">
+					<div class="list-meta mt-0">You have no saved addreses. Please set delivery location to continue.</div>
 				</div>
 			);
 	}

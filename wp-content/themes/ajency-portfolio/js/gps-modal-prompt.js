@@ -329,8 +329,12 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function getNoSavedAddressesMsg() {
 			if (this.state.showNoAddressMsg) return React.createElement(
 				'div',
-				{ className: 'p-3 alert-danger' },
-				'You have no saved addreses. Please set delivery location to continue.'
+				{ 'class': 'list-text-block p-3 mb-2 full-width-15' },
+				React.createElement(
+					'div',
+					{ 'class': 'list-meta mt-0' },
+					'You have no saved addreses. Please set delivery location to continue.'
+				)
 			);
 		}
 	}, {

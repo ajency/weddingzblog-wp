@@ -40,7 +40,9 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </div>
               <div class="delivery-location cursor-pointer d-inline-block mr-2 ml-lg-2">
-                <a href="#" class="d-inline-block location-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></a> 
+                <a href="javascript:void(0)" class="d-inline-block location-icon">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </a> 
                 <div id="selected-location-address" class="font-weight-bold"></div> 
               </div>              
               <div class="edit-location d-inline-block text-primary">

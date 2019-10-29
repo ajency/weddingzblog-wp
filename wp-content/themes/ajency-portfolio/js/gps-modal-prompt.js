@@ -431,7 +431,7 @@ var gpsModalPrompt = function (_React$Component) {
 			document.cookie = "formatted_address=" + formatted_address + ";path=/";
 			window.lat_lng = lat_lng;
 			window.formatted_address = formatted_address;
-			document.querySelector("#selected-location-address").innerHTML = formatted_address;
+			document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';
 			var cart_address = document.querySelector("#cart-delivery-address");
 			if (cart_address) {
 				cart_address.innerHTML = formatted_address;

@@ -51,6 +51,7 @@ class verifyOtp extends React.Component {
 
 			      {this.displayOtpErrorMsg()}
 			  </div>
+			  <div className="d-none" id='sign-in-button-capta'></div>
 			</div>
 		);
 	}
@@ -151,6 +152,27 @@ class verifyOtp extends React.Component {
 
 	resendOtpCode(){
 		console.log("inside verify otp code");
+		window.addCartLoader();
+		let phone_number = "+91" + this.state.phoneNumber;
+		if(window.recaptchaVerifier)
+			window.recaptchaVerifier.clear();
+		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button-capta', {
+		  'size': 'invisible',
+		  'callback': function (response) {
+	        // reCAPTCHA solved, allow signInWithPhoneNumber.
+	      }
+		});
+
+		firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
+		    .then( (confirmationResult) => {
+		    	window.removeCartLoader();
+		    	console.log("SMS sent.");
+		      	this.setState({confirmationResult : confirmationResult});
+		    }).catch( (error) => {
+		    	window.removeCartLoader();
+		    	let msg = error.message ? error.message : error;
+		      	this.setState({ disableButtons : false, otpErrorMsg : msg});
+		    });
 	}
 
 	skipOtp(){

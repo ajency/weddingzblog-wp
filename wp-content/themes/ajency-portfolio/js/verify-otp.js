@@ -108,7 +108,8 @@ var verifyOtp = function (_React$Component) {
 						this.getOtpButtons()
 					),
 					this.displayOtpErrorMsg()
-				)
+				),
+				React.createElement('div', { className: 'd-none', id: 'sign-in-button-capta' })
 			);
 		}
 	}, {
@@ -227,7 +228,28 @@ var verifyOtp = function (_React$Component) {
 	}, {
 		key: 'resendOtpCode',
 		value: function resendOtpCode() {
+			var _this6 = this;
+
 			console.log("inside verify otp code");
+			window.addCartLoader();
+			var phone_number = "+91" + this.state.phoneNumber;
+			if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button-capta', {
+				'size': 'invisible',
+				'callback': function callback(response) {
+					// reCAPTCHA solved, allow signInWithPhoneNumber.
+				}
+			});
+
+			firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
+				window.removeCartLoader();
+				console.log("SMS sent.");
+				_this6.setState({ confirmationResult: confirmationResult });
+			}).catch(function (error) {
+				window.removeCartLoader();
+				var msg = error.message ? error.message : error;
+				_this6.setState({ disableButtons: false, otpErrorMsg: msg });
+			});
 		}
 	}, {
 		key: 'skipOtp',

@@ -288,7 +288,7 @@ function loadCartApp(){
         $("<link/>", {
            rel: "stylesheet",
            type: "text/css",
-           href: url+"css/main.bd624936.chunk.css"
+           href: url+"css/main.c0babc68.chunk.css"
         }).appendTo("head");
 
         $.getScript(url+"js/runtime-main."+ react_js_file_hashes['runtime-main'] +".js")        
@@ -354,6 +354,14 @@ function getCookie(cname){
 function addBackDrop(){
     $('.backdrop').addClass('show');
     $('body').addClass('hide-scroll');
+}
+
+function hideScroll(){
+    $('body').addClass('hide-scroll');
+}
+
+function showScroll(){
+    $('body').removeClass('hide-scroll');
 }
 
 

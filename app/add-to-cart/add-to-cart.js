@@ -93,7 +93,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.add('transform-none');
 			});
-		window.addBackDrop();
+		window.hideScroll();
 	}
 
 	hideVariantModal(){
@@ -102,7 +102,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.remove('transform-none');
 			});
-		window.removeBackDrop();
+		window.showScroll();
 	}
 
 	showRepeateLastModal(){
@@ -111,16 +111,16 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.add('transform-none');
 			});
-		window.addBackDrop();
+		window.hideScroll();
 	}
 
 	hideRepeateLastModal(){
-		document.querySelector('#-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
 		document.querySelectorAll('.product-wrapper')
 			.forEach((domContainer) => {
 				domContainer.classList.remove('transform-none');
 			});
-		window.removeBackDrop();
+		window.showScroll();
 	}
 
 	getLastSelected(){

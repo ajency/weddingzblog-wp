@@ -179,21 +179,25 @@ var signInModal = function (_React$Component) {
 		value: function signInWithPhoneNumber() {
 			var _this4 = this;
 
+			window.addCartLoader();
 			this.setState({ disableButtons: true, showSignInLoader: true });
 			var phone_number = "+91" + this.state.phoneNumber;
-			var recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+			if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
 				'size': 'invisible',
 				'callback': function callback(response) {
-					onSignInSubmit();
+					// reCAPTCHA solved, allow signInWithPhoneNumber.
 				}
 			});
 
-			firebase.auth().signInWithPhoneNumber(phone_number, recaptchaVerifier).then(function (confirmationResult) {
+			firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
+				window.removeCartLoader();
 				console.log("SMS sent.");
 				_this4.setState({ confirmationResult: confirmationResult });
 				_this4.closeSignInSlider(); // TODO : function to hide this popup 
 				_this4.showOtpSlider(confirmationResult, _this4.state.phoneNumber); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 			}).catch(function (error) {
+				window.removeCartLoader();
 				console.log("Error :  SMS not sent", error);
 				_this4.setState({ errorMessage: error.message, disableButtons: false, showSignInLoader: false });
 			});

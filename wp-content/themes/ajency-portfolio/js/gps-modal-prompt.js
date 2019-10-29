@@ -43,9 +43,12 @@ var gpsModalPrompt = function (_React$Component) {
 			showSignInBtn: false
 		};
 		firebase.auth().onAuthStateChanged(function (user) {
-
+			console.log("check user ==>", user);
 			if (user) {
+				console.log("user found ==== setting showSign in button to false");
 				_this.setState({ showSignInBtn: false });
+			} else {
+				_this.setState({ showSignInBtn: true });
 			}
 
 			if (user && !_this.state.notLoggedIn) {
@@ -53,7 +56,7 @@ var gpsModalPrompt = function (_React$Component) {
 					_this.fetchAddresses(idToken);
 				});
 			} else {
-				_this.setState({ notLoggedIn: true, showSignInBtn: true });
+				_this.setState({ notLoggedIn: true });
 				console.log("no user");
 			}
 		});

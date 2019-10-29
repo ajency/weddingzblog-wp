@@ -29,9 +29,13 @@ class gpsModalPrompt extends React.Component {
 			showSignInBtn : false
 		}
 		firebase.auth().onAuthStateChanged((user) => {
-
+			console.log("check user ==>", user);
 			if(user){
+				console.log("user found ==== setting showSign in button to false");
 				this.setState({showSignInBtn : false})
+			}
+			else{
+				this.setState({showSignInBtn : true})
 			}
 
 		  	if (user && !this.state.notLoggedIn) {
@@ -40,7 +44,7 @@ class gpsModalPrompt extends React.Component {
 		        });
 		  	}
 		  	else {
-		  		this.setState({notLoggedIn : true, showSignInBtn : true})
+		  		this.setState({notLoggedIn : true })
 		  		console.log("no user");
 		  	}
 		});

@@ -86,7 +86,7 @@ var verifyOtp = function (_React$Component) {
 					React.createElement(
 						'div',
 						{ className: 'mb-1 pt-4' },
-						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'number', placeholder: 'Enter OTP', onChange: function onChange(e) {
+						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'tel', placeholder: 'Enter OTP', onChange: function onChange(e) {
 								_this2.setOtp(e.target.value);
 							}, value: this.state.otp })
 					),
@@ -179,12 +179,14 @@ var verifyOtp = function (_React$Component) {
 		value: function verifyOtp() {
 			var _this4 = this;
 
+			window.addCartLoader();
 			this.setState({ showOtpLoader: true, disableButtons: true, otpErrorMsg: '' });
 			this.state.confirmationResult.confirm(this.state.otp).then(function (res) {
 				res.user.getIdToken().then(function (idToken) {
 					_this4.fetchAddresses(idToken);
 				});
 			}).catch(function (error) {
+				window.removeCartLoader();
 				var msg = error.message ? error.message : error;
 				_this4.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });
 				console.log("error in otp verification ==>", error);
@@ -203,7 +205,9 @@ var verifyOtp = function (_React$Component) {
 				_this5.hideVerifyOtpSlider();
 				// this.showGpsSlider();
 				window.updateAddresses(res.data.addresses);
+				window.removeCartLoader();
 			}).catch(function (error) {
+				window.removeCartLoader();
 				console.log("error in fetch addresses ==>", error);
 				var msg = error.message ? error.message : error;
 				_this5.setState({ showOtpLoader: false, disableButtons: false, otpErrorMsg: msg });

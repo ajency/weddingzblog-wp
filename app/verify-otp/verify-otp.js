@@ -42,7 +42,7 @@ class verifyOtp extends React.Component {
 			      {this.state.phoneNumber}
 
 			      <div className="mb-1 pt-4">
-			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="number" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
+			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="tel" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
 			      </div>
 			      <h6 className="mb-4 pb-3">Didn't receive the code? <a href="javascript:void(0)" onClick={()=>{this.resendOtpCode()}}>RESEND</a></h6>
 			      <div className="btn-wrapper pt-4">
@@ -104,6 +104,7 @@ class verifyOtp extends React.Component {
 	}
 
 	verifyOtp(){
+		window.addCartLoader();
 		this.setState({showOtpLoader : true , disableButtons : true, otpErrorMsg : ''});
 		this.state.confirmationResult.confirm(this.state.otp)
 			.then((res) =>{
@@ -112,6 +113,7 @@ class verifyOtp extends React.Component {
 		        });
 			})
 			.catch((error)=>{
+				window.removeCartLoader();
 				let msg = error.message ? error.message : error;
 				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});
 				console.log("error in otp verification ==>", error);
@@ -128,8 +130,10 @@ class verifyOtp extends React.Component {
 				this.hideVerifyOtpSlider();
 		      	// this.showGpsSlider();
 		      	window.updateAddresses(res.data.addresses);
+		      	window.removeCartLoader();
 			})
 			.catch((error)=>{
+				window.removeCartLoader();
 				console.log("error in fetch addresses ==>", error);
 				let msg = error.message ? error.message : error;
 				this.setState({showOtpLoader : false, disableButtons : false, otpErrorMsg : msg});

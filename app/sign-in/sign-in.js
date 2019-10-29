@@ -107,22 +107,27 @@ class signInModal extends React.Component {
 	// }
 
 	signInWithPhoneNumber(){
+		window.addCartLoader();
 		this.setState({disableButtons : true, showSignInLoader : true});
 		let phone_number = "+91" + this.state.phoneNumber;
-		let recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+		if(window.recaptchaVerifier)
+			window.recaptchaVerifier.clear();
+		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
 		  'size': 'invisible',
-		  'callback': function(response) {
-		    onSignInSubmit();
-		  }
+		  'callback': function (response) {
+	        // reCAPTCHA solved, allow signInWithPhoneNumber.
+	      }
 		});
 
-		firebase.auth().signInWithPhoneNumber(phone_number, recaptchaVerifier)
+		firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
 		    .then( (confirmationResult) => {
+		    	window.removeCartLoader();
 		    	console.log("SMS sent.");
 		      	this.setState({confirmationResult : confirmationResult});
 		      	this.closeSignInSlider() // TODO : function to hide this popup 
 		      	this.showOtpSlider(confirmationResult, this.state.phoneNumber)   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 		    }).catch( (error) => {
+		    	window.removeCartLoader();
 		      	console.log("Error :  SMS not sent", error);
 		      	this.setState({errorMessage : error.message, disableButtons : false, showSignInLoader : false});
 		    });

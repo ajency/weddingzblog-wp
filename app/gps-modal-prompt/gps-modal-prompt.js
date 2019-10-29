@@ -391,11 +391,13 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	setSliderLoader(){
-		document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
+		window.addCartLoader();
+		// document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
 	}
 
 	removeSliderLoader(){
-		document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
+		window.removeCartLoader();
+		// document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
 	}
 
 }

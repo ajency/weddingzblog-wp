@@ -279,6 +279,7 @@ loaded = false;
 function loadCartApp(){
     console.log("file_hashes ==>", react_js_file_hashes);
     if(!loaded){
+        addCartLoader();
         let url = "/wp-content/themes/ajency-portfolio/js/cart/static/";
         if(window.location.hostname == "localhost"){
             url = "/greengrainbowl" + url;
@@ -364,9 +365,11 @@ function removeBackDrop(){
 }
 
 function addCartLoader(){
-    $('.cart-wrapper').addClass('cart-loader');
+    // $('.cart-wrapper').addClass('cart-loader');
+    $('.site-loader').addClass('visible');
 }
 
 function removeCartLoader(){
-    $('.cart-wrapper').removeClass('cart-loader');   
+    // $('.cart-wrapper').removeClass('cart-loader');   
+    $('.site-loader').removeClass('visible');
 }

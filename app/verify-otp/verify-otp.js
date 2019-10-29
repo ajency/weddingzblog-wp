@@ -14,7 +14,8 @@ class verifyOtp extends React.Component {
 			disableButtons : false,
 			errorMessage : '',
 			showOtpLoader : false,
-			otpErrorMsg : ''
+			otpErrorMsg : '',
+			showCapta : true
 		}
 	}
 
@@ -51,9 +52,19 @@ class verifyOtp extends React.Component {
 
 			      {this.displayOtpErrorMsg()}
 			  </div>
-			  <div className="d-none" id='sign-in-button-capta'></div>
+			  
+			  {this.getCaptaContainer()}
 			</div>
 		);
+	}
+
+	getCaptaContainer(){
+		if(this.state.showCapta){
+			return(<div className="d-none" id='sign-in-button-capta'></div>)
+		}
+		else{
+			return (null);
+		}
 	}
 
 	getOtpButtons(){
@@ -151,28 +162,30 @@ class verifyOtp extends React.Component {
 	}
 
 	resendOtpCode(){
-		console.log("inside verify otp code");
-		window.addCartLoader();
-		let phone_number = "+91" + this.state.phoneNumber;
-		if(window.recaptchaVerifier)
-			window.recaptchaVerifier.clear();
-		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button-capta', {
-		  'size': 'invisible',
-		  'callback': function (response) {
-	        // reCAPTCHA solved, allow signInWithPhoneNumber.
-	      }
-		});
+		this.setState({showCapta : true}, ()=>{
+			console.log("inside verify otp code");
+			window.addCartLoader();
+			let phone_number = "+91" + this.state.phoneNumber;
+			if(window.recaptchaVerifier)
+				window.recaptchaVerifier.clear();
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button-capta', {
+			  'size': 'invisible',
+			  'callback': function (response) {
+		        // reCAPTCHA solved, allow signInWithPhoneNumber.
+		      }
+			});
 
-		firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
-		    .then( (confirmationResult) => {
-		    	window.removeCartLoader();
-		    	console.log("SMS sent.");
-		      	this.setState({confirmationResult : confirmationResult});
-		    }).catch( (error) => {
-		    	window.removeCartLoader();
-		    	let msg = error.message ? error.message : error;
-		      	this.setState({ disableButtons : false, otpErrorMsg : msg});
-		    });
+			firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
+			    .then( (confirmationResult) => {
+			    	window.removeCartLoader();
+			    	console.log("SMS sent.");
+			      	this.setState({confirmationResult : confirmationResult, showCapta : false});
+			    }).catch( (error) => {
+			    	window.removeCartLoader();
+			    	let msg = error.message ? error.message : error;
+			      	this.setState({ disableButtons : false, otpErrorMsg : msg, showCapta : false});
+			    });
+		});
 	}
 
 	skipOtp(){

@@ -13,7 +13,8 @@ class signInModal extends React.Component {
 			confirmationResult : '',
 			disableButtons : false,
 			showSignInLoader : false,
-			errorMessage : ''
+			errorMessage : '',
+			showCapta : true
 		}
 	}
 
@@ -40,7 +41,6 @@ class signInModal extends React.Component {
 			      </h4>
 			      <div className="mb-3 pt-4 pb-2">
 			        <input className="w-100 p-3 border-green h5 ft6 rounded-0" placeholder="10 digit mobile number" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} value={this.state.phoneNumber} /> <br/>
-					<div className="d-none" id='sign-in-button'></div>
 			      </div>
 			      <div className="btn-wrapper pt-4">
 			      		{this.getSignInButtons()}
@@ -48,18 +48,28 @@ class signInModal extends React.Component {
 
 			      {this.displaySignInErrorMsg()}
 			  </div>
+			  {this.getCaptaContainer()}
 			</div>
 		);
 	}
 
-	getSignInButtons(){
-		if(this.state.showSignInLoader){
-			return (
-				<div className="btn-icon">
-						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
-				</div>
-			);
+	getCaptaContainer(){
+		if(this.state.showCapta){
+			return(<div className="d-none" id='sign-in-button'></div>)
 		}
+		else{
+			return (null);
+		}
+	}
+
+	getSignInButtons(){
+		// if(this.state.showSignInLoader){
+		// 	return (
+		// 		<div className="btn-icon">
+		// 				<i className="fas fa-circle-notch fa-spin fa-lg"></i>
+		// 		</div>
+		// 	);
+		// }
 		return (<div className="btn-inner-wrap">
 		          <button type="button" className="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=> this.signInWithPhoneNumber()} disabled={this.state.phoneNumber.length < 10}>Submit</button>
 		          <i className="text-white fa fa-arrow-right" aria-hidden="true"></i>
@@ -108,29 +118,31 @@ class signInModal extends React.Component {
 
 	signInWithPhoneNumber(){
 		window.addCartLoader();
-		this.setState({disableButtons : true, showSignInLoader : true});
-		let phone_number = "+91" + this.state.phoneNumber;
-		if(window.recaptchaVerifier)
-			window.recaptchaVerifier.clear();
-		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-		  'size': 'invisible',
-		  'callback': function (response) {
-	        // reCAPTCHA solved, allow signInWithPhoneNumber.
-	      }
-		});
+		this.setState({disableButtons : true, showSignInLoader : true, showCapta : true}, () => {
+			let phone_number = "+91" + this.state.phoneNumber;
+			if(window.recaptchaVerifier)
+				window.recaptchaVerifier.clear();
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+			  'size': 'invisible',
+			  'callback': function (response) {
+		        // reCAPTCHA solved, allow signInWithPhoneNumber.
+		      }
+			});
 
-		firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
-		    .then( (confirmationResult) => {
-		    	window.removeCartLoader();
-		    	console.log("SMS sent.");
-		      	this.setState({confirmationResult : confirmationResult});
-		      	// this.closeSignInSlider() // TODO : function to hide this popup 
-		      	this.showOtpSlider(confirmationResult, this.state.phoneNumber)   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
-		    }).catch( (error) => {
-		    	window.removeCartLoader();
-		      	console.log("Error :  SMS not sent", error);
-		      	this.setState({errorMessage : error.message, disableButtons : false, showSignInLoader : false});
-		    });
+			firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier)
+			    .then( (confirmationResult) => {
+			    	window.removeCartLoader();
+			    	console.log("SMS sent.");
+			      	this.setState({confirmationResult : confirmationResult, showCapta : false});
+			      	// this.closeSignInSlider() // TODO : function to hide this popup 
+			      	this.showOtpSlider(confirmationResult, this.state.phoneNumber)   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
+			    }).catch( (error) => {
+			    	window.removeCartLoader();
+			      	console.log("Error :  SMS not sent", error);
+			      	this.setState({errorMessage : error.message, disableButtons : false, showSignInLoader : false, showCapta : false});
+			    });
+		});
+		
 	}
 
 	// signInAnonymously(){

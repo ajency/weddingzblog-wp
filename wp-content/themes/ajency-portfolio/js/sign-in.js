@@ -26,7 +26,8 @@ var signInModal = function (_React$Component) {
 			confirmationResult: '',
 			disableButtons: false,
 			showSignInLoader: false,
-			errorMessage: ''
+			errorMessage: '',
+			showCapta: true
 		};
 		return _this;
 	}
@@ -90,8 +91,7 @@ var signInModal = function (_React$Component) {
 								_this2.setUserMobile(e.target.value);
 							}, value: this.state.phoneNumber }),
 						' ',
-						React.createElement('br', null),
-						React.createElement('div', { className: 'd-none', id: 'sign-in-button' })
+						React.createElement('br', null)
 					),
 					React.createElement(
 						'div',
@@ -99,21 +99,31 @@ var signInModal = function (_React$Component) {
 						this.getSignInButtons()
 					),
 					this.displaySignInErrorMsg()
-				)
+				),
+				this.getCaptaContainer()
 			);
+		}
+	}, {
+		key: 'getCaptaContainer',
+		value: function getCaptaContainer() {
+			if (this.state.showCapta) {
+				return React.createElement('div', { className: 'd-none', id: 'sign-in-button' });
+			} else {
+				return null;
+			}
 		}
 	}, {
 		key: 'getSignInButtons',
 		value: function getSignInButtons() {
 			var _this3 = this;
 
-			if (this.state.showSignInLoader) {
-				return React.createElement(
-					'div',
-					{ className: 'btn-icon' },
-					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
-				);
-			}
+			// if(this.state.showSignInLoader){
+			// 	return (
+			// 		<div className="btn-icon">
+			// 				<i className="fas fa-circle-notch fa-spin fa-lg"></i>
+			// 		</div>
+			// 	);
+			// }
 			return React.createElement(
 				'div',
 				{ className: 'btn-inner-wrap' },
@@ -180,26 +190,27 @@ var signInModal = function (_React$Component) {
 			var _this4 = this;
 
 			window.addCartLoader();
-			this.setState({ disableButtons: true, showSignInLoader: true });
-			var phone_number = "+91" + this.state.phoneNumber;
-			if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
-			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-				'size': 'invisible',
-				'callback': function callback(response) {
-					// reCAPTCHA solved, allow signInWithPhoneNumber.
-				}
-			});
+			this.setState({ disableButtons: true, showSignInLoader: true, showCapta: true }, function () {
+				var phone_number = "+91" + _this4.state.phoneNumber;
+				if (window.recaptchaVerifier) window.recaptchaVerifier.clear();
+				window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+					'size': 'invisible',
+					'callback': function callback(response) {
+						// reCAPTCHA solved, allow signInWithPhoneNumber.
+					}
+				});
 
-			firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
-				window.removeCartLoader();
-				console.log("SMS sent.");
-				_this4.setState({ confirmationResult: confirmationResult });
-				// this.closeSignInSlider() // TODO : function to hide this popup 
-				_this4.showOtpSlider(confirmationResult, _this4.state.phoneNumber); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
-			}).catch(function (error) {
-				window.removeCartLoader();
-				console.log("Error :  SMS not sent", error);
-				_this4.setState({ errorMessage: error.message, disableButtons: false, showSignInLoader: false });
+				firebase.auth().signInWithPhoneNumber(phone_number, window.recaptchaVerifier).then(function (confirmationResult) {
+					window.removeCartLoader();
+					console.log("SMS sent.");
+					_this4.setState({ confirmationResult: confirmationResult, showCapta: false });
+					// this.closeSignInSlider() // TODO : function to hide this popup 
+					_this4.showOtpSlider(confirmationResult, _this4.state.phoneNumber); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
+				}).catch(function (error) {
+					window.removeCartLoader();
+					console.log("Error :  SMS not sent", error);
+					_this4.setState({ errorMessage: error.message, disableButtons: false, showSignInLoader: false, showCapta: false });
+				});
 			});
 		}
 

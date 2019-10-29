@@ -234,7 +234,7 @@ class gpsModalPrompt extends React.Component {
 		clearTimeout(debounceTimer);
 		this.setState({searchText : value});
 		debounceTimer = setTimeout(()=>{
-			this.setState({locError : ''});
+			this.setState({locError : '', showNoAddressMsg : false});
 			if(value.length > 2 ) {
 				let url = this.state.apiEndPoint + "/places-autocomplete";
 				let body = {
@@ -431,6 +431,7 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 
 window.showGpsModalPrompt = (display, addresses = null) => {
+	gpsModalPromptComponent.setState({showNoAddressMsg : false, locations : []});
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 }

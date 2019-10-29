@@ -124,7 +124,7 @@ class signInModal extends React.Component {
 		    	window.removeCartLoader();
 		    	console.log("SMS sent.");
 		      	this.setState({confirmationResult : confirmationResult});
-		      	this.closeSignInSlider() // TODO : function to hide this popup 
+		      	// this.closeSignInSlider() // TODO : function to hide this popup 
 		      	this.showOtpSlider(confirmationResult, this.state.phoneNumber)   // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 		    }).catch( (error) => {
 		    	window.removeCartLoader();

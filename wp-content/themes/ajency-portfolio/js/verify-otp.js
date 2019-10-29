@@ -202,6 +202,7 @@ var verifyOtp = function (_React$Component) {
 			};
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
+				_this5.closeSignInSlider();
 				_this5.hideVerifyOtpSlider();
 				// this.showGpsSlider();
 				window.updateAddresses(res.data.addresses);
@@ -217,6 +218,11 @@ var verifyOtp = function (_React$Component) {
 		key: 'hideVerifyOtpSlider',
 		value: function hideVerifyOtpSlider() {
 			document.querySelector('#otp').classList.remove('visible');
+		}
+	}, {
+		key: 'closeSignInSlider',
+		value: function closeSignInSlider() {
+			document.querySelector('#phone_number').classList.remove('visible');
 		}
 	}, {
 		key: 'resendOtpCode',

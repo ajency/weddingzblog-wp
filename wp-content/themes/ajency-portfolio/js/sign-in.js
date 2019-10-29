@@ -194,7 +194,7 @@ var signInModal = function (_React$Component) {
 				window.removeCartLoader();
 				console.log("SMS sent.");
 				_this4.setState({ confirmationResult: confirmationResult });
-				_this4.closeSignInSlider(); // TODO : function to hide this popup 
+				// this.closeSignInSlider() // TODO : function to hide this popup 
 				_this4.showOtpSlider(confirmationResult, _this4.state.phoneNumber); // TODO : Show the otp in slider // pass confirmation-result and mobile number to otp component
 			}).catch(function (error) {
 				window.removeCartLoader();

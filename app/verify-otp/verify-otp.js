@@ -127,6 +127,7 @@ class verifyOtp extends React.Component {
 		let url = this.state.apiEndPoint + "/user/get-addresses";
 		axios.get(url, {headers :  headers })
 			.then((res) => {
+				this.closeSignInSlider();
 				this.hideVerifyOtpSlider();
 		      	// this.showGpsSlider();
 		      	window.updateAddresses(res.data.addresses);
@@ -142,6 +143,10 @@ class verifyOtp extends React.Component {
 
 	hideVerifyOtpSlider(){
 		document.querySelector('#otp').classList.remove('visible');
+	}
+
+	closeSignInSlider(){
+		document.querySelector('#phone_number').classList.remove('visible');
 	}
 
 	resendOtpCode(){

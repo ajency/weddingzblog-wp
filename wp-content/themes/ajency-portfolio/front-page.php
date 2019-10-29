@@ -169,7 +169,7 @@
 <div id="react-sign-in-container"></div>
 
 <!-- verify-otp container -->
-<div id="react-sign-in-container"></div>
+<div id="react-verify-otp-container"></div>
 
 <div class="msg-container">
 <!-- Add to cart error  -->

@@ -20,32 +20,32 @@ class verifyOtp extends React.Component {
 
 	render() {
 		return (
-			<div class="slide-in flex-slide-in" id="otp">
-			  <div class="slide-in-header header-container d-flex align-items-center">
-			      <div class="app-name d-flex align-items-center">					
+			<div className="slide-in flex-slide-in" id="otp">
+			  <div className="slide-in-header header-container d-flex align-items-center">
+			      <div className="app-name d-flex align-items-center">					
 			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			      </div>
-			      <div class="app-chekout text-green">
+			      <div className="app-chekout text-green">
 			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			          Secure <br/>Checkout
 			      </div>
-			      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.hideVerifyOtpSlider()}>
+			      <h3 className="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.hideVerifyOtpSlider()}>
 			          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
 			      </h3>
 			  </div>
-			  <div class="slide-in-content">
-			      <div class="spacer-210"></div>
-			      <h3 class="h1 ft6">Verify Mobile</h3>
-			      <h4 class="font-weight-light mt-4 pb-4">
+			  <div className="slide-in-content">
+			      <div className="spacer-210"></div>
+			      <h3 className="h1 ft6">Verify Mobile</h3>
+			      <h4 className="font-weight-light mt-4 pb-4">
 			        Enter the 6 digit code sent to the number 
 			      </h4>
 			      {this.state.phoneNumber}
 
-			      <div class="mb-1 pt-4">
+			      <div className="mb-1 pt-4">
 			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="number" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
 			      </div>
-			      <h6 class="mb-4 pb-3">Didn't receive the code? <a href="javascript:void(0)" onClick={()=>{this.resendOtpCode()}}>RESEND</a></h6>
-			      <div class="btn-wrapper pt-4">
+			      <h6 className="mb-4 pb-3">Didn't receive the code? <a href="javascript:void(0)" onClick={()=>{this.resendOtpCode()}}>RESEND</a></h6>
+			      <div className="btn-wrapper pt-4">
 			        {this.getOtpButtons()}
 			      </div>
 
@@ -57,8 +57,8 @@ class verifyOtp extends React.Component {
 
 	getOtpButtons(){
 		if(this.state.showOtpLoader){
-			return (<div class="btn-icon">
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+			return (<div className="btn-icon">
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 			);
 		}
@@ -69,9 +69,9 @@ class verifyOtp extends React.Component {
 		// 	);
 
 		return (
-			 <div class="btn-inner-wrap">
-	        	<button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=>{this.verifyOtp()}} disabled={this.state.otp.length < 6}>Verify OTP</button>
-	          	<i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+			 <div className="btn-inner-wrap">
+	        	<button type="button" className="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=>{this.verifyOtp()}} disabled={this.state.otp.length < 6}>Verify OTP</button>
+	          	<i className="text-white fa fa-arrow-right" aria-hidden="true"></i>
 	        </div>
 		);
 	}
@@ -154,11 +154,10 @@ class verifyOtp extends React.Component {
 
 }
 
-let domContainer = document.querySelector('#react-verify-otp-container');
-const otpModalComponent = ReactDOM.render(e(verifyOtp), domContainer);
+let otpContainer = document.querySelector('#react-verify-otp-container');
+const otpModalComponent = ReactDOM.render(e(verifyOtp), otpContainer);
 
-
-window.showVerifyOtpSlider = (data) => {
+window.showOTPSlider = (data) => {
 	console.log("check show otp modal==>")
 	otpModalComponent.setState({phoneNumber : '', otp : '', confirmationResult : '', disableButtons : false,  errorMessage : '', showOtpLoader : false, otpErrorMsg : ''})
 	document.querySelector('#otp').classList.add('visible');

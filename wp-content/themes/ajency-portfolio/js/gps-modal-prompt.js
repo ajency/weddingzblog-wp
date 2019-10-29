@@ -17,7 +17,7 @@ var cancel = void 0;
 var debounceTimer = void 0;
 
 var locationStyle = {
-	'list-style': 'none'
+	'listStyle': 'none'
 };
 
 var gpsModalPrompt = function (_React$Component) {
@@ -198,7 +198,7 @@ var gpsModalPrompt = function (_React$Component) {
 				React.createElement(
 					'div',
 					null,
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
 				)
 			);else if (!this.state.settingUserLocation) return React.createElement(
 				'button',
@@ -206,7 +206,7 @@ var gpsModalPrompt = function (_React$Component) {
 						return _this4.getLocation();
 					}, type: 'button', className: 'btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative' },
 				'Use Current Location ',
-				React.createElement('img', { 'class': 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png' })
+				React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png' })
 			);
 		}
 	}, {
@@ -219,7 +219,7 @@ var gpsModalPrompt = function (_React$Component) {
 				React.createElement(
 					'div',
 					null,
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
 				)
 			);
 		}
@@ -284,7 +284,7 @@ var gpsModalPrompt = function (_React$Component) {
 				return React.createElement(
 					'div',
 					null,
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
 				);
 			}
 

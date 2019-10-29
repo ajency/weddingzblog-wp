@@ -8,7 +8,7 @@ let cancel;
 let debounceTimer;
 
 const locationStyle = {
-	'list-style' : 'none'
+	'listStyle' : 'none'
 }
 
 class gpsModalPrompt extends React.Component {
@@ -109,13 +109,13 @@ class gpsModalPrompt extends React.Component {
 				<div>
 					<div className="" > Fetching current Location </div>
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				</div>
 			)
 		else if(!this.state.settingUserLocation)
 			return (
-				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img class="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
+				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
 			)
 	}
 
@@ -125,7 +125,7 @@ class gpsModalPrompt extends React.Component {
 				<div>
 					Setting User location ...
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				</div>
 			)
@@ -164,7 +164,7 @@ class gpsModalPrompt extends React.Component {
 		if(this.state.showLoader && !this.state.locations.length){
 			return (
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				)
 		}

@@ -38,18 +38,18 @@ var signInModal = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				{ 'class': 'slide-in flex-slide-in', id: 'phone_number' },
+				{ className: 'slide-in flex-slide-in', id: 'phone_number' },
 				React.createElement(
 					'div',
-					{ 'class': 'slide-in-header header-container d-flex align-items-center' },
+					{ className: 'slide-in-header header-container d-flex align-items-center' },
 					React.createElement(
 						'div',
-						{ 'class': 'app-name d-flex align-items-center' },
+						{ className: 'app-name d-flex align-items-center' },
 						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
 					),
 					React.createElement(
 						'div',
-						{ 'class': 'app-chekout text-green' },
+						{ className: 'app-chekout text-green' },
 						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' }),
 						'Secure ',
 						React.createElement('br', null),
@@ -57,7 +57,7 @@ var signInModal = function (_React$Component) {
 					),
 					React.createElement(
 						'h3',
-						{ 'class': 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
+						{ className: 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
 								return _this2.closeSignInSlider();
 							}, disabled: this.state.disableButtons },
 						React.createElement(
@@ -69,21 +69,21 @@ var signInModal = function (_React$Component) {
 				),
 				React.createElement(
 					'div',
-					{ 'class': 'slide-in-content' },
-					React.createElement('div', { 'class': 'spacer-210' }),
+					{ className: 'slide-in-content' },
+					React.createElement('div', { className: 'spacer-210' }),
 					React.createElement(
 						'h3',
-						{ 'class': 'h1 ft6' },
+						{ className: 'h1 ft6' },
 						'Login'
 					),
 					React.createElement(
 						'h4',
-						{ 'class': 'font-weight-light mt-4 pb-4' },
+						{ className: 'font-weight-light mt-4 pb-4' },
 						'Having an account with GGB makes it dead simple to place orders'
 					),
 					React.createElement(
 						'div',
-						{ 'class': 'mb-3 pt-4 pb-2' },
+						{ className: 'mb-3 pt-4 pb-2' },
 						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', placeholder: '10 digit mobile number', type: 'text', onKeyDown: function onKeyDown(e) {
 								_this2.validateMobile(e);
 							}, onChange: function onChange(e) {
@@ -95,7 +95,7 @@ var signInModal = function (_React$Component) {
 					),
 					React.createElement(
 						'div',
-						{ 'class': 'btn-wrapper pt-4' },
+						{ className: 'btn-wrapper pt-4' },
 						this.getSignInButtons()
 					),
 					this.displaySignInErrorMsg()
@@ -110,21 +110,21 @@ var signInModal = function (_React$Component) {
 			if (this.state.showSignInLoader) {
 				return React.createElement(
 					'div',
-					{ 'class': 'btn-icon' },
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+					{ className: 'btn-icon' },
+					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
 				);
 			}
 			return React.createElement(
 				'div',
-				{ 'class': 'btn-inner-wrap' },
+				{ className: 'btn-inner-wrap' },
 				React.createElement(
 					'button',
-					{ type: 'button', 'class': 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
+					{ type: 'button', className: 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
 							return _this3.signInWithPhoneNumber();
 						}, disabled: this.state.phoneNumber.length < 10 },
 					'Submit'
 				),
-				React.createElement('i', { 'class': 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
+				React.createElement('i', { className: 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
 			);
 		}
 	}, {
@@ -243,7 +243,7 @@ var signInModal = function (_React$Component) {
 	}, {
 		key: 'showOtpSlider',
 		value: function showOtpSlider(confirmationResult, phone_number) {
-			window.showVerifyOtpSlider(true);
+			window.showOTPSlider(true);
 			window.updateOtpSLider(confirmationResult, phone_number);
 		}
 	}]);

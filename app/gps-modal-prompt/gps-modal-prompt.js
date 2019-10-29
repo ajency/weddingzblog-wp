@@ -154,15 +154,16 @@ class gpsModalPrompt extends React.Component {
 		if(this.state.addresses && this.state.addresses.length && !this.state.locations.length && !this.state.settingUserLocation && !this.state.fetchingGPS){
 			let addresses = this.state.addresses.map((address)=>{
 				return (
-					<li key={address.id} className="cursor-pointer p-1 saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
-						{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}
+					<li key={address.id} className="cursor-pointer address saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
+						<img src="http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/slidein/home.png" className="address-icon"/>
+						<span className="address-text font-weight-light h5">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
 					</li>
 				)
 			})
 			return (
 				<div>
-					<h4>Saved Addresses</h4>
-					<ul style={locationStyle} className="pl-0">
+					<h4 className="mt-4 h1 ft6">Saved Addresses</h4>
+					<ul style={locationStyle} className="pl-0 mt-4">
 						{addresses}
 					</ul>
 				</div>

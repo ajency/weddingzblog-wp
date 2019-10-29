@@ -28,3 +28,21 @@
     letter-spacing: 0.5px;
     color: #7C7C7C;
 }
+
+.address{
+    position: relative;
+    &-text{        
+        margin-left: 35px;
+        border-bottom: 1px solid #DFDFDF;
+        display: inline-block;
+        padding-bottom: 20px;
+    }
+    &-icon{
+        position: absolute;
+        top:5px;
+        left: 0;
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+}

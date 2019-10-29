@@ -249,18 +249,23 @@ var gpsModalPrompt = function (_React$Component) {
 				var addresses = this.state.addresses.map(function (address) {
 					return React.createElement(
 						'li',
-						{ key: address.id, className: 'cursor-pointer p-1 saved-address-item', onClick: function onClick() {
+						{ key: address.id, className: 'cursor-pointer address saved-address-item', onClick: function onClick() {
 								return _this6.setUserLocations(address.address.lat_long, address.address.formatted_address);
 							} },
-						address.address.address,
-						', ',
-						address.address.landmark,
-						', ',
-						address.address.city,
-						', ',
-						address.address.state,
-						', ',
-						address.address.pincode
+						React.createElement('img', { src: 'http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/slidein/home.png', className: 'address-icon' }),
+						React.createElement(
+							'span',
+							{ className: 'address-text font-weight-light h5' },
+							address.address.address,
+							', ',
+							address.address.landmark,
+							', ',
+							address.address.city,
+							', ',
+							address.address.state,
+							', ',
+							address.address.pincode
+						)
 					);
 				});
 				return React.createElement(
@@ -268,12 +273,12 @@ var gpsModalPrompt = function (_React$Component) {
 					null,
 					React.createElement(
 						'h4',
-						null,
+						{ className: 'mt-4 h1 ft6' },
 						'Saved Addresses'
 					),
 					React.createElement(
 						'ul',
-						{ style: locationStyle, className: 'pl-0' },
+						{ style: locationStyle, className: 'pl-0 mt-4' },
 						addresses
 					)
 				);

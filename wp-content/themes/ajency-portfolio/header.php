@@ -43,7 +43,7 @@
                 <a href="javascript:void(0)" class="d-inline-block location-icon">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                 </a> 
-                <div id="selected-location-address" class="font-weight-light">
+                <div id="selected-location-address" class="font-weight-light pr-5">
                 </div> 
               </div>              
               <div class="edit-location d-none text-primary vertical-align-middle">

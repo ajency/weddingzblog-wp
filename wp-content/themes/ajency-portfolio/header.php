@@ -29,15 +29,30 @@
 
   <body>
 
-  	<nav class="fixed-header position-fixed">
-      <div class="container mt-2  p5">
+  	<nav class="fixed-header position-fixed bg-white">
+      <div class="container mt-3 p5 position-relative">
         <div class="row justify-content-between align-items-center">
-            <div class="col-3 col-xl-2 col-sm-3">
-              <a href="<?php echo get_site_url(); ?>">
-              <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="float-right logo"/>
-            </a>
+            <div class="col-4 col-xl-3 position-static">
+              <a href="<?php echo get_site_url(); ?>" class="d-none d-md-inline-block">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="logo"/>
+              </a>
+              <div class="menu-toggle d-inline-block d-md-none mr-2">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </div>
+              <div class="delivery-location cursor-pointer d-inline-block mr-2 ml-lg-2">
+                <a href="javascript:void(0)" class="d-inline-block location-icon">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </a> 
+                <div id="selected-location-address" class="font-weight-bold"></div> 
+              </div>              
+              <div class="edit-location d-inline-block text-primary">
+                <a href="#" class="d-inline-block location-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></a>  
+              </div>
             </div>
-            <div class="col-6 col-xl-7">
+            <div class="col-4 col-xl-6 text-center">
+              <a href="<?php echo get_site_url(); ?>" class="d-block d-md-none">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="logo"/>
+              </a>
               <ul class="navbar-nav">
                 <li class="nav-item active">
                   <a class="nav-link" href="#our-bowl">Our Bowls</a>
@@ -50,9 +65,15 @@
                 </li>
               </ul>
             </div>
-            <div class="col-3">
-              <a href="mailto:talktous@ajency.in" class="h4 menu float-right m-0">talktous@ajency.in </a>
+            <div class="col-4 col-xl-3 text-right">
+              <a href="mailto:talktous@ajency.in" class="h4 menu float-right m-0 d-none d-md-block">talktous@ajency.in </a>
+              <div class="cart-icon d-block d-md-none">
+                <a href="#">
+                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  <div class="cart-count">2</div>
+                </a>
+              </div>
             </div>
-        </div>
+        </div>        
       </div>
     </nav>

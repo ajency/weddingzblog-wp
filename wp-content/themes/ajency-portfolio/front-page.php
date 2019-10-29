@@ -96,10 +96,10 @@
 </section>
 
 
-<div class="delivery-location d-flex cursor-pointer">
+<!-- <div class="delivery-location d-flex cursor-pointer">
   <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
   <div id="selected-location-address" class="font-weight-bold"></div>  
-</div>
+</div> -->
 
 
 <div class="product-section">  
@@ -169,7 +169,7 @@
 <div id="react-sign-in-container"></div>
 
 <!-- verify-otp container -->
-<div id="react-sign-in-container"></div>
+<div id="react-verify-otp-container"></div>
 
 <div class="msg-container">
 <!-- Add to cart error  -->
@@ -192,7 +192,7 @@
 </div>
 
 
-<div class="cart-wrapper" id="root">
+<div class="cart-wrapper cart-loader" id="root">
   <div class="cart-app-loader">
     Loading...
   </div>

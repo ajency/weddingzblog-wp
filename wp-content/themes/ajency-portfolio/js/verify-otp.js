@@ -39,18 +39,18 @@ var verifyOtp = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				{ 'class': 'slide-in flex-slide-in', id: 'otp' },
+				{ className: 'slide-in flex-slide-in', id: 'otp' },
 				React.createElement(
 					'div',
-					{ 'class': 'slide-in-header header-container d-flex align-items-center' },
+					{ className: 'slide-in-header header-container d-flex align-items-center' },
 					React.createElement(
 						'div',
-						{ 'class': 'app-name d-flex align-items-center' },
+						{ className: 'app-name d-flex align-items-center' },
 						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' })
 					),
 					React.createElement(
 						'div',
-						{ 'class': 'app-chekout text-green' },
+						{ className: 'app-chekout text-green' },
 						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png', className: 'app-log', alt: 'Green Grain Bowl', title: 'Green Grain Bowl' }),
 						'Secure ',
 						React.createElement('br', null),
@@ -58,7 +58,7 @@ var verifyOtp = function (_React$Component) {
 					),
 					React.createElement(
 						'h3',
-						{ 'class': 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
+						{ className: 'app-close bg-primary m-0 text-white btn-pay m-0', onClick: function onClick() {
 								return _this2.hideVerifyOtpSlider();
 							} },
 						React.createElement(
@@ -70,29 +70,29 @@ var verifyOtp = function (_React$Component) {
 				),
 				React.createElement(
 					'div',
-					{ 'class': 'slide-in-content' },
-					React.createElement('div', { 'class': 'spacer-210' }),
+					{ className: 'slide-in-content' },
+					React.createElement('div', { className: 'spacer-210' }),
 					React.createElement(
 						'h3',
-						{ 'class': 'h1 ft6' },
+						{ className: 'h1 ft6' },
 						'Verify Mobile'
 					),
 					React.createElement(
 						'h4',
-						{ 'class': 'font-weight-light mt-4 pb-4' },
+						{ className: 'font-weight-light mt-4 pb-4' },
 						'Enter the 6 digit code sent to the number'
 					),
 					this.state.phoneNumber,
 					React.createElement(
 						'div',
-						{ 'class': 'mb-1 pt-4' },
+						{ className: 'mb-1 pt-4' },
 						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'number', placeholder: 'Enter OTP', onChange: function onChange(e) {
 								_this2.setOtp(e.target.value);
 							}, value: this.state.otp })
 					),
 					React.createElement(
 						'h6',
-						{ 'class': 'mb-4 pb-3' },
+						{ className: 'mb-4 pb-3' },
 						'Didn\'t receive the code? ',
 						React.createElement(
 							'a',
@@ -104,7 +104,7 @@ var verifyOtp = function (_React$Component) {
 					),
 					React.createElement(
 						'div',
-						{ 'class': 'btn-wrapper pt-4' },
+						{ className: 'btn-wrapper pt-4' },
 						this.getOtpButtons()
 					),
 					this.displayOtpErrorMsg()
@@ -119,8 +119,8 @@ var verifyOtp = function (_React$Component) {
 			if (this.state.showOtpLoader) {
 				return React.createElement(
 					'div',
-					{ 'class': 'btn-icon' },
-					React.createElement('i', { 'class': 'fas fa-circle-notch fa-spin fa-lg' })
+					{ className: 'btn-icon' },
+					React.createElement('i', { className: 'fas fa-circle-notch fa-spin fa-lg' })
 				);
 			}
 			// return (<div> 
@@ -131,15 +131,15 @@ var verifyOtp = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				{ 'class': 'btn-inner-wrap' },
+				{ className: 'btn-inner-wrap' },
 				React.createElement(
 					'button',
-					{ type: 'button', 'class': 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
+					{ type: 'button', className: 'btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100', onClick: function onClick() {
 							_this3.verifyOtp();
 						}, disabled: this.state.otp.length < 6 },
 					'Verify OTP'
 				),
-				React.createElement('i', { 'class': 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
+				React.createElement('i', { className: 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
 			);
 		}
 	}, {
@@ -232,10 +232,10 @@ var verifyOtp = function (_React$Component) {
 	return verifyOtp;
 }(React.Component);
 
-var domContainer = document.querySelector('#react-verify-otp-container');
-var otpModalComponent = ReactDOM.render(e(verifyOtp), domContainer);
+var otpContainer = document.querySelector('#react-verify-otp-container');
+var otpModalComponent = ReactDOM.render(e(verifyOtp), otpContainer);
 
-window.showVerifyOtpSlider = function (data) {
+window.showOTPSlider = function (data) {
 	console.log("check show otp modal==>");
 	otpModalComponent.setState({ phoneNumber: '', otp: '', confirmationResult: '', disableButtons: false, errorMessage: '', showOtpLoader: false, otpErrorMsg: '' });
 	document.querySelector('#otp').classList.add('visible');

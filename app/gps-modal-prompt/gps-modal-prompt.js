@@ -8,7 +8,7 @@ let cancel;
 let debounceTimer;
 
 const locationStyle = {
-	'list-style' : 'none'
+	'listStyle' : 'none'
 }
 
 class gpsModalPrompt extends React.Component {
@@ -109,13 +109,13 @@ class gpsModalPrompt extends React.Component {
 				<div>
 					<div className="" > Fetching current Location </div>
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				</div>
 			)
 		else if(!this.state.settingUserLocation)
 			return (
-				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img class="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
+				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
 			)
 	}
 
@@ -125,7 +125,7 @@ class gpsModalPrompt extends React.Component {
 				<div>
 					Setting User location ...
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				</div>
 			)
@@ -158,15 +158,24 @@ class gpsModalPrompt extends React.Component {
 					{loc.description}
 				</li>
 			);
+			this.scrollTop();
 			return locs;
 		}
 		if(this.state.showLoader && !this.state.locations.length){
 			return (
 					<div>
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 					</div>
 				)
 		}
+
+		// if(!this.state.locations.length && this.state.searchText.length > 2){
+		// 	return (
+		// 			<div>
+		// 				No results, please enter a valid street address
+		// 			</div>
+		// 		);
+		// }
 	}
 
 	checkLocationErrorMsg(){
@@ -182,6 +191,13 @@ class gpsModalPrompt extends React.Component {
 					You have no saved addreses. Please set delivery location from options below
 				</div>
 			);
+	}
+
+	scrollTop(){
+		setTimeout(()=> {
+			let objDiv = document.getElementById("gpsModal"); 
+			objDiv.scrollTop = objDiv.scrollHeight;
+		},100)
 	}
 
 	closeGpsSlider(){
@@ -229,6 +245,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	reverseGeocode(loc = null, latlng=null) {
+		this.setSliderLoader();
 		this.setState({locations : [], locError : '', settingUserLocation : true})
 		let url = this.state.apiEndPoint + "/reverse-geocode";
 		let body = {};
@@ -247,10 +264,12 @@ class gpsModalPrompt extends React.Component {
 						this.setUserLocations(latlng, res.data.results[0].formatted_address);
 				}
 				else{
+					this.removeSliderLoader();
 					this.setState({fetchingGPS : false, locError : res.data.error_message});
 				}
 			})
 			.catch((error)=>{
+				this.removeSliderLoader();
 				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in autoCompleteLocation ==>", error);
 				let msg = error.message ? error.message : error;
@@ -270,12 +289,14 @@ class gpsModalPrompt extends React.Component {
 			};
 			axios.post(url, body)
 			.then((res) => {
+				this.removeSliderLoader();
 				this.updateLocationUI(lat_lng, formatted_address);
 				this.setState({ fetchingGPS : false, searchText : '', settingUserLocation : false});
-				this.closeGpsModal()
+				this.closeGpsModal();
 
 			})
 			.catch((error)=>{
+				this.removeSliderLoader();
 				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in updating cart location ==>", error);
 				let msg = error.message ? error.message : error;
@@ -283,6 +304,7 @@ class gpsModalPrompt extends React.Component {
 			})
 		}
 		else{
+			this.removeSliderLoader();
 			this.setState({ fetchingGPS : false, searchText: '', settingUserLocation : false});
 			this.updateLocationUI(lat_lng, formatted_address);
 			this.closeGpsModal();
@@ -295,7 +317,7 @@ class gpsModalPrompt extends React.Component {
 		document.cookie = "formatted_address=" + formatted_address + ";path=/";
 		window.lat_lng = lat_lng;
 		window.formatted_address = formatted_address;
-		document.querySelector("#selected-location-address").innerHTML = formatted_address;
+		document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';
 		let cart_address = document.querySelector("#cart-delivery-address");
 		if(cart_address){
 			cart_address.innerHTML = formatted_address;
@@ -307,8 +329,8 @@ class gpsModalPrompt extends React.Component {
 		}
 	}
 
-
 	getLocation(){
+		this.setSliderLoader();
 		this.setState({locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
@@ -320,6 +342,7 @@ class gpsModalPrompt extends React.Component {
 			this.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 		},
 		(geoError) =>{
+			this.removeSliderLoader();
 			this.setState({fetchingGPS : false});
 			console.log("error in getting geolocation", geoError);
 			if(geoError.code === 1){
@@ -365,6 +388,14 @@ class gpsModalPrompt extends React.Component {
 
 	showSignInScreen(){
 		window.showSignInModal(true);
+	}
+
+	setSliderLoader(){
+		document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
+	}
+
+	removeSliderLoader(){
+		document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
 	}
 
 }

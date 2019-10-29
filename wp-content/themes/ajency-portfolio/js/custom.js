@@ -220,7 +220,8 @@ $(document).ready(function(){
         let formatted_address = getCookie('formatted_address');
         if(formatted_address){
             window.formatted_address = formatted_address;
-            document.querySelector("#selected-location-address").innerHTML = formatted_address;
+            document.querySelector("#selected-location-address").innerHTML = 
+            '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>'
         }
     }
 })
@@ -312,7 +313,24 @@ function loadCartApp(){
 }
 
 $('.delivery-location').click(function() {
-   window.showGpsModalPrompt(true);
+    setTimeout(()=>{
+        if(window.lat_lng && window.formatted_address){
+            $('#selected-location-address').addClass('show');
+        }
+        else{
+            window.showGpsModalPrompt(true);
+        }
+    },50)
+});
+
+$('#selected-location-address').click(function(){
+    window.showGpsModalPrompt(true);
+})
+
+$(window).click(function(e) {
+    if($( "#selected-location-address" ).hasClass( "show" ) ){
+        $('#selected-location-address').removeClass('show');
+    }
 });
 
 
@@ -339,6 +357,16 @@ function addBackDrop(){
 
 
 function removeBackDrop(){
-    $('.backdrop').removeClass('show');
-    $('body').removeClass('hide-scroll');
+    if(!$('.cart-wrapper').hasClass('active')){
+        $('.backdrop').removeClass('show');
+        $('body').removeClass('hide-scroll');
+    }
+}
+
+function addCartLoader(){
+    $('.cart-wrapper').addClass('cart-loader');
+}
+
+function removeCartLoader(){
+    $('.cart-wrapper').removeClass('cart-loader');   
 }

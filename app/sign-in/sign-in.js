@@ -19,30 +19,30 @@ class signInModal extends React.Component {
 
 	render() {
 		return (
-			<div class="slide-in flex-slide-in" id="phone_number">
-			  <div class="slide-in-header header-container d-flex align-items-center">
-			      <div class="app-name d-flex align-items-center">					
+			<div className="slide-in flex-slide-in" id="phone_number">
+			  <div className="slide-in-header header-container d-flex align-items-center">
+			      <div className="app-name d-flex align-items-center">					
 			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			      </div>
-			      <div class="app-chekout text-green">
+			      <div className="app-chekout text-green">
 			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/checkout.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			          Secure <br/>Checkout
 			      </div>
-			      <h3 class="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.closeSignInSlider()} disabled={this.state.disableButtons}>
+			      <h3 className="app-close bg-primary m-0 text-white btn-pay m-0" onClick={() => this.closeSignInSlider()} disabled={this.state.disableButtons}>
 			          <span aria-hidden="true"><img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/remove.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl" /></span>
 			      </h3>
 			  </div>
-			  <div class="slide-in-content">
-			      <div class="spacer-210"></div>
-			      <h3 class="h1 ft6">Login</h3>
-			      <h4 class="font-weight-light mt-4 pb-4">
+			  <div className="slide-in-content">
+			      <div className="spacer-210"></div>
+			      <h3 className="h1 ft6">Login</h3>
+			      <h4 className="font-weight-light mt-4 pb-4">
 			        Having an account with GGB makes it dead simple to place orders
 			      </h4>
-			      <div class="mb-3 pt-4 pb-2">
+			      <div className="mb-3 pt-4 pb-2">
 			        <input className="w-100 p-3 border-green h5 ft6 rounded-0" placeholder="10 digit mobile number" type="text" onKeyDown={e => {this.validateMobile(e)}} onChange={e => {this.setUserMobile(e.target.value)}} value={this.state.phoneNumber} /> <br/>
 					<div className="d-none" id='sign-in-button'></div>
 			      </div>
-			      <div class="btn-wrapper pt-4">
+			      <div className="btn-wrapper pt-4">
 			      		{this.getSignInButtons()}
 			      </div>
 
@@ -55,14 +55,14 @@ class signInModal extends React.Component {
 	getSignInButtons(){
 		if(this.state.showSignInLoader){
 			return (
-				<div class="btn-icon">
-						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+				<div className="btn-icon">
+						<i className="fas fa-circle-notch fa-spin fa-lg"></i>
 				</div>
 			);
 		}
-		return (<div class="btn-inner-wrap">
-		          <button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=> this.signInWithPhoneNumber()} disabled={this.state.phoneNumber.length < 10}>Submit</button>
-		          <i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+		return (<div className="btn-inner-wrap">
+		          <button type="button" className="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100" onClick={()=> this.signInWithPhoneNumber()} disabled={this.state.phoneNumber.length < 10}>Submit</button>
+		          <i className="text-white fa fa-arrow-right" aria-hidden="true"></i>
 		        </div>
 		);
 	}
@@ -169,7 +169,7 @@ class signInModal extends React.Component {
 	}
 
 	showOtpSlider(confirmationResult, phone_number){
-		window.showVerifyOtpSlider(true);
+		window.showOTPSlider(true);
 		window.updateOtpSLider(confirmationResult, phone_number);
 	}
 

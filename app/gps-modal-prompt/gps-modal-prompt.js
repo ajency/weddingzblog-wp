@@ -203,13 +203,13 @@ class gpsModalPrompt extends React.Component {
 				)
 		}
 
-		// if(!this.state.locations.length && this.state.searchText.length > 2){
-		// 	return (
-		// 			<div>
-		// 				No results, please enter a valid street address
-		// 			</div>
-		// 		);
-		// }
+		if(!this.state.locations.length && this.state.searchText.length > 2){
+			return (
+					<div>
+						No results, please enter a valid street address
+					</div>
+				);
+		}
 	}
 
 	checkLocationErrorMsg(){
@@ -441,7 +441,7 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 
 window.showGpsModalPrompt = (display, addresses = null) => {
-	gpsModalPromptComponent.setState({showNoAddressMsg : false, locations : []});
+	gpsModalPromptComponent.setState({showNoAddressMsg : false, locations : [], locError : '', gpsError : '', fetchingGPS : false, searchText : '', settingUserLocation : false});
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 }

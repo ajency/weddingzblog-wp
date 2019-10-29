@@ -321,13 +321,13 @@ var gpsModalPrompt = function (_React$Component) {
 				);
 			}
 
-			// if(!this.state.locations.length && this.state.searchText.length > 2){
-			// 	return (
-			// 			<div>
-			// 				No results, please enter a valid street address
-			// 			</div>
-			// 		);
-			// }
+			if (!this.state.locations.length && this.state.searchText.length > 2) {
+				return React.createElement(
+					'div',
+					null,
+					'No results, please enter a valid street address'
+				);
+			}
 		}
 	}, {
 		key: 'checkLocationErrorMsg',
@@ -577,7 +577,7 @@ var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-	gpsModalPromptComponent.setState({ showNoAddressMsg: false, locations: [] });
+	gpsModalPromptComponent.setState({ showNoAddressMsg: false, locations: [], locError: '', gpsError: '', fetchingGPS: false, searchText: '', settingUserLocation: false });
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 };

@@ -159,7 +159,7 @@ class gpsModalPrompt extends React.Component {
 			let addresses = this.state.addresses.map((address)=>{
 				return (
 					<li key={address.id} className="cursor-pointer address saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
-						<img src="http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/slidein/home.png" className="address-icon"/>
+						<img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png" className="address-icon"/>
 						<span className="address-text font-weight-light h5">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
 					</li>
 				)

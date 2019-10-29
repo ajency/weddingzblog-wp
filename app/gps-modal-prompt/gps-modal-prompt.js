@@ -169,13 +169,13 @@ class gpsModalPrompt extends React.Component {
 				)
 		}
 
-		if(!this.state.locations.length && this.state.searchText.length > 2){
-			return (
-					<div>
-						No results, please enter a valid street address
-					</div>
-				);
-		}
+		// if(!this.state.locations.length && this.state.searchText.length > 2){
+		// 	return (
+		// 			<div>
+		// 				No results, please enter a valid street address
+		// 			</div>
+		// 		);
+		// }
 	}
 
 	checkLocationErrorMsg(){
@@ -245,6 +245,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	reverseGeocode(loc = null, latlng=null) {
+		this.setSliderLoader();
 		this.setState({locations : [], locError : '', settingUserLocation : true})
 		let url = this.state.apiEndPoint + "/reverse-geocode";
 		let body = {};
@@ -263,10 +264,12 @@ class gpsModalPrompt extends React.Component {
 						this.setUserLocations(latlng, res.data.results[0].formatted_address);
 				}
 				else{
+					this.removeSliderLoader();
 					this.setState({fetchingGPS : false, locError : res.data.error_message});
 				}
 			})
 			.catch((error)=>{
+				this.removeSliderLoader();
 				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in autoCompleteLocation ==>", error);
 				let msg = error.message ? error.message : error;
@@ -286,12 +289,14 @@ class gpsModalPrompt extends React.Component {
 			};
 			axios.post(url, body)
 			.then((res) => {
+				this.removeSliderLoader();
 				this.updateLocationUI(lat_lng, formatted_address);
 				this.setState({ fetchingGPS : false, searchText : '', settingUserLocation : false});
-				this.closeGpsModal()
+				this.closeGpsModal();
 
 			})
 			.catch((error)=>{
+				this.removeSliderLoader();
 				this.setState({ fetchingGPS : false, settingUserLocation : false});
 				console.log("error in updating cart location ==>", error);
 				let msg = error.message ? error.message : error;
@@ -299,6 +304,7 @@ class gpsModalPrompt extends React.Component {
 			})
 		}
 		else{
+			this.removeSliderLoader();
 			this.setState({ fetchingGPS : false, searchText: '', settingUserLocation : false});
 			this.updateLocationUI(lat_lng, formatted_address);
 			this.closeGpsModal();
@@ -323,8 +329,8 @@ class gpsModalPrompt extends React.Component {
 		}
 	}
 
-
 	getLocation(){
+		this.setSliderLoader();
 		this.setState({locations : [], fetchingGPS : true})
 		let geoOptions = {
 			maximumAge: 30 * 60 * 1000,
@@ -336,6 +342,7 @@ class gpsModalPrompt extends React.Component {
 			this.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 		},
 		(geoError) =>{
+			this.removeSliderLoader();
 			this.setState({fetchingGPS : false});
 			console.log("error in getting geolocation", geoError);
 			if(geoError.code === 1){
@@ -381,6 +388,14 @@ class gpsModalPrompt extends React.Component {
 
 	showSignInScreen(){
 		window.showSignInModal(true);
+	}
+
+	setSliderLoader(){
+		document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
+	}
+
+	removeSliderLoader(){
+		document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
 	}
 
 }

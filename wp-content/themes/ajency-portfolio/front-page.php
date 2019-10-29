@@ -192,7 +192,7 @@
 </div>
 
 
-<div class="cart-wrapper" id="root">
+<div class="cart-wrapper cart-loader" id="root">
   <div class="cart-app-loader">
     Loading...
   </div>

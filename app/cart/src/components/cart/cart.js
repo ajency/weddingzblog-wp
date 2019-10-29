@@ -138,6 +138,7 @@ class Cart extends Component {
 	}
 
 	fetchCart() {
+		window.addCartLoader();
 		console.log("inside fetch cart");
 		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
@@ -148,10 +149,12 @@ class Cart extends Component {
 			}
 			axios.get(url, {params : body})
 				.then((res) => {
+					window.removeCartLoader();
 					console.log("fetch cart response ==>", res);
 					this.setState({cartData : res.data, fetchCartComplete : true});
 				})
 				.catch((error)=>{
+					window.removeCartLoader();
 					this.setState({fetchCartFailureMsg : error.message,  fetchCartComplete : true})
 					console.log("error in fetch cart ==>", error);
 				})
@@ -159,6 +162,7 @@ class Cart extends Component {
 		else{
 			console.log("inside else")
 			setTimeout(()=>{
+				window.removeCartLoader();
 				this.setState({cartEmpty : true, fetchCartComplete : true});
 			},100)
 		}

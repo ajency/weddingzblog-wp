@@ -288,13 +288,13 @@ var gpsModalPrompt = function (_React$Component) {
 				);
 			}
 
-			if (!this.state.locations.length && this.state.searchText.length > 2) {
-				return React.createElement(
-					'div',
-					null,
-					'No results, please enter a valid street address'
-				);
-			}
+			// if(!this.state.locations.length && this.state.searchText.length > 2){
+			// 	return (
+			// 			<div>
+			// 				No results, please enter a valid street address
+			// 			</div>
+			// 		);
+			// }
 		}
 	}, {
 		key: 'checkLocationErrorMsg',
@@ -375,6 +375,7 @@ var gpsModalPrompt = function (_React$Component) {
 			var loc = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 			var latlng = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
+			this.setSliderLoader();
 			this.setState({ locations: [], locError: '', settingUserLocation: true });
 			var url = this.state.apiEndPoint + "/reverse-geocode";
 			var body = {};
@@ -385,9 +386,11 @@ var gpsModalPrompt = function (_React$Component) {
 					_this8.setState({ settingUserLocation: false, gpsError: '' });
 					if (loc) _this8.setUserLocations([res.data.result.geometry.location.lat, res.data.result.geometry.location.lng], res.data.result.formatted_address);else if (latlng) _this8.setUserLocations(latlng, res.data.results[0].formatted_address);
 				} else {
+					_this8.removeSliderLoader();
 					_this8.setState({ fetchingGPS: false, locError: res.data.error_message });
 				}
 			}).catch(function (error) {
+				_this8.removeSliderLoader();
 				_this8.setState({ fetchingGPS: false, settingUserLocation: false });
 				console.log("error in autoCompleteLocation ==>", error);
 				var msg = error.message ? error.message : error;
@@ -409,16 +412,19 @@ var gpsModalPrompt = function (_React$Component) {
 					formatted_address: formatted_address
 				};
 				axios.post(url, body).then(function (res) {
+					_this9.removeSliderLoader();
 					_this9.updateLocationUI(lat_lng, formatted_address);
 					_this9.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
 					_this9.closeGpsModal();
 				}).catch(function (error) {
+					_this9.removeSliderLoader();
 					_this9.setState({ fetchingGPS: false, settingUserLocation: false });
 					console.log("error in updating cart location ==>", error);
 					var msg = error.message ? error.message : error;
 					_this9.setState({ locError: msg });
 				});
 			} else {
+				this.removeSliderLoader();
 				this.setState({ fetchingGPS: false, searchText: '', settingUserLocation: false });
 				this.updateLocationUI(lat_lng, formatted_address);
 				this.closeGpsModal();
@@ -447,6 +453,7 @@ var gpsModalPrompt = function (_React$Component) {
 		value: function getLocation() {
 			var _this10 = this;
 
+			this.setSliderLoader();
 			this.setState({ locations: [], fetchingGPS: true });
 			var geoOptions = {
 				maximumAge: 30 * 60 * 1000,
@@ -457,6 +464,7 @@ var gpsModalPrompt = function (_React$Component) {
 				console.log("position ==>", position.coords);
 				_this10.reverseGeocode(null, [position.coords.latitude, position.coords.longitude]);
 			}, function (geoError) {
+				_this10.removeSliderLoader();
 				_this10.setState({ fetchingGPS: false });
 				console.log("error in getting geolocation", geoError);
 				if (geoError.code === 1) {
@@ -507,6 +515,16 @@ var gpsModalPrompt = function (_React$Component) {
 		key: 'showSignInScreen',
 		value: function showSignInScreen() {
 			window.showSignInModal(true);
+		}
+	}, {
+		key: 'setSliderLoader',
+		value: function setSliderLoader() {
+			document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
+		}
+	}, {
+		key: 'removeSliderLoader',
+		value: function removeSliderLoader() {
+			document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
 		}
 	}]);
 

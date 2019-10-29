@@ -54,10 +54,11 @@ class Quantity extends Component {
 			quantity 	: quantity,
 			cart_id 	: window.getCookie('cart_id')
 		}
-
+		window.addCartLoader();
 		axios.post(url, body)
 		.then((res) => {
 			console.log("add to cart response ==>", res);
+			window.removeCartLoader();
 			if(res.data.success){
 				let updated_quantity = this.state.quantity - quantity;
 				console.log("check ==>", updated_quantity, quantity, this.state.quantity);
@@ -82,6 +83,7 @@ class Quantity extends Component {
 			this.setState({apiCallInProgress : false});
 		})
 		.catch((error)=>{
+			window.removeCartLoader();
 			console.log("error in add to cart ==>", error);
 			this.setState({apiCallInProgress : false});
 			let msg = error && error.message ? error.message : error;
@@ -90,6 +92,7 @@ class Quantity extends Component {
 	}
 
 	addToCart(quantity){
+		window.addCartLoader();
 		this.setState({apiCallInProgress : true});
 		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
 		let body = {
@@ -100,6 +103,7 @@ class Quantity extends Component {
 
 		axios.post(url, body)
 		.then((res) => {
+			window.removeCartLoader();
 			console.log("add to cart response ==>", res);
 			if(res.data.success){
 				this.props.updateSummary(res.data.summary);
@@ -114,6 +118,7 @@ class Quantity extends Component {
 			this.setState({apiCallInProgress : false});
 		})
 		.catch((error)=>{
+			window.removeCartLoader();
 			console.log("error in add to cart ==>", error);
 			this.setState({apiCallInProgress : false});
 			let msg = error && error.message ? error.message : error;

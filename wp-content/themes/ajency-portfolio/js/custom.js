@@ -362,3 +362,11 @@ function removeBackDrop(){
         $('body').removeClass('hide-scroll');
     }
 }
+
+function addCartLoader(){
+    $('.cart-wrapper').addClass('cart-loader');
+}
+
+function removeCartLoader(){
+    $('.cart-wrapper').removeClass('cart-loader');   
+}

@@ -159,7 +159,7 @@ class gpsModalPrompt extends React.Component {
 			let addresses = this.state.addresses.map((address)=>{
 				return (
 					<li key={address.id} className="cursor-pointer address saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
-						<img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png" className="address-icon"/>
+						{this.getAddressIcon(address.address.type)}
 						<span className="address-text font-weight-light h5">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
 					</li>
 				)
@@ -173,6 +173,16 @@ class gpsModalPrompt extends React.Component {
 				</div>
 			);
 		}
+	}
+
+	getAddressIcon(type){
+		console.log("type :  ", type);
+		let src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/map.png"
+		if(type == 'home')
+			src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png"
+		else if(type == 'office')
+			src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/office.png"
+		return (<img src={src} className="address-icon"/>)
 	}
 
 	getAutoCompleteLocations(){

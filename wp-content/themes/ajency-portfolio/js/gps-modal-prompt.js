@@ -255,7 +255,7 @@ var gpsModalPrompt = function (_React$Component) {
 						{ key: address.id, className: 'cursor-pointer address saved-address-item', onClick: function onClick() {
 								return _this6.setUserLocations(address.address.lat_long, address.address.formatted_address);
 							} },
-						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png', className: 'address-icon' }),
+						_this6.getAddressIcon(address.address.type),
 						React.createElement(
 							'span',
 							{ className: 'address-text font-weight-light h5' },
@@ -286,6 +286,14 @@ var gpsModalPrompt = function (_React$Component) {
 					)
 				);
 			}
+		}
+	}, {
+		key: 'getAddressIcon',
+		value: function getAddressIcon(type) {
+			console.log("type :  ", type);
+			var src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/map.png";
+			if (type == 'home') src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png";else if (type == 'office') src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/office.png";
+			return React.createElement('img', { src: src, className: 'address-icon' });
 		}
 	}, {
 		key: 'getAutoCompleteLocations',

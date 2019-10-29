@@ -49,20 +49,20 @@ class addToCart extends React.Component {
 
 			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
 				  	<div className="custom-modal-content p-4">
-						<div className="p-5">
-							<h2>Repeat last used customization?</h2>
+						<div className="pl-0 pt-0 pr-0 pb-1">
+							<h3 className="h1 ft6">Repeat last used customization?</h3>
 						</div>
-						<div className="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
+						<div className="product-variant-title font-size-18 letter-spacing-5 font-weight-light mt-0 pb-3" title="Noodle Salad Bowl">
 				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
-				            	{this.props.product_data.title}
+				            {this.props.product_data.title}
 				        </div>
-						<div className="p-3">
-							<h3>{this.getLastSelected()}</h3>
+						<div className="pl-0 pt-0 pb-3 pr-3">
+							<h6>{this.getLastSelected()}</h6>
 						</div>
 
 						<div className="d-flex justify-content-between">
-							<button className="btn btn-primary" onClick={()=>this.showVariantModal()}> I'll Choose </button>
-							<button className="btn btn-primary" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
+							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.showVariantModal()}> I'll Choose </button>
+							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
 						</div>
 				  	</div>
 			    </div>
@@ -115,7 +115,7 @@ class addToCart extends React.Component {
 	}
 
 	hideRepeateLastModal(){
-		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelector('#-' + this.props.product_data.product_id).classList.remove('show-modal');
 		document.querySelectorAll('.product-wrapper')
 			.forEach((domContainer) => {
 				domContainer.classList.remove('transform-none');
@@ -151,7 +151,7 @@ class addToCart extends React.Component {
 				)
 
 		return (
-			<div>
+			<div className="border-green">
 				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
 				<span className="m-1">	{this.state.quantity} </span>
 				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>

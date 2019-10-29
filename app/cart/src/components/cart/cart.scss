@@ -9,10 +9,12 @@
 	right: -100%;
 	left: auto;
 	width: 100%;
-	height: calc(100% - 50px);
+	//height: calc(100% - 50px);
+	height: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	transition: all 0.3s ease-in;
+	padding-bottom: 52px;
 	.cart-heading {
 		padding: 15px;
 		font-size: 18px;

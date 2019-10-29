@@ -60,7 +60,7 @@ class Cart extends Component {
 			cartContainer = <div className="text-center mt-5 p-15"> <h4 className="font-weight-meidum m-0"> Loading... </h4>  </div>
 		else {
 			if(this.state.cartEmpty){
-				cartContainer = <div className="text-center mt-5"> <h4> Your cart is Empty. Add something from the menu </h4>  </div>
+				cartContainer = <div className="text-center mt-5 p-15"> <h4> Your cart is Empty. Add something from the menu </h4>  </div>
 			}
 			else if (this.state.fetchCartFailed){
 				cartContainer = <div className="text-center mt-5"> <h4> {this.state.fetchCartFailureMsg} </h4>  </div>

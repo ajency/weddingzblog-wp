@@ -100,24 +100,24 @@ var addToCart = function (_React$Component) {
 						{ className: 'custom-modal-content p-4' },
 						React.createElement(
 							'div',
-							{ className: 'p-5' },
+							{ className: 'pl-0 pt-0 pr-0 pb-1' },
 							React.createElement(
-								'h2',
-								null,
+								'h3',
+								{ className: 'h1 ft6' },
 								'Repeat last used customization?'
 							)
 						),
 						React.createElement(
 							'div',
-							{ className: 'product-variant-title text-grey font-size-18 letter-spacing-5 mb-3', title: 'Noodle Salad Bowl' },
+							{ className: 'product-variant-title font-size-18 letter-spacing-5 font-weight-light mt-0 pb-3', title: 'Noodle Salad Bowl' },
 							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png', className: 'mr-3', alt: 'Bowl icon' }),
 							this.props.product_data.title
 						),
 						React.createElement(
 							'div',
-							{ className: 'p-3' },
+							{ className: 'pl-0 pt-0 pb-3 pr-3' },
 							React.createElement(
-								'h3',
+								'h6',
 								null,
 								this.getLastSelected()
 							)
@@ -127,14 +127,14 @@ var addToCart = function (_React$Component) {
 							{ className: 'd-flex justify-content-between' },
 							React.createElement(
 								'button',
-								{ className: 'btn btn-primary', onClick: function onClick() {
+								{ className: 'btn btn-primary rounded-0 p-15 text-left w-48', onClick: function onClick() {
 										return _this2.showVariantModal();
 									} },
 								' I\'ll Choose '
 							),
 							React.createElement(
 								'button',
-								{ className: 'btn btn-primary', onClick: function onClick() {
+								{ className: 'btn btn-primary rounded-0 p-15 text-left w-48', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.lastSelected);
 									} },
 								' Repeat Last '
@@ -204,7 +204,7 @@ var addToCart = function (_React$Component) {
 	}, {
 		key: 'hideRepeateLastModal',
 		value: function hideRepeateLastModal() {
-			document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+			document.querySelector('#-' + this.props.product_data.product_id).classList.remove('show-modal');
 			document.querySelectorAll('.product-wrapper').forEach(function (domContainer) {
 				domContainer.classList.remove('transform-none');
 			});
@@ -254,7 +254,7 @@ var addToCart = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'border-green' },
 				React.createElement(
 					'button',
 					{ className: 'btn-primary', style: btnStyle, onClick: function onClick() {

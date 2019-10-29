@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Futura PT';
+  src: url('./assets/fonts/FuturaPT-Medium.eot');
+  src: url('./assets/fonts/FuturaPT-Medium.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/FuturaPT-Medium.woff2') format('woff2'),
+      url('./assets/fonts/FuturaPT-Medium.woff') format('woff'),
+      url('./assets/fonts/FuturaPT-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('./assets/fonts/FuturaPT-Bold.eot');
+  src: url('./assets/fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/FuturaPT-Bold.woff2') format('woff2'),
+      url('./assets/fonts/FuturaPT-Bold.woff') format('woff'),
+      url('./assets/fonts/FuturaPT-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('./assets/fonts/FuturaPT-Light.eot');
+  src: url('./assets/fonts/FuturaPT-Light.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/FuturaPT-Light.woff2') format('woff2'),
+      url('./assets/fonts/FuturaPT-Light.woff') format('woff'),
+      url('./assets/fonts/FuturaPT-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT Demi';
+  src: url('./assets/fonts/FuturaPT-Demi.eot');
+  src: url('./assets/fonts/FuturaPT-Demi.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/FuturaPT-Demi.woff2') format('woff2'),
+      url('./assets/fonts/FuturaPT-Demi.woff') format('woff'),
+      url('./assets/fonts/FuturaPT-Demi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Futura PT';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #eee;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

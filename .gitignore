@@ -33,3 +33,12 @@ wp-content/themes/HighendWP/
 
 node_modules/
 
+app/add-to-cart/package.json
+app/add-to-cart/package-lock.json
+app/view-cart/package.json
+app/view-cart/package-lock.json
+app/gps-modal-prompt/package.json
+app/gps-modal-prompt/package-lock.json
+app/sign-in/package.json
+app/sign-in/package-lock.json
+

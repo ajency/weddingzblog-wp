@@ -1,0 +1,407 @@
+'use strict';
+
+const e = React.createElement;
+
+class addToCart extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			// apiEndPoint : 'http://localhost:5000/project-ggb-dev/us-central1/api/rest/v1',
+			apiEndPoint : 'https://us-central1-project-ggb-dev.cloudfunctions.net/api/rest/v1',
+			apiCallInProgress : false,
+			quantity : 0,
+			lastSelected : '',
+			items : [],
+			selectedVariant : ''
+		};
+	}
+
+	componentDidMount(){
+		this.setState({selectedVariant : this.props.product_data.default.id })
+		variantModals[this.props.product_data.product_id] = document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id);
+		repeateModals[this.props.product_data.product_id] = document.querySelector('#repeatLast-' + this.props.product_data.product_id);
+	}
+
+	render() {
+		return (
+			<div>
+				{this.getButtonContent()}
+
+			    <div className="custom-modal" id={'variantSelectionModal-' + this.props.product_data.product_id}>
+				    <div className="custom-modal-content p-4">
+				        <div className="product-variant text-left">
+				          <div className="product-variant-title text-grey font-size-18 letter-spacing-5 mb-3" title="Noodle Salad Bowl">
+				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
+				            	{this.props.product_data.title}
+				          </div>
+				          <div className="font-size-15 text-black mb-3 ft6">Choose your Bowl</div>
+				          <div className="variant-list">
+				          		{this.getVariants()}
+				          </div>
+				        </div>
+				        <div className="custom-modal-footer text-right">
+				          <button type="button" className="btn-reset btn-back font-size-15 text-grey text-uppercase mr-5" onClick={()=> this.hideVariantModal()}>Back</button>
+				          <button type="button" className="btn-reset btn-continue font-size-15 text-uppercase" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
+				        </div>
+				    </div>
+				</div>
+
+
+			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
+				  	<div className="custom-modal-content p-4">
+						<div className="pl-0 pt-0 pr-0 pb-1">
+							<h3 className="h1 ft6">Repeat last used customization?</h3>
+						</div>
+						<div className="product-variant-title font-size-18 letter-spacing-5 font-weight-light mt-0 pb-3" title="Noodle Salad Bowl">
+				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
+				            {this.props.product_data.title}
+				        </div>
+						<div className="pl-0 pt-0 pb-3 pr-3">
+							<h6>{this.getLastSelected()}</h6>
+						</div>
+
+						<div className="d-flex justify-content-between">
+							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.showVariantModal()}> I'll Choose </button>
+							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
+						</div>
+				  	</div>
+			    </div>
+			</div>
+		);
+	}
+
+	getVariants(){
+		let variants = this.props.product_data.variants.map((variant)=>{
+			return (
+				<div key={variant.id} className="list-item">
+		              <label className="custom-radio-btn font-size-15 text-grey mb-4">
+		              		<span className={"mw-70 " + (this.state.selectedVariant == variant.id ? 'text-primary' : '') }>{variant.size}</span> {variant.sale_price}
+		                	<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} checked={this.state.selectedVariant == variant.id} onChange={(event) => this.handleOptionChange(event)} />
+		                	<span className="checkmark"></span>
+		              </label>
+				</div>
+			)
+		})
+		return variants;
+	}
+
+	showVariantModal(){
+		this.hideRepeateLastModal();
+		this.setState({selectedVariant : this.props.product_data.default.id });
+		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.add('transform-none');
+			});
+		window.hideScroll();
+	}
+
+	hideVariantModal(){
+		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.remove('transform-none');
+			});
+		window.showScroll();
+	}
+
+	showRepeateLastModal(){
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.add('show-modal');	
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.add('transform-none');
+			});
+		window.hideScroll();
+	}
+
+	hideRepeateLastModal(){
+		document.querySelector('#repeatLast-' + this.props.product_data.product_id).classList.remove('show-modal');
+		document.querySelectorAll('.product-wrapper')
+			.forEach((domContainer) => {
+				domContainer.classList.remove('transform-none');
+			});
+		window.showScroll();
+	}
+
+	getLastSelected(){
+		let last_selected = this.props.product_data.variants.find((variant) => {return variant.id == this.state.lastSelected})
+		if(last_selected)
+			return ( <div> Size : {last_selected.size} </div>
+				)
+	}
+
+	handleOptionChange(event){
+		this.setState({selectedVariant : event.target.value });
+	}
+
+	getButtonContent(){
+		if(this.state.apiCallInProgress){
+			return (<div class="btn-icon">
+						<i class="fas fa-circle-notch fa-spin fa-lg"></i>
+					</div>);
+
+		}
+		if(this.state.quantity == 0)
+			return (
+				 <a className="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
+                        Add to cart  
+                        <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/cart-arrow.png" alt="" title="" />
+
+                 </a>
+				)
+
+		return (
+			<div className="border-green">
+				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
+				<span className="m-1">	{this.state.quantity} </span>
+				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>
+			</div>
+		)		
+	}
+
+	
+	checkVariant(action){
+		if(this.props.product_data.variants.length == 1){
+			action == 'add' ? this.addToCart(this.props.product_data.variants[0].id) : this.removeFromCart(this.props.product_data.variants[0].id)
+		}
+		else{
+			if(action == 'add'){
+				if(this.state.items.length){
+					this.showRepeateLastModal();
+				}
+				else{
+					this.showVariantModal()
+				}
+			}
+			else{
+				if(this.state.items.length > 1){
+					let msg = "Item has multiple variants added. Remove correct item from cart";
+					this.displayError(msg);
+				}
+				else{
+					this.removeFromCart(this.state.items[0].variant_id);
+				}
+			}
+		}
+	}
+
+	addToCart(variant_id = null) {
+		this.hideRepeateLastModal();
+		this.hideVariantModal()
+		this.setState({apiCallInProgress : true});
+		let cart_id = window.getCookie('cart_id');
+		if(cart_id){
+			this.addToCartApiCall(variant_id, null, cart_id);
+		}
+		else if(window.lat_lng){
+			this.addToCartApiCall(variant_id, window.lat_lng, null, window.formatted_address);
+		}
+		else{
+			this.getGeolocation().then((res)=>{
+				this.addToCartApiCall(variant_id, window.lat_lng, null, window.formatted_address);
+			})
+			.catch((error) => {
+				this.setState({apiCallInProgress : false});
+				console.log("error ==>", error);
+				this.displayError(error);
+			});
+		}
+	}
+
+	removeFromCart(variant_id = null){
+		window.addBackDrop();
+		this.setState({apiCallInProgress : true});
+		let url = this.state.apiEndPoint + "/anonymous/cart/delete";
+		// let url = "https://demo8558685.mockable.io/remove-from-cart";
+		let body = {
+			variant_id 	: variant_id,
+			quantity 	: 1,
+			cart_id 	: window.getCookie('cart_id')
+		}
+
+		axios.post(url, body)
+		.then((res) => {
+			if(res.data.success){
+				this.displaySuccess("Successfully removed from cart");
+				let item = {
+					variant_id : variant_id,
+					quantity : 1
+				}
+				this.removeItems(item);
+				window.updateViewCartCompoent(res.data);
+			}
+			else{
+				this.displayError(res.data.message);
+			}
+			this.setState({apiCallInProgress : false});
+			window.removeBackDrop();
+		})
+		.catch((error)=>{
+			console.log("error in add to cart ==>", error);
+			this.setState({apiCallInProgress : false});
+			let msg = error && error.message ? error.message : error;
+			this.displayError(msg);
+			window.removeBackDrop();
+		})
+	}
+
+	addToCartApiCall(variant_id = null, lat_long = null, cart_id = null, formatted_address = null){
+		window.addBackDrop();
+		let url = this.state.apiEndPoint + "/anonymous/cart/insert";
+		let body = {
+			variant_id : variant_id,
+			quantity : 1,
+			lat_long : lat_long,
+			formatted_address : formatted_address
+		}
+		if(cart_id)
+			body.cart_id = cart_id;
+
+		axios.post(url, body)
+		.then((res) => {
+			if(res.data.success){
+				this.addItems(res.data.item);
+				window.updateViewCartCompoent(res.data);
+				this.displaySuccess("Successfully added to cart")
+				if(!cart_id && res.data.cart_id)
+					document.cookie = "cart_id=" + res.data.cart_id + ";path=/";
+			}
+			else{
+				this.displayError(res.data.message);
+			}
+			this.setState({apiCallInProgress : false});
+			window.removeBackDrop();
+		})
+		.catch((error)=>{
+			console.log("error in add to cart ==>", error);
+			this.setState({apiCallInProgress : false});
+			let msg = error && error.message ? error.message : error;
+			this.displayError(msg);
+			window.removeBackDrop();
+		})
+	}
+
+	addItems(item){
+		let items = this.state.items;
+		let updated_item_index = items.findIndex((i) => { return i.variant_id == item.variant_id});
+		if(updated_item_index !== -1){
+			items[updated_item_index].quantity += item.quantity;
+		}
+		else{
+			items.push(item);
+		}
+		let quantity = this.state.quantity + item.quantity;
+		this.setState({quantity : quantity, items : items, lastSelected : item.variant_id});
+	}
+
+	removeItems(item){
+		let items = this.state.items;
+		let updated_item_index = items.findIndex((i) => { return i.variant_id == item.variant_id});
+		let last_selected = '', quantity = this.state.quantity - item.quantity;
+		if(updated_item_index !== -1){
+			items[updated_item_index].quantity -= item.quantity;
+		}
+		if(items[updated_item_index].quantity == 0){
+			items.splice(updated_item_index, 1);
+		}
+		if(items.length == 1){
+			last_selected = items[0].variant_id;
+		}
+		this.setState({quantity : quantity, items : items, lastSelected : last_selected});
+	}
+
+	displayError(msg){
+		document.querySelector('#failure-toast').innerHTML = msg;
+		document.querySelector('#failure-toast').classList.remove('d-none');
+		setTimeout(()=>{
+			document.querySelector('#failure-toast').classList.add('d-none');
+		},3000)
+	}
+
+	displaySuccess(msg){
+		document.querySelector('#success-toast').innerHTML = msg;
+		document.querySelector('#success-toast').classList.remove('d-none');
+		setTimeout(()=>{
+			document.querySelector('#success-toast').classList.add('d-none');
+		},3000)
+	}
+
+	getGeolocation(){
+		return new Promise((resolve, reject) => {
+		    window.showGpsModalPrompt(true);
+		    let timer = setInterval(()=>{
+		    	if(window.lat_lng){
+		    		clearInterval(timer);
+		    		resolve();
+		    	}
+		    	if(window.modal_closed){
+		    		clearInterval(timer);
+		    		window.modal_closed = false;
+		    		reject("Please select location to add to cart");
+		    	}
+		    },500)
+		});
+	}
+}
+
+let addToCartComponents = [];
+let variantModals = [];
+let repeateModals = []
+// Find all DOM containers, and render add-to-cart buttons into them.
+document.querySelectorAll('.react-add-to-cart-container')
+	.forEach((domContainer, index) => {
+		const product_data = JSON.parse(domContainer.dataset.product_data);
+		addToCartComponents[index] =  ReactDOM.render(e(addToCart, { product_data : product_data }),domContainer);
+	});
+
+function toggleModal(modal) {
+    modal.classList.toggle("show-modal");
+    document.querySelectorAll('.product-wrapper')
+		.forEach((domContainer) => {
+			domContainer.classList.remove('transform-none');
+		});
+	window.removeBackDrop();
+}
+
+function windowOnClick(event) {
+	for(let i in variantModals) {
+		if(event.target === variantModals[i])
+			toggleModal(variantModals[i]);
+	}
+	for(let i in repeateModals) {
+		if(event.target === repeateModals[i])
+			toggleModal(repeateModals[i]);
+	}
+}
+
+window.addEventListener("click", windowOnClick);
+
+window.updateaddToCartComponent = (item) => {
+	addToCartComponents.forEach((component) =>{
+		if(component.props.product_data.product_id == item.product_id){
+			let items = component.state.items;
+			items.push(item)
+			items.sort((a,b)=>{
+	  			return b.timestamp._seconds - a.timestamp._seconds;
+	  		})
+			let last_added = items[0].variant_id;
+			let qty = 0;
+			items.forEach((item) => {
+				qty += item.quantity;
+			})
+			component.setState({items : items, lastSelected : last_added, quantity : qty})
+		}
+	})
+}
+
+window.updateItemQuantity = (item, action) => {
+	console.log("updateItemQuantity ==>", item, action);
+	addToCartComponents.forEach((component) =>{
+		if(component.props.product_data.product_id == item.product_id){
+			if(action == 'add')
+				component.addItems(item)
+			else
+				component.removeItems(item)
+		}
+	})
+}

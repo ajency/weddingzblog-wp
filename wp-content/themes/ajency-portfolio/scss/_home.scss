@@ -138,14 +138,14 @@
                 &.is-active{
                     // transform: translateX(10px);
                     &:before, &:after{
-                       opacity: 1;
-                       visibility: visible;
+                        opacity: 1;
+                        visibility: visible;
                     }
                     &:before{
-                       transform: translateY(8px);
+                        transform: translateY(8px);
                     }
                     &:after{
-                       transform: translateY(-5px);
+                        transform: translateY(-5px);
                     }
                     & ~ .actionable{
                         // transform: rotateX(-25deg) translateY(0px);
@@ -343,15 +343,16 @@
     }
 }
 .logo {
-    @media (min-width: 768px) and (max-width: 1199.98px) {
+    @media (min-width: 991.98px) and (max-width: 1199.98px) {
         float: left !important;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 70px !important;
+        margin: 0 auto;
     }
     @media (min-width: 320px) and (max-width: 767.98px) {
-        width: 90px !important;
-        float: left !important;
-    }
-    @media (min-width: 768px) and (max-width: 991.98px) {
-        width: 110px;
+        width: 45px !important;
+        margin: 0 auto;
     }
 }
 .headerfix {
@@ -365,9 +366,14 @@
 nav {
     width: 100%;
     position: absolute;
+    padding-bottom: 16px;
+    @media (min-width: 768px) and (max-width: 991px) {
+        padding-bottom: 16px;
+        z-index: 999;
+    }
     @media (min-width: 320px) and (max-width: 767.98px) {
         padding-bottom: 16px;
-        z-index: 9999;
+        z-index: 999;
     }
     .navbar-nav{
         flex-direction: row;
@@ -447,26 +453,26 @@ nav {
         opacity: 1;
     }
 }
-.slick-track {
-    img {
-        width: 890px;
-        @media (min-width: 768px) and (max-width: 991.98px) {
-            width:490px;
-        }
-        @media (min-width: 992px) and (max-width: 1399.98px) {
-            width: 690px;
-        }
-        @media (min-width: 320px) and (max-width: 767.98px) {
-            width: 297px;
-        }
-        @media (max-width: 400px) {
-            width: 280px;
-        }
-        @media (max-width: 360px) {
-            width: 265px;
-        }
-    }
-}
+// .slick-track {
+//     img {
+//         width: 890px;
+//         @media (min-width: 768px) and (max-width: 991.98px) {
+//             width:490px;
+//         }
+//         @media (min-width: 992px) and (max-width: 1399.98px) {
+//             width: 690px;
+//         }
+//         @media (min-width: 320px) and (max-width: 767.98px) {
+//             width: 297px;
+//         }
+//         @media (max-width: 400px) {
+//             width: 280px;
+//         }
+//         @media (max-width: 360px) {
+//             width: 265px;
+//         }
+//     }
+// }
 .aj-team-member {
     .slick-slide {
         width: 1300px;
@@ -620,14 +626,18 @@ nav {
 .img-fluid {
     width: 100%;
 }
-@media (min-width: 768px) and (max-width: 1199.98px) {
+body .fixed-header {
+    z-index: 1;
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
     body .fixed-header {
         position: absolute!important;
     }
 }
-@media (min-width: 320px) and (max-width: 767.98px) {
+@media (min-width: 320px) and (max-width: 991px) {
     body .fixed-header {
-        position: absolute!important;
+        position: fixed!important;
+        background: #fff;
     }
 }
 @media (min-width: 768px) and (max-width: 1199.98px) {
@@ -764,14 +774,14 @@ nav {
 #imagemodal .modal-dialog {
     transform: translate(0, 0) !important;
 }
-.modal-backdrop.show {
+/*.modal-backdrop.show {
     opacity: 1;
     background-color: #f1f1f1 !important;
 }
 .modal-backdrop {
     opacity: 1;
     background-color: #f1f1f1 !important;
-}
+}*/
 .enlarge_btn {
     visibility: hidden;
 }

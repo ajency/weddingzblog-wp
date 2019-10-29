@@ -48,3 +48,90 @@ function footer_widgets_init() {
 	) );
 }
 add_action('widgets_init','footer_widgets_init');
+
+
+/*
+ * Site logo function.
+ */
+if ( ! function_exists( 'pado_site_logo' ) ) {
+	function pado_site_logo() {
+        $meta_data = get_post_meta( get_the_ID(), '_custom_page_options', true );
+        $meta_data_portfolio = get_post_meta(get_the_ID(), 'pado_portfolio_options', true);
+
+        $logo_bg = isset( $meta_data['logo_bg'] ) && $meta_data['logo_bg'] ? 'logo-bg' : '';
+        $logo_bg = isset( $meta_data_portfolio['logo_bg'] ) && $meta_data_portfolio['logo_bg'] ? 'logo-bg' : $logo_bg; ?>
+
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo <?php echo esc_attr($logo_bg); ?>">
+
+			<?php
+            $light_menu = ((isset($meta_data['menu_light_text']) && $meta_data['menu_light_text'] && $meta_data['style_header'] == 'transparent')
+                || (isset($meta_data_portfolio['menu_light_text']) && $meta_data_portfolio['menu_light_text'] && $meta_data_portfolio['style_header'] == 'transparent' )) ? true : false;
+
+            $logoHover         = cs_get_option('image_logo');
+            $image_logo_mobile = cs_get_option('image_logo_mobile');
+            $logo_alt = get_option('blogname');
+
+            if ( apply_filters('pado_type_logo', cs_get_option('site_logo')) == 'imglogo' ) {
+
+                if ( is_404() && cs_get_option('error_logo') ) {
+                    if ( apply_filters('pado_type_logo', cs_get_option('error_site_logo')) == 'txtlogo' ) {
+                        echo ' <span> ' . esc_html(cs_get_option('error_text_logo')) . '</span>';
+                    } else {
+                        $logo = '';
+                        if ( cs_get_option('error_image_logo') ) {
+                            $logo = cs_get_option('error_image_logo');
+                        }
+                        // logo for page
+                        ?>
+                        <img src="<?php echo esc_url($logo); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                             class="main-logo">
+
+                        <?php if ( $logoHover ) { ?>
+                            <img src="<?php echo esc_url($logoHover); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                                 class="logo-hover">
+                        <?php } else { ?>
+                            <img src="<?php echo esc_url($logo); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                                 class="logo-hover">
+                        <?php }
+                    }
+                } else {
+
+                    if ( isset($light_menu) && $light_menu ) {
+                        $logo = cs_get_option('image_logo_light');
+                    } else {
+                        $logo = cs_get_option('image_logo');
+                    }
+
+                    // logo for page
+                    $logo              = !empty($meta_data['image_page_logo']) ? $meta_data['image_page_logo'] : $logo;
+                    $logo              = isset($meta_data_portfolio['image_page_logo']) && !empty($meta_data_portfolio['image_page_logo']) ? $meta_data_portfolio['image_page_logo'] : $logo;
+                    $image_logo        = apply_filters('pado_header_logo', $logo);
+                    $img_src           = !empty($image_logo) ? $image_logo : PADO_T_URI . '/assets/images/logo.png';
+                    $logoHover         = isset($meta_data['image_logo_scroll']) && !empty($meta_data['image_logo_scroll']) ? $meta_data['image_logo_scroll'] : $logoHover;
+                    $logoHover         = isset($meta_data_portfolio['image_logo_scroll']) && !empty($meta_data_portfolio['image_logo_scroll']) ? $meta_data_portfolio['image_logo_scroll'] : $logoHover;
+                    $image_logo_mobile = isset($meta_data['image_logo_mobile']) && !empty($meta_data['image_logo_mobile']) ? $meta_data['image_logo_mobile'] : $image_logo_mobile;
+                    $image_logo_mobile = isset($meta_data_portfolio['image_logo_mobile']) && !empty($meta_data_portfolio['image_logo_mobile']) ? $meta_data_portfolio['image_logo_mobile'] : $image_logo_mobile;
+
+                    ?>
+                    <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                         class="main-logo">
+
+                    <?php if ( $logoHover ) { ?>
+                        <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                             class="logo-hover">
+                    <?php } else { ?>
+                        <img src="<?php echo esc_url($logoHover); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                             class="logo-hover">
+                    <?php } ?>
+                    <img src="<?php echo esc_url($image_logo_mobile); ?>" alt="<?php echo esc_attr($logo_alt); ?>"
+                         class="main-logo logo-mobile">
+                    <?php
+                }
+            } elseif ( !function_exists('cs_framework_init') ) {
+                echo '<span>' . esc_html($logo_alt) . '</span>';
+            } else {
+                echo '<span>' . esc_html(cs_get_option('text_logo')) . '</span>';
+            } ?>
+		</a>
+	<?php }
+}

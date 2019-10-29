@@ -1,0 +1,184 @@
+.font-weight-light {
+    font-weight: 300;
+}
+.font-weight-regular {
+    font-weight: 400;
+}
+.font-weight-medium {
+    font-weight: 500;
+}
+.font-weight-semibold {
+    font-weight: 600;
+}
+.font-weight-bold {
+    font-weight: 700;
+}
+
+.border {
+    &-green {
+        border: 1px solid #47A748;
+        &-2{
+            border: 2px solid #47A748;
+        }
+    }
+    &-grey{
+        border: 1px solid #7C7C7C;
+        &-50{
+            border: 1px solid rgba(124, 124, 124, 0.5);
+        }
+    }
+    &-lightgrey{
+        border: 1px solid #C4C8C4;
+    }
+    &-radius {
+        &-0 {
+            border-radius: 0;
+        }
+        &-8{
+            border-radius: 8px;
+        }
+        &-30{
+            border-radius: 30px;
+        }
+        &-rounded{
+            border-radius: 50%; 
+        }
+    }
+    &-0{
+        border: 0;
+        &-left{
+            border-left: 0;
+        }
+        &-right{
+            border-right: 0;
+        }
+    }
+}
+
+.text{
+    &-black{
+        color: #000000;
+    }
+    &-grey{
+        color:#7C7C7C;
+    }
+    &-green{
+        color: #47A748;
+    }
+    &-white{
+        color: #ffffff;
+    }
+}
+
+
+.text{
+    &-align{
+        &-right{
+            text-align: right;
+        }
+        &-left{
+            text-align: left;
+        }
+        &-center{
+            text-align: center;
+        }
+    }
+}
+
+.d {
+    &-none {
+        display: none;
+    }
+
+    &-block {
+        display: block;
+    }
+
+    &-inline-block {
+        display: inline-block;
+    }
+
+    &-flex {
+        display: flex;        
+        &:before,
+        &:after {
+            display: none;
+        }        
+    }  
+}
+
+.align-items {
+    &-center {
+        align-items: center;
+    }
+    &-start {
+        align-items: flex-start;
+    }
+    &-end {
+        align-items: flex-end;
+    }
+}
+
+.justify-content {
+    &-center {
+        justify-content: center;
+    }
+    &-start {
+        justify-content: flex-start;
+    }
+    &-end {
+        justify-content: flex-end;
+    }
+    &-around {
+        justify-content: space-around;
+    }
+    &-between {
+        justify-content: space-between;
+    }
+}
+
+.position{
+    &-relative{
+        position: relative;
+    }
+    &-absolute{
+        position: relative;
+    }
+}
+
+.w{
+    &-100{
+        width: 100%;
+    }
+    &-50{
+        width: 50%;
+    }
+}
+
+.p-15{
+    padding: 15px;;
+}
+
+.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+    right: -100%;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s ease-in;
+    &.visible{
+        right: 0;
+    }
+}
+
+.vertical-align{
+    &-middle{
+        vertical-align: middle;
+    }
+    &-top{
+        vertical-align: top;
+    }
+    &-bottom{
+        vertical-align: bottom;
+    }
+}

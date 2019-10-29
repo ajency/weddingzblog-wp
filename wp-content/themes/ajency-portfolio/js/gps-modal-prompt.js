@@ -568,7 +568,7 @@ window.updateAddresses = function () {
 	if (addresses && !addresses.length) showNoAddressMsg = true;
 
 	gpsModalPromptComponent.setState({ addresses: addresses, showNoAddressMsg: showNoAddressMsg });
-	setTimeout(function () {
-		gpsModalPromptComponent.setState({ showNoAddressMsg: false });
-	}, 4000);
+	// setTimeout(() => {
+	// 	gpsModalPromptComponent.setState({showNoAddressMsg : false});
+	// },4000);
 };

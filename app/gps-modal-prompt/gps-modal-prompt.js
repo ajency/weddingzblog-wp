@@ -436,7 +436,7 @@ window.updateAddresses = (addresses = null) => {
 		showNoAddressMsg = true;
 
 	gpsModalPromptComponent.setState({addresses : addresses, showNoAddressMsg : showNoAddressMsg});
-	setTimeout(() => {
-		gpsModalPromptComponent.setState({showNoAddressMsg : false});
-	},4000);
+	// setTimeout(() => {
+	// 	gpsModalPromptComponent.setState({showNoAddressMsg : false});
+	// },4000);
 }

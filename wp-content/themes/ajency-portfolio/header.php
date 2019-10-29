@@ -32,24 +32,24 @@
   	<nav class="fixed-header position-fixed bg-white">
       <div class="container mt-3 p5 position-relative">
         <div class="row justify-content-between align-items-center">
-            <div class="col-4 col-xl-3 position-static">
-              <a href="<?php echo get_site_url(); ?>" class="d-none d-md-inline-block">
+            <div class="col-4 col-lg-3 position-static">
+              <a href="<?php echo get_site_url(); ?>" class="d-none d-md-inline-block vertical-align-middle">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="logo"/>
               </a>
-              <div class="menu-toggle d-inline-block d-md-none mr-2">
+              <div class="menu-toggle d-inline-block d-md-none mr-2 vertical-align-middle">
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </div>
-              <div class="delivery-location cursor-pointer d-inline-block mr-2 ml-lg-2">
+              <div class="delivery-location cursor-pointer d-inline-block pr-2 ml-lg-2 vertical-align-middle">
                 <a href="javascript:void(0)" class="d-inline-block location-icon">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                 </a> 
                 <div id="selected-location-address" class="font-weight-bold"></div> 
               </div>              
-              <div class="edit-location d-inline-block text-primary">
-                <a href="#" class="d-inline-block location-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></a>  
+              <div class="edit-location d-inline-block text-primary vertical-align-middle">
+                <a href="#" class="d-inline-block location-icon"><i class="fas fa-pencil-alt number-edit cursor-pointer"></i></a>  
               </div>
             </div>
-            <div class="col-4 col-xl-6 text-center">
+            <div class="col-4 col-lg-6 text-center">
               <a href="<?php echo get_site_url(); ?>" class="d-block d-md-none">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="logo"/>
               </a>
@@ -65,7 +65,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-4 col-xl-3 text-right">
+            <div class="col-4 col-lg-3 text-right">
               <a href="mailto:talktous@ajency.in" class="h4 menu float-right m-0 d-none d-md-block">talktous@ajency.in </a>
               <div class="cart-icon d-block d-md-none">
                 <a href="#">

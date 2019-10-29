@@ -224,6 +224,10 @@ footer {
     border-bottom: 5px solid black;
 }
 
+.vertical-align-middle{
+    vertical-align: middle;
+}
+
 @media (min-width: 320px) and (max-width: 767.98px) {
     .footer-section {
         padding-top: 2rem;

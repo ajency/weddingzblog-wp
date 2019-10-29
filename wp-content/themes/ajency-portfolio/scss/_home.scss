@@ -792,6 +792,10 @@ body{
     i{
         font-size: 10px;
     }
+    &:hover, &:focus{
+        background: #4aa751;
+        color: #fff;
+    }
 }
 
 #selected-location-address{
@@ -843,4 +847,23 @@ body{
     align-items: center;
     justify-content: center;
     padding: 2px;
+}
+
+.delivery-location{
+    @media (min-width: 992px) {
+        position: relative;
+        #selected-location-address{
+            position: absolute;
+            right: 15px;
+            left: 30px;
+            top: -10px;
+            width: 400px;
+            z-index: 1;        
+        }
+        &:hover{
+            #selected-location-address{
+                display: block!important;
+            }
+        }
+    }    
 }

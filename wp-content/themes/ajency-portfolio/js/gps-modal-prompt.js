@@ -519,12 +519,14 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'setSliderLoader',
 		value: function setSliderLoader() {
-			document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
+			window.addCartLoader();
+			// document.querySelector('#react-add-delivery-address-container').classList.add('slider-loader');
 		}
 	}, {
 		key: 'removeSliderLoader',
 		value: function removeSliderLoader() {
-			document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
+			window.removeCartLoader();
+			// document.querySelector('#react-add-delivery-address-container').classList.remove('slider-loader');
 		}
 	}]);
 

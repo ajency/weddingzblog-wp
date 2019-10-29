@@ -357,6 +357,8 @@ function addBackDrop(){
 
 
 function removeBackDrop(){
-    $('.backdrop').removeClass('show');
-    $('body').removeClass('hide-scroll');
+    if(!$('.cart-wrapper').hasClass('active')){
+        $('.backdrop').removeClass('show');
+        $('body').removeClass('hide-scroll');
+    }
 }

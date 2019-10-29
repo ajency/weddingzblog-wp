@@ -36,17 +36,17 @@
               <a href="<?php echo get_site_url(); ?>" class="d-none d-lg-inline-block vertical-align-middle">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="120px" class="logo"/>
               </a>
-              <div class="menu-toggle d-inline-block d-lg-none mr-2 vertical-align-middle">
+              <div class="menu-toggle d-none d-lg-none mr-2 vertical-align-middle">
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </div>
               <div class="delivery-location cursor-pointer d-inline-block pr-2 ml-lg-2 vertical-align-middle">
                 <a href="javascript:void(0)" class="d-inline-block location-icon">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                 </a> 
-                <div id="selected-location-address" class="font-weight-bold">
+                <div id="selected-location-address" class="font-weight-light">
                 </div> 
               </div>              
-              <div class="edit-location d-inline-block text-primary vertical-align-middle">
+              <div class="edit-location d-none text-primary vertical-align-middle">
                 <a href="#" class="d-inline-block location-icon"><i class="fas fa-pencil-alt number-edit cursor-pointer"></i></a>  
               </div>
             </div>
@@ -67,8 +67,8 @@
               </ul>
             </div>
             <div class="col-4 col-lg-3 text-right">
-              <a href="mailto:talktous@ajency.in" class="h4 menu float-right m-0 d-none d-md-block">talktous@ajency.in </a>
-              <div class="cart-icon d-block d-md-none">
+              <a href="mailto:talktous@ajency.in" class="h4 menu float-right m-0 d-none d-lg-block">talktous@ajency.in </a>
+              <div class="cart-icon d-none d-lg-none">
                 <a href="#">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                   <div class="cart-count">2</div>

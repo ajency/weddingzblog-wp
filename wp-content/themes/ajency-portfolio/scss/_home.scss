@@ -366,6 +366,7 @@
 nav {
     width: 100%;
     position: absolute;
+    padding-bottom: 16px;
     @media (min-width: 768px) and (max-width: 991px) {
         padding-bottom: 16px;
         z-index: 999;
@@ -786,113 +787,4 @@ body .fixed-header {
 }
 body{
     overflow-x: hidden;
-}
-
-.location-icon{
-    display: inline-block;
-    background: #4aa751;
-    color: #fff;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    padding: 1px;
-    border-radius: 50%;
-    i{
-        font-size: 10px;
-    }
-    &:hover, &:focus{
-        background: #4aa751;
-        color: #fff;
-    }
-}
-
-#selected-location-address{
-    background: #EEEFEE;
-    padding: 15px;
-    position: absolute;
-    right: 15px;
-    left: 15px;
-    top: 100%;
-    display: none;
-    &.show{
-        display: block;
-    }
-}
-
-.menu-toggle{
-    min-width: 11px;
-}
-
-.cart-icon{
-    a{
-        display: inline-block;
-        background: #4aa751;
-        color: #fff;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-        padding: 5px;
-        border-radius: 50%;
-        position: relative;
-        i{
-            font-size: 15px;
-        }
-    }
-}
-
-.cart-count{
-    position: absolute;
-    right: -5px;
-    top: 18px;
-    border: 1px solid #4aa751;
-    border-radius: 50%;
-    color: #4aa751;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-}
-
-.delivery-location{
-    @media (min-width: 992px) {
-        position: relative;
-        #selected-location-address{
-            position: absolute;
-            right: 15px;
-            left: 30px;
-            top: -10px;
-            width: 400px;
-            z-index: 1;  
-
-        }
-        &:hover{
-            #selected-location-address{
-                display: block!important;
-            }
-        }
-    }    
-}
-
-#selected-location-address{
-    &:after{        
-        @media (max-width: 991px) {
-            content: '';
-            position: absolute;
-            left: 28px;
-            top: -9px;
-            width: 0;
-            height: 0;
-            clear: both;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;  
-            border-bottom: 10px solid #eeefee;
-        }    
-        @media (min-width: 768px) and (max-width: 991px) {
-            left: 44px;
-        }   
-    }
 }

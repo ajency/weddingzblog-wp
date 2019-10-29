@@ -204,7 +204,7 @@
   <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="75px" class="mt-5"/> 
 </div>
 
-<button id="cart-address-change-trigger" className="d-none"></button>
+<button id="cart-address-change-trigger" class="d-none"></button>
 
 <div class="backdrop-wrap"></div>
 

@@ -31,10 +31,10 @@
 				}
 			],
 			"images" : [
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
 			],
 			"class" : "cardone",
 			"put_empty" : true
@@ -59,10 +59,10 @@
 				}
 			],
 			"images" : [
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
 			],
 			"class" : "cardtwo reverse-order",
 			"put_empty" : false
@@ -87,10 +87,10 @@
 				}
 			],
 			"images" : [
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
 			],
 			"class" : "cardthree",
 			"put_empty" : true
@@ -128,10 +128,10 @@
 				}
 			],
 			"images" : [
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
-				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_one.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_two.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
+				"https://greengrainbowl.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
 			],
 			"class" : "cardend",
 			"put_empty" : false

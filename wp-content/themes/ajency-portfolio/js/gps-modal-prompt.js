@@ -255,7 +255,7 @@ var gpsModalPrompt = function (_React$Component) {
 						{ key: address.id, className: 'cursor-pointer address saved-address-item', onClick: function onClick() {
 								return _this6.setUserLocations(address.address.lat_long, address.address.formatted_address);
 							} },
-						React.createElement('img', { src: 'http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/slidein/home.png', className: 'address-icon' }),
+						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png', className: 'address-icon' }),
 						React.createElement(
 							'span',
 							{ className: 'address-text font-weight-light h5' },
@@ -368,7 +368,7 @@ var gpsModalPrompt = function (_React$Component) {
 			clearTimeout(debounceTimer);
 			this.setState({ searchText: value });
 			debounceTimer = setTimeout(function () {
-				_this8.setState({ locError: '' });
+				_this8.setState({ locError: '', showNoAddressMsg: false });
 				if (value.length > 2) {
 					var url = _this8.state.apiEndPoint + "/places-autocomplete";
 					var body = {
@@ -569,6 +569,7 @@ var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
+	gpsModalPromptComponent.setState({ showNoAddressMsg: false, locations: [] });
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 };

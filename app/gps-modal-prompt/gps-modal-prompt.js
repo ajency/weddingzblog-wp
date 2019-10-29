@@ -160,7 +160,10 @@ class gpsModalPrompt extends React.Component {
 				return (
 					<li key={address.id} className="cursor-pointer address saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
 						{this.getAddressIcon(address.address.type)}
-						<span className="address-text font-weight-light h5">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
+						<div className="address-text">
+							<h5>Home</h5>
+							<span className=" font-weight-light h6">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
+						</div>
 					</li>
 				)
 			})

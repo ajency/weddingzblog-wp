@@ -51,7 +51,7 @@ var addToCart = function (_React$Component) {
 					{ className: 'custom-modal', id: 'variantSelectionModal-' + this.props.product_data.product_id },
 					React.createElement(
 						'div',
-						{ className: 'custom-modal-content p-4' },
+						{ className: 'custom-modal-content p-15' },
 						React.createElement(
 							'div',
 							{ className: 'product-variant text-left' },
@@ -97,13 +97,13 @@ var addToCart = function (_React$Component) {
 					{ className: 'custom-modal', id: 'repeatLast-' + this.props.product_data.product_id },
 					React.createElement(
 						'div',
-						{ className: 'custom-modal-content p-4' },
+						{ className: 'custom-modal-content p-15' },
 						React.createElement(
 							'div',
 							{ className: 'pl-0 pt-0 pr-0 pb-1' },
 							React.createElement(
 								'h3',
-								{ className: 'h1 ft6' },
+								{ className: '' },
 								'Repeat last used customization?'
 							)
 						),
@@ -264,7 +264,7 @@ var addToCart = function (_React$Component) {
 				),
 				React.createElement(
 					'span',
-					{ className: 'm-1' },
+					{ className: 'mw-50 text-center' },
 					' ',
 					this.state.quantity,
 					' '

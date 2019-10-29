@@ -257,17 +257,26 @@ var gpsModalPrompt = function (_React$Component) {
 							} },
 						_this6.getAddressIcon(address.address.type),
 						React.createElement(
-							'span',
-							{ className: 'address-text font-weight-light h5' },
-							address.address.address,
-							', ',
-							address.address.landmark,
-							', ',
-							address.address.city,
-							', ',
-							address.address.state,
-							', ',
-							address.address.pincode
+							'div',
+							{ className: 'address-text' },
+							React.createElement(
+								'h5',
+								null,
+								'Home'
+							),
+							React.createElement(
+								'span',
+								{ className: ' font-weight-light h6' },
+								address.address.address,
+								', ',
+								address.address.landmark,
+								', ',
+								address.address.city,
+								', ',
+								address.address.state,
+								', ',
+								address.address.pincode
+							)
 						)
 					);
 				});

@@ -228,6 +228,11 @@ footer {
     vertical-align: middle;
 }
 
+.mw-50{
+    min-width: 50px;
+    display: inline-block;
+}
+
 @media (min-width: 320px) and (max-width: 767.98px) {
     .footer-section {
         padding-top: 2rem;

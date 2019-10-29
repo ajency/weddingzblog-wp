@@ -25,15 +25,22 @@ class gpsModalPrompt extends React.Component {
 			addresses : '',
 			showNoAddressMsg : false,
 			settingUserLocation : false,
-			notLoggedIn : false
+			notLoggedIn : false,
+			showSignInBtn : false
 		}
 		firebase.auth().onAuthStateChanged((user) => {
+
+			if(user){
+				this.setState({showSignInBtn : false})
+			}
+
 		  	if (user && !this.state.notLoggedIn) {
 		    	user.getIdToken().then((idToken) => {
 		   			this.fetchAddresses(idToken);        
 		        });
-		  	} else {
-		  		this.setState({notLoggedIn : true})
+		  	}
+		  	else {
+		  		this.setState({notLoggedIn : true, showSignInBtn : true})
 		  		console.log("no user");
 		  	}
 		});
@@ -55,9 +62,7 @@ class gpsModalPrompt extends React.Component {
 			      </h3>
 			  </div>
 			  <div className="slide-in-content">
-			      <div className="list-text-block p-3 mb-2 full-width-15">
-			          <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline cursor-pointer" onClick={()=> this.showSignInScreen()} >Sign in</a> to fetch saved addresses.</div>
-			      </div>
+			      {this.showSignInButton()}
 			      <h3 className="mt-4 h1 ft6">Add your delivery address to proceed</h3>
 			      <h4 className="font-weight-light mt-4 pb-4">
 			        We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de França, Taleigao. Please choose from amongst these
@@ -79,9 +84,23 @@ class gpsModalPrompt extends React.Component {
 			      	<ul style={locationStyle} className="pl-0 h5 mb-0">
 						{this.getAutoCompleteLocations()}
 					</ul>
+
+					{this.getSavedAddresses()}
+
+					{this.getNoSavedAddressesMsg()}
 			  </div>
 			</div>
 		);
+	}
+
+	showSignInButton() {
+	  	if(this.state.showSignInBtn){
+	  		return (
+	  			<div className="list-text-block p-3 mb-2 full-width-15">
+			        <div className="list-meta mt-0">If you have ordered with us before, <a className="text-underline test-primary text-underline cursor-pointer" onClick={()=> this.showSignInScreen()} >Sign in</a> to fetch saved addresses.</div>
+			    </div>
+	  		);
+	  	}
 	}
 
 	checkGpsErrorMsg(){
@@ -188,7 +207,7 @@ class gpsModalPrompt extends React.Component {
 		if(this.state.showNoAddressMsg)
 			return (
 				<div className="p-3 alert-danger">
-					You have no saved addreses. Please set delivery location from options below
+					You have no saved addreses. Please set delivery location to continue.
 				</div>
 			);
 	}
@@ -278,6 +297,7 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	setUserLocations(lat_lng, formatted_address){
+		this.setSliderLoader();
 		this.setState({settingUserLocation : true});
 		let cart_id = window.getCookie('cart_id');
 		if(cart_id){
@@ -308,8 +328,7 @@ class gpsModalPrompt extends React.Component {
 			this.setState({ fetchingGPS : false, searchText: '', settingUserLocation : false});
 			this.updateLocationUI(lat_lng, formatted_address);
 			this.closeGpsModal();
-		}
-		
+		}		
 	}
 
 	updateLocationUI(lat_lng, formatted_address){

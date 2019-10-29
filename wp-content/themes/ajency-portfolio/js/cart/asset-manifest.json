@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.c0babc68.chunk.css",
-    "main.js": "/static/js/main.0c200089.chunk.js",
-    "main.js.map": "/static/js/main.0c200089.chunk.js.map",
+    "main.js": "/static/js/main.357125b6.chunk.js",
+    "main.js.map": "/static/js/main.357125b6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9efbcb05.js",
     "runtime-main.js.map": "/static/js/runtime-main.9efbcb05.js.map",
     "static/js/2.9d0f76e4.chunk.js": "/static/js/2.9d0f76e4.chunk.js",
     "static/js/2.9d0f76e4.chunk.js.map": "/static/js/2.9d0f76e4.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2732e065413401f802711250622abd96.js": "/precache-manifest.2732e065413401f802711250622abd96.js",
+    "precache-manifest.dbe3e60b3b1a40adbbc9119a2e3f67e3.js": "/precache-manifest.dbe3e60b3b1a40adbbc9119a2e3f67e3.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.c0babc68.chunk.css.map": "/static/css/main.c0babc68.chunk.css.map",
     "static/media/index.css": "/static/media/FuturaPT-Medium.a61e39ce.eot"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9efbcb05.js",
     "static/js/2.9d0f76e4.chunk.js",
     "static/css/main.c0babc68.chunk.css",
-    "static/js/main.0c200089.chunk.js"
+    "static/js/main.357125b6.chunk.js"
   ]
 }

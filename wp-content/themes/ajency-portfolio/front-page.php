@@ -49,18 +49,12 @@
     text-align: left;
   }
 
-  @media (max-width: 767px){
-    .cart-wrapper{
-      width: 50vh;
-    }
-    
-  }
   @media (max-width: 480px){
     .cart-wrapper{
       width: 100%;
     }
-    
   }
+
   .custom-modal {
     position: fixed;
     left: 0;

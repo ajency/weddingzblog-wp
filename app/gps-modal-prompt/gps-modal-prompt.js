@@ -166,7 +166,7 @@ class gpsModalPrompt extends React.Component {
 			})
 			return (
 				<div>
-					<h4 className="mt-4 h1 ft6">Saved Addresses</h4>
+					<h4 className="mt-4">Saved Addresses</h4>
 					<ul style={locationStyle} className="pl-0 mt-4">
 						{addresses}
 					</ul>

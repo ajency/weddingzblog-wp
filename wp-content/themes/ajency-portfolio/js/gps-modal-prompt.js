@@ -276,7 +276,7 @@ var gpsModalPrompt = function (_React$Component) {
 					null,
 					React.createElement(
 						'h4',
-						{ className: 'mt-4 h1 ft6' },
+						{ className: 'mt-4' },
 						'Saved Addresses'
 					),
 					React.createElement(

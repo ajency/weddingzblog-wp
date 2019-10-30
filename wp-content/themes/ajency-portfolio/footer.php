@@ -114,7 +114,7 @@
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/combine.js" type="text/javascript">
 </script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js" type="text/javascript">
+<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js?_12" type="text/javascript">
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>

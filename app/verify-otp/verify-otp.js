@@ -35,7 +35,6 @@ class verifyOtp extends React.Component {
 			      </h3>
 			  </div>
 			  <div className="slide-in-content">
-			      <div className="spacer-210"></div>
 			      <h3 className="h1 ft6">Verify Mobile</h3>
 			      <h4 className="font-weight-light mt-4 pb-4">
 			        Enter the 6 digit code sent to the number 

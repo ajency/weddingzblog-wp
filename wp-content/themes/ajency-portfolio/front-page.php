@@ -6,12 +6,14 @@
     top: 0;
     right: 0;
     bottom: 0;
-    height: 100vh;
+    height: 100%;
     z-index: 1200;
-    padding: 30px 15px 0;
+    padding: 0;
     transform: translate(500px, 0px);
     transition: all 0.3s ease;
-    width: 430px;
+    width: 410px;
+    padding-bottom: 52px;
+    background: #fff;
   }
   .cart-wrapper.active{
     transform: translate(0,0);
@@ -49,18 +51,12 @@
     text-align: left;
   }
 
-  @media (max-width: 767px){
-    .cart-wrapper{
-      width: 50vh;
-    }
-    
-  }
   @media (max-width: 480px){
     .cart-wrapper{
       width: 100%;
     }
-    
   }
+
   .custom-modal {
     position: fixed;
     left: 0;

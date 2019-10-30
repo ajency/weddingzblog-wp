@@ -17,9 +17,9 @@ class CartSummary extends Component {
 
 				{this.getShippingFee()}
 				
-				<div className="summary-item border-grey-50 border-0-left border-0-right mt-1">
-					<div><label className="font-weight-medium ">To Pay</label></div>
-					<div className="font-weight-medium">₹ {this.props.summary.you_pay}</div>
+				<div className="summary-item border-grey-50 border-0-left border-0-right mt-1 pt-2 pb-2">
+					<div><label className="font-weight-medium text-black mb-0">To Pay</label></div>
+					<div className="font-weight-medium text-black">₹ {this.props.summary.you_pay}</div>
 				</div>	
 			</div>
 		);

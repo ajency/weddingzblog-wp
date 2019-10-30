@@ -255,19 +255,28 @@ var gpsModalPrompt = function (_React$Component) {
 						{ key: address.id, className: 'cursor-pointer address saved-address-item', onClick: function onClick() {
 								return _this6.setUserLocations(address.address.lat_long, address.address.formatted_address);
 							} },
-						React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png', className: 'address-icon' }),
+						_this6.getAddressIcon(address.address.type),
 						React.createElement(
-							'span',
-							{ className: 'address-text font-weight-light h5' },
-							address.address.address,
-							', ',
-							address.address.landmark,
-							', ',
-							address.address.city,
-							', ',
-							address.address.state,
-							', ',
-							address.address.pincode
+							'div',
+							{ className: 'address-text' },
+							React.createElement(
+								'h5',
+								null,
+								address.address.type
+							),
+							React.createElement(
+								'span',
+								{ className: ' font-weight-light h6' },
+								address.address.address,
+								', ',
+								address.address.landmark,
+								', ',
+								address.address.city,
+								', ',
+								address.address.state,
+								', ',
+								address.address.pincode
+							)
 						)
 					);
 				});
@@ -276,7 +285,7 @@ var gpsModalPrompt = function (_React$Component) {
 					null,
 					React.createElement(
 						'h4',
-						{ className: 'mt-4 h1 ft6' },
+						{ className: 'mt-4' },
 						'Saved Addresses'
 					),
 					React.createElement(
@@ -286,6 +295,14 @@ var gpsModalPrompt = function (_React$Component) {
 					)
 				);
 			}
+		}
+	}, {
+		key: 'getAddressIcon',
+		value: function getAddressIcon(type) {
+			console.log("type :  ", type);
+			var src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/map.png";
+			if (type == 'home') src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png";else if (type == 'office') src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/office.png";
+			return React.createElement('img', { src: src, className: 'address-icon' });
 		}
 	}, {
 		key: 'getAutoCompleteLocations',
@@ -313,13 +330,13 @@ var gpsModalPrompt = function (_React$Component) {
 				);
 			}
 
-			// if(!this.state.locations.length && this.state.searchText.length > 2){
-			// 	return (
-			// 			<div>
-			// 				No results, please enter a valid street address
-			// 			</div>
-			// 		);
-			// }
+			if (!this.state.locations.length && this.state.searchText.length > 2) {
+				return React.createElement(
+					'div',
+					null,
+					'No results, please enter a valid street address'
+				);
+			}
 		}
 	}, {
 		key: 'checkLocationErrorMsg',
@@ -433,7 +450,7 @@ var gpsModalPrompt = function (_React$Component) {
 
 			this.setSliderLoader();
 			this.setState({ settingUserLocation: true });
-			var cart_id = window.getCookie('cart_id');
+			var cart_id = window.readFromLocalStorage('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 				var body = {
@@ -463,8 +480,10 @@ var gpsModalPrompt = function (_React$Component) {
 	}, {
 		key: 'updateLocationUI',
 		value: function updateLocationUI(lat_lng, formatted_address) {
-			document.cookie = "lat_lng=" + lat_lng[0] + ',' + lat_lng[1] + ";path=/";
-			document.cookie = "formatted_address=" + formatted_address + ";path=/";
+			// document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
+			// document.cookie = "formatted_address=" + formatted_address + ";path=/";
+			window.writeInLocalStorage('lat_lng', lat_lng[0] + ',' + lat_lng[1]);
+			window.writeInLocalStorage('formatted_address', formatted_address);
 			window.lat_lng = lat_lng;
 			window.formatted_address = formatted_address;
 			document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';
@@ -517,7 +536,7 @@ var gpsModalPrompt = function (_React$Component) {
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
 				_this12.setState({ addresses: res.data.addresses });
-				_this12.setDefaultAddress(res.data.addresses);
+				// this.setDefaultAddress(res.data.addresses)
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);
 			});
@@ -569,7 +588,7 @@ var gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer);
 window.showGpsModalPrompt = function (display) {
 	var addresses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-	gpsModalPromptComponent.setState({ showNoAddressMsg: false, locations: [] });
+	gpsModalPromptComponent.setState({ showNoAddressMsg: false, locations: [], locError: '', gpsError: '', fetchingGPS: false, searchText: '', settingUserLocation: false });
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 };

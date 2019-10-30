@@ -52,7 +52,7 @@ class Quantity extends Component {
 		let body = {
 			variant_id 	: this.props.variant_id,
 			quantity 	: quantity,
-			cart_id 	: window.getCookie('cart_id')
+			cart_id 	: window.readFromLocalStorage('cart_id')
 		}
 		window.addCartLoader();
 		axios.post(url, body)
@@ -98,7 +98,7 @@ class Quantity extends Component {
 		let body = {
 			variant_id : this.props.variant_id,
 			quantity : 1,
-			cart_id 	: window.getCookie('cart_id')
+			cart_id 	: window.readFromLocalStorage('cart_id')
 		}
 
 		axios.post(url, body)

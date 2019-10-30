@@ -159,20 +159,33 @@ class gpsModalPrompt extends React.Component {
 			let addresses = this.state.addresses.map((address)=>{
 				return (
 					<li key={address.id} className="cursor-pointer address saved-address-item" onClick={() => this.setUserLocations(address.address.lat_long, address.address.formatted_address)}>
-						<img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png" className="address-icon"/>
-						<span className="address-text font-weight-light h5">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
+						{this.getAddressIcon(address.address.type)}
+						<div className="address-text">
+							<h5>{address.address.type}</h5>
+							<span className=" font-weight-light h6">{address.address.address}, {address.address.landmark}, {address.address.city}, {address.address.state}, {address.address.pincode}</span>
+						</div>
 					</li>
 				)
 			})
 			return (
 				<div>
-					<h4 className="mt-4 h1 ft6">Saved Addresses</h4>
+					<h4 className="mt-4">Saved Addresses</h4>
 					<ul style={locationStyle} className="pl-0 mt-4">
 						{addresses}
 					</ul>
 				</div>
 			);
 		}
+	}
+
+	getAddressIcon(type){
+		console.log("type :  ", type);
+		let src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/map.png"
+		if(type == 'home')
+			src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/home.png"
+		else if(type == 'office')
+			src = "http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/office.png"
+		return (<img src={src} className="address-icon"/>)
 	}
 
 	getAutoCompleteLocations(){
@@ -193,13 +206,13 @@ class gpsModalPrompt extends React.Component {
 				)
 		}
 
-		// if(!this.state.locations.length && this.state.searchText.length > 2){
-		// 	return (
-		// 			<div>
-		// 				No results, please enter a valid street address
-		// 			</div>
-		// 		);
-		// }
+		if(!this.state.locations.length && this.state.searchText.length > 2){
+			return (
+					<div>
+						No results, please enter a valid street address
+					</div>
+				);
+		}
 	}
 
 	checkLocationErrorMsg(){
@@ -304,7 +317,7 @@ class gpsModalPrompt extends React.Component {
 	setUserLocations(lat_lng, formatted_address){
 		this.setSliderLoader();
 		this.setState({settingUserLocation : true});
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			let url = this.state.apiEndPoint + "/anonymous/cart/change-location";
 			let body = {
@@ -337,8 +350,10 @@ class gpsModalPrompt extends React.Component {
 	}
 
 	updateLocationUI(lat_lng, formatted_address){
-		document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
-		document.cookie = "formatted_address=" + formatted_address + ";path=/";
+		// document.cookie = "lat_lng=" + lat_lng[0] + ',' +lat_lng[1] + ";path=/";
+		// document.cookie = "formatted_address=" + formatted_address + ";path=/";
+		window.writeInLocalStorage('lat_lng', lat_lng[0] + ',' +lat_lng[1]);
+		window.writeInLocalStorage('formatted_address', formatted_address);
 		window.lat_lng = lat_lng;
 		window.formatted_address = formatted_address;
 		document.querySelector("#selected-location-address").innerHTML = '<div>' + formatted_address + '</div><i class="fas fa-pencil-alt number-edit cursor-pointer"></i>';
@@ -388,7 +403,7 @@ class gpsModalPrompt extends React.Component {
 		axios.get(url, {headers :  headers })
 			.then((res) => {
 				this.setState({ addresses : res.data.addresses });
-				this.setDefaultAddress(res.data.addresses)
+				// this.setDefaultAddress(res.data.addresses)
 			})
 			.catch((error)=>{
 				console.log("error in fetch addresses ==>", error);
@@ -431,7 +446,7 @@ const gpsModalPromptComponent = ReactDOM.render(e(gpsModalPrompt), domContainer)
 
 
 window.showGpsModalPrompt = (display, addresses = null) => {
-	gpsModalPromptComponent.setState({showNoAddressMsg : false, locations : []});
+	gpsModalPromptComponent.setState({showNoAddressMsg : false, locations : [], locError : '', gpsError : '', fetchingGPS : false, searchText : '', settingUserLocation : false});
 	document.querySelector('#gpsModal').classList.add('visible');
 	window.addBackDrop();
 }

@@ -87,6 +87,7 @@
           if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
           else window.addEventListener('load', loadDeferredStyles);
           var react_js_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_file_hash.json'); ?>;
+          var react_css_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_css_file_hash.json'); ?>;
     </script>
 <?php } ?>
 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet"/>
@@ -139,11 +140,11 @@
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
 <!-- <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
-<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_10" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_10" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_10" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_10" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/verify-otp.js?_10" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_12" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_12" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_12" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_12" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/verify-otp.js?_12" type="text/javascript"></script>
 
 <script type="text/javascript">
     if ($(window).innerWidth() < 767) {

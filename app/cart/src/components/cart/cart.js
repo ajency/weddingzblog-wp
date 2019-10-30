@@ -60,7 +60,13 @@ class Cart extends Component {
 			cartContainer = <div className="text-center mt-5 p-15"> <h4 className="font-weight-meidum m-0">  </h4>  </div>
 		else {
 			if(this.state.cartEmpty){
-				cartContainer = <div className="text-center mt-5 p-15"> <h4> Your cart is Empty. Add something from the menu </h4>  </div>
+				cartContainer = <div className="text-center mt-5 p-15 "> <h4 className=""> Your cart is Empty. Add something from the menu </h4> 
+				<div class="btn-wrapper mt-3">
+						<div class="btn-inner-wrap">
+							<button onClick={()=> this.closeCart()} type="button" class="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0" >Browse Our Cuisine</button>
+						</div>
+					</div>
+				</div>
 			}
 			else if (this.state.fetchCartFailed){
 				cartContainer = <div className="text-center mt-5"> <h4> {this.state.fetchCartFailureMsg} </h4>  </div>
@@ -77,13 +83,13 @@ class Cart extends Component {
 							{this.getItems()}
 						</div>
 
-						{/*<div className="p-15 pt-0 d-flex">
-							<div className="w-50 font-weight-medium">
+						{/*<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
+							<div className="text-black font-weight-medium">
 								Estimated Time:
 							</div>
 							<div className="w-50 text-align-right font-weight-medium">
 								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
-								<span className="d-inline-block vertical-align-middle">30 mins</span>
+								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
 							</div>
 						</div> */}
 
@@ -93,12 +99,30 @@ class Cart extends Component {
 							</div>
 						</div> */}
 
-						<div className="p-15 pt-0 ">
-							<label className="cart-summary-label font-weight-medium">Bill Details</label>
+						{/* <div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
+							<div className="summary-item text-black">
+								<div><label className="mb-0 text-black font-weight-medium">Estimated Time:</label></div>
+								<div className="text-black font-weight-medium">30 mins</div>
+							</div>
+						</div>	 
+
+						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
+							<div className="text-black font-weight-medium">
+								Estimated Time:
+							</div>
+							<div className="w-50 text-align-right font-weight-medium">
+								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
+								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
+							</div>
+						</div>
+						</div>*/}
+
+						<div className="p-15 bg-off-green">
+							<label className="cart-summary-label font-weight-medium text-black">Bill Details</label>
 							<CartSummary summary={this.state.cartData.cart.summary}/>
 						</div>						
 
-						<div className="p-15 pt-0 ">
+						<div className="p-15 pt-0 bg-off-green">
 							<div className="bottom-bar">								
 								<div className="genuinity text-align-center">
 									<img src={genuinityLogo} className="mr-1" alt="100% Secure Payments" title="100% Secure Payments" className="d-inline-block vertical-align-middle" width="20"/>
@@ -140,7 +164,7 @@ class Cart extends Component {
 	fetchCart() {
 		window.addCartLoader();
 		console.log("inside fetch cart");
-		let cart_id = window.getCookie('cart_id');
+		let cart_id = window.readFromLocalStorage('cart_id');
 		if(cart_id){
 			// let url = "https://demo8558685.mockable.io/get-cart";
 			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";

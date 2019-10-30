@@ -71,7 +71,7 @@ var signInModal = function (_React$Component) {
 				React.createElement(
 					'div',
 					{ className: 'slide-in-content' },
-					React.createElement('div', { className: 'spacer-210' }),
+					React.createElement('div', { className: 'spacer-2101' }),
 					React.createElement(
 						'h3',
 						{ className: 'h1 ft6' },

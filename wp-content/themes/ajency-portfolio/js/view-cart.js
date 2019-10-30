@@ -94,7 +94,7 @@ var viewCart = function (_React$Component) {
 		value: function fetchCart() {
 			var _this3 = this;
 
-			var cart_id = window.getCookie('cart_id');
+			var cart_id = window.readFromLocalStorage('cart_id');
 			if (cart_id) {
 				var url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 				var body = {

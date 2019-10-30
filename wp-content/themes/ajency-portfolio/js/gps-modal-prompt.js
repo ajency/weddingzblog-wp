@@ -262,7 +262,7 @@ var gpsModalPrompt = function (_React$Component) {
 							React.createElement(
 								'h5',
 								null,
-								'Home'
+								address.address.type
 							),
 							React.createElement(
 								'span',

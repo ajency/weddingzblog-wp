@@ -107,7 +107,7 @@ class Cart extends Component {
 							<div className="bottom-bar">								
 								<div className="genuinity text-align-center">
 									<img src={genuinityLogo} className="mr-1" alt="100% Secure Payments" title="100% Secure Payments" className="d-inline-block vertical-align-middle" width="20"/>
-									<span className="d-inline-block vertical-align-middle ml-1">Genuine products. 100% Secure payments.</span>
+									<span className="d-inline-block vertical-align-middle ml-1 font-size-15">Genuine products. 100% Secure payments.</span>
 								</div>
 							</div>
 						</div>

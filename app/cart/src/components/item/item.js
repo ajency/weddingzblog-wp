@@ -12,25 +12,25 @@ class Item extends Component {
 	}
 	render() {
 		return (
-			<div className="item-container flex-column mb-2">
-				<div className="d-flex">
+			<div className="item-container flex-column">
+				<div className="d-flex align-items-center mb-4">
 					<div className="product-cartimage d-inline-block">
 						<img class="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
 					<div className="product-details d-inline-block">
-						<div className="product-title font-weight-light">
+						<div className="product-title-c font-weight-light">
 							{this.props.item.attributes.title}
 						</div>	
-						<div className="product-size text-green">
+						<div className="product-size-c font-italic">
 							{this.props.item.attributes.size}
 						</div>				
 					</div>			
 					<div className="product-quantity d-inline-block">
 						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
-						<div className="product-price text-grey font-weight-light">
-							₹ {this.props.item.attributes.price_final}
-							{this.checkItemDiscount()}
-						</div>
+					</div>
+					<div className="product-price font-weight-light text-right">
+						₹{this.props.item.attributes.price_final}
+						{this.checkItemDiscount()}
 					</div>
 				</div>
 				<div>
@@ -43,7 +43,7 @@ class Item extends Component {
 
 	checkItemDiscount(){
 		if(this.props.item.attributes.price_final < this.props.item.attributes.price_mrp){
-			return <div><span class="gbb-original-price text-muted">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger">{this.getOffPercentage()}% OFF</span></div>
+			return <div><span class="gbb-original-price">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger d-none">{this.getOffPercentage()}% OFF</span></div>
 		}
 	}
 
@@ -53,14 +53,14 @@ class Item extends Component {
 
 	checkServiceability(){
 		if(!this.props.item.deliverable)
-			return <div className="alert-danger">Cannot be delivred at your location</div>
+			return <div className="alert-danger p-15">Cannot be delivred at your location</div>
 		if(!this.props.item.availability)
-			return <div className="alert-danger">Quantity not available</div>
+			return <div className="alert-danger p-15">Quantity not available</div>
 	}
 
 	displayApiErrorMsg(){
 		if(this.state.apiErrorMsg){
-			return <div className="alert-danger">{this.state.apiErrorMsg}</div>
+			return <div className="alert-danger p-15">{this.state.apiErrorMsg}</div>
 		}
 	}
 

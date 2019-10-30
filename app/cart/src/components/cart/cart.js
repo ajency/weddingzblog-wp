@@ -72,8 +72,11 @@ class Cart extends Component {
 							<DeliveryAddress address={this.state.cartData.cart.formatted_address} delivery_time={this.state.cartData.approx_delivery_time}/>
 						</div>
 
+						<div className="cart-heading p-15 pt-0 pb-0">
+							<h1 class="font-weight-bold d-block mobile-header mb-4 text-muted">Your cart</h1>
+						</div>
+
 						<div className="p-15 pt-0">
-							<h4 className="mt-0 text-grey font-weight-medium">Order</h4>
 							{this.getItems()}
 						</div>
 
@@ -96,7 +99,7 @@ class Cart extends Component {
 						</div>*/}
 
 						<div className="p-15 bg-off-green">
-							<label className="cart-summary-label font-weight-medium text-black">Bill Details</label>
+							<label className="cart-summary-label font-weight-medium">Bill Details</label>
 							<CartSummary summary={this.state.cartData.cart.summary}/>
 						</div>						
 
@@ -104,7 +107,7 @@ class Cart extends Component {
 							<div className="bottom-bar">								
 								<div className="genuinity text-align-center">
 									<img src={genuinityLogo} className="mr-1" alt="100% Secure Payments" title="100% Secure Payments" className="d-inline-block vertical-align-middle" width="20"/>
-									<span className="d-inline-block vertical-align-middle ml-1 text-grey">Genuine products. 100% Secure payments.</span>
+									<span className="d-inline-block vertical-align-middle ml-1">Genuine products. 100% Secure payments.</span>
 								</div>
 							</div>
 						</div>
@@ -120,13 +123,7 @@ class Cart extends Component {
 
 		return (
 			<div className="cart-container visible">
-				<Header/>
-				<div className="cart-heading d-flex">
-					<span className="cart-title w-50">Cart</span>
-					<span className="add-to-cart w-50 text-align-right text-green" onClick={()=> this.closeCart()}>
-						<img src={add} className="app-log" alt="Add item" title="Add item" />Add item
-					</span>
-				</div>
+				<Header/>				
 				{cartContainer}
 			</div>
 		);

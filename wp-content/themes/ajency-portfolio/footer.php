@@ -87,6 +87,7 @@
           if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
           else window.addEventListener('load', loadDeferredStyles);
           var react_js_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_file_hash.json'); ?>;
+          var react_css_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_css_file_hash.json'); ?>;
     </script>
 <?php } ?>
 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet"/>

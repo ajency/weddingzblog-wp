@@ -63,7 +63,7 @@ class Cart extends Component {
 				cartContainer = <div className="text-center mt-5 p-15 "> <h4 className=""> Your cart is Empty. Add something from the menu </h4> 
 				<div class="btn-wrapper mt-3">
 						<div class="btn-inner-wrap">
-							<button type="button" class="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0">Browse Our Cuisine</button>
+							<button onClick={()=> this.closeCart()} type="button" class="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0" >Browse Our Cuisine</button>
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@ class Cart extends Component {
 								<div><label className="mb-0 text-black font-weight-medium">Estimated Time:</label></div>
 								<div className="text-black font-weight-medium">30 mins</div>
 							</div>
-						</div>	 */}
+						</div>	 
 
 						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
 							<div className="text-black font-weight-medium">
@@ -115,6 +115,7 @@ class Cart extends Component {
 								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
 							</div>
 						</div>
+						</div>*/}
 
 						<div className="p-15 bg-off-green">
 							<label className="cart-summary-label font-weight-medium text-black">Bill Details</label>

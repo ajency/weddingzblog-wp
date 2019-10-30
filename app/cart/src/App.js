@@ -11,11 +11,24 @@ class App extends Component {
     return (
       <div>
         {/*  <AddNewAddress latlng={{lat:15.487590683051524,lng:73.83213189817026}} address={"Panjim Convention Centre, Panjim goa"}/> /*}
-        {/* <Cart/> */}
-
-        <AddressList/>
+        {/* <Cart/> 
+        <AddressList/>*/}
+        {this.getComponent()}
       </div>
     );
+  }
+
+  getComponent(){
+  	console.log("check ==>", window.location.hash);
+  	if(window.location.hash === '#/cart'){
+  		return (<Cart/>)
+  	}
+  	else if(window.location.hash === '#/cart/address'){
+  		return ( <AddressList/>);
+  	}
+  	else if(window.location.hash === '#/cart/add-address'){
+  		return (  <AddNewAddress latlng={{lat:15.487590683051524,lng:73.83213189817026}} address={"Panjim Convention Centre, Panjim goa"}/> );
+  	}
   }
 }
 

@@ -2,6 +2,9 @@
 	padding: 15px;
 	padding-top: 0;
 	.address-details-inner{
-		max-width: 252px;	
+		padding-right: 90px;
+		&.border-grey-top{
+			border-top: 1px solid rgba(124, 124, 124, 0.5);
+		}
 	}
 }

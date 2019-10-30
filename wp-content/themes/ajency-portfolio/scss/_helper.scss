@@ -233,6 +233,15 @@ footer {
     display: inline-block;
 }
 
+.bg-off-green{
+    background-color: rgba(71,167,72,0.1);
+}
+
+.bg-off-green-1{
+    background-color: #D0E9D1;
+}
+
+
 @media (min-width: 320px) and (max-width: 767.98px) {
     .footer-section {
         padding-top: 2rem;

@@ -60,11 +60,10 @@ class Cart extends Component {
 			cartContainer = <div className="text-center mt-5 p-15"> <h4 className="font-weight-meidum m-0">  </h4>  </div>
 		else {
 			if(this.state.cartEmpty){
-				cartContainer = <div className="text-left mt-5 p-15 "> <h4 className="ft6"> Your cart is Empty. Add something from the menu </h4> 
+				cartContainer = <div className="text-center mt-5 p-15 "> <h4 className=""> Your cart is Empty. Add something from the menu </h4> 
 				<div class="btn-wrapper mt-3">
 						<div class="btn-inner-wrap">
-							<button type="button" class="btn-reset text-white border-green bg-primary p-3 text-left h5 ft6 mb-0 rounded-0 w-100">Browse Our Cuisine</button>
-							<i class="text-white fa fa-arrow-right" aria-hidden="true"></i>
+							<button type="button" class="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0">Browse Our Cuisine</button>
 						</div>
 					</div>
 				</div>
@@ -100,12 +99,19 @@ class Cart extends Component {
 							</div>
 						</div> */}
 
-						<div className="p-15 pt-0 ">
-							<label className="cart-summary-label font-weight-medium">Bill Details</label>
+						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
+							<div className="summary-item text-black">
+								<div><label className="mb-0 text-black font-weight-medium">Estimated Time:</label></div>
+								<div className="text-black font-weight-medium">30 mins</div>
+							</div>
+						</div>	
+
+						<div className="p-15 bg-off-green">
+							<label className="cart-summary-label font-weight-medium text-black">Bill Details</label>
 							<CartSummary summary={this.state.cartData.cart.summary}/>
 						</div>						
 
-						<div className="p-15 pt-0 ">
+						<div className="p-15 pt-0 bg-off-green">
 							<div className="bottom-bar">								
 								<div className="genuinity text-align-center">
 									<img src={genuinityLogo} className="mr-1" alt="100% Secure Payments" title="100% Secure Payments" className="d-inline-block vertical-align-middle" width="20"/>

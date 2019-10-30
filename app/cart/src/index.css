@@ -44,10 +44,9 @@
 
 body {
   margin: 0;
-  font-family: 'Futura PT';
+  font-family: Work Sans,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #eee;
 }
 
 code {

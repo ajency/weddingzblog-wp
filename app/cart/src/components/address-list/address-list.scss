@@ -1,0 +1,28 @@
+.P-15{
+    padding: 15px;
+}
+.p-name{
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    @media (max-width: 355px) {
+        max-width: 145px;
+    }
+}
+.p-phone-number{
+    vertical-align: middle;
+}
+.address-container{
+    max-width: 410px;
+    margin-left: auto;
+    font-size: 16px;
+    line-height: 22px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.address-list{
+    padding-top: 0;
+}

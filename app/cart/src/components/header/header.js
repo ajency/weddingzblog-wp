@@ -15,7 +15,7 @@ class Header extends Component {
 					<img src={logoCheckout} className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 					Secure <br/>Checkout
 				</div>
-				<h3 className="app-close background-green m-0 text-white btn-pay m-0" onClick={() => this.closeCart()}>
+				<h3 className="app-close m-0 text-white btn-pay m-0" onClick={() => this.closeCart()}>
 					<span aria-hidden="true"><img src={closeIcon} className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/></span>
 				</h3>
 			</div>

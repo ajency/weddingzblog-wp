@@ -536,7 +536,7 @@ var gpsModalPrompt = function (_React$Component) {
 			var url = this.state.apiEndPoint + "/user/get-addresses";
 			axios.get(url, { headers: headers }).then(function (res) {
 				_this12.setState({ addresses: res.data.addresses });
-				_this12.setDefaultAddress(res.data.addresses);
+				// this.setDefaultAddress(res.data.addresses)
 			}).catch(function (error) {
 				console.log("error in fetch addresses ==>", error);
 			});

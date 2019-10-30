@@ -403,7 +403,7 @@ class gpsModalPrompt extends React.Component {
 		axios.get(url, {headers :  headers })
 			.then((res) => {
 				this.setState({ addresses : res.data.addresses });
-				this.setDefaultAddress(res.data.addresses)
+				// this.setDefaultAddress(res.data.addresses)
 			})
 			.catch((error)=>{
 				console.log("error in fetch addresses ==>", error);

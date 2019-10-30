@@ -26,25 +26,19 @@ class Cart extends Component {
 	}
 
 	componentDidMount(){
-		// let el = document.querySelector('#view-cart-btn');
-		// console.log("component did mount", el);
-		// if(el)
-		// 	el.addEventListener("click", ()=>{
-		// 		console.log("click event fired");
-		// 		this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-		// 		this.fetchCart();
-		// 	});
-		$('#view-cart-btn').on('click', ()=>{
-			console.log("view cart click event fired");
-			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-			this.fetchCart();
-	    });
+		//Uncomment before build
 
-	    $('#cart-address-change-trigger').on('click', ()=>{
-			console.log("address change event fired");
-			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-			this.fetchCart();
-	    });
+		// $('#view-cart-btn').on('click', ()=>{
+		// 	console.log("view cart click event fired");
+		// 	this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+		// 	this.fetchCart();
+		// });
+
+		// $('#cart-address-change-trigger').on('click', ()=>{
+		// 	console.log("address change event fired");
+		// 	this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+		// 	this.fetchCart();
+		// });
 	}
 
 	getItems(){
@@ -61,9 +55,9 @@ class Cart extends Component {
 		else {
 			if(this.state.cartEmpty){
 				cartContainer = <div className="text-center mt-5 p-15 "> <h4 className=""> Your cart is Empty. Add something from the menu </h4> 
-				<div class="btn-wrapper mt-3">
-						<div class="btn-inner-wrap">
-							<button onClick={()=> this.closeCart()} type="button" class="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0" >Browse Our Cuisine</button>
+				<div className="btn-wrapper mt-3">
+						<div className="btn-inner-wrap">
+							<button onClick={()=> this.closeCart()} type="button" className="btn-reset text-white border-green bg-primary p-3 text-center h5 ft6 mb-0 rounded-0" >Browse Our Cuisine</button>
 						</div>
 					</div>
 				</div>
@@ -83,29 +77,13 @@ class Cart extends Component {
 							{this.getItems()}
 						</div>
 
-						{/*<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
-							<div className="text-black font-weight-medium">
-								Estimated Time:
-							</div>
-							<div className="w-50 text-align-right font-weight-medium">
-								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
-								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
-							</div>
-						</div> */}
-
 						{/* <div className="apply-coupon-bar">
 							<div className="coupon-label">
 								Apply Coupon   >
 							</div>
 						</div> */}
 
-						{/* <div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
-							<div className="summary-item text-black">
-								<div><label className="mb-0 text-black font-weight-medium">Estimated Time:</label></div>
-								<div className="text-black font-weight-medium">30 mins</div>
-							</div>
-						</div>	 
-
+						{/*  
 						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
 							<div className="text-black font-weight-medium">
 								Estimated Time:
@@ -162,23 +140,24 @@ class Cart extends Component {
 	}
 
 	fetchCart() {
-		window.addCartLoader();
+		// window.addCartLoader();
 		console.log("inside fetch cart");
-		let cart_id = window.readFromLocalStorage('cart_id');
-		if(cart_id){
-			// let url = "https://demo8558685.mockable.io/get-cart";
-			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
+		// let cart_id = window.readFromLocalStorage('cart_id');
+		let cart_id = "asdaswer";
+		if(true){
+			let url = "https://demo8558685.mockable.io/get-cart";
+			// let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 			let body = {
 				cart_id : cart_id
 			}
 			axios.get(url, {params : body})
 				.then((res) => {
-					window.removeCartLoader();
+					// window.removeCartLoader();
 					console.log("fetch cart response ==>", res);
 					this.setState({cartData : res.data, fetchCartComplete : true});
 				})
 				.catch((error)=>{
-					window.removeCartLoader();
+					// window.removeCartLoader();
 					this.setState({fetchCartFailureMsg : error.message,  fetchCartComplete : true})
 					console.log("error in fetch cart ==>", error);
 				})

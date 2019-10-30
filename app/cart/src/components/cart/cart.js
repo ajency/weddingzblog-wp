@@ -83,13 +83,13 @@ class Cart extends Component {
 							{this.getItems()}
 						</div>
 
-						{/*<div className="p-15 pt-0 d-flex">
-							<div className="w-50 font-weight-medium">
+						{/*<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
+							<div className="text-black font-weight-medium">
 								Estimated Time:
 							</div>
 							<div className="w-50 text-align-right font-weight-medium">
 								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
-								<span className="d-inline-block vertical-align-middle">30 mins</span>
+								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
 							</div>
 						</div> */}
 
@@ -99,12 +99,22 @@ class Cart extends Component {
 							</div>
 						</div> */}
 
-						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
+						{/* <div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1">
 							<div className="summary-item text-black">
 								<div><label className="mb-0 text-black font-weight-medium">Estimated Time:</label></div>
 								<div className="text-black font-weight-medium">30 mins</div>
 							</div>
-						</div>	
+						</div>	 */}
+
+						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
+							<div className="text-black font-weight-medium">
+								Estimated Time:
+							</div>
+							<div className="w-50 text-align-right font-weight-medium">
+								<img src={clockLogo} alt="Estimated time" title="Estimated time" className="d-inline-block vertical-align-middle mr-1"/> 
+								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
+							</div>
+						</div>
 
 						<div className="p-15 bg-off-green">
 							<label className="cart-summary-label font-weight-medium text-black">Bill Details</label>

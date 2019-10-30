@@ -14,7 +14,7 @@ class DeliveryAddress extends Component {
 						<span className="text-green font-weight-semibold">Deliver to</span> 
 						<span id="cart-delivery-address"> {this.props.address} </span>
 					</div>
-					<div className="address-details-inner font-weight-light mt-3 text-black">
+					<div className="address-details-inner font-weight-light mt-3 pt-3 text-black border-grey-top">
 						<span className="text-green font-weight-semibold">Mobile No.: </span> 
 						<span id="cart-delivery-address"> 9823353495 </span>
 					</div>

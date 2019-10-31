@@ -53,6 +53,11 @@
             border-right: 0;
         }
     }
+    &-bottom{
+        &-lightgrey{
+            border-bottom: 1px solid #C4C8C4;
+        }
+    }
 }
 
 .text{

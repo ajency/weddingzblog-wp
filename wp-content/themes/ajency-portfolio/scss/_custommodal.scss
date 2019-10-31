@@ -29,10 +29,7 @@
         bottom: 0;
     }
 }
-.mw-70{
-    min-width: 70px;
-    display: inline-block;
-}
+
 .show-modal {
     opacity: 1;
     visibility: visible;
@@ -45,7 +42,7 @@
 .custom-radio-btn {
     display: block;
     position: relative;
-    padding-right: 35px;
+    padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
     -webkit-user-select: none;
@@ -64,7 +61,7 @@
 .checkmark {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     height: 23px;
     width: 23px;
     background-color: #fff;

@@ -98,12 +98,12 @@ class Cart extends Component {
 						</div>
 						</div>*/}
 
-						<div className="p-15 bg-off-green">
+						<div className="p-15">
 							<label className="cart-summary-label font-weight-medium">Bill Details</label>
 							<CartSummary summary={this.state.cartData.cart.summary}/>
 						</div>						
 
-						<div className="p-15 pt-0 bg-off-green">
+						<div className="p-15 pt-0">
 							<div className="bottom-bar">								
 								<div className="genuinity text-align-center">
 									<img src={genuinityLogo} className="mr-1" alt="100% Secure Payments" title="100% Secure Payments" className="d-inline-block vertical-align-middle" width="20"/>
@@ -113,8 +113,8 @@ class Cart extends Component {
 						</div>
 
 						<div className="p-15 pt-0 pb-0">
-							<div className="secure-checkout fixed-bottom visible">
-								<button className="btn btn-primary btn-checkout font-weight-medium w-100 p-15 rounded-0">Proceed to Checkout</button>
+							<div className="secure-checkout fixed-bottom visible bg-white p-15">
+								<button className="btn btn-primary btn-arrow w-100 p-15 rounded-0 text-left position-relative h5 ft6 mb-0">Proceed to Checkout</button>
 							</div>
 						</div>
 					</div>

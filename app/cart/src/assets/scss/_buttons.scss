@@ -29,4 +29,18 @@
         font-weight: 500;
         line-height: 23px;
     }
+    &-arrow{
+        &:after{
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f061";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #fff;
+            transition: all .12s ease;
+        }        
+    }
 }

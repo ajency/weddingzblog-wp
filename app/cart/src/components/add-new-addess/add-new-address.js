@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from '../header/header.js';
 import './add-new-address.scss'
 import GoogleMap from '../google-map/google-map.js';
 const CancelToken = axios.CancelToken;
@@ -34,20 +35,27 @@ class AddNewAddress extends Component {
     
     render() {
         return (
-            <div className="container">
-                <div style={{width:"inherit", height:"auto"}}>
-                    <div className="map-container">
-                        <GoogleMap handleCenter={this.handleCenter} latlng={this.state.latlng}/>
-                        <div id="marker"></div>
+            <div className="address-container">
+                <Header/>
+                <div className="map-container">
+                    <GoogleMap handleCenter={this.handleCenter} latlng={this.state.latlng}/>
+                    <div id="marker"><i class="fas fa-map-marker-alt"></i></div>
+                </div>
+                <div className="p-15">
+                    <h3 class="mt-4 h1 ft6">Set a delivery address</h3>
+                    <div className="list-text-block p-15 mb-4 mt-4">
+                        <div className="font-weight-light h5 mb-0">
+                            {this.state.showLoader?<div>Address is loading...</div>:this.state.address}
+                            {this.state.addressInput ? this.getChangeAddressInput() : this.state.address?<span className="text-green d-inline-block cursor-pointer" onClick={this.changeAddress}>. Change</span>:null}
+                        </div>
                     </div>
-                    {this.state.showLoader?<div>Address is loading...</div>:this.state.address}
-                    {this.state.addressInput ? this.getChangeAddressInput() : this.state.address?<button onClick={this.changeAddress}>Change</button>:null}                         
-                    <h3>Set a delivery address</h3>
                     <form>
                         <div>
                             {this.getAddressTypeRadio()} 
                         </div>
-                        <button onClick={this.handleSubmit}>Add Address</button>
+                        <div className="secure-checkout fixed-bottom visible bg-white p-15">
+                            <button className="btn btn-primary btn-arrow w-100 p-15 rounded-0 text-left position-relative h5 ft6 mb-0" onClick={this.handleSubmit}>Add Address</button>
+						</div>
                     </form>
                 </div>
             </div>
@@ -57,47 +65,52 @@ class AddNewAddress extends Component {
     getAddressTypeRadio = () => {
        return (
         <div>
-            <label>
+            <label className="d-block mb-4">
                 House/Flat/Block no:
-                <input type="text" value={this.state.building} onChange={this.handleBuildingChange}/>
-            </label> <br/>
-            <label>
+                <input type="text" value={this.state.building} class="d-block w-100 rounded-0 input-bottom" onChange={this.handleBuildingChange}/>
+            </label>
+            <label className="d-block mb-4">
                 Landmark:
-                <input type="text" value={this.state.landmark}  onChange={this.handleLandmarkChange}/>
-            </label> <br/>
+                <input type="text" value={this.state.landmark}  class="d-block w-100 rounded-0 input-bottom" onChange={this.handleLandmarkChange}/>
+            </label>
 
-            Save as
-            <div className="radio">
-                <label>
-                    <input type="radio" onChange={this.handleAddressTypeChange} value="home"  checked={this.state.address_type ==='home'} />
-                    Home
-                </label>
-            </div>
-            <div className="radio">
-                <label>
-                    <input type="radio" onChange={this.handleAddressTypeChange} value="work" checked={this.state.address_type ==='work'} />
-                    Work
-                </label>
-            </div>
-            <div className="radio">
-                <label>
-                    <input type="radio" onChange={this.handleAddressTypeChange}  value="other" checked={this.state.address_type ==='other'} />
-                    Other
-                </label>
+            <h5 className="ft6 mb-4">Save as</h5>
+
+            <div className="d-flex mb-3">
+                <div className="radio d-inline-block pr-5">
+                    <label className="text-center">
+                        <input class="invisible position-absolute radio-input" type="radio" onChange={this.handleAddressTypeChange} value="home"  checked={this.state.address_type ==='home'} />
+                        <img src="http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/home_location.png" className="mb-1" height="30"/>
+                        <span className="radio-text d-block">Home</span>
+                    </label>
+                </div>
+                <div className="radio d-inline-block pr-5">
+                    <label className="text-center">
+                        <input class="invisible position-absolute radio-input" type="radio" onChange={this.handleAddressTypeChange} value="work" checked={this.state.address_type ==='work'} />
+                        <img src="http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/office_location.png" className="mb-1" height="30"/>
+                        <span className="radio-text d-block">Work</span>
+                    </label>
+                </div>
+                <div className="radio d-inline-block">
+                    <label className="text-center">
+                        <input class="invisible position-absolute radio-input" type="radio" onChange={this.handleAddressTypeChange}  value="other" checked={this.state.address_type ==='other'} />
+                        <img src="http://localhost/greengrainbowl/wp-content/themes/ajency-portfolio/images/address_location.png" className="mb-1" height="30"/>
+                        <span className="radio-text d-block">Other</span>
+                    </label>
+                </div>
             </div>
 
-            <div>
-                Account Details :
-                <br/>
-                <label>
+            <div className="d-none">
+                <h5 className="ft6 mb-4">Account details</h5>
+                <label className="d-block mb-4">
                     Full Name
-                    <input type="text"/>
-                </label> <br/>
+                    <input type="text" className="d-block w-100 rounded-0 input-bottom"/>
+                </label>
 
-                <label>
+                <label className="d-block mb-4">
                     Email
-                    <input type="text"/>
-                </label> <br/>
+                    <input type="text" className="d-block w-100 rounded-0 input-bottom"/>
+                </label>               
             </div>
         </div>
         );
@@ -107,7 +120,7 @@ class AddNewAddress extends Component {
         return (
             <div>
                 {this.showLocationSearch()}
-                <ul style={{listStyle:'none'}}>
+                <ul className="location-list" style={{listStyle:'none'}}>
                     {this.getAutoCompleteLocations()}
                 </ul>
                 
@@ -118,9 +131,9 @@ class AddNewAddress extends Component {
     showLocationSearch(){
         if(!this.state.fetchingGPS)
             return (
-                <div>
-                    <input type="search"  placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/> 
-                    <button onClick={this.changeAddress}>Cancel</button>
+                <div className="mt-3 position-relative">
+                    <input className="border-grey-2 w-100 rounded-0 p-3 mb-0 w-100 search-input" type="search" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/> 
+                    <button className="search-close" onClick={this.changeAddress}><i class="fas fa-times"></i></button>
                 </div>
             );
     }
@@ -128,7 +141,7 @@ class AddNewAddress extends Component {
     getAutoCompleteLocations(){
         if(this.state.locations.length){
             let locs =  this.state.locations.map((loc)=>
-                <li key={loc.id} onClick={() => this.reverseGeocode({loc:loc})}>
+                <li className="mb-3" key={loc.id} onClick={() => this.reverseGeocode({loc:loc})}>
                     {loc.description}
                 </li>
             );

@@ -21,3 +21,16 @@ input[type='number'], input[type='tel']{
     background-position-x: 35px;
     width: 220px;
   }
+
+.input-bottom{
+    border: 0;
+    border-bottom: 1px solid #C4C8C4;
+    outline: 0;
+}
+
+.radio .radio-input:checked ~ .radio-text{
+    color: #000;
+    font-weight: 700;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+}

@@ -13,7 +13,7 @@ class Item extends Component {
 	render() {
 		return (
 			<div className="item-container flex-column">
-				<div className="d-flex align-items-center mb-4">
+				<div className="d-flex mb-4">
 					<div className="product-cartimage d-inline-block">
 						<img class="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
@@ -21,16 +21,20 @@ class Item extends Component {
 						<div className="product-title-c font-weight-light">
 							{this.props.item.attributes.title}
 						</div>	
-						<div className="product-size-c font-italic">
-							{this.props.item.attributes.size}
-						</div>				
-					</div>			
-					<div className="product-quantity d-inline-block">
-						<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
-					</div>
-					<div className="product-price font-weight-light text-right">
-						₹{this.props.item.attributes.price_final}
-						{this.checkItemDiscount()}
+						<div className="d-flex justify-content-between">
+							<div className="product-size-c font-italic">
+								{this.props.item.attributes.size}
+							</div>
+							<div className="d-flex align-items-start">
+								<div className="product-quantity d-inline-block">
+									<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
+								</div>
+								<div className="product-price font-weight-light text-right pl-3">
+									{this.checkItemDiscount()}
+									₹{this.props.item.attributes.price_final}								
+								</div>
+							</div>								
+						</div>
 					</div>
 				</div>
 				<div>
@@ -43,7 +47,7 @@ class Item extends Component {
 
 	checkItemDiscount(){
 		if(this.props.item.attributes.price_final < this.props.item.attributes.price_mrp){
-			return <div><span class="gbb-original-price">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger d-none">{this.getOffPercentage()}% OFF</span></div>
+			return <div><span class="gbb-original-price mr-0">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger d-none">{this.getOffPercentage()}% OFF</span></div>
 		}
 	}
 

@@ -7,18 +7,18 @@
 		}
 	}
 	&-details{
-		width: 45%;
+		width: 100%;
 		padding-right: 10px;
 		@media (max-width: 480px) {
-			width: 45%;
+			//width: 45%;
 			padding-right: 8px;
 		}
 	}
 	&-quantity{
-		width: 25%;
+		//width: 25%;
 		text-align: center;		
 		@media (max-width: 480px) {
-			width: 25%;
+			//width: 25%;
 			.btn-qty{
 				padding: 6px;
 			}
@@ -27,7 +27,7 @@
 	&-price{
 		font-size: 15px;
 		line-height: 20px;
-		width: 13%;
+		//width: 13%;
 	}
 	&-size-c{
 		font-size: 12px;

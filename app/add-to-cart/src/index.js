@@ -29,6 +29,7 @@ class addToCart extends React.Component {
 
 			    <div className="custom-modal" id={'variantSelectionModal-' + this.props.product_data.product_id}>
 				    <div className="custom-modal-content p-15">
+					<button type="button" className="btn-reset close-modal" onClick={()=> this.hideVariantModal()}><i class="fas fa-times text-silver"></i></button>
 				        <div className="product-variant text-left">
 						  <h3 class="h1 ft6">Choose your Bowl</h3>
 						  <div class="list-meta mt-4 mb-4">
@@ -40,8 +41,8 @@ class addToCart extends React.Component {
 				          </div>
 				        </div>
 				        <div className="custom-modal-footer d-flex justify-content-between">
-				          <button type="button" className="btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white text-left w-48" onClick={()=> this.hideVariantModal()}>Back</button>
-				          <button type="button" className="btn-reset btn-continue font-size-15 text-uppercase p-15 bg-primary text-white text-left w-48" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
+				          {/* <button type="button" className="btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white text-left w-48" onClick={()=> this.hideVariantModal()}>Back</button> */}
+				          <button type="button" className="btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
 				        </div>
 				    </div>
 				</div>
@@ -73,7 +74,7 @@ class addToCart extends React.Component {
 			return (
 				<div key={variant.id} className="list-item pt-3 pb-3 border-bottom-lightgrey">
 		              <label className="custom-radio-btn mb-0 font-size-16">
-		              		<span className={"mr-3 " + (this.state.selectedVariant == variant.id ? 'text-primary' : '') }>{variant.size}</span> {variant.sale_price}
+		              		<span className={"mr-3 " + (this.state.selectedVariant == variant.id ? 'text-primary' : '') }>{variant.size}</span> ₹ {variant.sale_price}
 		                	<input type="radio" name={"variant-" + this.props.product_data.product_id} value={variant.id} checked={this.state.selectedVariant == variant.id} onChange={(event) => this.handleOptionChange(event)} />
 		                	<span className="checkmark"></span>
 		              </label>

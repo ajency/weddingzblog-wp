@@ -53,6 +53,13 @@ var addToCart = function (_React$Component) {
 						'div',
 						{ className: 'custom-modal-content p-15' },
 						React.createElement(
+							'button',
+							{ type: 'button', className: 'btn-reset close-modal', onClick: function onClick() {
+									return _this2.hideVariantModal();
+								} },
+							React.createElement('i', { 'class': 'fas fa-times text-silver' })
+						),
+						React.createElement(
 							'div',
 							{ className: 'product-variant text-left' },
 							React.createElement(
@@ -85,14 +92,7 @@ var addToCart = function (_React$Component) {
 							{ className: 'custom-modal-footer d-flex justify-content-between' },
 							React.createElement(
 								'button',
-								{ type: 'button', className: 'btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white text-left w-48', onClick: function onClick() {
-										return _this2.hideVariantModal();
-									} },
-								'Back'
-							),
-							React.createElement(
-								'button',
-								{ type: 'button', className: 'btn-reset btn-continue font-size-15 text-uppercase p-15 bg-primary text-white text-left w-48', onClick: function onClick() {
+								{ type: 'button', className: 'btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.selectedVariant);
 									} },
 								'Continue'
@@ -173,7 +173,7 @@ var addToCart = function (_React$Component) {
 							{ className: "mr-3 " + (_this3.state.selectedVariant == variant.id ? 'text-primary' : '') },
 							variant.size
 						),
-						' ',
+						' \u20B9 ',
 						variant.sale_price,
 						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, checked: _this3.state.selectedVariant == variant.id, onChange: function onChange(event) {
 								return _this3.handleOptionChange(event);

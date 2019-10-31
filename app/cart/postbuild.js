@@ -7,7 +7,7 @@ let css_files = ["main."];
 
 fs.emptyDir('../../wp-content/themes/ajency-portfolio/js/cart')
 .then(() => {
-	fs.copy('./build/', '../../wp-content/themes/ajency-portfolio/js/cart/')
+	fs.copy('./build/', '../build/cart/')
 		.then((success) =>{
 			console.log("build folder copied successfully");
 			for(let i = 0; i<js_files.length; i++){

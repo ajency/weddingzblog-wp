@@ -33,4 +33,5 @@ wp-content/themes/HighendWP/
 
 node_modules/
 
+/app/build/
 

@@ -49,7 +49,9 @@ class signInModal extends React.Component {
 			      {this.displaySignInErrorMsg()}
 			  </div>
 			  {this.getCaptaContainer()}
+			
 			</div>
+
 		);
 	}
 

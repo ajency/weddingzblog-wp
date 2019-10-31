@@ -39,9 +39,9 @@ class addToCart extends React.Component {
 				          		{this.getVariants()}
 				          </div>
 				        </div>
-				        <div className="custom-modal-footer text-right">
-				          <button type="button" className="btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white" onClick={()=> this.hideVariantModal()}>Back</button>
-				          <button type="button" className="btn-reset btn-continue font-size-15 text-uppercase p-15 bg-primary text-white" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
+				        <div className="custom-modal-footer d-flex justify-content-between">
+				          <button type="button" className="btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white text-left w-48" onClick={()=> this.hideVariantModal()}>Back</button>
+				          <button type="button" className="btn-reset btn-continue font-size-15 text-uppercase p-15 bg-primary text-white text-left w-48" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
 				        </div>
 				    </div>
 				</div>
@@ -49,15 +49,13 @@ class addToCart extends React.Component {
 
 			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
 				  	<div className="custom-modal-content p-15">
-						<div className="pl-0 pt-0 pr-0 pb-1">
-							<h3 className="">Repeat last used customization?</h3>
+					  	<h3 class="h1 ft6">Repeat last used customization?</h3>
+						<div class="list-meta mt-4 mb-4">
+							<div class="list-author">{this.props.product_data.title}</div>
+							<div class="list-date">Veg</div>
 						</div>
-						<div className="product-variant-title font-size-18 letter-spacing-5 font-weight-light mt-0 pb-3" title="Noodle Salad Bowl">
-				            <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png" className="mr-3" alt="Bowl icon" />
-				            {this.props.product_data.title}
-				        </div>
 						<div className="pl-0 pt-0 pb-3 pr-3">
-							<h6>{this.getLastSelected()}</h6>
+							<h5>{this.getLastSelected()}</h5>
 						</div>
 
 						<div className="d-flex justify-content-between">

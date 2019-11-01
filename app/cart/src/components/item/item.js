@@ -25,7 +25,7 @@ class Item extends Component {
 							<div className="product-size-c font-italic">
 								{this.props.item.attributes.size}
 							</div>
-							<div className="d-flex align-items-start">
+							<div className="d-flex align-items-center">
 								<div className="product-quantity d-inline-block">
 									<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
 								</div>

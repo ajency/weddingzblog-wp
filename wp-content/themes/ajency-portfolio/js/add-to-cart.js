@@ -95,7 +95,7 @@ var addToCart = function (_React$Component) {
 								{ type: 'button', className: 'btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.selectedVariant);
 									} },
-								'Continue'
+								'Select & Continue'
 							)
 						)
 					)

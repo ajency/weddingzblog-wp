@@ -64,7 +64,7 @@
 				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_three.png",
 				"http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/prod_four.png"
 			],
-			"class" : "cardtwo reverse-order",
+			"class" : "cardtwo",
 			"put_empty" : false
 		},
 

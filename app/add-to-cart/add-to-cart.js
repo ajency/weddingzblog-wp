@@ -42,7 +42,7 @@ class addToCart extends React.Component {
 				        </div>
 				        <div className="custom-modal-footer d-flex justify-content-between">
 				          {/* <button type="button" className="btn-reset btn-back font-size-15 text-uppercase mr-4 p-15 bg-primary text-white text-left w-48" onClick={()=> this.hideVariantModal()}>Back</button> */}
-				          <button type="button" className="btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative" onClick={()=>this.addToCart(this.state.selectedVariant)} >Continue</button>
+				          <button type="button" className="btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative" onClick={()=>this.addToCart(this.state.selectedVariant)} >Select & Continue</button>
 				        </div>
 				    </div>
 				</div>

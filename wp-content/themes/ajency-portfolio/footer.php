@@ -67,7 +67,11 @@
   </div>
 </div> -->
 
-<?php if (!is_page_template('archive.php') && !is_singular('post') && !is_page_template('template-blogs.php') && !is_page_template('template-fullwidth.php') ) { ?>
+<?php
+    $js_json = json_decode(file_get_contents('http://order.greengrainbowl.com/react_component_file_hash.json'), true);
+    $css_json = json_decode(file_get_contents('http://order.greengrainbowl.com/cart_app_css_file_hash.json'), true);
+    $site_url = "http://order.greengrainbowl.com";
+ if (!is_page_template('archive.php') && !is_singular('post') && !is_page_template('template-blogs.php') && !is_page_template('template-fullwidth.php') ) { ?>
     <noscript id="deferred-styles">
         <link href="<?php echo get_template_directory_uri(); ?>/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo get_bloginfo('url');  ?>/wp-content/themes/ajency-portfolio/style.css" rel="stylesheet" type="text/css"/>
@@ -86,8 +90,9 @@
               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
           if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
           else window.addEventListener('load', loadDeferredStyles);
-          var react_js_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_file_hash.json'); ?>;
-          var react_css_file_hashes = <?php echo file_get_contents(get_template_directory_uri() . '/react_css_file_hash.json'); ?>;
+          var react_js_file_hashes = <?php echo json_encode($js_json); ?>;
+          var react_css_file_hashes = <?php echo json_encode($css_json); ?>;
+          var site_url = "<?php echo $site_url; ?>";
     </script>
 <?php } ?>
 <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet"/>
@@ -140,11 +145,11 @@
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
 <!-- <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
-<script src="<?php echo get_template_directory_uri(); ?>/js/view-cart.js?_12" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/add-to-cart.js?_12" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/gps-modal-prompt.js?_12" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/sign-in.js?_12" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/verify-otp.js?_12" type="text/javascript"></script>
+<script src="<?php echo $site_url; ?>/view-cart.<?php echo $js_json['view-cart'];?>.js" type="text/javascript"></script>
+<script src="<?php echo $site_url; ?>/add-to-cart.<?php echo $js_json['add-to-cart'];?>.js" type="text/javascript"></script>
+<script src="<?php echo $site_url; ?>/delivery-address-slider.<?php echo $js_json['delivery-address-slider'];?>.js" type="text/javascript"></script>
+<script src="<?php echo $site_url; ?>/sign-in.<?php echo $js_json['sign-in'];?>.js" type="text/javascript"></script>
+<script src="<?php echo $site_url; ?>/verify-otp.<?php echo $js_json['verify-otp'];?>.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     if ($(window).innerWidth() < 767) {

@@ -152,9 +152,9 @@ class addToCart extends React.Component {
 
 		return (
 			<div className="border-green">
-				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
+				<button className="btn-primary" onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
 				<span className="mw-50 text-center">	{this.state.quantity} </span>
-				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>
+				<button className="btn-primary" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>
 			</div>
 		)		
 	}

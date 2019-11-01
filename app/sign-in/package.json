@@ -2,9 +2,6 @@
   "name": "sign-in",
   "version": "1.0.0",
   "main": "sign-in.js",
-  "dependencies": {
-    "@bit/sujit.firebase-auth-collection.firease-mobile-sign-in": "^1.0.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",

@@ -70,7 +70,7 @@
 <?php
     $js_json = json_decode(file_get_contents('http://order.greengrainbowl.com/react_component_file_hash.json'), true);
     $css_json = json_decode(file_get_contents('http://order.greengrainbowl.com/cart_app_css_file_hash.json'), true);
-    $site_url = "http://order.greengrainbowl.com";
+    $site_url = "https://order.greengrainbowl.com";
  if (!is_page_template('archive.php') && !is_singular('post') && !is_page_template('template-blogs.php') && !is_page_template('template-fullwidth.php') ) { ?>
     <noscript id="deferred-styles">
         <link href="<?php echo get_template_directory_uri(); ?>/css/custom.css" rel="stylesheet" type="text/css"/>

@@ -85,7 +85,7 @@ var signInModal = function (_React$Component) {
 					React.createElement(
 						'div',
 						{ className: 'mb-3 pt-4 pb-2' },
-						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', placeholder: '10 digit mobile number', type: 'text', onKeyDown: function onKeyDown(e) {
+						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0 plceholder-text', placeholder: '10 digit mobile number', type: 'text', onKeyDown: function onKeyDown(e) {
 								_this2.validateMobile(e);
 							}, onChange: function onChange(e) {
 								_this2.setUserMobile(e.target.value);

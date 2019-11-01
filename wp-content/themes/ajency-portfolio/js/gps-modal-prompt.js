@@ -106,12 +106,12 @@ var gpsModalPrompt = function (_React$Component) {
 					React.createElement(
 						'h3',
 						{ className: 'mt-4 h1 ft6' },
-						'Add your delivery address to proceed'
+						'Add delivery address'
 					),
 					React.createElement(
 						'h4',
 						{ className: 'font-weight-light mt-4 pb-4' },
-						'We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de Fran\xE7a, Taleigao. Please choose from amongst these'
+						'We currently serve at Panjim, Porvorim & its neighbourhood.'
 					),
 					React.createElement(
 						'div',
@@ -195,7 +195,7 @@ var gpsModalPrompt = function (_React$Component) {
 				React.createElement(
 					'div',
 					{ className: 'position-relative mb-3 mt-3 text-center' },
-					React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
+					React.createElement('input', { type: 'text', className: 'border-grey-2 w-100 rounded-0 p-3 h5 mb-0 plceholder-text', name: 'search', placeholder: 'Search Location', value: this.state.searchText, onChange: function onChange(e) {
 							_this4.autoCompleteLocation(e.target.value);
 						} }),
 					React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png' })
@@ -224,7 +224,7 @@ var gpsModalPrompt = function (_React$Component) {
 				'button',
 				{ onClick: function onClick() {
 						return _this5.getLocation();
-					}, type: 'button', className: 'btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative' },
+					}, type: 'button', className: 'btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 mb-0 position-relative' },
 				'Use Current Location ',
 				React.createElement('img', { className: 'position-absolute-right20', src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png' })
 			);

@@ -132,7 +132,7 @@ class AddNewAddress extends Component {
         if(!this.state.fetchingGPS)
             return (
                 <div className="mt-3 position-relative">
-                    <input className="border-grey-2 w-100 rounded-0 p-3 mb-0 w-100 search-input" type="search" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/> 
+                    <input className="border-grey-2 w-100 rounded-0 p-3 mb-0 w-100 search-input plceholder-text" type="search" placeholder="search for area, street name" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}}/> 
                     <button className="search-close" onClick={this.changeAddress}><i class="fas fa-times"></i></button>
                 </div>
             );

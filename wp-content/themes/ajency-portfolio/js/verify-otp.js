@@ -82,30 +82,44 @@ var verifyOtp = function (_React$Component) {
 						{ className: 'font-weight-light mt-4 pb-4' },
 						'Enter the 6 digit code sent to the number'
 					),
-					this.state.phoneNumber,
+					React.createElement(
+						'h4',
+						{ className: 'ft6 mb-3' },
+						this.state.phoneNumber
+					),
 					React.createElement(
 						'div',
 						{ className: 'mb-1 pt-4' },
-						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0', type: 'tel', placeholder: 'Enter OTP', onChange: function onChange(e) {
+						React.createElement('input', { className: 'w-100 p-3 border-green h5 ft6 rounded-0 plceholder-text', type: 'tel', placeholder: 'Enter OTP', onChange: function onChange(e) {
 								_this2.setOtp(e.target.value);
 							}, value: this.state.otp })
 					),
 					React.createElement(
 						'h6',
-						{ className: 'mb-4 pb-3' },
+						{ className: 'mb-2 pb-3' },
 						'Didn\'t receive the code? ',
 						React.createElement(
 							'a',
-							{ href: 'javascript:void(0)', onClick: function onClick() {
+							{ href: 'javascript:void(0)', className: 'text-underline', onClick: function onClick() {
 									_this2.resendOtpCode();
 								} },
-							'RESEND'
+							'Resend'
 						)
 					),
 					React.createElement(
 						'div',
 						{ className: 'btn-wrapper pt-4' },
 						this.getOtpButtons()
+					),
+					React.createElement(
+						'h5',
+						{ 'class': 'mt-3 text-center' },
+						'Don\'t wish to login? ',
+						React.createElement(
+							'a',
+							{ 'class': 'text-green d-inline-block cursor-pointer', href: '#' },
+							'Skip.'
+						)
 					),
 					this.displayOtpErrorMsg()
 				),

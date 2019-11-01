@@ -13,11 +13,14 @@
 	overflow-x: hidden;
 	overflow-y: scroll;
 	// transition: all 0.3s ease-in;
-	padding-bottom: 52px;
+	padding-bottom: 72px;
 	.cart-heading {
 		padding: 15px;
 		font-size: 18px;
 		font-weight: 500;
+		h1{
+			margin-left: 5px;
+		}
 		.add-to-cart{
 			font-size: 14px;
 			line-height: 18px;

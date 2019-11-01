@@ -53,41 +53,49 @@ var addToCart = function (_React$Component) {
 						'div',
 						{ className: 'custom-modal-content p-15' },
 						React.createElement(
+							'button',
+							{ type: 'button', className: 'btn-reset close-modal', onClick: function onClick() {
+									return _this2.hideVariantModal();
+								} },
+							React.createElement('i', { 'class': 'fas fa-times text-silver' })
+						),
+						React.createElement(
 							'div',
 							{ className: 'product-variant text-left' },
 							React.createElement(
-								'div',
-								{ className: 'product-variant-title text-grey font-size-18 letter-spacing-5 mb-3', title: 'Noodle Salad Bowl' },
-								React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png', className: 'mr-3', alt: 'Bowl icon' }),
-								this.props.product_data.title
-							),
-							React.createElement(
-								'div',
-								{ className: 'font-size-15 text-black mb-3 ft6' },
+								'h3',
+								{ 'class': 'h1 ft6' },
 								'Choose your Bowl'
 							),
 							React.createElement(
 								'div',
-								{ className: 'variant-list' },
+								{ 'class': 'list-meta mt-4 mb-4' },
+								React.createElement(
+									'div',
+									{ 'class': 'list-author' },
+									this.props.product_data.title
+								),
+								React.createElement(
+									'div',
+									{ 'class': 'list-date' },
+									'Veg'
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'variant-list mb-4' },
 								this.getVariants()
 							)
 						),
 						React.createElement(
 							'div',
-							{ className: 'custom-modal-footer text-right' },
+							{ className: 'custom-modal-footer d-flex justify-content-between' },
 							React.createElement(
 								'button',
-								{ type: 'button', className: 'btn-reset btn-back font-size-15 text-grey text-uppercase mr-5', onClick: function onClick() {
-										return _this2.hideVariantModal();
-									} },
-								'Back'
-							),
-							React.createElement(
-								'button',
-								{ type: 'button', className: 'btn-reset btn-continue font-size-15 text-uppercase', onClick: function onClick() {
+								{ type: 'button', className: 'btn-reset btn-continue btn-arrow font-size-15 text-uppercase p-15 bg-primary text-white text-left w-100 position-relative', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.selectedVariant);
 									} },
-								'Continue'
+								'Select & Continue'
 							)
 						)
 					)
@@ -99,25 +107,29 @@ var addToCart = function (_React$Component) {
 						'div',
 						{ className: 'custom-modal-content p-15' },
 						React.createElement(
-							'div',
-							{ className: 'pl-0 pt-0 pr-0 pb-1' },
-							React.createElement(
-								'h3',
-								{ className: '' },
-								'Repeat last used customization?'
-							)
+							'h3',
+							{ 'class': 'h1 ft6' },
+							'Repeat last used customization?'
 						),
 						React.createElement(
 							'div',
-							{ className: 'product-variant-title font-size-18 letter-spacing-5 font-weight-light mt-0 pb-3', title: 'Noodle Salad Bowl' },
-							React.createElement('img', { src: 'http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/bowl-icon.png', className: 'mr-3', alt: 'Bowl icon' }),
-							this.props.product_data.title
+							{ 'class': 'list-meta mt-4 mb-4' },
+							React.createElement(
+								'div',
+								{ 'class': 'list-author' },
+								this.props.product_data.title
+							),
+							React.createElement(
+								'div',
+								{ 'class': 'list-date' },
+								'Veg'
+							)
 						),
 						React.createElement(
 							'div',
 							{ className: 'pl-0 pt-0 pb-3 pr-3' },
 							React.createElement(
-								'h6',
+								'h5',
 								null,
 								this.getLastSelected()
 							)
@@ -152,16 +164,16 @@ var addToCart = function (_React$Component) {
 			var variants = this.props.product_data.variants.map(function (variant) {
 				return React.createElement(
 					'div',
-					{ key: variant.id, className: 'list-item' },
+					{ key: variant.id, className: 'list-item pt-3 pb-3 border-bottom-lightgrey' },
 					React.createElement(
 						'label',
-						{ className: 'custom-radio-btn font-size-15 text-grey mb-4' },
+						{ className: 'custom-radio-btn mb-0 font-size-16' },
 						React.createElement(
 							'span',
-							{ className: "mw-70 " + (_this3.state.selectedVariant == variant.id ? 'text-primary' : '') },
+							{ className: "mr-3 " + (_this3.state.selectedVariant == variant.id ? 'text-primary' : '') },
 							variant.size
 						),
-						' ',
+						' \u20B9 ',
 						variant.sale_price,
 						React.createElement('input', { type: 'radio', name: "variant-" + _this3.props.product_data.product_id, value: variant.id, checked: _this3.state.selectedVariant == variant.id, onChange: function onChange(event) {
 								return _this3.handleOptionChange(event);

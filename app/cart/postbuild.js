@@ -5,6 +5,9 @@ let react_css_file_hash = {}
 let js_files = ["runtime-main.", "main.", "2."];
 let css_files = ["main."];
 
+let react_component_file_hash = {};
+let react_component_js_files = ["add-to-cart.", "delivery-address-slider.", "sign-in.", "verify-otp.", "view-cart."];
+
 fs.emptyDir('../build/cart')
 .then(() => {
 	fs.copy('./build/', '../build/cart/')
@@ -27,6 +30,19 @@ fs.emptyDir('../build/cart')
 			})
 
 			fs.writeJson('../build/cart_app_css_file_hash.json', react_css_file_hash)
+			.then(() => {
+			  console.log('success!')
+			})
+			.catch(err => {
+			  console.error(err)
+			})
+
+			for(let i = 0; i<react_component_js_files.length; i++){
+			    fromDir('../build/', react_component_js_files[i], 'js');
+			}
+
+
+			fs.writeJson('../build/react_component_file_hash.json', react_file_hash)
 			.then(() => {
 			  console.log('success!')
 			})

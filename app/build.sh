@@ -49,4 +49,4 @@ buildSignIn
 buildVerifyOtp
 buildViewCart
 buildCartApp
-postbuildScript
+# postbuildScript

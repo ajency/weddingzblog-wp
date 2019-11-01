@@ -39,15 +39,15 @@ class verifyOtp extends React.Component {
 			      <h4 className="font-weight-light mt-4 pb-4">
 			        Enter the 6 digit code sent to the number 
 			      </h4>
-			      {this.state.phoneNumber}
-
+				  <h4 className="ft6 mb-3">{this.state.phoneNumber}</h4>
 			      <div className="mb-1 pt-4">
-			       		<input className="w-100 p-3 border-green h5 ft6 rounded-0" type="tel" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
+			       	<input className="w-100 p-3 border-green h5 ft6 rounded-0 plceholder-text" type="tel" placeholder="Enter OTP" onChange={e => {this.setOtp(e.target.value)}} value={this.state.otp} />
 			      </div>
-			      <h6 className="mb-4 pb-3">Didn't receive the code? <a href="javascript:void(0)" onClick={()=>{this.resendOtpCode()}}>RESEND</a></h6>
-			      <div className="btn-wrapper pt-4">
+			      <h6 className="mb-2 pb-3">Didn't receive the code? <a href="javascript:void(0)" className="text-underline" onClick={()=>{this.resendOtpCode()}}>Resend</a></h6>
+				  <div className="btn-wrapper pt-4">
 			        {this.getOtpButtons()}
 			      </div>
+				  <h5 class="mt-3 text-center">Don't wish to login? <a class="text-green d-inline-block cursor-pointer" href="#">Skip.</a></h5>
 
 			      {this.displayOtpErrorMsg()}
 			  </div>

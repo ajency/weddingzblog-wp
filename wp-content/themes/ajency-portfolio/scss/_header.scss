@@ -16,14 +16,17 @@
     }
 }
 
-#selected-location-address{
-    background: #EEEFEE;
-    padding: 15px;
+#selected-location-address{    
     position: absolute;
     right: 15px;
     left: 15px;
     top: 100%;
     display: none;
+    >div{
+        padding: 15px;
+        padding-right: 50px;
+        background: #EEEFEE;
+    }
     &.show{
         display: block;
     }

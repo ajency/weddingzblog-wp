@@ -54,7 +54,7 @@ class gpsModalPrompt extends React.Component {
 		return (
 		    <div className="slide-in" id="gpsModal">
 			  <div className="slide-in-header header-container d-flex align-items-center">
-			      <div className="app-name d-flex align-items-center">					
+			      <div className="app-name d-flex align-items-center">				
 			          <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/Newlogo.png" className="app-log" alt="Green Grain Bowl" title="Green Grain Bowl"/>
 			      </div>
 			      <div className="app-chekout text-green">
@@ -67,9 +67,9 @@ class gpsModalPrompt extends React.Component {
 			  </div>
 			  <div className="slide-in-content">
 			      {this.showSignInButton()}
-			      <h3 className="mt-4 h1 ft6">Add your delivery address to proceed</h3>
+			      <h3 className="mt-4 h1 ft6">Add delivery address</h3>
 			      <h4 className="font-weight-light mt-4 pb-4">
-			        We are currently servicing at Panjim, Caranzalem, Porvorim, Sangolda, Succor, Penha de França, Taleigao. Please choose from amongst these
+			        We currently serve at Panjim, Porvorim & its neighbourhood.
 			      </h4>
 			      <div className="mb-3 pt-4">
 			       		{this.showFetchLocationUsingGps()}
@@ -119,7 +119,7 @@ class gpsModalPrompt extends React.Component {
 					<div>
 						<div className="text-center h4 mb-0 font-weight-light">-OR-</div>
 						<div className="position-relative mb-3 mt-3 text-center">
-			        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
+			        		<input type="text" className="border-grey-2 w-100 rounded-0 p-3 h5 mb-0 plceholder-text" name="search" placeholder="Search Location" value={this.state.searchText} onChange={e => {this.autoCompleteLocation(e.target.value)}} />
 			       			<img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/search.png"/>
 			      		</div>
 			      	</div>
@@ -138,7 +138,7 @@ class gpsModalPrompt extends React.Component {
 			)
 		else if(!this.state.settingUserLocation)
 			return (
-				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 ft6 mb-0 position-relative">Use Current Location <img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
+				 <button onClick={() => this.getLocation()} type="button" className="btn-reset btn-location text-grey border-green-2  w-100 p-3 text-left h5 mb-0 position-relative">Use Current Location <img className="position-absolute-right20" src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/slidein/location.png"/></button>
 			)
 	}
 

@@ -30,7 +30,7 @@ class Item extends Component {
 									<Quantity quantity={this.props.item.quantity} variant_id={this.props.item.variant_id} product_id={this.props.item.product_id} removeItem={()=>{this.removeItem()}} updateSummary={(summary) => this.updateSummary(summary)} showApiErrorMsg={(msg) => this.setApiErrorMsg(msg)}/>
 								</div>
 								<div className="product-price font-weight-light text-right pl-3">
-									{this.checkItemDiscount()}
+									{/* {this.checkItemDiscount()} */}
 									₹{this.props.item.attributes.price_final}								
 								</div>
 							</div>								

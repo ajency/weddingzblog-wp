@@ -37,6 +37,14 @@
     &-disabled{
         color: #C4C8C4;
     }
+    &-inverted{
+        background: #c4c8c4;
+        border-color: #c4c8c4;
+        &:hover{
+            background: #c4c8c4 !important;
+            border-color: #c4c8c4 !important;
+        }
+    }
 }
 
 .btn-inner-wrap{

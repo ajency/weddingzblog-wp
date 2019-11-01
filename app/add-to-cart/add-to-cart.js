@@ -60,8 +60,8 @@ class addToCart extends React.Component {
 						</div>
 
 						<div className="d-flex justify-content-between">
-							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.showVariantModal()}> I'll Choose </button>
-							<button className="btn btn-primary rounded-0 p-15 text-left w-48" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
+							<button className="btn btn-primary btn-arrow position-relative rounded-0 p-15 text-left w-48" onClick={()=>this.showVariantModal()}> I'll Choose </button>
+							<button className="btn btn-primary btn-arrow position-relative rounded-0 p-15 text-left w-48" onClick={()=>this.addToCart(this.state.lastSelected)}> Repeat Last </button>
 						</div>
 				  	</div>
 			    </div>

@@ -139,14 +139,14 @@ var addToCart = function (_React$Component) {
 							{ className: 'd-flex justify-content-between' },
 							React.createElement(
 								'button',
-								{ className: 'btn btn-primary rounded-0 p-15 text-left w-48', onClick: function onClick() {
+								{ className: 'btn btn-primary btn-arrow position-relative rounded-0 p-15 text-left w-48', onClick: function onClick() {
 										return _this2.showVariantModal();
 									} },
 								' I\'ll Choose '
 							),
 							React.createElement(
 								'button',
-								{ className: 'btn btn-primary rounded-0 p-15 text-left w-48', onClick: function onClick() {
+								{ className: 'btn btn-primary btn-arrow position-relative rounded-0 p-15 text-left w-48', onClick: function onClick() {
 										return _this2.addToCart(_this2.state.lastSelected);
 									} },
 								' Repeat Last '

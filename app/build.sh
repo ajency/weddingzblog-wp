@@ -35,10 +35,18 @@ buildCartApp(){
 	node postbuild.js
 }
 
-echo "testing shell script"
+postbuildScript(){
+	cd ..
+	node postbuild.js
+}
+
+
+
+echo "running build script"
 buildAddToCart
 buildDeliveryAddress
 buildSignIn
 buildVerifyOtp
 buildViewCart
 buildCartApp
+postbuildScript

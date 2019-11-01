@@ -5,7 +5,7 @@ let react_css_file_hash = {}
 let js_files = ["runtime-main.", "main.", "2."];
 let css_files = ["main."];
 
-fs.emptyDir('../../wp-content/themes/ajency-portfolio/js/cart')
+fs.emptyDir('../build/cart')
 .then(() => {
 	fs.copy('./build/', '../build/cart/')
 		.then((success) =>{
@@ -16,12 +16,9 @@ fs.emptyDir('../../wp-content/themes/ajency-portfolio/js/cart')
 
 			fromDir('./build/static/css/', css_files[0], 'css');
 
-
-			// fromDir('../../wp-content/themes/ajency-portfolio/js/cart/static/css/', "main.");
-
 			console.log("file hash ==>", react_file_hash, react_css_file_hash);
 
-			fs.writeJson('../../wp-content/themes/ajency-portfolio/react_file_hash.json', react_file_hash)
+			fs.writeJson('../build/cart_app_js_file_hash.json', react_file_hash)
 			.then(() => {
 			  console.log('success!')
 			})
@@ -29,7 +26,7 @@ fs.emptyDir('../../wp-content/themes/ajency-portfolio/js/cart')
 			  console.error(err)
 			})
 
-			fs.writeJson('../../wp-content/themes/ajency-portfolio/react_css_file_hash.json', react_css_file_hash)
+			fs.writeJson('../build/cart_app_css_file_hash.json', react_css_file_hash)
 			.then(() => {
 			  console.log('success!')
 			})

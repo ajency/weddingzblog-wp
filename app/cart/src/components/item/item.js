@@ -15,7 +15,7 @@ class Item extends Component {
 			<div className="item-container flex-column">
 				<div className="d-flex mb-4">
 					<div className="product-cartimage d-inline-block">
-						<img class="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
+						<img className="border-radius-rounded" alt="" title="" height="50" width="50" src={this.props.item.attributes.images['1x']}/>
 					</div>
 					<div className="product-details d-inline-block">
 						<div className="product-title-c font-weight-light">
@@ -47,7 +47,7 @@ class Item extends Component {
 
 	checkItemDiscount(){
 		if(this.props.item.attributes.price_final < this.props.item.attributes.price_mrp){
-			return <div><span class="gbb-original-price mr-0">₹{this.props.item.attributes.price_mrp}</span> <span class="gbb-discount text-danger d-none">{this.getOffPercentage()}% OFF</span></div>
+			return <div><span className="gbb-original-price mr-0">₹{this.props.item.attributes.price_mrp}</span> <span className="gbb-discount text-danger d-none">{this.getOffPercentage()}% OFF</span></div>
 		}
 	}
 

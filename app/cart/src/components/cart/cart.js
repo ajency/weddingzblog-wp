@@ -28,17 +28,17 @@ class Cart extends Component {
 	componentDidMount(){
 		//Uncomment before build
 
-		// $('#view-cart-btn').on('click', ()=>{
-		// 	console.log("view cart click event fired");
-		// 	this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-		// 	this.fetchCart();
-		// });
+		$('#view-cart-btn').on('click', ()=>{
+			console.log("view cart click event fired");
+			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+			this.fetchCart();
+		});
 
-		// $('#cart-address-change-trigger').on('click', ()=>{
-		// 	console.log("address change event fired");
-		// 	this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
-		// 	this.fetchCart();
-		// });
+		$('#cart-address-change-trigger').on('click', ()=>{
+			console.log("address change event fired");
+			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
+			this.fetchCart();
+		});
 	}
 
 	getItems(){
@@ -73,7 +73,7 @@ class Cart extends Component {
 						</div>
 
 						<div className="cart-heading p-15 pt-0 pb-0">
-							<h1 class="font-weight-bold d-block mobile-header mb-4 text-muted">Your cart</h1>
+							<h1 className="font-weight-bold d-block mobile-header mb-4 text-muted">Your cart</h1>
 						</div>
 
 						<div className="p-15 pt-0">
@@ -86,7 +86,7 @@ class Cart extends Component {
 							</div>
 						</div> */}
 
-						{/*  
+						 
 						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
 							<div className="text-black font-weight-medium">
 								Estimated Time:
@@ -96,7 +96,6 @@ class Cart extends Component {
 								<span className="d-inline-block vertical-align-middle text-black font-weight-medium">30 mins</span>
 							</div>
 						</div>
-						</div>*/}
 
 						<div className="p-15">
 							<label className="cart-summary-label font-weight-medium">Bill Details</label>
@@ -137,24 +136,22 @@ class Cart extends Component {
 	}
 
 	fetchCart() {
-		// window.addCartLoader();
-		console.log("inside fetch cart");
-		// let cart_id = window.readFromLocalStorage('cart_id');
-		let cart_id = "asdaswer";
-		if(true){
-			let url = "https://demo8558685.mockable.io/get-cart";
-			// let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
+		window.addCartLoader();
+		let cart_id = window.readFromLocalStorage('cart_id');
+		if(cart_id){
+			// let url = "https://demo8558685.mockable.io/get-cart";
+			let url = this.state.apiEndPoint + "/anonymous/cart/fetch";
 			let body = {
 				cart_id : cart_id
 			}
 			axios.get(url, {params : body})
 				.then((res) => {
-					// window.removeCartLoader();
+					window.removeCartLoader();
 					console.log("fetch cart response ==>", res);
 					this.setState({cartData : res.data, fetchCartComplete : true});
 				})
 				.catch((error)=>{
-					// window.removeCartLoader();
+					window.removeCartLoader();
 					this.setState({fetchCartFailureMsg : error.message,  fetchCartComplete : true})
 					console.log("error in fetch cart ==>", error);
 				})

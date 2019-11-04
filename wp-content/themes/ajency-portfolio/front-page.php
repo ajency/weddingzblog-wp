@@ -104,7 +104,7 @@
       <div class="col-lg-21">
       </div>
       <div class="col-xl-12">
-        <h1 class="ft6 product-section__title mb-4">Products</h1>        
+        <h1 class="ft6 product-section__title mb-4 d-done">Products</h1>   
         <div class="row product-list">   
           <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
             foreach ($products as $key => $product) { ?>

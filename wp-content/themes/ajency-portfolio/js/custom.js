@@ -280,10 +280,7 @@ function loadCartApp(){
     console.log("file_hashes ==>", react_js_file_hashes);
     if(!loaded){
         addCartLoader();
-        let url = site_url;
-        // if(window.location.hostname == "localhost"){
-        //     url = "/greengrainbowl" + url;
-        // }
+        let url = app_url;
 
         $.ajaxSetup({ cache: true });
 

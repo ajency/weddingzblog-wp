@@ -124,15 +124,15 @@
                             <img src="<?php echo $product['images'][3];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
                         </div>
                     </div>
-                    <div class="product-info lg-w-50 pl-lg-2"> 
-                        <h3>Veg</h3>
-                        <h3 class="product-title h1 ft6"><?php echo $product['title'] ?></h3>    
+                    <div class="product-info lg-w-50 pl-lg-2">
+                        <h3 class="mb-4 mb-lg-5 d-none d-lg-block font-weight-light">Veg</h3>
+                        <h3 class="product-title h1 ft6 mb-2 mb-lg-3"><?php echo $product['title'] ?></h3>    
                         <div class="product-content">
                           <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                               <?php echo $product['description'] ?>
                           </h4>
-                          <div class="product-meta d-flex">
-                              <div class="product-price font-size-25 ft6 mb-0">₹<?php echo $product['default']['sale_price'] ?>
+                          <div class="product-meta d-flex mt-lg-5">
+                              <div class="product-price h1 ft6 mb-0">₹ <?php echo $product['default']['sale_price'] ?>
                               </div>
                               
                             <!--  <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6" title="Add Noodle Salad Bowl to cart">

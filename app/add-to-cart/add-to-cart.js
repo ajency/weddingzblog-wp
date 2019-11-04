@@ -142,10 +142,8 @@ class addToCart extends React.Component {
 		}
 		if(this.state.quantity == 0)
 			return (
-				 <a className="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6 cursor-pointer" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
-                        Add to cart  
-                        <img src="http://greengrainbowl-com.digitaldwarve.staging.wpengine.com/wp-content/themes/ajency-portfolio/images/products/cart-arrow.png" alt="" title="" />
-
+				 <a className="btn-add-to-cart btn-arrow text-white bg-primary p-2 pr-5 pl-3 text-decoration-none m-0 font-size-25 ft6 cursor-pointer position-relative d-inline-block" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
+					<span>Add to cart</span>
                  </a>
 				)
 

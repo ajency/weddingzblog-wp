@@ -1,5 +1,6 @@
 @media(max-width: 767px){
   body{
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: y mandatory; 
     scroll-padding: 20px;
     & > div{
@@ -246,3 +247,16 @@
         }
     }
 }
+
+// .trigger1{
+//     z-index: 99;
+// }
+// .trigger2{
+//     z-index: 98;
+// }
+// .trigger3{
+//     z-index: 97;
+// }
+// .trigger4{
+//     z-index: 96;
+// }

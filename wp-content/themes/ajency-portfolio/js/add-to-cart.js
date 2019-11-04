@@ -64,7 +64,7 @@ var addToCart = function (_React$Component) {
 							{ className: 'product-variant text-left text-black' },
 							React.createElement(
 								'h3',
-								{ 'class': 'h1 ft6' },
+								{ 'class': 'h1 ft6 pr-4' },
 								'Choose your Bowl'
 							),
 							React.createElement(
@@ -108,7 +108,7 @@ var addToCart = function (_React$Component) {
 						{ className: 'custom-modal-content p-15 text-black' },
 						React.createElement(
 							'h3',
-							{ 'class': 'h1 ft6' },
+							{ 'class': 'h1 ft6 pr-4' },
 							'Repeat last used customization?'
 						),
 						React.createElement(

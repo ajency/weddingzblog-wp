@@ -31,7 +31,7 @@ class addToCart extends React.Component {
 				    <div className="custom-modal-content p-15">
 					<button type="button" className="btn-reset close-modal" onClick={()=> this.hideVariantModal()}><i class="fas fa-times text-silver"></i></button>
 				        <div className="product-variant text-left text-black">
-						  <h3 class="h1 ft6">Choose your Bowl</h3>
+						  <h3 class="h1 ft6 pr-4">Choose your Bowl</h3>
 						  <div class="list-meta mt-4 mb-4">
 							<div class="list-author">{this.props.product_data.title}</div>
 							<div class="list-date">Veg</div>
@@ -50,7 +50,7 @@ class addToCart extends React.Component {
 
 			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
 				  	<div className="custom-modal-content p-15 text-black">
-					  	<h3 class="h1 ft6">Repeat last used customization?</h3>
+					  	<h3 class="h1 ft6 pr-4">Repeat last used customization?</h3>
 						<div class="list-meta mt-4 mb-4">
 							<div class="list-author">{this.props.product_data.title}</div>
 							<div class="list-date">Veg</div>

@@ -270,7 +270,7 @@ var addToCart = function (_React$Component) {
 
 			return React.createElement(
 				'div',
-				{ className: 'border-green' },
+				{ className: 'border-green bg-white' },
 				React.createElement(
 					'button',
 					{ className: 'btn-primary', style: btnStyle, onClick: function onClick() {
@@ -280,7 +280,7 @@ var addToCart = function (_React$Component) {
 				),
 				React.createElement(
 					'span',
-					{ className: 'mw-50 text-center' },
+					{ className: 'mw-50 text-center text-black' },
 					' ',
 					this.state.quantity,
 					' '

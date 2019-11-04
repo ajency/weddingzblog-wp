@@ -46,20 +46,27 @@
         }
     }
     &-add-to-cart{
-        // span{
-        //     max-width: 0;
-        //     -webkit-transition: max-width 1s;
-        //     transition: max-width 1s;
-        //     display: inline-block;
-        //     vertical-align: top;
-        //     white-space: nowrap;
-        //     overflow: hidden;
-        // }
-        // &:hover{
-        //     span{
-        //         max-width: 150px;
-        //     }
-        // }
+        min-width: 60px;
+        text-align: center;
+        span{
+            max-width: 0;
+            -webkit-transition: max-width 1s;
+            transition: max-width 1s;
+            display: inline-block;
+            vertical-align: top;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        i{
+            position: relative;
+            top: 2px;
+        }
+        &:hover{
+            span{
+                max-width: 150px;
+                padding-right: 20px;
+            }
+        }
     }
 }
 
@@ -77,4 +84,5 @@
     position: absolute;
     top: 20px;
     right: 8px;
+    z-index: 9999;
 }

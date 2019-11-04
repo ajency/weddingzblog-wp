@@ -30,7 +30,7 @@ class addToCart extends React.Component {
 			    <div className="custom-modal" id={'variantSelectionModal-' + this.props.product_data.product_id}>
 				    <div className="custom-modal-content p-15">
 					<button type="button" className="btn-reset close-modal" onClick={()=> this.hideVariantModal()}><i class="fas fa-times text-silver"></i></button>
-				        <div className="product-variant text-left">
+				        <div className="product-variant text-left text-black">
 						  <h3 class="h1 ft6">Choose your Bowl</h3>
 						  <div class="list-meta mt-4 mb-4">
 							<div class="list-author">{this.props.product_data.title}</div>
@@ -49,7 +49,7 @@ class addToCart extends React.Component {
 
 
 			   	 <div className="custom-modal" id={'repeatLast-' + this.props.product_data.product_id}>
-				  	<div className="custom-modal-content p-15">
+				  	<div className="custom-modal-content p-15 text-black">
 					  	<h3 class="h1 ft6">Repeat last used customization?</h3>
 						<div class="list-meta mt-4 mb-4">
 							<div class="list-author">{this.props.product_data.title}</div>
@@ -142,8 +142,9 @@ class addToCart extends React.Component {
 		}
 		if(this.state.quantity == 0)
 			return (
-				 <a className="btn-add-to-cart btn-arrow text-white bg-primary p-2 pr-5 pl-3 text-decoration-none m-0 font-size-25 ft6 cursor-pointer position-relative d-inline-block" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
+				 <a className="btn-add-to-cart text-white bg-primary p-15 text-decoration-none m-0 font-size-25 ft6 cursor-pointer d-inline-block" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>
 					<span>Add to cart</span>
+					<i className="text-white fa fa-arrow-right" aria-hidden="true"></i>
                  </a>
 				)
 

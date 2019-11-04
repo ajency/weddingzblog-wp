@@ -61,7 +61,7 @@ var addToCart = function (_React$Component) {
 						),
 						React.createElement(
 							'div',
-							{ className: 'product-variant text-left' },
+							{ className: 'product-variant text-left text-black' },
 							React.createElement(
 								'h3',
 								{ 'class': 'h1 ft6' },
@@ -105,7 +105,7 @@ var addToCart = function (_React$Component) {
 					{ className: 'custom-modal', id: 'repeatLast-' + this.props.product_data.product_id },
 					React.createElement(
 						'div',
-						{ className: 'custom-modal-content p-15' },
+						{ className: 'custom-modal-content p-15 text-black' },
 						React.createElement(
 							'h3',
 							{ 'class': 'h1 ft6' },
@@ -257,14 +257,15 @@ var addToCart = function (_React$Component) {
 			}
 			if (this.state.quantity == 0) return React.createElement(
 				'a',
-				{ className: 'btn-add-to-cart btn-arrow text-white bg-primary p-2 pr-5 pl-3 text-decoration-none m-0 font-size-25 ft6 cursor-pointer position-relative d-inline-block', onClick: function onClick() {
+				{ className: 'btn-add-to-cart text-white bg-primary p-15 text-decoration-none m-0 font-size-25 ft6 cursor-pointer d-inline-block', onClick: function onClick() {
 						return _this5.checkVariant('add');
 					}, disabled: this.state.apiCallInProgress },
 				React.createElement(
 					'span',
 					null,
 					'Add to cart'
-				)
+				),
+				React.createElement('i', { className: 'text-white fa fa-arrow-right', 'aria-hidden': 'true' })
 			);
 
 			return React.createElement(

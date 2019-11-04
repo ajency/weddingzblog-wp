@@ -1,3 +1,7 @@
+removePreBuildFolder(){
+	rm -rf pre_build
+}
+
 buildAddToCart(){
 	cd ./add-to-cart
 	npm install
@@ -33,20 +37,17 @@ buildCartApp(){
 	npm install
 	npm run build
 	node postbuild.js
-}
-
-postbuildScript(){
 	cd ..
-	node postbuild.js
 }
 
 
 
 echo "running build script"
+removePreBuildFolder
 buildAddToCart
 buildDeliveryAddress
 buildSignIn
 buildVerifyOtp
 buildViewCart
 buildCartApp
-# postbuildScript
+removePreBuildFolder

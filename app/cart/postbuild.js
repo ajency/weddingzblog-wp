@@ -8,9 +8,9 @@ let css_files = ["main."];
 let react_component_file_hash = {};
 let react_component_js_files = ["add-to-cart.", "delivery-address-slider.", "sign-in.", "verify-otp.", "view-cart."];
 
-fs.emptyDir('../build/cart')
+fs.emptyDir('../pre_build/cart')
 .then(() => {
-	fs.copy('./build/', '../build/cart/')
+	fs.copy('./build/', '../pre_build/cart/')
 		.then((success) =>{
 			console.log("build folder copied successfully");
 			for(let i = 0; i<js_files.length; i++){
@@ -21,34 +21,33 @@ fs.emptyDir('../build/cart')
 
 			console.log("file hash ==>", react_file_hash, react_css_file_hash);
 
-			fs.writeJson('../build/cart_app_js_file_hash.json', react_file_hash)
-			.then(() => {
-			  console.log('success!')
-			})
-			.catch(err => {
-			  console.error(err)
-			})
-
-			fs.writeJson('../build/cart_app_css_file_hash.json', react_css_file_hash)
-			.then(() => {
-			  console.log('success!')
-			})
-			.catch(err => {
-			  console.error(err)
-			})
 
 			for(let i = 0; i<react_component_js_files.length; i++){
-			    fromDir('../build/', react_component_js_files[i], 'js');
+			    fromDir('../pre_build/', react_component_js_files[i], 'js');
 			}
 
+			fs.copy('../pre_build/' , '../build/').then((success)=>{
+				fs.writeJson('../build/react_component_file_hash.json', react_file_hash)
+				.then(() => {
+				  console.log('success!')
+				})
+				.catch(err => {
+				  console.error(err)
+				})
 
-			fs.writeJson('../build/react_component_file_hash.json', react_file_hash)
-			.then(() => {
-			  console.log('success!')
+				fs.writeJson('../build/cart_app_css_file_hash.json', react_css_file_hash)
+				.then(() => {
+				  console.log('success!')
+				})
+				.catch(err => {
+				  console.error(err)
+				})	
 			})
-			.catch(err => {
-			  console.error(err)
+			.catch((error)=>{
+				console.log("error in copying pre build folder to build folder ==>", error)
 			})
+
+			
 
 		})
 		.catch((error)=>{

@@ -5,7 +5,7 @@ module.exports = {
   output : {
     // filename : "sign-in.js",
     filename: 'sign-in.[contenthash].js',
-    path: path.resolve(__dirname, "../build/")
+    path: path.resolve(__dirname, "../pre_build/")
   },
   module: {
     rules: [

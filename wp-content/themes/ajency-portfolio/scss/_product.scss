@@ -192,6 +192,11 @@
 }
 
 .product-wrapper{
+    .product-price{
+        @media (min-width: 992px) {
+            font-size: 30px;
+        }
+    }
     .product-image{
         @media (min-width: 992px) {
             overflow: hidden;

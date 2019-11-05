@@ -191,9 +191,9 @@
 
 <div class="backdrop"></div>
 
-<!-- <div class="site-loader text-center p-5">
+<div class="site-loader text-center p-5">
   <img src="<?php echo get_template_directory_uri(); ?>/images/green_grain_bowl.jpg" width="75px" class="mt-5"/> 
-</div> -->
+</div>
 
 <button id="cart-address-change-trigger" class="d-none"></button>
 

@@ -29,3 +29,10 @@
 .p-15{
     padding: 15px;
 }
+
+.custom-col-3{
+    @media (min-width: 1600px) {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}

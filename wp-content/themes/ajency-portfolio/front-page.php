@@ -108,7 +108,7 @@
           <div class="row product-list">   
             <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
               foreach ($products as $key => $product) { ?>
-              <div class="col-lg-4 product-list-item p-lg-0 effect trigger<?php echo $key+1 ?>" id="product-<?php echo $product['product_id'] ?>">
+              <div class="custom-col-3 col-lg-4 product-list-item p-lg-0 effect trigger<?php echo $key+1 ?>" id="product-<?php echo $product['product_id'] ?>">
                   <div class="product-wrapper <?php echo $product['class'] ?>">
                       <div class="product-image lg-w-50">
                           <div class="item">
@@ -125,8 +125,8 @@
                           </div>
                       </div>
                       <div class="product-info lg-w-50 pl-lg-2">
-                          <h3 class="mb-4 mb-lg-0 d-none d-lg-block font-weight-light">Veg</h3>
-                          <h3 class="product-title h1 ft6 mb-2 mb-lg-3 mt-lg-1"><?php echo $product['title'] ?></h3>    
+                          <h3 class="mb-4 mb-lg-0 d-none d-lg-block font-weight-light type">Veg</h3>
+                          <h3 class="product-title h1 ft6 mb-2 mb-lg-3 mt-lg-1 p-title"><?php echo $product['title'] ?></h3>    
                           <div class="product-content">
                             <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
                                 <?php echo $product['description'] ?>

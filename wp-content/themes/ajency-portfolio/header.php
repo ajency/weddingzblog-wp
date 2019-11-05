@@ -29,7 +29,7 @@
 
   <body>
 
-  	<nav class="fixed-header position-fixed bg-white">
+  	<nav class="bg-white">
       <div class="container mt-3 p5 position-relative">
         <div class="row justify-content-between align-items-center">
             <div class="col-4 col-lg-3 position-static">

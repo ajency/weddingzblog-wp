@@ -26,8 +26,6 @@ class Cart extends Component {
 	}
 
 	componentDidMount(){
-		//Uncomment before build
-
 		$('#view-cart-btn').on('click', ()=>{
 			console.log("view cart click event fired");
 			this.setState({cartData : {}, fetchCartComplete : false, cartEmpty : false})
@@ -86,7 +84,6 @@ class Cart extends Component {
 							</div>
 						</div> */}
 
-						 
 						<div className="p-15 pt-2 pb-2 bg-off-green-1 mb-1 d-flex justify-content-between">
 							<div className="text-black font-weight-medium">
 								Estimated Time:

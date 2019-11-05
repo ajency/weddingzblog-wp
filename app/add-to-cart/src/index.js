@@ -92,6 +92,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.add('transform-none');
 			});
+		document.querySelector('#product-'+this.props.product_data.product_id).classList.add('zindex');
 		window.hideScroll();
 	}
 
@@ -101,6 +102,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.remove('transform-none');
 			});
+		document.querySelector('#product-'+this.props.product_data.product_id).classList.remove('zindex');
 		window.showScroll();
 	}
 
@@ -110,6 +112,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.add('transform-none');
 			});
+		document.querySelector('#product-'+this.props.product_data.product_id).classList.add('zindex');
 		window.hideScroll();
 	}
 
@@ -119,6 +122,7 @@ class addToCart extends React.Component {
 			.forEach((domContainer) => {
 				domContainer.classList.remove('transform-none');
 			});
+		document.querySelector('#product-'+this.props.product_data.product_id).classList.remove('zindex');
 		window.showScroll();
 	}
 
@@ -150,9 +154,9 @@ class addToCart extends React.Component {
 
 		return (
 			<div className="border-green bg-white">
-				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
+				<button className="btn-primary" onClick={() => this.checkVariant('remove')} disabled={this.state.apiCallInProgress}>-</button>
 				<span className="mw-50 text-center text-black">	{this.state.quantity} </span>
-				<button className="btn-primary" style={btnStyle} onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>
+				<button className="btn-primary" onClick={() => this.checkVariant('add')} disabled={this.state.apiCallInProgress}>+</button>
 			</div>
 		)		
 	}
@@ -359,6 +363,10 @@ function toggleModal(modal) {
     document.querySelectorAll('.product-wrapper')
 		.forEach((domContainer) => {
 			domContainer.classList.remove('transform-none');
+		});
+	document.querySelectorAll('.product-list-item')
+		.forEach((domContainer) => {
+			domContainer.classList.remove('zindex');
 		});
 	window.removeBackDrop();
 }

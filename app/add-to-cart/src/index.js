@@ -191,7 +191,7 @@ class addToCart extends React.Component {
 
 	fetchVariants(){
 		if(!this.state.variants.length){
-			let url = this.state.apiEndPoint + "/fetch-variants";
+			let url = this.state.apiEndPoint + "/misc/fetch-variants";
 			let body = {
 				product_id 	: this.props.product_data.product_id,
 			}

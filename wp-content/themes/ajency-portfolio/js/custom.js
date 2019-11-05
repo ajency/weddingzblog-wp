@@ -421,3 +421,31 @@ function getCookieExpiryDate(){
     milli_sec = milli_sec+(30*24*60*60*1000);
     let expiredate = new Date(milli_sec).toUTCString();
 }
+
+
+window.addEventListener("click", checkInternetConnection, true);
+window.addEventListener('online',  updateOnlineStatus);
+
+function checkInternetConnection(){
+    console.log("window clicked");
+    if(navigator.onLine){
+        console.log("online")
+    } else {
+      event.stopPropagation();
+      disableSite();
+      console.log("offline")
+    }
+}
+
+function updateOnlineStatus(){
+    console.log("user is online");
+    enableSite()
+}
+
+function enableSite(){
+    $('body').removeClass('site-offline');
+}
+
+function disableSite(){
+    $('body').addClass('site-offline');
+}

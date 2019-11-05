@@ -92,11 +92,6 @@
 </section>
 
 
-<!-- <div class="delivery-location d-flex cursor-pointer">
-  <div class="mr-2 ml-2"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-  <div id="selected-location-address" class="font-weight-bold"></div>  
-</div> -->
-
 
 <div class="product-section">  
   <div class="container-1">
@@ -134,11 +129,6 @@
                           <div class="product-meta d-flex mt-lg-5">
                               <div class="product-price h1 ft6 mb-0">₹ <?php echo $product['default']['sale_price'] ?>
                               </div>
-                              
-                            <!--  <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6" title="Add Noodle Salad Bowl to cart">
-                              Add to cart  
-                              </a> -->
-
                               <div class="react-add-to-cart-container" data-product_data='<?php echo json_encode($product); ?>'></div>
                           </div>
                         </div>

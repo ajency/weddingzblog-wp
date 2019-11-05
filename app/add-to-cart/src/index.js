@@ -11,8 +11,9 @@ class addToCart extends React.Component {
 			apiCallInProgress : false,
 			quantity : 0,
 			lastSelected : '',
-			items : [],
-			selectedVariant : ''
+			items : [], // variants added to cart
+			selectedVariant : '',
+			variants : [] // variants fetched from firestore
 		};
 	}
 
@@ -70,7 +71,7 @@ class addToCart extends React.Component {
 	}
 
 	getVariants(){
-		let variants = this.props.product_data.variants.map((variant)=>{
+		let variants = this.state.variants.map((variant)=>{
 			return (
 				<div key={variant.id} className="list-item pt-3 pb-3 border-bottom-lightgrey">
 		              <label className="custom-radio-btn mb-0 font-size-16">
@@ -85,6 +86,7 @@ class addToCart extends React.Component {
 	}
 
 	showVariantModal(){
+		this.fetchVariants();
 		this.hideRepeateLastModal();
 		this.setState({selectedVariant : this.props.product_data.default.id });
 		document.querySelector('#variantSelectionModal-' + this.props.product_data.product_id).classList.add('show-modal');
@@ -184,6 +186,25 @@ class addToCart extends React.Component {
 					this.removeFromCart(this.state.items[0].variant_id);
 				}
 			}
+		}
+	}
+
+	fetchVariants(){
+		if(!this.state.variants.length){
+			let url = this.state.apiEndPoint + "/fetch-variants";
+			let body = {
+				product_id 	: this.props.product_data.product_id,
+			}
+
+			axios.get(url, {params : body})
+			.then((res) => {
+				if(res.data.success){
+					this.setState({variants : res.data.variants});
+				}
+			})
+			.catch((error)=>{
+				console.log("error in add to cart ==>", error);
+			})
 		}
 	}
 

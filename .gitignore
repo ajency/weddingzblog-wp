@@ -34,4 +34,5 @@ wp-content/themes/HighendWP/
 node_modules/
 
 /app/build/
+/app/pre_build/
 

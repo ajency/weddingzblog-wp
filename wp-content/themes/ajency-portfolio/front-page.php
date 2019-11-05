@@ -93,55 +93,62 @@
 
 
 
-<div class="product-section">  
-  <div class="container-1">
-    <div class="row-1">
-      <div class="col-lg-21">
-      </div>
-      <div class="col-xl-12">
-        <h1 class="ft6 product-section__title mb-4 d-none">Products</h1>   
-        <div class="row product-list">   
-          <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
-            foreach ($products as $key => $product) { ?>
-            <div class="col-lg-4 product-list-item p-lg-0 effect trigger<?php echo $key+1 ?>" id="product-<?php echo $product['product_id'] ?>">
-                <div class="product-wrapper <?php echo $product['class'] ?>">
-                    <div class="product-image lg-w-50">
-                        <div class="item">
-                            <img src="<?php echo $product['images'][0];?>"  alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
-                        </div>
-                        <div class="item">
-                          <img src="<?php echo $product['images'][1];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo $product['images'][2];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo $product['images'][3];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
-                        </div>
-                    </div>
-                    <div class="product-info lg-w-50 pl-lg-2">
-                        <h3 class="mb-4 mb-lg-5 d-none d-lg-block font-weight-light">Veg</h3>
-                        <h3 class="product-title h1 ft6 mb-2 mb-lg-3"><?php echo $product['title'] ?></h3>    
-                        <div class="product-content">
-                          <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
-                              <?php echo $product['description'] ?>
-                          </h4>
-                          <div class="product-meta d-flex mt-lg-5">
-                              <div class="product-price h1 ft6 mb-0">₹ <?php echo $product['default']['sale_price'] ?>
-                              </div>
-                              <div class="react-add-to-cart-container" data-product_data='<?php echo json_encode($product); ?>'></div>
-                          </div>
-                        </div>
-                    </div>
-                </div>      
-            </div>
-          <?php } ?>
-
+<section>
+  <div class="product-section pt-3">
+    <div class="container-1">
+      <div class="row-1">
+        <div class="col-lg-21">
         </div>
-      </div>
-    </div>   
+        <div class="col-xl-12">
+          <h1 class="ft6 product-section__title mb-4 d-none">Products</h1>   
+          <div class="row product-list">   
+            <?php $products = json_decode(file_get_contents(get_template_directory_uri() . '/products.json'), true)['products']; 
+              foreach ($products as $key => $product) { ?>
+              <div class="col-lg-4 product-list-item p-lg-0 effect trigger<?php echo $key+1 ?>" id="product-<?php echo $product['product_id'] ?>">
+                  <div class="product-wrapper <?php echo $product['class'] ?>">
+                      <div class="product-image lg-w-50">
+                          <div class="item">
+                              <img src="<?php echo $product['images'][0];?>"  alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
+                          </div>
+                          <div class="item">
+                            <img src="<?php echo $product['images'][1];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
+                          </div>
+                          <div class="item">
+                              <img src="<?php echo $product['images'][2];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
+                          </div>
+                          <div class="item">
+                              <img src="<?php echo $product['images'][3];?>" alt="<?php echo $product['title'] ?>" title="<?php echo $product['title'] ?>">
+                          </div>
+                      </div>
+                      <div class="product-info lg-w-50 pl-lg-2">
+                          <h3 class="mb-4 mb-lg-0 d-none d-lg-block font-weight-light">Veg</h3>
+                          <h3 class="product-title h1 ft6 mb-2 mb-lg-3 mt-lg-1"><?php echo $product['title'] ?></h3>    
+                          <div class="product-content">
+                            <h4 class="product-excerpt font-weight-light font-size-18 mt-0">
+                                <?php echo $product['description'] ?>
+                            </h4>
+                            <div class="product-meta d-flex mt-lg-5">
+                                <div class="product-price h1 ft6 mb-0">₹ <?php echo $product['default']['sale_price'] ?>
+                                </div>
+                                
+                              <!--  <a href="#" class="btn-add-to-cart btn-add-to-cart-desktop text-primary border-radius-4 border-white text-decoration-none m-0 font-size-25 ft6" title="Add Noodle Salad Bowl to cart">
+                                Add to cart  
+                                </a> -->
+
+                                <div class="react-add-to-cart-container" data-product_data='<?php echo json_encode($product); ?>'></div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>      
+              </div>
+            <?php } ?>
+
+          </div>
+        </div>
+      </div>   
+    </div>
   </div>
-</div>
+</section>
 
 <!-- gps modal prompt -->
 <div id="react-add-delivery-address-container"></div>

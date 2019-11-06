@@ -25,6 +25,23 @@ workbox.routing.registerRoute(
   })
 );
 
+workbox.routing.registerRoute(
+  new RegExp('https://asia-east2-project-ggb-dev.cloudfunctions.net/api/rest/v1/misc/*'),
+  new workbox.strategies.CacheFirst({
+    cacheName: 'ggb-apis',
+    plugins: [
+        new workbox.cacheableResponse.Plugin({
+            statuses: [0, 200],
+        }),
+        new workbox.expiration.Plugin({
+            maxAgeSeconds: 60 * 60 * 24,
+            maxEntries: 50,
+            purgeOnQuotaError: true
+        })
+    ]
+  })
+);
+
 
 //cache js and css - production
 workbox.routing.registerRoute(

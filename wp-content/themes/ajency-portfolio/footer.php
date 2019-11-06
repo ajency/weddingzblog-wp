@@ -1,7 +1,7 @@
 <div class="spacer-200">
 </div>
 
-<!-- <footer id="footer">
+<footer id="footer">
     <section class="footer-section">
         <div class="container p5">
             <div class="row">
@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <?php
     $app_url = APP_URL;

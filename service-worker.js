@@ -46,7 +46,7 @@ workbox.routing.registerRoute(
 //cache js and css - production
 workbox.routing.registerRoute(
     new RegExp('https://order.greengrainbowl.com/*'),
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'ggb-prod',
         plugins: [
             new workbox.expiration.Plugin({
@@ -62,7 +62,7 @@ workbox.routing.registerRoute(
 //cache js and css - staging
 workbox.routing.registerRoute(
     new RegExp('http://order-staging.greengrainbowl.com/*'),
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'ggb-stage',
         plugins: [
             new workbox.expiration.Plugin({
@@ -77,7 +77,7 @@ workbox.routing.registerRoute(
 //cache js and css - local
 workbox.routing.registerRoute(
     new RegExp('/greengrainbowl/app/build/*'),
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'ggb-local',
         plugins: [
             new workbox.expiration.Plugin({

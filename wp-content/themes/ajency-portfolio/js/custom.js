@@ -427,19 +427,26 @@ window.addEventListener("click", checkInternetConnection, true);
 window.addEventListener('online',  updateOnlineStatus);
 
 function checkInternetConnection(){
-    console.log("window clicked");
     if(navigator.onLine){
-        console.log("online")
+        //do nothing
     } else {
-      event.stopPropagation();
-      disableSite();
-      console.log("offline")
+        event.stopPropagation();
+        disableSite();
+        document.querySelector('#offline-toast').innerHTML = "You are offline and may be viewing outdated content!";
+        document.querySelector('#offline-toast').classList.remove('d-none');
+        setTimeout(()=>{
+            document.querySelector('#offline-toast').classList.add('d-none');
+        },5000)
     }
 }
 
 function updateOnlineStatus(){
-    console.log("user is online");
-    enableSite()
+    enableSite();
+    document.querySelector('#offline-toast').innerHTML = "You are online";
+    document.querySelector('#offline-toast').classList.remove('d-none');
+    setTimeout(()=>{
+        document.querySelector('#offline-toast').classList.add('d-none');
+    },4000)
 }
 
 function enableSite(){
